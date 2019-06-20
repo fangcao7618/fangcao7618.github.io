@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一些我更愿意在开始就知道东西利用 Node.js 开发是一个非常有趣，和令人满足的过程， 他有3万多个模块可以选择使用，并且所有的模块可以非常容易的集成入现有的应用之中。 无论如何，对于一些刚开始使用Node.js 开发的的人来说，很容易碰壁，在这个文章中，我会提到在你学习过程中遇到的问题。 贴士 1: 在开发环境使用 nodemon, 在生产环境使用pm2当你第一次开发Node.js应用的时候，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="写给Node.js新手的7个小技巧">
+<meta property="og:url" content="http://yoursite.com/2019/06/10/yuque/写给Node.js新手的7个小技巧/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="一些我更愿意在开始就知道东西利用 Node.js 开发是一个非常有趣，和令人满足的过程， 他有3万多个模块可以选择使用，并且所有的模块可以非常容易的集成入现有的应用之中。 无论如何，对于一些刚开始使用Node.js 开发的的人来说，很容易碰壁，在这个文章中，我会提到在你学习过程中遇到的问题。 贴士 1: 在开发环境使用 nodemon, 在生产环境使用pm2当你第一次开发Node.js应用的时候，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-20T03:27:20.430Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="写给Node.js新手的7个小技巧">
+<meta name="twitter:description" content="一些我更愿意在开始就知道东西利用 Node.js 开发是一个非常有趣，和令人满足的过程， 他有3万多个模块可以选择使用，并且所有的模块可以非常容易的集成入现有的应用之中。 无论如何，对于一些刚开始使用Node.js 开发的的人来说，很容易碰壁，在这个文章中，我会提到在你学习过程中遇到的问题。 贴士 1: 在开发环境使用 nodemon, 在生产环境使用pm2当你第一次开发Node.js应用的时候，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/10/yuque/写给Node.js新手的7个小技巧/">
+
+
+
+
+
+  <title>写给Node.js新手的7个小技巧 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/10/yuque/写给Node.js新手的7个小技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">写给Node.js新手的7个小技巧</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-10T18:32:46+08:00">
+                2019-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/10/yuque/写给Node.js新手的7个小技巧/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/10/yuque/写给Node.js新手的7个小技巧/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>一些我更愿意在开始就知道东西<br>利用 Node.js 开发是一个非常有趣，和令人满足的过程， 他有3万多个模块可以选择使用，并且所有的模块可以非常容易的集成入现有的应用之中。</p>
+<p>无论如何，对于一些刚开始使用Node.js 开发的的人来说，很容易碰壁，在这个文章中，我会提到在你学习过程中遇到的问题。</p>
+<p>贴士 1: 在开发环境使用 nodemon, 在生产环境使用pm2<br>当你第一次开发Node.js应用的时候，其中一件事情就是一次又一次的运行[file].js 就和揭伤疤一样。 当我第一次开发的node app时候，这个让我感到异常挫败和痛苦， 尤其是每当我修改很小东西的时候需要control+c</p>
+<p>幸运的是我发现了一个非常棒的工具Nodemon. 你可以利用以下的命令来安装。</p>
+<p>npm install -g nodemon<br>Nodemon 是一个令人惊叹的工具， 当你全局安装他以后，可以通过 nodemon [file].js 来启动你的node.js scripts，它会告诉nodemon来监视你的script和scripts的所有变化，这样的Node.js开发方式非常震撼以及让大大提高开发速度。</p>
+<p>那么，生产环境又如何，除非你用了heroku，Nodejitsu或者其他一些好的 Node.js 平台(也许他们有类似的功能)，但是碰巧你用了EC2 或者一些其他的云平台来运行你的Node.js app，你如何能然保证这是一个始终运行的Node.js app？</p>
+<p>案就是PM2, PM2 是一个类似于Nodemon的工具，不同之处在于它用于生产环境，和Nodemon相似的地方在于他会监控你的app的任何修改或者重新部署，但是有更好的一面， PM2 在遭遇到崩溃的时候，他会正确重启你的app.</p>
+<p>PM2的优胜之处在于当你要将app需要多核处理的时候，PM2内部集成的负载均衡可以让你很容易的去指定运行多少个实例。</p>
+<p>pm2 start app.js -i max<br>-i参数目的是指定运行多少个实例，在这个例子中 PM2 使用了一个常量max来扩展你的app运转到你最大的核数，不要忘记Node 平时只会运行在单核！</p>
+<p>贴士 2: Async 或者 Q<br>当你专注于写了更多的node.js apps的时候，你肯定领略了什么是回调地狱。如果你还不知道,这里有一个例子：</p>
+<p>function register(name, password, cb){<br>  checkIfNameExists(name, function(err, result){<br>   if(err){<br>    return cb(“error”);<br>   }<br>   checkIfPasswordGood(password, function(err, result){<br>    if(err){<br>     return cb(“error”);<br>    }</p>
+<pre><code>createAccount(name,password, function(err,result){&lt;br /&gt;     if(err){&lt;br /&gt;      return cb(“error”);&lt;br /&gt;     }&lt;br /&gt;     createBlog(name, function(err, result){&lt;br /&gt;      sendEmail(name, function(err, result){&lt;br /&gt;       callback(result);&lt;br /&gt;      });&lt;br /&gt;     });&lt;br /&gt;    });&lt;br /&gt;   });&lt;br /&gt;  });&lt;br /&gt; }&lt;br /&gt;这显然不是一个有用或者令人折服的代码， 反而进入一种回调地狱般两难的境地，是你的话将如何避免？</code></pre><p>一个简单的办法是使用events， 但是我个人不建议这么做，因为使用events来调用只有一个用途的私有方法，足以令人受挫。所以你该怎么做? 这里有两个编译好的模块async.js和Q, 他们两个都可以防止落入回调地狱。</p>
+<p>Async.js或者 ‘async’ 让你可以容易的执行一些连续或者平行的任务，在不依赖一个又一个的嵌套循环前提下.</p>
+<p>下面是一些来自Async的readme，写明了他支持的模式，如需获取全部的支持方式请去他们的github主页查看。</p>
+<p>async.map([‘file1’,’file2’,’file3’], fs.stat, function(err, results){<br>  // results is now an array of stats for each file<br> });</p>
+<p> async.filter([‘file1’,’file2’,’file3’], fs.exists, function(results){<br> // results now equals an array of the existing files<br>});</p>
+<p> async.parallel([<br>  function(){ … },<br>  function(){ … }<br>  ], callback);</p>
+<p> async.series([<br>  function(){ … },<br>  function(){ … }<br>  ]);</p>
+<p> async.waterfall([<br>  function(callback){<br>   callback(null, ‘one’, ‘two’);<br>  },<br>  function(arg1, arg2, callback){<br>   callback(null, ‘three’);<br>  },<br>  function(arg1, callback){<br> // arg1 now equals ‘three’<br> callback(null, ‘done’);<br> }<br> ], function (err, result) {<br> // result now equals ‘done’ <br>});<br>如果我们用async的waterfall来修改之前的例子,结果将更加容易阅读, 再也不用让你的代码看起来像一个死亡金字塔.</p>
+<p>另一个重要的库叫做Q. 这个库是一个暴漏promises的概念，Promise 是一个含有’promise’方法的返回对象，他提供了一个最终的返回值，非常优雅的将javascripts的异步和node.js紧密联系在一起。</p>
+<p>promiseMeSomething()<br> .then(function (value) {<br> }, function (reason) {<br> });<br>这个 promise me 方法正确返回了一个对象，对象将在传入value的时候调用这个方法当，并且他提供了一个额外的callback来处理失败后的返回值。</p>
+<p>这是一个非常有条理的方式来避免回调地狱，如果你重写我们之前的那个例子，你可以非常容易的让这些函数正确被调用并执行。</p>
+<p>就和我之前说的一样，我很不愿创建只有一个用途的一堆功能，相反的在’then’之后传入一个方法名，仅仅创建了一个匿名的内部功能和传递,当然了选择权始终在你手里。</p>
+<p>总的来说，当你落入回调地狱的时候，是时候去看看 async.js或者Q吧。</p>
+<p>我的选择? 当然是 Q<br>贴士 3: 轻松调试 Node.js apps<br>如果你从一个IDE重度集成的语言比如java 或者C# 转来调试Node.js,，你一定会感到很困扰，大部分新加入node的开发者采用了’flow’的调试模式，从这一刻开始你最好的朋友就是console.log</p>
+<p>但是依然有更常见的调试方式来代替， Node.js 内置了一个调试器你可以称为 node debug，不过我更喜欢的 node-inspector</p>
+<p>他们的github说 “Node Inspector 是一个使用Blink Developer Tools (以前称为WebKit Web Inspector)node.js调试器的界面,”</p>
+<p>简而言之，node-inspector 可以让你用任何你想用的编辑器和chrome web tools来调试你的应用,这是多么的性感。</p>
+<p>Node-inspector 可以让你做一些非常酷的事情,比如实时修改,单步调试,注入以及一堆其他非常酷的东西。</p>
+<p>让我们来根据指示一步一步安装。</p>
+<p><a href="https://github.com/node-inspector/node-inspector" target="_blank" rel="noopener">https://github.com/node-inspector/node-inspector</a></p>
+<p>贴士 4: Nodefly<br>一旦你有你的应用程序正常运行，你可能会问自己，你怎么可以监视它的性能和配置文件，以确保您的应用程序运行在最佳的速度。最简单的答案是一个伟大的服务，我称为Nodefly。</p>
+<p>用简单的一行代码Nodefly开始监视你的应用程序内存泄漏，测量redis用了多久，mongo查询和一堆其他很酷的东西。</p>
+<p><a href="http://www.nodefly.com" target="_blank" rel="noopener">http://www.nodefly.com</a></p>
+<p>贴士 5: 利用NPM进行模块管理<br>Node做最常见的事情之一是通过NPM安装软件包。Node有一个惊人的包管理器安装所有指定在你的package.json的manifest文件中的模块。然而，所有初学者都会碰上保持的package.json文件中您所使用的所有的模块都是最新版。</p>
+<p>这似乎是一个痛苦的过程,总是打开的package.json来更新新模块的依赖，但许多人不知道的是npm会为你做这个！</p>
+<p>非常简单运行 npm install - save module_name 然后 npm将自动更新你的package.json 包含正确的模块和版本。</p>
+<p>npm install - save module_name<br>贴士 6: 不要检查node_modules 文件夹<br>虽然我们的话题一直是modules和npm，但是并不是不是很多人都知道，你不应该提交node_modules文件夹。这背后最大的原因是，没有必要提交这个文件夹。只要有人下载你的代码，他们可通过运行NPM来安装和下载所有需要的模块。</p>
+<p>您可能会说，它是不是一个大问题，如果检查node_modules，但是，如果下载代码的人使用了和你编译modules不一样的操作系统的来安装通过NPM？你的应用程序将会崩溃，下载代码的人将不知道为什么会如此！</p>
+<p>举个例子bcrypt以及sentimental如果当在您安装在主机系统上编译他们，因为他们用了本地C语言组件来编译。</p>
+<p>避免检查node_modules文件夹的方式是加入.gitignore</p>
+<p>// .gitignore node_modules/*<br>贴士 7: 别忘记返回<br>初学者经常犯一个很常识的错误,就是忘记callback后的返回值,虽然有些时候，这没有影响，有很多时候，你会遇到奇怪的问题，因为你的回调被调用两次。</p>
+<p>让我们看一个简单的例子</p>
+<p>function do(err,result, callback){<br>   if(err){<br>      callback(“error”);<br>  }<br>  callback(“good”);<br> }<br>乍一看，这个片段是有道理的。如果有错误，在回调中发送“错误。如果不发送return，调用callaback后这个函数不会停下来。它只是将移动到调用回callback(“good”)。</p>
+<p>这样做在长期和复杂的代码行里面会节省几个小时的调试。<br><a href="http://d7.yihaodianimg.com/N03/M04/BB/3D/CgQCs1NPn4eAdwASAAEy5_B2WgQ08400.jpg" target="_blank" rel="noopener"><br></a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/10/yuque/学习Git/" rel="next" title="学习Git">
+                <i class="fa fa-chevron-left"></i> 学习Git
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/10/yuque/JavaScript语言基础知识点总结/" rel="prev" title="JavaScript语言基础知识点总结">
+                JavaScript语言基础知识点总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://wangfangcao7618@gmail.com.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2019/06/10/yuque/写给Node.js新手的7个小技巧/';
+          this.page.identifier = '2019/06/10/yuque/写给Node.js新手的7个小技巧/';
+          this.page.title = '写给Node.js新手的7个小技巧';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://wangfangcao7618@gmail.com.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
