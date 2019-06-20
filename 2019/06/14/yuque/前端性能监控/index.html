@@ -1,1 +1,316 @@
-<!DOCTYPE html><html class="theme-next mist use-motion" lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="theme-color" content="#222"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4"><link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222"><meta name="keywords" content="Hexo, NexT"><meta name="description" content="前端性能优化原理与实践前端性能监控分为两种方式，一种叫做合成监控（Synthetic Monitoring，SYN），另一种是真实用户监控（Real User Monitoring，RUM）。  合成监控什么叫合成监控？就是在一个模拟场景里，去提交一个需要做性能审计的页面，通过一系列的工具、规则去运行你的页面，提取一些性能指标，得出一个审计报告。常见的工具有 Google 的 Lighthouse"><meta property="og:type" content="article"><meta property="og:title" content="前端性能监控"><meta property="og:url" content="http://yoursite.com/2019/06/14/yuque/前端性能监控/index.html"><meta property="og:site_name" content="FangCao"><meta property="og:description" content="前端性能优化原理与实践前端性能监控分为两种方式，一种叫做合成监控（Synthetic Monitoring，SYN），另一种是真实用户监控（Real User Monitoring，RUM）。  合成监控什么叫合成监控？就是在一个模拟场景里，去提交一个需要做性能审计的页面，通过一系列的工具、规则去运行你的页面，提取一些性能指标，得出一个审计报告。常见的工具有 Google 的 Lighthouse"><meta property="og:locale" content="zh-Hans"><meta property="og:updated_time" content="2019-06-20T08:42:40.990Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="前端性能监控"><meta name="twitter:description" content="前端性能优化原理与实践前端性能监控分为两种方式，一种叫做合成监控（Synthetic Monitoring，SYN），另一种是真实用户监控（Real User Monitoring，RUM）。  合成监控什么叫合成监控？就是在一个模拟场景里，去提交一个需要做性能审计的页面，通过一系列的工具、规则去运行你的页面，提取一些性能指标，得出一个审计报告。常见的工具有 Google 的 Lighthouse"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Mist",version:"5.1.4",sidebar:{position:"left",display:"post",offset:12,b2t:!0,scrollpercent:!0,onmobile:!1},fancybox:!0,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},duoshuo:{userId:"0",author:"博主"},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="http://yoursite.com/2019/06/14/yuque/前端性能监控/"><title>前端性能监控 | FangCao</title><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">FangCao</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle"></p></div><div class="site-nav-toggle"> <button><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br> 首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br> 标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br> 分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br> 归档</a></li></ul></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/14/yuque/前端性能监控/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="FangCao"><meta itemprop="description" content><meta itemprop="image" content="/uploads/1916867.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="FangCao"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">前端性能监控</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-14T15:32:03+08:00">2019-06-14</time></span> <span class="post-comments-count"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-comment-o"></i></span><a href="/2019/06/14/yuque/前端性能监控/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/14/yuque/前端性能监控/" itemprop="commentCount"></span></a></span></div></header><div class="post-body" itemprop="articleBody"><p><a href="https://juejin.im/book/5b936540f265da0a9624b04b" target="_blank" rel="noopener">前端性能优化原理与实践</a><br>前端性能监控分为两种方式，一种叫做合成监控（Synthetic Monitoring，SYN），另一种是真实用户监控（Real User Monitoring，RUM）。</p><p><a name="362d9d5d"></a></p><h3 id="合成监控"><a href="#合成监控" class="headerlink" title="合成监控"></a>合成监控</h3><p><br>什么叫合成监控？就是在一个模拟场景里，去提交一个需要做性能审计的页面，通过一系列的工具、规则去运行你的页面，提取一些性能指标，得出一个审计报告。<br><br><br>常见的工具有 Google 的 Lighthouse，webpagetest，pagespeed 等。<br><br><br>当然其实业界对于 Lighthouse 也是评价有褒有贬，因为 Google 借助这个看似中立的性能评审工具也是在推行它的一些技术的方案。 比如你的页面如果没有支持 PWA 评分就不会很高。<br></p><ul><li>合成监控的优缺点<table><thead><tr><th align="center">优点</th><th align="center">缺点</th></tr></thead><tbody><tr><td align="center">实现简单</td><td align="center">无法还原全部真实场景</td></tr><tr><td align="center">能采集到丰富的数据，如硬件指标或瀑布图</td><td align="center">登录等场景需要额外解决</td></tr><tr><td align="center">不影响真实用户的访问性能</td><td align="center">单次数据不够稳定</td></tr><tr><td align="center">可以提供页面加载幻灯片等可视化分析途径</td><td align="center">数据量较小，无法发挥更大价值</td></tr></tbody></table></li></ul><p><a name="7c6d60a6"></a></p><h3 id="真实用户监控"><a href="#真实用户监控" class="headerlink" title="真实用户监控"></a>真实用户监控</h3><p>所谓真实用户监控，就是用户在我们的页面访问之后就会产生各种各样的性能指标，之后会将这些性能指标上传的我们的日志服务器上，进行数据的提起清洗加工，最后在我们的监控平台上进行展示和分析的一个过程。</p><ul><li>真实用户监控的优缺点<table><thead><tr><th align="center">优点</th><th align="center">缺点</th></tr></thead><tbody><tr><td align="center">无需配置模拟条件，完全还原真实场景</td><td align="center">一定程度影响真实用户的访问性能及流量消耗</td></tr><tr><td align="center">不存在登录等需要额外解决的场景</td><td align="center">无法采集硬件相关指标</td></tr><tr><td align="center">数据样本足够庞大，可以减少统计误差</td><td align="center">受传输限制无法采集完整的资源加载瀑布图</td></tr><tr><td align="center">新年数据可与其它数据关联，产生更大价值</td><td align="center">无法可视化展示加载过程</td></tr></tbody></table></li></ul><p><a name="f5deaa17"></a></p><h3 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h3><table><thead><tr><th align="center">对比项</th><th align="center">合成监控</th><th align="center">真实用户监控</th></tr></thead><tbody><tr><td align="center">实现难度及成本</td><td align="center">较低</td><td align="center">较高</td></tr><tr><td align="center">采集数据丰富度</td><td align="center">丰富</td><td align="center">基础</td></tr><tr><td align="center">数据样本量</td><td align="center">较小</td><td align="center">大(视业务体量)</td></tr><tr><td align="center">适合场景</td><td align="center">团队自由业务，对性能做定性分析，或配合 CI 做小数据量的监控分析</td><td align="center">作为中台产品支持前台业务，对性能做定量分析，结合业务数据进行深度挖掘</td></tr></tbody></table><p><a name="729de1d0"></a></p><h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>在真实用户性能数据采集时，要关注四个方面的东西：</p><ul><li>使用标准的 API<br></li><li>定义合适的指标<br></li><li>采集正确的数据<br></li><li>上报关联的维度<br><br><a name="890a4d28"></a><h4 id="使用标准的-API"><a href="#使用标准的-API" class="headerlink" title="使用标准的 API"></a>使用标准的 API</h4>之前大家都使用一个叫 <code>performance.timing</code>，来做性能监控。但这个 API 已经“废弃”了。为什么会被废弃？因为 W3C 给我们提供了更全面、更强大的一个性能分析矩阵，比单一的 performance.timing 更加强大，能帮助我们从各个方面分析前端页面性能。<br><br><br>采集性能数据时先抹平 Navigation Timing spec 差异，优先使用 PerformanceTimeline API(在复杂场景，亦可考虑优先使用 PerformanceObserver)。<br></li></ul><p><a name="91e9acdc"></a></p><h4 id="定义合适的指标"><a href="#定义合适的指标" class="headerlink" title="定义合适的指标"></a>定义合适的指标</h4><p>First Meaningful Paint，首次有效渲染时长，这个指标最早是由 Google 提出的，它的一个核心的想法是渲染并不一定代表着用户看到了主要内容，Load 也不一定代表用户看到主要内容，那用户什么时候能够看到主要内容呢？我们假设当一个网页的 DOM 结构发生剧烈的变化的时候，就是这个网页主要内容出现的时候，那么在这样的一个时间点上，就是用户看到主要内容的一个时间点。<br>它的优点是相对校准的估算出内容渲染时间，贴近用户感知。但缺点是无原生 API 支持，算法推导时 DOM 节点不含权重。<br><a name="a6a45716"></a></p><h4 id="怎样采集正确的数据？"><a href="#怎样采集正确的数据？" class="headerlink" title="怎样采集正确的数据？"></a>怎样采集正确的数据？</h4><p>上报页⾯加载开始时间，以及后续各时间点相对增量，在数据端进行阶段清洗和异常处理。<br><a name="ddd71982"></a></p><h4 id="上报关联的维度"><a href="#上报关联的维度" class="headerlink" title="上报关联的维度"></a>上报关联的维度</h4><p>我们都知道在做前端的数据采集的时候，维度数据是非常重要的，除了我们刚才定义的各种度量，怎样采集到合适的相关维度，也能够极大地帮助我们分析页面性能的效果。<br>在分析页面性能的时候，有很多相对专业的维度是会被大家忽略掉的，比如说当前页面是否可见，这个页面加载方式是怎么样的，它是直接打开，还是刷新打开，还是前进后退打开等等。就是通过后面的数据分析，我们会发现，不同的页面操作，页面打开方式都会对我们页面加载的性能会有影响，以及一些更复杂的，比如说是否启用 HTTP2、Service Worker 等等，这些数据我们都应该尽可能采集到，从而能够更好的去分析我们的页面性能。<br><a name="e5729e94"></a></p><h3 id="原文"><a href="#原文" class="headerlink" title="原文"></a>原文</h3><p>本文为<a href="https://mp.weixin.qq.com/s?__biz=MzUxMzcxMzE5Ng==∣=2247490527&idx=1&sn=cc2549683b3ff69c042483d78ced766a&chksm=f951ae9cce26278a263ecf2937b5c4957c9b37f35b7efe4c1a8c6ab69c74ebcb43c54e62abda&token=1927326837⟨=zh_CN#rd" target="_blank" rel="noopener">蚂蚁金服如何把前端性能监控做到极致?</a> 的阅读笔记。<br>拓展阅读 <a href="https://zhuanlan.zhihu.com/p/33825610" target="_blank" rel="noopener">我理解的前端性能 &amp; 优化</a></p></div><footer class="post-footer"><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2019/06/14/yuque/uni-app/" rel="next" title="uni-app"><i class="fa fa-chevron-left"></i> uni-app</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/2019/06/14/yuque/产品/" rel="prev" title="产品">产品<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article><div class="post-spread"></div></div></div><div class="comments" id="comments"><div id="disqus_thread"><noscript> Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> 站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao"><p class="site-author-name" itemprop="name">FangCao</p><p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">67</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/index.html"><span class="site-state-item-count">1</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/index.html"><span class="site-state-item-count">2</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="links-of-blogroll motion-element links-of-blogroll-inline"><div class="links-of-blogroll-title"><i class="fa fa-fw fa-link"></i> Links</div><ul class="links-of-blogroll-list"><li class="links-of-blogroll-item"> <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a></li><li class="links-of-blogroll-item"> <a href="http://example.com/" title="Title" target="_blank">Title</a></li></ul></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#合成监控"><span class="nav-number">1.</span> <span class="nav-text">合成监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#真实用户监控"><span class="nav-number">2.</span> <span class="nav-text">真实用户监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对比"><span class="nav-number">3.</span> <span class="nav-text">对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方案"><span class="nav-number">4.</span> <span class="nav-text">方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用标准的-API"><span class="nav-number">4.1.</span> <span class="nav-text">使用标准的 API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义合适的指标"><span class="nav-number">4.2.</span> <span class="nav-text">定义合适的指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#怎样采集正确的数据？"><span class="nav-number">4.3.</span> <span class="nav-text">怎样采集正确的数据？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#上报关联的维度"><span class="nav-number">4.4.</span> <span class="nav-text">上报关联的维度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原文"><span class="nav-number">5.</span> <span class="nav-text">原文</span></a></li></ol></div></div></section><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span><span class="with-love"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">FangCao</span></div><div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div> <span class="post-meta-divider">|</span><div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div></div></footer></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script type="text/javascript" src="/lib/three/three.min.js"></script><script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><script id="dsq-count-scr" src="https://wangfangcao7618@gmail.com.disqus.com/count.js" async></script><script type="text/javascript">var disqus_config=function(){this.page.url="http://yoursite.com/2019/06/14/yuque/前端性能监控/",this.page.identifier="2019/06/14/yuque/前端性能监控/",this.page.title="前端性能监控"},d=document,s=d.createElement("script");s.src="https://wangfangcao7618@gmail.com.disqus.com/embed.js",s.setAttribute("data-timestamp",""+ +new Date),(d.head||d.body).appendChild(s)</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{jsonPath:"/live2dw/assets/tororo.model.json"},display:{position:"right",width:150,height:300},mobile:{show:!0,scale:.5},react:{opacityDefault:.7,opacityOnHover:.2},log:!1})</script></body><script type="text/javascript" src="/js/src/click.js"></script></html>
+<!DOCTYPE html><html class="theme-next gemini use-motion" lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="theme-color" content="#222"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4"><link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222"><meta name="keywords" content="Hexo, NexT"><meta name="description" content="前端性能优化原理与实践前端性能监控分为两种方式，一种叫做合成监控（Synthetic Monitoring，SYN），另一种是真实用户监控（Real User Monitoring，RUM）。  合成监控什么叫合成监控？就是在一个模拟场景里，去提交一个需要做性能审计的页面，通过一系列的工具、规则去运行你的页面，提取一些性能指标，得出一个审计报告。常见的工具有 Google 的 Lighthouse"><meta property="og:type" content="article"><meta property="og:title" content="前端性能监控"><meta property="og:url" content="http://yoursite.com/2019/06/14/yuque/前端性能监控/index.html"><meta property="og:site_name" content="FangCao"><meta property="og:description" content="前端性能优化原理与实践前端性能监控分为两种方式，一种叫做合成监控（Synthetic Monitoring，SYN），另一种是真实用户监控（Real User Monitoring，RUM）。  合成监控什么叫合成监控？就是在一个模拟场景里，去提交一个需要做性能审计的页面，通过一系列的工具、规则去运行你的页面，提取一些性能指标，得出一个审计报告。常见的工具有 Google 的 Lighthouse"><meta property="og:locale" content="zh-Hans"><meta property="og:updated_time" content="2019-06-20T10:04:54.469Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="前端性能监控"><meta name="twitter:description" content="前端性能优化原理与实践前端性能监控分为两种方式，一种叫做合成监控（Synthetic Monitoring，SYN），另一种是真实用户监控（Real User Monitoring，RUM）。  合成监控什么叫合成监控？就是在一个模拟场景里，去提交一个需要做性能审计的页面，通过一系列的工具、规则去运行你的页面，提取一些性能指标，得出一个审计报告。常见的工具有 Google 的 Lighthouse"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Gemini",version:"5.1.4",sidebar:{position:"left",display:"always",offset:12,b2t:!0,scrollpercent:!0,onmobile:!1},fancybox:!0,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},duoshuo:{userId:"0",author:"博主"},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="http://yoursite.com/2019/06/14/yuque/前端性能监控/"><title>前端性能监控 | FangCao</title><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script></head><canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:1;pointer-events:none"></canvas><script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script><script type="text/javascript" src="/js/src/fireworks.js"></script><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">FangCao</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle"></p></div><div class="site-nav-toggle"> <button><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br> 首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br> 标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br> 分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br> 归档</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br> 搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/14/yuque/前端性能监控/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="FangCao"><meta itemprop="description" content><meta itemprop="image" content="/uploads/1916867.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="FangCao"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">前端性能监控</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-14T15:32:03+08:00">2019-06-14</time></span> <span class="post-comments-count"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-comment-o"></i></span><a href="/2019/06/14/yuque/前端性能监控/#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/14/yuque/前端性能监控/" itemprop="commentCount"></span></a></span><div class="post-wordcount"><span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i></span> <span class="post-meta-item-text">字数统计&#58;</span> <span title="字数统计">1.4k 字</span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-clock-o"></i></span> <span class="post-meta-item-text">阅读时长 &asymp;</span> <span title="阅读时长">4 分钟</span></div></div></header><div class="post-body" itemprop="articleBody"><p><a href="https://juejin.im/book/5b936540f265da0a9624b04b" target="_blank" rel="noopener">前端性能优化原理与实践</a><br>前端性能监控分为两种方式，一种叫做合成监控（Synthetic Monitoring，SYN），另一种是真实用户监控（Real User Monitoring，RUM）。</p><p><a name="362d9d5d"></a></p><h3 id="合成监控"><a href="#合成监控" class="headerlink" title="合成监控"></a>合成监控</h3><p><br>什么叫合成监控？就是在一个模拟场景里，去提交一个需要做性能审计的页面，通过一系列的工具、规则去运行你的页面，提取一些性能指标，得出一个审计报告。<br><br><br>常见的工具有 Google 的 Lighthouse，webpagetest，pagespeed 等。<br><br><br>当然其实业界对于 Lighthouse 也是评价有褒有贬，因为 Google 借助这个看似中立的性能评审工具也是在推行它的一些技术的方案。 比如你的页面如果没有支持 PWA 评分就不会很高。<br></p><ul><li>合成监控的优缺点<table><thead><tr><th align="center">优点</th><th align="center">缺点</th></tr></thead><tbody><tr><td align="center">实现简单</td><td align="center">无法还原全部真实场景</td></tr><tr><td align="center">能采集到丰富的数据，如硬件指标或瀑布图</td><td align="center">登录等场景需要额外解决</td></tr><tr><td align="center">不影响真实用户的访问性能</td><td align="center">单次数据不够稳定</td></tr><tr><td align="center">可以提供页面加载幻灯片等可视化分析途径</td><td align="center">数据量较小，无法发挥更大价值</td></tr></tbody></table></li></ul><p><a name="7c6d60a6"></a></p><h3 id="真实用户监控"><a href="#真实用户监控" class="headerlink" title="真实用户监控"></a>真实用户监控</h3><p>所谓真实用户监控，就是用户在我们的页面访问之后就会产生各种各样的性能指标，之后会将这些性能指标上传的我们的日志服务器上，进行数据的提起清洗加工，最后在我们的监控平台上进行展示和分析的一个过程。</p><ul><li>真实用户监控的优缺点<table><thead><tr><th align="center">优点</th><th align="center">缺点</th></tr></thead><tbody><tr><td align="center">无需配置模拟条件，完全还原真实场景</td><td align="center">一定程度影响真实用户的访问性能及流量消耗</td></tr><tr><td align="center">不存在登录等需要额外解决的场景</td><td align="center">无法采集硬件相关指标</td></tr><tr><td align="center">数据样本足够庞大，可以减少统计误差</td><td align="center">受传输限制无法采集完整的资源加载瀑布图</td></tr><tr><td align="center">新年数据可与其它数据关联，产生更大价值</td><td align="center">无法可视化展示加载过程</td></tr></tbody></table></li></ul><p><a name="f5deaa17"></a></p><h3 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h3><table><thead><tr><th align="center">对比项</th><th align="center">合成监控</th><th align="center">真实用户监控</th></tr></thead><tbody><tr><td align="center">实现难度及成本</td><td align="center">较低</td><td align="center">较高</td></tr><tr><td align="center">采集数据丰富度</td><td align="center">丰富</td><td align="center">基础</td></tr><tr><td align="center">数据样本量</td><td align="center">较小</td><td align="center">大(视业务体量)</td></tr><tr><td align="center">适合场景</td><td align="center">团队自由业务，对性能做定性分析，或配合 CI 做小数据量的监控分析</td><td align="center">作为中台产品支持前台业务，对性能做定量分析，结合业务数据进行深度挖掘</td></tr></tbody></table><p><a name="729de1d0"></a></p><h3 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h3><p>在真实用户性能数据采集时，要关注四个方面的东西：</p><ul><li>使用标准的 API<br></li><li>定义合适的指标<br></li><li>采集正确的数据<br></li><li>上报关联的维度<br><br><a name="890a4d28"></a><h4 id="使用标准的-API"><a href="#使用标准的-API" class="headerlink" title="使用标准的 API"></a>使用标准的 API</h4>之前大家都使用一个叫 <code>performance.timing</code>，来做性能监控。但这个 API 已经“废弃”了。为什么会被废弃？因为 W3C 给我们提供了更全面、更强大的一个性能分析矩阵，比单一的 performance.timing 更加强大，能帮助我们从各个方面分析前端页面性能。<br><br><br>采集性能数据时先抹平 Navigation Timing spec 差异，优先使用 PerformanceTimeline API(在复杂场景，亦可考虑优先使用 PerformanceObserver)。<br></li></ul><p><a name="91e9acdc"></a></p><h4 id="定义合适的指标"><a href="#定义合适的指标" class="headerlink" title="定义合适的指标"></a>定义合适的指标</h4><p>First Meaningful Paint，首次有效渲染时长，这个指标最早是由 Google 提出的，它的一个核心的想法是渲染并不一定代表着用户看到了主要内容，Load 也不一定代表用户看到主要内容，那用户什么时候能够看到主要内容呢？我们假设当一个网页的 DOM 结构发生剧烈的变化的时候，就是这个网页主要内容出现的时候，那么在这样的一个时间点上，就是用户看到主要内容的一个时间点。<br>它的优点是相对校准的估算出内容渲染时间，贴近用户感知。但缺点是无原生 API 支持，算法推导时 DOM 节点不含权重。<br><a name="a6a45716"></a></p><h4 id="怎样采集正确的数据？"><a href="#怎样采集正确的数据？" class="headerlink" title="怎样采集正确的数据？"></a>怎样采集正确的数据？</h4><p>上报页⾯加载开始时间，以及后续各时间点相对增量，在数据端进行阶段清洗和异常处理。<br><a name="ddd71982"></a></p><h4 id="上报关联的维度"><a href="#上报关联的维度" class="headerlink" title="上报关联的维度"></a>上报关联的维度</h4><p>我们都知道在做前端的数据采集的时候，维度数据是非常重要的，除了我们刚才定义的各种度量，怎样采集到合适的相关维度，也能够极大地帮助我们分析页面性能的效果。<br>在分析页面性能的时候，有很多相对专业的维度是会被大家忽略掉的，比如说当前页面是否可见，这个页面加载方式是怎么样的，它是直接打开，还是刷新打开，还是前进后退打开等等。就是通过后面的数据分析，我们会发现，不同的页面操作，页面打开方式都会对我们页面加载的性能会有影响，以及一些更复杂的，比如说是否启用 HTTP2、Service Worker 等等，这些数据我们都应该尽可能采集到，从而能够更好的去分析我们的页面性能。<br><a name="e5729e94"></a></p><h3 id="原文"><a href="#原文" class="headerlink" title="原文"></a>原文</h3><p>本文为<a href="https://mp.weixin.qq.com/s?__biz=MzUxMzcxMzE5Ng==∣=2247490527&idx=1&sn=cc2549683b3ff69c042483d78ced766a&chksm=f951ae9cce26278a263ecf2937b5c4957c9b37f35b7efe4c1a8c6ab69c74ebcb43c54e62abda&token=1927326837⟨=zh_CN#rd" target="_blank" rel="noopener">蚂蚁金服如何把前端性能监控做到极致?</a> 的阅读笔记。<br>拓展阅读 <a href="https://zhuanlan.zhihu.com/p/33825610" target="_blank" rel="noopener">我理解的前端性能 &amp; 优化</a></p></div><footer class="post-footer"><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2019/06/14/yuque/uni-app/" rel="next" title="uni-app"><i class="fa fa-chevron-left"></i> uni-app</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/2019/06/14/yuque/产品/" rel="prev" title="产品">产品<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article><div class="post-spread"></div></div></div><div class="comments" id="comments"><div id="disqus_thread"><noscript> Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> 站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao"><p class="site-author-name" itemprop="name">FangCao</p><p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">67</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/index.html"><span class="site-state-item-count">1</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/index.html"><span class="site-state-item-count">2</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="links-of-blogroll motion-element links-of-blogroll-inline"><div class="links-of-blogroll-title"><i class="fa fa-fw fa-link"></i> Links</div><ul class="links-of-blogroll-list"><li class="links-of-blogroll-item"> <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a></li><li class="links-of-blogroll-item"> <a href="http://example.com/" title="Title" target="_blank">Title</a></li></ul></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#合成监控"><span class="nav-number">1.</span> <span class="nav-text">合成监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#真实用户监控"><span class="nav-number">2.</span> <span class="nav-text">真实用户监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对比"><span class="nav-number">3.</span> <span class="nav-text">对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方案"><span class="nav-number">4.</span> <span class="nav-text">方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用标准的-API"><span class="nav-number">4.1.</span> <span class="nav-text">使用标准的 API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#定义合适的指标"><span class="nav-number">4.2.</span> <span class="nav-text">定义合适的指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#怎样采集正确的数据？"><span class="nav-number">4.3.</span> <span class="nav-text">怎样采集正确的数据？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#上报关联的维度"><span class="nav-number">4.4.</span> <span class="nav-text">上报关联的维度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原文"><span class="nav-number">5.</span> <span class="nav-text">原文</span></a></li></ol></div></div></section><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span><span class="with-love"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">FangCao</span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-area-chart"></i></span> <span class="post-meta-item-text">Site words total count&#58;</span> <span title="Site words total count">80.3k</span></div><div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div> <span class="post-meta-divider">|</span><div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div></div></footer></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script type="text/javascript" src="/lib/three/three.min.js"></script><script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><script id="dsq-count-scr" src="https://wangfangcao7618@gmail.com.disqus.com/count.js" async></script><script type="text/javascript">var disqus_config=function(){this.page.url="http://yoursite.com/2019/06/14/yuque/前端性能监控/",this.page.identifier="2019/06/14/yuque/前端性能监控/",this.page.title="前端性能监控"},d=document,s=d.createElement("script");s.src="https://wangfangcao7618@gmail.com.disqus.com/embed.js",s.setAttribute("data-timestamp",""+ +new Date),(d.head||d.body).appendChild(s)</script><script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="><script type="text/javascript">!function(e,t){var n,c=e.getElementsByTagName(t)[0];"function"!=typeof LivereTower&&((n=e.createElement(t)).src="https://cdn-city.livere.com/js/embed.dist.js",n.async=!0,c.parentNode.insertBefore(n,c))}(document,"script")</script><noscript> 为正常使用来必力评论功能请激活JavaScript</noscript></div><div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="><script type="text/javascript">var refer="<?=get_permalink($id);?>".replace("http://","");!function(e,t){var r,n=e.getElementsByTagName(t)[0];"function"!=typeof LivereTower&&((r=e.createElement(t)).src="https://cdn-city.livere.com/js/embed.dist.js",r.async=!0,n.parentNode.insertBefore(r,n))}(document,"script")</script><noscript> 为正常使用来必力评论功能请激活JavaScript</noscript></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{jsonPath:"/live2dw/assets/tororo.model.json"},display:{position:"right",width:150,height:300},mobile:{show:!0,scale:.5},react:{opacityDefault:.7,opacityOnHover:.2},log:!1})</script></body></html>
