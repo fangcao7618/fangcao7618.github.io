@@ -31,6 +31,8 @@
       <div class="header-inner"> {%- include '_partials/header.swig' %} </div>
     </header>
 
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
@@ -93,6 +95,8 @@
   {% include '_third-party/mathjax.swig' %}
   {% include '_third-party/scroll-cookie.swig' %}
   {% include '_third-party/exturl.swig' %}
+  <!--添加复制-->
+  {% include '_custom/custom.swig' %}
 </body>
 <!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
 </html>

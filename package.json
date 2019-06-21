@@ -17,7 +17,7 @@
         "hexo-server": "^0.3.3"
     },
     "scripts": {
-        "deploy": "npm run remove && npm run sync && hexo clean && hexo g && gulp && hexo d",
+        "deploy": "npm run remove && npm run sync && hexo clean && hexo g && hexo d",
         "sync": "DEBUG=yuque-hexo.* yuque-hexo sync",
         "clean:yuque": "DEBUG=yuque-hexo.* yuque-hexo clean",
         "reset": "npm run clean:yuque && npm run sync",
@@ -36,19 +36,11 @@
         "token": "zjTb4HRF0KXDx7Q8NsT484MXqlpRZaBssTMdDRh5"
     },
     "devDependencies": {
-        "gulp": "^4.0.2",
-        "gulp-htmlclean": "^2.7.22",
-        "gulp-htmlmin": "^5.0.1",
-        "gulp-imagemin": "^6.0.0",
-        "gulp-minify-css": "^1.2.4",
-        "gulp-uglify": "^3.0.2",
         "hexo-deployer-git": "^1.0.0",
         "hexo-generator-searchdb": "^1.0.8",
         "hexo-helper-live2d": "^3.1.1",
+        "hexo-tag-echarts3": "^1.1.2",
         "hexo-wordcount": "^6.0.1",
-        "koa": "^2.7.0",
-        "koa-bodyparser": "^4.2.1",
-        "koa-router": "^7.4.0",
         "live2d-widget-model-ni-j": "^1.0.5",
         "live2d-widget-model-nito": "^1.0.5",
         "live2d-widget-model-tororo": "^1.0.5",
