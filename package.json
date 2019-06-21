@@ -1,0 +1,58 @@
+{
+    "name": "hexo-site",
+    "version": "0.0.0",
+    "private": true,
+    "hexo": {
+        "version": "3.9.0"
+    },
+    "dependencies": {
+        "hexo": "^3.8.0",
+        "hexo-generator-archive": "^0.1.5",
+        "hexo-generator-category": "^0.1.3",
+        "hexo-generator-index": "^0.2.1",
+        "hexo-generator-tag": "^0.2.0",
+        "hexo-renderer-ejs": "^0.3.1",
+        "hexo-renderer-marked": "^1.0.1",
+        "hexo-renderer-stylus": "^0.3.3",
+        "hexo-server": "^0.3.3"
+    },
+    "scripts": {
+        "deploy": "npm run remove && npm run sync && hexo clean && hexo g && gulp && hexo d",
+        "sync": "DEBUG=yuque-hexo.* yuque-hexo sync",
+        "clean:yuque": "DEBUG=yuque-hexo.* yuque-hexo clean",
+        "reset": "npm run clean:yuque && npm run sync",
+        "remove": "rm -rf source/_posts/yuque/",
+        "dev": "hexo server"
+    },
+    "yuqueConfig": {
+        "postPath": "source/_posts/yuque",
+        "cachePath": "yuque.json",
+        "mdNameFormat": "title",
+        "adapter": "hexo",
+        "concurrency": 5,
+        "baseUrl": "https://www.yuque.com/api/v2",
+        "login": "fangcao",
+        "repo": "api",
+        "token": "zjTb4HRF0KXDx7Q8NsT484MXqlpRZaBssTMdDRh5"
+    },
+    "devDependencies": {
+        "gulp": "^4.0.2",
+        "gulp-htmlclean": "^2.7.22",
+        "gulp-htmlmin": "^5.0.1",
+        "gulp-imagemin": "^6.0.0",
+        "gulp-minify-css": "^1.2.4",
+        "gulp-uglify": "^3.0.2",
+        "hexo-deployer-git": "^1.0.0",
+        "hexo-generator-searchdb": "^1.0.8",
+        "hexo-helper-live2d": "^3.1.1",
+        "hexo-wordcount": "^6.0.1",
+        "koa": "^2.7.0",
+        "koa-bodyparser": "^4.2.1",
+        "koa-router": "^7.4.0",
+        "live2d-widget-model-ni-j": "^1.0.5",
+        "live2d-widget-model-nito": "^1.0.5",
+        "live2d-widget-model-tororo": "^1.0.5",
+        "live2d-widget-model-wanko": "^1.0.5",
+        "yuque-hexo": "^1.6.1"
+    }
+}
