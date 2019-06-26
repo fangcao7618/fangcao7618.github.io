@@ -1,4 +1,923 @@
-<!DOCTYPE html><html class="theme-next gemini use-motion" lang="zh-Hans"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="theme-color" content="#222"><script src="/lib/pace/pace.min.js?v=1.0.2"></script><link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4"><link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222"><meta name="keywords" content="Hexo, NexT"><meta name="description" content="ngrok用 ssh 访问一台主机，如果和主机在一个局域网中或者主机拥有公网 IP，就可以使用 ssh 命令直接连接主机的 IP 地址，但是大部分公司和家庭内部都是局域网，并不能给局域网内的每一台主机都分配一个公网 IP，这时候就需要进行内网穿透，才能从外部连接到局域网内的主机。ngrok 是一个反向代理工具，可以实现将内网的端口暴露到公网，通过 ngrok，也能将 ssh 使用的端口暴露出去，"><meta property="og:type" content="article"><meta property="og:title" content="通过 ngrok 实现 ssh 内网穿透"><meta property="og:url" content="http://yoursite.com/2019/06/11/yuque/通过 ngrok 实现 ssh 内网穿透/index.html"><meta property="og:site_name" content="FangCao"><meta property="og:description" content="ngrok用 ssh 访问一台主机，如果和主机在一个局域网中或者主机拥有公网 IP，就可以使用 ssh 命令直接连接主机的 IP 地址，但是大部分公司和家庭内部都是局域网，并不能给局域网内的每一台主机都分配一个公网 IP，这时候就需要进行内网穿透，才能从外部连接到局域网内的主机。ngrok 是一个反向代理工具，可以实现将内网的端口暴露到公网，通过 ngrok，也能将 ssh 使用的端口暴露出去，"><meta property="og:locale" content="zh-Hans"><meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1560220387673-d86bc6f3-0819-4920-9150-b84294d3fd47.png#align=left&display=inline&height=130&name=image.png&originHeight=130&originWidth=606&size=48864&status=done&width=606"><meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1560220374479-eab9837f-3df4-4d3b-bf53-2f03678abcee.png#align=left&display=inline&height=181&name=image.png&originHeight=181&originWidth=603&size=44348&status=done&width=603"><meta property="og:updated_time" content="2019-06-21T07:03:53.671Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="通过 ngrok 实现 ssh 内网穿透"><meta name="twitter:description" content="ngrok用 ssh 访问一台主机，如果和主机在一个局域网中或者主机拥有公网 IP，就可以使用 ssh 命令直接连接主机的 IP 地址，但是大部分公司和家庭内部都是局域网，并不能给局域网内的每一台主机都分配一个公网 IP，这时候就需要进行内网穿透，才能从外部连接到局域网内的主机。ngrok 是一个反向代理工具，可以实现将内网的端口暴露到公网，通过 ngrok，也能将 ssh 使用的端口暴露出去，"><meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1560220387673-d86bc6f3-0819-4920-9150-b84294d3fd47.png#align=left&display=inline&height=130&name=image.png&originHeight=130&originWidth=606&size=48864&status=done&width=606"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Gemini",version:"5.1.4",sidebar:{position:"left",display:"always",offset:12,b2t:!0,scrollpercent:!0,onmobile:!1},fancybox:!0,tabs:!0,motion:{enable:!0,async:!0,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},duoshuo:{userId:"0",author:"博主"},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="http://yoursite.com/2019/06/11/yuque/通过 ngrok 实现 ssh 内网穿透/"><title>通过 ngrok 实现 ssh 内网穿透 | FangCao</title><script type="text/javascript">var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script></head><canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:1;pointer-events:none"></canvas><script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script><script type="text/javascript" src="/js/src/fireworks.js"></script><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">FangCao</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle"></p></div><div class="site-nav-toggle"> <button><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br> 首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br> 标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br> 分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br> 归档</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br> 搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/11/yuque/通过 ngrok 实现 ssh 内网穿透/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="FangCao"><meta itemprop="description" content><meta itemprop="image" content="/uploads/1916867.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="FangCao"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">通过 ngrok 实现 ssh 内网穿透</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-11T10:32:02+08:00">2019-06-11</time> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-calendar-check-o"></i></span> <span class="post-meta-item-text">更新于&#58;</span> <time title="更新于" itemprop="dateModified" datetime="2019-06-21T15:03:53+08:00">2019-06-21</time></span><div class="post-wordcount"><span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i></span> <span class="post-meta-item-text">字数统计&#58;</span> <span title="字数统计">471 字</span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-clock-o"></i></span> <span class="post-meta-item-text">阅读时长 &asymp;</span> <span title="阅读时长">1 分钟</span></div></div></header><div class="post-body" itemprop="articleBody"><p><a name="sBcEB"></a></p><h3 id="ngrok"><a href="#ngrok" class="headerlink" title="ngrok"></a>ngrok</h3><p>用 ssh 访问一台主机，如果和主机在一个局域网中或者主机拥有公网 IP，就可以使用 ssh 命令直接连接主机的 IP 地址，但是大部分公司和家庭内部都是局域网，并不能给局域网内的每一台主机都分配一个公网 IP，这时候就需要进行内网穿透，才能从外部连接到局域网内的主机。<br>ngrok 是一个反向代理工具，可以实现将内网的端口暴露到公网，通过 ngrok，也能将 ssh 使用的端口暴露出去，以此实现 ssh 的内网穿透。<br><a name="x1f25"></a></p><h3 id="注册并下载-ngrok"><a href="#注册并下载-ngrok" class="headerlink" title="注册并下载 ngrok"></a>注册并下载 ngrok</h3><p>访问 <a href="https://ngrok.com/" target="_blank" rel="noopener">https://ngrok.com/</a> 注册 ngrok 账号并下载 ngrok 客户端。<br><a name="KHUYu"></a></p><h3 id="查看-ngrok-的-token"><a href="#查看-ngrok-的-token" class="headerlink" title="查看 ngrok 的 token"></a>查看 ngrok 的 token</h3><p>访问 <a href="https://dashboard.ngrok.com/auth" target="_blank" rel="noopener">https://dashboard.ngrok.com/auth</a> 查看 token并复制。<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1560220387673-d86bc6f3-0819-4920-9150-b84294d3fd47.png#align=left&display=inline&height=130&name=image.png&originHeight=130&originWidth=606&size=48864&status=done&width=606" alt="image.png"><br><a name="A8baD"></a></p><h3 id="在内网机器上启动-ngrok"><a href="#在内网机器上启动-ngrok" class="headerlink" title="在内网机器上启动 ngrok"></a>在内网机器上启动 ngrok</h3><p>连接 ngrok 账号</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ngrok authtoken 5TqUhMnum6ntDE8Z5HkNb_49F9ffzzcV9V7pKLVdDYc</span><br></pre></td></tr></table></figure><p>启动 ngrok 并打开 22 端口转发</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ngrok tcp 22 --log=stdout &gt; &quot;$HOME/ngrok.log&quot; --region ap &amp;</span><br></pre></td></tr></table></figure><p>其中 region 的 ap 代表 ngrok 新加坡节点，访问速度相比美国节点会快一些。访问 <a href="https://ngrok.com/docs#config-options" target="_blank" rel="noopener">https://ngrok.com/docs#config-options</a> 可以查看支持的所有区域。<br>访问 <code>http://127.0.0.1:4040</code>。<br>可以看到一个tcp开头的地址，通过访问这个地址，就可以转发到本机的 22 端口上。<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1560220374479-eab9837f-3df4-4d3b-bf53-2f03678abcee.png#align=left&display=inline&height=181&name=image.png&originHeight=181&originWidth=603&size=44348&status=done&width=603" alt="image.png"><br><a name="fDLJA"></a></p><h3 id="通过-ssh-访问内网机器"><a href="#通过-ssh-访问内网机器" class="headerlink" title="通过 ssh 访问内网机器"></a>通过 ssh 访问内网机器</h3><p>查看到转发地址后，就可以在外网通过 ssh 命令访问内网机器来。以上图为例，ssh 访问的命令是：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p 10502 username@0.tcp.ap.ngrok.io</span><br></pre></td></tr></table></figure><p><a name="R8uO4"></a></p><h3 id="需要注意的问题"><a href="#需要注意的问题" class="headerlink" title="需要注意的问题"></a>需要注意的问题</h3><p>由于所有流量都要经过 ngrok 服务器，而 ngrok 的服务节点又只有美国、新加坡等地，所以速度上还是比较慢的。另外，如果 ngrok 的服务节点存在安全隐患的话，存在敏感内容的泄漏的可能性。</p></div><footer class="post-footer"><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2019/06/11/yuque/语雀 + netlify 自动部署静态博客/" rel="next" title="语雀 + netlify 自动部署静态博客"><i class="fa fa-chevron-left"></i> 语雀 + netlify 自动部署静态博客</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/2019/06/11/yuque/Hexo同步语雀文章一/" rel="prev" title="Hexo同步语雀文章一">Hexo同步语雀文章一<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article><div class="post-spread"></div></div></div><div class="comments" id="comments"><div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> 站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao"><p class="site-author-name" itemprop="name">FangCao</p><p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">67</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/index.html"><span class="site-state-item-count">1</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/index.html"><span class="site-state-item-count">2</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i> GitHub</a></span><span class="links-of-author-item"><a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎"><i class="fa fa-fw fa-zhihu"></i> 知乎</a></span><span class="links-of-author-item"><a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i> E-Mail</a></span><span class="links-of-author-item"><a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google"><i class="fa fa-fw fa-google"></i> Google</a></span></div><div class="links-of-blogroll motion-element links-of-blogroll-block"><div class="links-of-blogroll-title"><i class="fa fa-fw fa-link"></i> 友情链接</div><ul class="links-of-blogroll-list"><li class="links-of-blogroll-item"> <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a></li><li class="links-of-blogroll-item"> <a href="http://example.com/" title="Title" target="_blank">Title</a></li></ul></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ngrok"><span class="nav-number">1.</span> <span class="nav-text">ngrok</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注册并下载-ngrok"><span class="nav-number">2.</span> <span class="nav-text">注册并下载 ngrok</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看-ngrok-的-token"><span class="nav-number">3.</span> <span class="nav-text">查看 ngrok 的 token</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在内网机器上启动-ngrok"><span class="nav-number">4.</span> <span class="nav-text">在内网机器上启动 ngrok</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-ssh-访问内网机器"><span class="nav-number">5.</span> <span class="nav-text">通过 ssh 访问内网机器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需要注意的问题"><span class="nav-number">6.</span> <span class="nav-text">需要注意的问题</span></a></li></ol></div></div></section><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span><span class="with-love"><i class="fa fa-user"></i></span> <span class="author" itemprop="copyrightHolder">FangCao</span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-area-chart"></i></span> <span class="post-meta-item-text">Site words total count&#58;</span> <span title="Site words total count">80.4k</span></div><div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div> <span class="post-meta-divider">|</span><div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div></div></footer></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><script type="text/javascript">!function(e,t){var n,c=e.getElementsByTagName(t)[0];"function"!=typeof LivereTower&&((n=e.createElement(t)).src="https://cdn-city.livere.com/js/embed.dist.js",n.async=!0,c.parentNode.insertBefore(n,c))}(document,"script")</script><script type="text/javascript">
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ngrok用 ssh 访问一台主机，如果和主机在一个局域网中或者主机拥有公网 IP，就可以使用 ssh 命令直接连接主机的 IP 地址，但是大部分公司和家庭内部都是局域网，并不能给局域网内的每一台主机都分配一个公网 IP，这时候就需要进行内网穿透，才能从外部连接到局域网内的主机。ngrok 是一个反向代理工具，可以实现将内网的端口暴露到公网，通过 ngrok，也能将 ssh 使用的端口暴露出去，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过 ngrok 实现 ssh 内网穿透">
+<meta property="og:url" content="http://yoursite.com/2019/06/11/yuque/通过 ngrok 实现 ssh 内网穿透/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="ngrok用 ssh 访问一台主机，如果和主机在一个局域网中或者主机拥有公网 IP，就可以使用 ssh 命令直接连接主机的 IP 地址，但是大部分公司和家庭内部都是局域网，并不能给局域网内的每一台主机都分配一个公网 IP，这时候就需要进行内网穿透，才能从外部连接到局域网内的主机。ngrok 是一个反向代理工具，可以实现将内网的端口暴露到公网，通过 ngrok，也能将 ssh 使用的端口暴露出去，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1560220387673-d86bc6f3-0819-4920-9150-b84294d3fd47.png#align=left&display=inline&height=130&name=image.png&originHeight=130&originWidth=606&size=48864&status=done&width=606">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1560220374479-eab9837f-3df4-4d3b-bf53-2f03678abcee.png#align=left&display=inline&height=181&name=image.png&originHeight=181&originWidth=603&size=44348&status=done&width=603">
+<meta property="og:updated_time" content="2019-06-26T09:30:05.229Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="通过 ngrok 实现 ssh 内网穿透">
+<meta name="twitter:description" content="ngrok用 ssh 访问一台主机，如果和主机在一个局域网中或者主机拥有公网 IP，就可以使用 ssh 命令直接连接主机的 IP 地址，但是大部分公司和家庭内部都是局域网，并不能给局域网内的每一台主机都分配一个公网 IP，这时候就需要进行内网穿透，才能从外部连接到局域网内的主机。ngrok 是一个反向代理工具，可以实现将内网的端口暴露到公网，通过 ngrok，也能将 ssh 使用的端口暴露出去，">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1560220387673-d86bc6f3-0819-4920-9150-b84294d3fd47.png#align=left&display=inline&height=130&name=image.png&originHeight=130&originWidth=606&size=48864&status=done&width=606">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/11/yuque/通过 ngrok 实现 ssh 内网穿透/">
+
+
+
+
+
+  <title>通过 ngrok 实现 ssh 内网穿透 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/11/yuque/通过 ngrok 实现 ssh 内网穿透/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">通过 ngrok 实现 ssh 内网穿透</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-11T10:32:02+08:00">
+                2019-06-11
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-06-26T17:30:05+08:00">
+                2019-06-26
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  471 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a name="sBcEB"></a></p>
+<h3 id="ngrok"><a href="#ngrok" class="headerlink" title="ngrok"></a>ngrok</h3><p>用 ssh 访问一台主机，如果和主机在一个局域网中或者主机拥有公网 IP，就可以使用 ssh 命令直接连接主机的 IP 地址，但是大部分公司和家庭内部都是局域网，并不能给局域网内的每一台主机都分配一个公网 IP，这时候就需要进行内网穿透，才能从外部连接到局域网内的主机。<br>ngrok 是一个反向代理工具，可以实现将内网的端口暴露到公网，通过 ngrok，也能将 ssh 使用的端口暴露出去，以此实现 ssh 的内网穿透。<br><a name="x1f25"></a></p>
+<h3 id="注册并下载-ngrok"><a href="#注册并下载-ngrok" class="headerlink" title="注册并下载 ngrok"></a>注册并下载 ngrok</h3><p>访问 <a href="https://ngrok.com/" target="_blank" rel="noopener">https://ngrok.com/</a> 注册 ngrok 账号并下载 ngrok 客户端。<br><a name="KHUYu"></a></p>
+<h3 id="查看-ngrok-的-token"><a href="#查看-ngrok-的-token" class="headerlink" title="查看 ngrok 的 token"></a>查看 ngrok 的 token</h3><p>访问 <a href="https://dashboard.ngrok.com/auth" target="_blank" rel="noopener">https://dashboard.ngrok.com/auth</a> 查看 token并复制。<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1560220387673-d86bc6f3-0819-4920-9150-b84294d3fd47.png#align=left&display=inline&height=130&name=image.png&originHeight=130&originWidth=606&size=48864&status=done&width=606" alt="image.png"><br><a name="A8baD"></a></p>
+<h3 id="在内网机器上启动-ngrok"><a href="#在内网机器上启动-ngrok" class="headerlink" title="在内网机器上启动 ngrok"></a>在内网机器上启动 ngrok</h3><p>连接 ngrok 账号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ngrok authtoken 5TqUhMnum6ntDE8Z5HkNb_49F9ffzzcV9V7pKLVdDYc</span><br></pre></td></tr></table></figure>
+
+<p>启动 ngrok 并打开 22 端口转发</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ngrok tcp 22 --log=stdout &gt; &quot;$HOME/ngrok.log&quot; --region ap &amp;</span><br></pre></td></tr></table></figure>
+
+<p>其中 region 的 ap 代表 ngrok 新加坡节点，访问速度相比美国节点会快一些。访问 <a href="https://ngrok.com/docs#config-options" target="_blank" rel="noopener">https://ngrok.com/docs#config-options</a> 可以查看支持的所有区域。<br>访问 <code>http://127.0.0.1:4040</code>。<br>可以看到一个tcp开头的地址，通过访问这个地址，就可以转发到本机的 22 端口上。<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1560220374479-eab9837f-3df4-4d3b-bf53-2f03678abcee.png#align=left&display=inline&height=181&name=image.png&originHeight=181&originWidth=603&size=44348&status=done&width=603" alt="image.png"><br><a name="fDLJA"></a></p>
+<h3 id="通过-ssh-访问内网机器"><a href="#通过-ssh-访问内网机器" class="headerlink" title="通过 ssh 访问内网机器"></a>通过 ssh 访问内网机器</h3><p>查看到转发地址后，就可以在外网通过 ssh 命令访问内网机器来。以上图为例，ssh 访问的命令是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -p 10502 username@0.tcp.ap.ngrok.io</span><br></pre></td></tr></table></figure>
+
+<p><a name="R8uO4"></a></p>
+<h3 id="需要注意的问题"><a href="#需要注意的问题" class="headerlink" title="需要注意的问题"></a>需要注意的问题</h3><p>由于所有流量都要经过 ngrok 服务器，而 ngrok 的服务节点又只有美国、新加坡等地，所以速度上还是比较慢的。另外，如果 ngrok 的服务节点存在安全隐患的话，存在敏感内容的泄漏的可能性。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/11/yuque/语雀 + netlify 自动部署静态博客/" rel="next" title="语雀 + netlify 自动部署静态博客">
+                <i class="fa fa-chevron-left"></i> 语雀 + netlify 自动部署静态博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/11/yuque/Hexo同步语雀文章一/" rel="prev" title="Hexo同步语雀文章一">
+                Hexo同步语雀文章一 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ngrok"><span class="nav-number">1.</span> <span class="nav-text">ngrok</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注册并下载-ngrok"><span class="nav-number">2.</span> <span class="nav-text">注册并下载 ngrok</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看-ngrok-的-token"><span class="nav-number">3.</span> <span class="nav-text">查看 ngrok 的 token</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在内网机器上启动-ngrok"><span class="nav-number">4.</span> <span class="nav-text">在内网机器上启动 ngrok</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-ssh-访问内网机器"><span class="nav-number">5.</span> <span class="nav-text">通过 ssh 访问内网机器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#需要注意的问题"><span class="nav-number">6.</span> <span class="nav-text">需要注意的问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">81.3k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -313,4 +1232,31 @@
         onPopupClose();
       }
     });
-  </script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{jsonPath:"/live2dw/assets/tororo.model.json"},display:{width:150,height:300,position:"right"},mobile:{show:!0,scale:.5},react:{opacity:.9},dialog:{enable:!0,hitokoto:!0},log:!1})</script></body></html>
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>
