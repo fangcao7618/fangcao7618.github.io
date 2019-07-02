@@ -8,7 +8,7 @@ date: 2019-06-12 18:18:53 +0800
 tags: []
 
 ---
-**整个流程就是Native和Js两端各准备一个bridge，Native的bridge提供modules，js的bridge注册Native提供的modules。这就是bridge存在的意义--提供一个桥梁，让两边通信。**
+整个流程就是Native和Js两端各准备一个bridge，Native的bridge提供modules，js的bridge注册Native提供的modules。这就是bridge存在的意义--提供一个桥梁，让两边通信。
 
 简单来说，只需要两步，第一简历桥连接，第二注册方法：
 
@@ -85,27 +85,34 @@ bridge.registerHandler(funcName, function(responseData, responseCallback) {
 
 <a name="tAWE1"></a>
 ### 概念
-<br />1、H5，即是html5，超文本标记语言，用于描述网页内容结构的语言，网页编程中由它有负责描述页面数据和信息<br />2、JS，即是JavaScript，广泛用于web应用开发中的脚本语言，负责响应用户的操作，为网页添加动态功能<br />3、native APP，即传统的原生APP开发模式，Android基于Java语言，底层调用Google的 API；iOS基于Objective-C或者Swift语言，底层调用App官方提供的API<br />4、Hybrid App，即原生和web的混合开发模式，由原生提供统一的API给js调用，实现跨平台的效果<br />
+
+1、H5，即是html5，超文本标记语言，用于描述网页内容结构的语言，网页编程中由它有负责描述页面数据和信息<br />2、JS，即是JavaScript，广泛用于web应用开发中的脚本语言，负责响应用户的操作，为网页添加动态功能<br />3、native APP，即传统的原生APP开发模式，Android基于Java语言，底层调用Google的 API；iOS基于Objective-C或者Swift语言，底层调用App官方提供的API<br />4、Hybrid App，即原生和web的混合开发模式，由原生提供统一的API给js调用，实现跨平台的效果
 
 <a name="zfJgE"></a>
 ### 交互方式
 
 - 第一种为H5与native的基本通讯方式
 
-说是基本通讯方式是因为由native自身的组件进行通讯的，这里需要区分为android和iOS，两端的组件实现有差异<br />**<br />**![vv.jpg](https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1560390930770-e52bed1b-90bc-4ab7-b615-a39859f1cea1.jpeg#align=left&display=inline&height=312&name=vv.jpg&originHeight=312&originWidth=1126&size=78347&status=done&width=1126)**<br />**<br />**基本通讯方式汇总
+说是基本通讯方式是因为由native自身的组件进行通讯的，这里需要区分为android和iOS，两端的组件实现有差异
+
+![vv.jpg](https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1560390930770-e52bed1b-90bc-4ab7-b615-a39859f1cea1.jpeg#align=left&display=inline&height=312&name=vv.jpg&originHeight=312&originWidth=1126&size=78347&status=done&width=1126)
+
+
+基本通讯方式汇总
 
 1. iOS通过官方提供的库文件JaveScriptCore来实现交互，可以脱离webview直接运行js
 1. android是通过addJavascriptInterface开放统一的api给js调用，实现交互，但具有安全性问题，版本4.2之前addJavascriptInterface接口引起安全漏洞，可被反编译获取Native注册的js对象，在页面通过反射Java的内置静态类，获取一些敏感的信息和破坏。
 - 第二种H5与native交互方式为JSBridge原理
 
-JSBridge是H5代码与native代码之间的一个通讯桥梁，是广为流行的交互理念。目前的统一实现流程是：H5触发url scheme-->native捕获url scheme-->原生分析并执行-->原生调用H5，如下图：<br />![gg.jpg](https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1560391235884-88aaf64b-ceb6-4d4d-969d-9414e63fd272.jpeg#align=left&display=inline&height=437&name=gg.jpg&originHeight=437&originWidth=874&size=46259&status=done&width=874)<br />
-<br />URL scheme，是一个URL最初始的位置，即://之前的那段字符，如_[baidu.com](https://link.zhihu.com/?target=http%3A//www.baidu.com)_的scheme为**http**；根据我们上面对URL scheme的使用，我们可以理解，H5通过某种方式如iframe触发scheme，然后Native用某种方法捕获对应的url触发事件，根据定义好的协议，分析当前触发了哪种方法，然后根据定义来执行。比如短信，就是**sms：**，比如微信，就是**weixin**<br />****所以**JSBridge交互本质就是通过webview的代理拦截url scheme，然后注入相应的JS，从而实现交互，目前我们公司使用的是第三方开源库WebViewJavascriptBridge，下面我们来讲讲这个通讯桥梁。
+JSBridge是H5代码与native代码之间的一个通讯桥梁，是广为流行的交互理念。目前的统一实现流程是：H5触发url scheme-->native捕获url scheme-->原生分析并执行-->原生调用H5，如下图：<br />![gg.jpg](https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1560391235884-88aaf64b-ceb6-4d4d-969d-9414e63fd272.jpeg#align=left&display=inline&height=437&name=gg.jpg&originHeight=437&originWidth=874&size=46259&status=done&width=874)
+
+URL scheme，是一个URL最初始的位置，即://之前的那段字符，如[baidu.com](https://link.zhihu.com/?target=http%3A//www.baidu.com)的scheme为http；根据我们上面对URL scheme的使用，我们可以理解，H5通过某种方式如iframe触发scheme，然后Native用某种方法捕获对应的url触发事件，根据定义好的协议，分析当前触发了哪种方法，然后根据定义来执行。比如短信，就是sms：，比如微信，就是weixin<br />
+所以JSBridge交互本质就是通过webview的代理拦截url scheme，然后注入相应的JS，从而实现交互，目前我们公司使用的是第三方开源库WebViewJavascriptBridge，下面我们来讲讲这个通讯桥梁。
 
 <a name="bDwzz"></a>
-### <br />实现流程
-<br />
+### 实现流程
 
-1. **首先在H5代码注入js代码块**
+1. 首先在H5代码注入js代码块
 
 ```javascript
 function setupFH5JsBridge(callback) {
@@ -304,11 +311,12 @@ AppAPI.call(
 ```
 
 
-2. **JS端使用方式**
+2. JS端使用方式
 
 native端需要进行注册对应的方法，H5才可以调用
 
-<br />Android注册方式如下:
+
+Android注册方式如下:
 ```javascript
 FH5JsBridge.registerHandler(bridgeWebView, handlerName, bridgeHandler);
 ```
@@ -384,7 +392,7 @@ data格式为{key:"key"}
 ```
 
 
-**![1767225-bb4069ede233b274.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1560340159134-466bbab7-ce2a-4401-9bdc-a1ddd2c59810.png#align=left&display=inline&height=880&name=1767225-bb4069ede233b274.png&originHeight=880&originWidth=1239&size=105844&status=done&width=1239)**<br />**加载过程<br />![1767225-0f6275ca58b94775.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1560340174592-956831d0-3c65-4fdf-be85-0387a95fdb51.png#align=left&display=inline&height=880&name=1767225-0f6275ca58b94775.png&originHeight=880&originWidth=1281&size=147776&status=done&width=1281)
-
+![1767225-bb4069ede233b274.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1560340159134-466bbab7-ce2a-4401-9bdc-a1ddd2c59810.png#align=left&display=inline&height=880&name=1767225-bb4069ede233b274.png&originHeight=880&originWidth=1239&size=105844&status=done&width=1239)<br />
+加载过程<br />![1767225-0f6275ca58b94775.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1560340174592-956831d0-3c65-4fdf-be85-0387a95fdb51.png#align=left&display=inline&height=880&name=1767225-0f6275ca58b94775.png&originHeight=880&originWidth=1281&size=147776&status=done&width=1281)<br />
 加载和互相调用
 

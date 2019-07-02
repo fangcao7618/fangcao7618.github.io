@@ -35,3 +35,7 @@ end!
 百度统计：https://tongji.baidu.com/web/28106348/overview/index?siteId=13541897
 
 travis-ci 自动发布：https://travis-ci.org/fangcao7618/fangcao7618.github.io/builds
+
+添加复制功能：http://www.zhaojun.im/hexo-copy/ https://clipboardjs.com/
+
+hexo-tag-plantuml 画图-PlantUml : https://codertang.com/2019/02/21/hexo-drawing-plantuml/

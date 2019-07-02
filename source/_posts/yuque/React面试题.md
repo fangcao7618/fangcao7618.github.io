@@ -33,7 +33,7 @@ shouldComponentUpdate: function(nextProps, nextState) {
 借助于 mobx 框架对 Observable 变量引用的跟踪和依赖收集，mobx 能够精确地得到 react 组件对 Observable 变量的依赖图谱，然后再用经典的 ShallowCompare 实现细粒度的 shouldComponentUpdate 函数，以达到 100%无浪费 render。这一切都是自动完成地，fantastic！使用 mobx 后，我们再也无需手动写 shouldComponentUpdate 函数了。
 <a name="react-native"></a>
 ## React Native
-<a name="f094dd87"></a>
+<a name="hqPZT"></a>
 ### 优势
 
 - 跨平台 （只有 0.2% 的平台特定代码）
@@ -51,7 +51,7 @@ shouldComponentUpdate: function(nextProps, nextState) {
 - JS/React 的开源生态
 - Flexbox
 - 有时候可以加上 Web 跨三端
-<a name="597633ab"></a>
+<a name="9Rhmq"></a>
 ### 劣势
 
 - 论成熟度，稳定性，RN 比 不上 iOS 和 Android 原生。
@@ -72,13 +72,13 @@ shouldComponentUpdate: function(nextProps, nextState) {
 - RN 中的 Accessibility 就是个大坑。
 - 还有一些奇怪的 Bug，暂没有修复。
 - SavedInstanceState 在 Android 上跨进程的坑。
-<a name="29329978"></a>
+<a name="g6bzL"></a>
 ### 不是技术问题的问题
 
 - 要用好 RN 你必须同时熟悉 iOS 和 Android ，当然还有 RN 本身，这就对我们工程师提出了更多挑战。
 - 团队的管理，责任的划分。
 - RN 文档及相关资源不如 iOS 和 Android 的丰富。
-<a name="d11195cb"></a>
+<a name="wdoXZ"></a>
 ## 面试题
 [reactjs-interview-questions](https://github.com/semlinker/reactjs-interview-questions)
 

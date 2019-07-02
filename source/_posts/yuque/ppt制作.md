@@ -20,9 +20,7 @@ tags: []
 在前面的
 
 
-里提到过一个网站<br />**[http://pictogram2.com/](https://link.zhihu.com/?target=http%3A//pictogram2.com/)<br />提供各种人形素材，而这些素材均有矢量文件下载，因此可以随下随用<br />在[Behance.net](https://link.zhihu.com/?target=http%3A//Behance.net)上看到过大神Rutger Paulusse的每日C4D练习，立刻就被这种风格吸引了~虽然整体只采用一种搭配，却显得十分和谐自然。
-
-![image.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1560413979172-c53fbed1-088e-4eab-94c0-a2396a8901f7.png#align=left&display=inline&height=177&name=image.png&originHeight=353&originWidth=654&size=212163&status=done&width=327)
+里提到过一个网站<br />[pictogram2.com](https://link.zhihu.com/?target=http%3A//pictogram2.com/)<br />提供各种人形素材，而这些素材均有矢量文件下载，因此可以随下随用<br />在[Behance.net](https://link.zhihu.com/?target=http%3A//Behance.net)上看到过大神Rutger PauJusse的每日C4D练习，立刻就被这种风格吸引了～虽然整体只采用一种搭配，却显得十分和谐自然。<br />![](https://cdn.nlark.com/yuque/0/2019/png/263301/1560413979172-c53fbed1-088e-4eab-94c0-a2396a8901f7.png#align=left&display=inline&height=177&originHeight=353&originWidth=654&status=done&width=327)
 
 
 <a name="7IFDH"></a>
@@ -38,10 +36,10 @@ tags: []
 - **雷锋 **[lfppt.com](https://link.zhihu.com/?target=http%3A//www.lfppt.com/) 有着海量的ppt，分类比较明确。需要哪个点哪个就完事。
 - **扑奔 **[pooban.com](http://www.51ppt.com.cn/Soft/PPTTemplates/Index.html) 内容极其丰富，图表免费的居多，但是有些优质模板都需要200个积分才可以下载。
 - [**无忧ppt **]()网站如其名字，搜集了很多的ppt模板，完全免费，内容质量也不错，就是网站广告有点多。
-- **ppt宝藏 **[pptbz.com](https://link.zhihu.com/?target=http%3A//www.pptbz.com/) 内容比较丰富，但是质量参差不齐，有缺点，网站分类不太明确，不能够想要什么点什么，适合上网浏览，收集模板，免费。
+- **ppt宝藏**** **[pptbz.com](https://link.zhihu.com/?target=http%3A//www.pptbz.com/) 内容比较丰富，但是质量参差不齐，有缺点，网站分类不太明确，不能够想要什么点什么，适合上网浏览，收集模板，免费。
 - **[500丁](https://www.500d.me/ppt/) **内容都是优质的，质量也比较高，有一些简历模板，都是收费的，适合大佬使用。
 - **[变色龙](https://www.ppt20.com/) **和500丁一样，质量也都挺高。内容更是不得了，不仅分类明确，而且全面。同样全部收费，适合大佬使用。
-- **[ppt之家](52ppt.com) 压轴**的来啦，内容全面，质量高。文章、教程、图表、背景、素材、应有尽有。重点是免费下载，只需要关注一下人家的公众号就可以了。
+- **[ppt之家](52ppt.com) ****压轴**的来啦，内容全面，质量高。文章、教程、图表、背景、素材、应有尽有。重点是免费下载，只需要关注一下人家的公众号就可以了。
 - [http://yanshuo.io/](http://yanshuo.io/)演说
 
 **NO.2 [slidemodel](https://link.zhihu.com/?target=https%3A//slidemodel.com/)**
@@ -86,8 +84,7 @@ iSlide 是一款基于 PowerPoint 的插件工具，即便您不懂设计，也�
 
 - [OneKeyTools](https://link.zhihu.com/?target=https%3A//oktools.xyz/)
 
-OneKeyTools 简称 “OK插件” 或 “OK” ，是一款免费开源的 PPT 设计辅助插件。功能覆盖形状、图片、调色、表格、图表、音频、辅助等领域。<br />
-<br />目前支持微软 Office 2013 及以上版本。
+OneKeyTools 简称 “OK插件” 或 “OK” ，是一款免费开源的 PPT 设计辅助插件。功能覆盖形状、图片、调色、表格、图表、音频、辅助等领域。<br />目前支持微软 Office 2013 及以上版本。
 
 - [PPT 美化大师](https://link.zhihu.com/?target=http%3A//meihua.docer.com/)
 
@@ -135,15 +132,35 @@ js/css
 ### 用Markdown写一个极客范儿的PPT
 [https://www.jianshu.com/p/e063303317cb](https://www.jianshu.com/p/e063303317cb)<br />这个需要一定的程序基础才可以进入
 
-
-<a name="yy0ou"></a>
-# 前端大神都用什么做 PPT？
-
+<a name="6GP5J"></a>
+### 前端大神都用什么做PPT？
 
 - [yanshuo.io](http://yanshuo.io/)
+- [nodeppt](https://github.com/ksky521/nodePPT)
+- [slides.com](https://github.com/hakimel/reveal.js)
+
+![image.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1561627908729-eeb03fb8-4bb3-420a-94a2-bb0145109899.png#align=left&display=inline&height=850&name=image.png&originHeight=1700&originWidth=2874&size=382431&status=done&width=1437)
+
+- [声响](https://ppt.baomitu.com/)
+
+![image.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1561627423128-13ddd1bc-ebad-470d-970e-a2bb9b24180b.png#align=left&display=inline&height=815&name=image.png&originHeight=1630&originWidth=2354&size=1295667&status=done&width=1177)
+
+- [impress.js](https://github.com/impress/impress.js)
+
+![image.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1561627416971-9fb89260-0fcb-4973-85b4-e181c90bdf53.png#align=left&display=inline&height=839&name=image.png&originHeight=1678&originWidth=2202&size=1746400&status=done&width=1101)
+
+- [http://demo.orbitale.io/easy_impress/](https://link.zhihu.com/?target=http%3A//jump.bdimg.com/safecheck/index%3Furl%3Dx%2BZ5mMbGPAvamrsDojW5LnCzuAcNBLzzcZoXIVVyx/ofnK27fJ35YTOfB7mVawweVzLosFAuDiH8uUOFcKuuKAlUoS/DjNDCvGpDlyneQCRyCrWCQNa7zvcmFm5chjgukK6gQoNsPpJ2wMXJXOKB3HY9qHh6BM0y)
+- [http://parhumm.github.io/presentation-learning-to-design/](https://link.zhihu.com/?target=http%3A//jump.bdimg.com/safecheck/index%3Furl%3Dx%2BZ5mMbGPAuR9qm55cx%2BzdLTh7uv2wCvjjuyhxvDSA0yTR6ds9leuD5w5KTeMCk5BTvuyvS4looILRueb7WF9ItChpHYexHSNg59WEVYwmD8uUOFcKuuKAlUoS/DjNDCvGpDlyneQCRyCrWCQNa7zvcmFm5chjgukK6gQoNsPpJ2wMXJXOKB3HY9qHh6BM0y)
+- [http://pkoperek.github.io/bytecode-presentation/#/title](http://pkoperek.github.io/bytecode-presentation/#/title)
+- [reveal.js - The HTML Presentation Framework](https://link.zhihu.com/?target=http%3A//lab.hakim.se/reveal-js/%23/)
+
+**此外reveal.js还提供了可视化编辑的功能，不会写代码也能带你装逼带你飞哦**<br />![image.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1561628197149-52172212-b5b4-44b3-91de-a11d7bc0f2e5.png#align=left&display=inline&height=237&name=image.png&originHeight=474&originWidth=720&size=139494&status=done&width=360)
+
+- [prezi.com](https://prezi.com/dashboard/next/)
+
+![image.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1561686327870-99d6c331-1616-4cf7-9be5-b7cd245ba9d7.png#align=left&display=inline&height=1462&name=image.png&originHeight=1462&originWidth=2872&size=802069&status=done&width=2872)
+
 - <br />
-
-
 
 
 

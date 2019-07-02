@@ -8,12 +8,9 @@ date: 2019-06-14 10:25:59 +0800
 tags: []
 
 ---
-<a name="RGsMd"></a>
+<a name="DZ5qe"></a>
 ## querySelectorAll getElementsBy 区别？
-> <a name="bd16e43f"></a>
-#### 浏览器兼容
-
-querySelectorAll 已被 IE 8+、FF 3.5+、Safari 3.1+、Chrome 和 Opera 10+ 良好支持 。getElementsBy 系列，以最迟添加到规范中的 getElementsByClassName 为例，IE 9+、FF 3 +、Safari 3.1+、Chrome 和 Opera 9+ 都已经支持该方法了。
+浏览器兼容<br />querySelectorAll 已被 IE 8+、FF 3.5+、Safari 3.1+、Chrome 和 Opera 10+ 良好支持 。getElementsBy 系列，以最迟添加到规范中的<br />getElementsByClassName 为例，IE 9+、FF 3 +、Safari 3.1+、Chrome 和 Opera 9+ 都已经支持该方法了。
 > <a name="f82513a1"></a>
 #### 接收参数
 
@@ -53,8 +50,7 @@ for(var i = 0; i < 5 ; i++){
 console.log(lis) //5+2
 </script>
 ```
-Demo 1 中的 lis 是一个静态的 Node List，是一个 li 集合的快照，对文档的任何操作都不会对其产生影响。<br />Demo 2 中的 lis 是一个动态的 Node List， 每一次调用 lis 都会重新对文档进行查询，导致无限循环的问题。<br />但为什么要这样设计呢？ 其实，在 W3C 规范中对 querySelectorAll 方法有明确规定<br />
-
+Demo 1 中的 lis 是一个静态的 Node List，是一个 li 集合的快照，对文档的任何操作都不会对其产生影响。<br />Demo 2 中的 lis 是一个动态的 Node List， 每一次调用 lis 都会重新对文档进行查询，导致无限循环的问题。<br />但为什么要这样设计呢？ 其实，在 W3C 规范中对 querySelectorAll 方法有明确规定
 > The NodeList object returned by the querySelectorAll() method must be static ([DOM], section 8).
 
 那什么是 NodeList 呢？
@@ -395,7 +391,7 @@ Date.parse(new Date('2018-10-16 12:00:00'.replace(/-/g, '/')))
 ```
 相关[stackoverflow](https://stackoverflow.com/questions/4310953/invalid-date-in-safari)<br />
 
-<a name="fd465dc3"></a>
+<a name="UdXef"></a>
 ## new Date 在 safari 的坑
 `new Date('2019-06-04 00:00:00')`在除了 Safari 的浏览器都能正常运行。 问题就出在 Safari 对于这个格式 `YYYY-MM-DD HH:MM:SS` 无法解析，所以我们需要做的是将其转化为 `YYYY/MM/DD HH:MM:SS`
 ```javascript
@@ -607,7 +603,7 @@ var foo = document.getElementById('foo')
 var bar = document.getElementById('bar')
 bar.before(foo)
 ```
-<a name="d41d8cd9"></a>
+<a name="0Em5y"></a>
 ## 
 <a name="O5Plg"></a>
 ## 为什么前端监控要用 GIF 打点
@@ -618,7 +614,7 @@ bar.before(foo)
   content: url(track.php?xxxx=foo);
 }
 ```
-<a name="d41d8cd9-1"></a>
+<a name="QNBMV"></a>
 ### 
 <a name="5caCe"></a>
 ### 主要原因
@@ -628,7 +624,7 @@ bar.before(foo)
 - 在所有图片中体积最小，相较 BMP/PNG，可以节约 41%/35%的网络资源<br />
 
 详情见 [为什么前端监控要用 GIF 打点](https://mp.weixin.qq.com/s/v6R2w26qZkEilXY0mPUBCw)
-<a name="a653042e"></a>
+<a name="UGUxW"></a>
 ### 使用方式
 但建议不要按如下方法使用
 ```javascript
@@ -649,7 +645,7 @@ img.onload = img.onerror = img.onabort = function() {
 }
 img.src = `${url}?t=key`
 ```
-<a name="d41d8cd9-2"></a>
+<a name="Cvkv6"></a>
 ### 
 <a name="VkXKl"></a>
 ### 其它方案
@@ -688,11 +684,11 @@ Beacon API
 ### valueOf
 valueOf 很少直接使用。在隐式转换类型时，JavaScript 引擎会调用 valueOf 方法，强制把对象转换成原始值<br />
 
-<a name="8b378531"></a>
+<a name="hf80k"></a>
 ### toString、isPrototypeOf 和 propertyIsEnumerable
 这几个方法直接使用的情况较少，但自己的代码中不用并不表示别人写的代码不会调用。比如，有些框架可能会调用 toString 方法来判断结果是否为 [object Object]。<br />
 
-<a name="54bbba80"></a>
+<a name="9mokg"></a>
 ### 结论
 因此，我们可以得出结论：当创建的对象只在当前执行环境中使用并且不会用到任何从 Object.prototype 上继承来的方法，也不会将该对象作为其他对象的原型的时候，那么可以使用 Object.create(null)。比如，构造一个字典对象的时候。<br />不过相对而言 `const obj={}`在浏览器中的执行速度是会比`Object.create(null)`快的，具体可点击链接[test](https://jsperf.com/object-create-null-vs-literal/2)。不过你一般代码中这些性能差距完全是可以忽略不计的。
 
@@ -738,11 +734,11 @@ async function test() {
 }
 ```
 
-<a name="09ccd519"></a>
+<a name="BY5iX"></a>
 ## 获取元素宽度
 说真的，我觉得前端麻烦的地方就是 API 太多了，我只是想获取一个元素的宽度居然有`getBoundingClientRect().width`
 
-<a name="7de30023"></a>
+<a name="LoD2j"></a>
 ## 我使用 Async/Await 而不使用 Promises 的六个理由
 本文主要来自于 [6 Reasons Why JavaScript’s Async/Await Blows Promises Away](https://hackernoon.com/6-reasons-why-javascripts-async-await-blows-promises-away-tutorial-c7ec10518dd9)，在 medium 上，需要翻墙阅读。<br />之前我很长一段时间内都是使用 promise 的，但遇到一些复杂业务的时候，发现还是写起来会很不爽，代码阅读性也有所欠缺。<br />
 

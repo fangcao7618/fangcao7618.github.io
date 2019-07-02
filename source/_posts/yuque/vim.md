@@ -28,7 +28,7 @@ where vim
 ### 安装
 有两种方式来安装macvim:
 
-1. Github上下载[`macvim.dmg`](https://link.jianshu.com/?t=http://macvim-dev.github.io/macvim/)安装包进行安装
+1. Github上下载[macvim.dmg](https://link.jianshu.com/?t=http://macvim-dev.github.io/macvim/)安装包进行安装
 1. 使用[Homebrew](https://link.jianshu.com/?t=https://aaaaaashu.gitbooks.io/mac-dev-setup/content/Homebrew/index.html)安装 [https://aaaaaashu.gitbooks.io/mac-dev-setup/content/Homebrew/index.html](https://aaaaaashu.gitbooks.io/mac-dev-setup/content/Homebrew/index.html)
 
 这也是我们所采用的方式：
@@ -41,10 +41,10 @@ brew install macvim
 ### 建立软链接(这步可以不走)
 无论使用哪种方式进行安装，可以在MacVim.app包文件中找到mvim和vim的可执行文件，要在shell中方便的执行这些命令，可以：
 
-1. 将可执行文件所在路径添加到环境变量`$PATH`中
-1. 将可执行文件复制到环境变量`$PATH`中的某一个路径下；
-1. 在`$PATH`中的某一个路径下创建该可执行文件的软/硬链接；
-1. 为可执行文件设置别名，并添加到配置文件中（/.zshrc）；
+1. 将可执行文件所在路径添加到环境变量$PATH中
+1. 将可执行文件复制到环境变量$PATH中的某一个路径下；
+1. 在$PATH中的某一个路径下创建该可执行文件的软/硬链接；
+1. 为可执行文件设置别名，并添加到配置文件中（/.bash_profile或/.zshrc）；
 
 这里推荐在/usr/local/bin目录下为mvim软链接的方式。同时，mac预装vim版本过低，推荐使用MacVim.app包中的vim将其替代,如果想同时保留原来预装的/usr/bin/vim中的vim，可以通过创建别名来将其“覆盖”掉。
 
@@ -64,14 +64,14 @@ echo 'alias vim="/usr/local/Cellar/macvim/8.0-133/MacVim.app/Contents/MacOS/vim"
 source ~/.zshrc
 ```
 
-**安装验证**<br />终端输入vim，终端vim显示如下:<br />![image.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1560908646250-e3c1de5f-82ca-4a2c-878c-f6cb69cdd983.png#align=left&display=inline&height=651&name=image.png&originHeight=1302&originWidth=1918&size=1706037&status=done&width=959)<br />终端输入mvim，弹出GUIvim如下：<br />![image.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1560908668483-db364b87-5124-43d2-b1b1-e7215a957a0c.png#align=left&display=inline&height=415&name=image.png&originHeight=830&originWidth=1350&size=535236&status=done&width=675)
+安装验证<br />终端输入vim，终端vim显示如下:<br />![image.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1560908646250-e3c1de5f-82ca-4a2c-878c-f6cb69cdd983.png#align=left&display=inline&height=651&name=image.png&originHeight=1302&originWidth=1918&size=1706037&status=done&width=959)<br />终端输入mvim，弹出GUIvim如下：<br />![image.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1560908668483-db364b87-5124-43d2-b1b1-e7215a957a0c.png#align=left&display=inline&height=415&name=image.png&originHeight=830&originWidth=1350&size=535236&status=done&width=675)
 
 <a name="LPTFH"></a>
 ## 配置文件
-在vim启动过程中，首先将查找配置文件并执行其中的命令，而这些初始化文件一般有vimrc、gvimrc和exrc三种。通过`:version`命令可以查看vim的配置文件信息：<br />![image.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1560908755893-d2bf3bf9-1029-4b52-b8ab-cfaa65be5ea6.png#align=left&display=inline&height=861&name=image.png&originHeight=1722&originWidth=1604&size=1307772&status=done&width=802)
+在vim启动过程中，首先将查找配置文件并执行其中的命令，而这些初始化文件一般有vimrc、gvimrc和exrc三种。通过:version命令可以查看vim的配置文件信息：<br />![image.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1560908755893-d2bf3bf9-1029-4b52-b8ab-cfaa65be5ea6.png#align=left&display=inline&height=861&name=image.png&originHeight=1722&originWidth=1604&size=1307772&status=done&width=802)
 <a name="DWN7f"></a>
 #### 配置文件的位置
-vim的配置文件有全局和用户两种版本，分别存放于`$VIM`和`$HOME`目录中，用户配置文件默认是没有的，必要时由用户自己在`$HOME`目录下创建。可以使用`:echo`命令查看他们的路径，使用`:e`命令进入目录：
+vim的配置文件有全局和用户两种版本，分别存放于$VIM和$HOME目录中，用户配置文件默认是没有的，必要时由用户自己在$HOME目录下创建。可以使用:echo命令查看他们的路径，使用:e命令进入目录：
 
 ```bash
 :echo $VIM
@@ -87,7 +87,7 @@ vim的配置文件有全局和用户两种版本，分别存放于`$VIM`和`$HOM
 
 <a name="ArVpM"></a>
 #### 配置文件的加载顺序(这步也可以不用)
-可以通过`:scriptname`查看各脚本的加载顺序:
+可以通过:scriptname查看各脚本的加载顺序:
 
 ```bash
 1: /usr/local/Cellar/macvim/8.0-133/MacVim.app/Contents/Resources/vim/vimrc

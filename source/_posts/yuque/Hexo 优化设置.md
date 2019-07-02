@@ -12,8 +12,9 @@ tags: []
 ### [hexo官网](https://hexo.io/zh-cn/)
 <a name="n6eqs"></a>
 ### 修改博客标题简介语言等
-[创建页面](https://github.com/iissnan/hexo-theme-next/wiki/%E5%88%9B%E5%BB%BA%E5%88%86%E7%B1%BB%E9%A1%B5%E9%9D%A2)<br />
-<br />编辑 _config.yml
+[创建页面](https://github.com/iissnan/hexo-theme-next/wiki/%E5%88%9B%E5%BB%BA%E5%88%86%E7%B1%BB%E9%A1%B5%E9%9D%A2)
+
+编辑 _config.yml
 
 ```yaml
 # Site
@@ -40,7 +41,6 @@ root: /
 permalink: :category/:title/
 permalink_defaults:
 ```
-
 
 <a name="RqKOi"></a>
 ### [](https://www.xxb.me/Hexo/yuque-hexo02/#%E5%88%9B%E5%BB%BA%E5%88%86%E7%B1%BB%E9%A1%B5)创建分类页
@@ -99,7 +99,7 @@ tags: [photo, 照片]
 ```
 <a name="Jx1Zn"></a>
 ### 配置别名
-其中`:` 以前的是正式的名称，以后的是访问的路径
+其中: 以前的是正式的名称，以后的是访问的路径
 
 ```yaml
 # Category & Tag
@@ -178,8 +178,9 @@ menu:
 .shici {font-size: 15px;text-align: center;font-weight: 300;color: #444;font-style: italic;}
 ```
 
-在线演示： [www.xxb.me](http://www.xxb.me/)<br />
-<br />主题：[https://github.com/ppoffice/hexo-theme-icarus](https://github.com/ppoffice/hexo-theme-icarus)
+在线演示： [www.xxb.me](http://www.xxb.me/)
+
+主题：[https://github.com/ppoffice/hexo-theme-icarus](https://github.com/ppoffice/hexo-theme-icarus)
 <a name="3oTZQ"></a>
 ### [](https://www.xxb.me/Hexo/yuque-hexo02/#%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD-%E2%80%A6)未完待续 …
 

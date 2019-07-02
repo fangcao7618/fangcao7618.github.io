@@ -23,20 +23,21 @@ tags: []
 - [How to Build a GitHub](http://zachholman.com/talk/how-to-build-a-github/) GitHub一名早期员工介绍GitHub的历史，5年108名员工无人离职。
 - [阳志平：如何高效利用GitHub](http://www.yangzhiping.com/tech/github.html) 介绍的挺全，以及一些用法，如怎样利用GitHub来学习、演讲找工作等。
 - [GitHub 支持的 emoji表情 emoji-cheat-sheet](http://www.emoji-cheat-sheet.com/) ✌️ 👏 感觉不好找到需要的表情？试试[Emoji Searcher](http://emoji.muan.co/)
--  [GitHub guides](https://guides.github.com/) 从`Contributing to Open Source on GitHub`、`Hello World`、`Forking Projects`、`Be Social`、`Making Your Code Citable`、`Mastering Issues`、`Mastering Markdown`、`Mastering Wikis`、`Getting Started with GitHub Pages` 等9个方面图文详细讲解每一步如何使用，以及能做哪些功能。
+-  [GitHub guides](https://guides.github.com/) 从Contributing to Open Source on GitHub、Hello World、Forking Projects、Be Social、Making Your Code Citable、Mastering Issues、Mastering Markdown、Mastering Wikis、Getting Started with GitHub Pages 等9个方面图文详细讲解每一步如何使用，以及能做哪些功能。
 - [fork-me-on-GitHub](https://github.com/blog/273-github-ribbons) 个人博客、技术博客等如果需要添加GitHub 的彩带，可以使用此方法。
 - [蒋鑫-GotGitHub](https://github.com/xirong/my-git/blob/master/GotGitHub.md) 《Git权威指南》的作者，对GitHub有很深的了解。（由于首页打开太慢，放到了本文目录中，下面的文章既是）
 
 <a name="uzK6R"></a>
 # GitHub Skills
 
-- [Using Git blame to trace changes in a file](https://help.github.com/articles/using-git-blame-to-trace-changes-in-a-file/) 如果你想看某一个文件中每一行是谁修改的，为什么修改？那么尽情的使用 `blame` 按钮，发现文件的历史。
+- [Using Git blame to trace changes in a file](https://help.github.com/articles/using-git-blame-to-trace-changes-in-a-file/) 如果你想看某一个文件中每一行是谁修改的，为什么修改？那么尽情的使用 blame 按钮，发现文件的历史。
 - [GitHub 搜索技巧](https://help.github.com/categories/search/)
 - [Closing issues via commit messages - 通过提交信息关闭Issues](https://help.github.com/articles/closing-issues-via-commit-messages/)
 - [Update your forked code from original repository - 如何更新自己 Fork 的代码](https://github.com/ysc/APDPlat/wiki/%E5%A6%82%E4%BD%95%E6%9B%B4%E6%96%B0%E8%87%AA%E5%B7%B1Fork%E7%9A%84%E4%BB%A3%E7%A0%81)
 
-更多关于 GitHub 的内容请查看：[GitHubHelp](https://help.github.com/) 查找需要的信息。<br />
-<br />原文地址：[http://www.worldhello.net/gotgithub/index.html](http://www.worldhello.net/gotgithub/index.html)<br />
+更多关于 GitHub 的内容请查看：[GitHubHelp](https://help.github.com/) 查找需要的信息。
+
+原文地址：[http://www.worldhello.net/gotgithub/index.html](http://www.worldhello.net/gotgithub/index.html)
 
 - [git - Retrieve the commit log for a specific line in a file? - Stack Overflow](http://stackoverflow.com/questions/8435343/retrieve-the-commit-log-for-a-specific-line-in-a-file)<br />
 - [Git - git-blame Documentation](https://git-scm.com/docs/git-blame)<br />
@@ -44,7 +45,6 @@ tags: []
 - [每一行代码都有记录—如何用git一步步探索项目的历史 - Alexia(minmin) - 博客园](http://www.cnblogs.com/lanxuezaipiao/p/3552805.html)<br />
 <a name="pBKAZ"></a>
 # [Git & Gitlab 使用指南](https://zhuanlan.zhihu.com/p/36062308)
-
 
 <a name="niBDX"></a>
 # 一、Git 有什么奇技淫巧？
@@ -87,7 +87,7 @@ git branch -m master
 git push -f origin master
 ```
 
-7. 在尝试过所有命令都不能把你从深渊里挽救出来的时候, **git reflog 也许能起作用。**
+7. 在尝试过所有命令都不能把你从深渊里挽救出来的时候, git reflog 也许能起作用。
 7. 比如撤销一次 rebase（rebase 可是会直接修改历史的，一定要了解原理后再使用） [Undoing a git rebase](https://link.zhihu.com/?target=http%3A//stackoverflow.com/questions/134882/undoing-a-git-rebase)
 7. 每次 merge 完总是出现很多 .orig 文件，使用 git clean -f 干掉所有 untracked files
 7. rebase 一个 diverged 分支一直要解决冲突很痛苦，可以尝试在自己的分支先 squash 一下，git rebase -i，然后再 rebase 主干，解决一次冲突就 ok 了
@@ -122,7 +122,6 @@ git bisect bad
 <a name="us3H7"></a>
 # 四、[git重要的三个命令stash, checkout, reset的一些总结](https://www.cnblogs.com/shih/p/6826743.html)
 
-
 1. 正常的情形，修改工作区的文件然后add，commit，我使用git一般的流程是：git status ——> git stash save "message..."——> git pull --> git stash pop ——> git add . 或 git add filename ——> git commit -m 'message...' ——> git push 其中 . 表示所有的文件。
 1. 只需要撤销工作区的文件修改，即用暂存区的文件覆盖工作区中的文件
 
@@ -153,7 +152,7 @@ git reset --hard HEAD^
   - git stash pop [--index] [] 
     - --index 参数：不仅恢复工作区，还恢复暂存区
     - <stash> 指定恢复某一个具体进度。如果没有这个参数，默认恢复最新进度
-    -  如：以下命令恢复编号为0的进度的工作区和暂存区 
+    - 如：以下命令恢复编号为0的进度的工作区和暂存区 
 ```bash
 # git stash pop --index stash@{0}
 ```
@@ -169,7 +168,8 @@ git reset --hard HEAD^
   - git stash apply [--index] [] 除了不删除恢复的进度之外，其余和git stash pop 命令一样。
 <a name="Pv5K4"></a>
 #### 检出命令git checkout是git最常用的命令之一，同时也是一个很危险的命令，因为这条命令会重写工作区。
-<br />检出命令的用法如下：<br />用法一：git checkout [-q] [] [--] ...<br />用法二：git checkout []<br />用法三：git checkout [-m] [[-b]--orphan] ] []
+
+检出命令的用法如下：<br />用法一：git checkout [-q] [] [--] ...<br />用法二：git checkout []<br />用法三：git checkout [-m] [[-b]--orphan] ] []
 
 注：<br /><1> 为了避免路径和引用（或者提交ID）同名而发生冲突，可以在前用两个连续的短线（短号）--作为分隔。<br /><2> 在用法一中，
 
@@ -192,15 +192,14 @@ git reset --hard HEAD^
 
 <a name="hRBoD"></a>
 #### git reset是Git最常用的命令之一，也是最危险最容易误用的命令。
-<br />用法一：git reset [-q] [] [--] ...<br />用法二：git reset [--soft --mixed | --hard | --merge | --keep] [-q] []<br />注：<br />（1）第一种用法（包含了路径的用法）不会重置引用，更不会改变工作区，而是用指定提交状态()下的文件()替换掉暂存区中的文件。<br />例如：git reset HEAD <br />　　相当于取消之前执行的git add 命令时改变的暂存区。<br />（2）第二种用法（不使用路径的用法）则会重置引用。根据不同的选项，可以对暂存区或工作区进行重置。<br />参照下面的版本库模型图，可以看不同的参数对第二种重置语法的影响。<br />![image.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1560848637491-a9185e5f-057d-402d-ac41-3657e63fb235.png#align=left&display=inline&height=238&name=image.png&originHeight=265&originWidth=557&size=130160&status=done&width=500)<br />命令格式：git reset [--soft | --mixed | --hard] []<br />（1）使用参数--soft，如 git reset --soft <br />　　会执行上图中的操作①。即只更改引用的指向，不改变暂存区和工作区。<br />（2）使用参数--mixed或者不使用参数（默认为--mixed），如 git reset <br />　　会执行上图中的操作①和②。即更改引用的指向及重置暂存区，但是不改变工作区。<br />（3）使用参数--hard，如git reset --hard <br />　　会执行上图中的全部动作①、②、③，（理解为此时工作区、暂存区、commit都相同）即：<br />　　　　①替换引用的指向。引用指向新的提交ID。<br />　　　　②替换暂存区。替换后，暂存区的内容和引用指向的目录树一致。<br />　　　　③替换工作区。替换后，工作区的内容变得和暂存区一致，也和HEAD所指向的目录树内容相同。<br />注： 引用即HEAD指针<br />
-<br />使用：<br />git reset / git reset HEAD<br />仅用HEAD指向的目录树重置暂存区，工作区不会受到影响，相当于将之前用git add命令更新到暂存区的内容撤出暂存区。引用也未改变，因为引用重置到HEAD相当于没有重置。<br />git reset -- filename / git reset HEAD filename<br />仅将文件filename 的改动撤出暂存区，暂存区中其他文件不改变。相当于命令git add filename 的反射操作。<br />git reset --soft HEAD^<br />工作区和暂存区不改变，但是引用向前回退一次。当对最新的提交说明或者提交的更改不满意时，撤销最新的提交以便重新提交。<br />之前提到过修补提交命令git commit --amend，用于对最新的提交进行重新提交以修补错误的提交说明或者错误的提交文件。修补提交命令实际上相当于执行了下面两条命令。（注：文件.git/COMMIT_EDITMSG保存了上次的提交日志）<br />　　git reset --soft HEAD^<br />　　git commit -e -F .git/COMMIT_EDITMSG<br />git reset HEAD^ / git reset --mixed HEAD^<br />工作区不改变，但是暂存区会回退到上一次提交之前，引用也会回退一次。<br />git reset --hard HEAD^<br />彻底撤销最近的提交。引用回退到前一次，而且工作区和暂存区都会回退到上一次提交的状态。自上一次以来的提交全部丢失。<br />
+用法一：git reset [-q] [] [--] ...<br />用法二：git reset [--soft --mixed | --hard | --merge | --keep] [-q] []<br />注：<br />（1）第一种用法（包含了路径的用法）不会重置引用，更不会改变工作区，而是用指定提交状态()下的文件()替换掉暂存区中的文件。<br />例如：git reset HEAD <br />　　相当于取消之前执行的git add 命令时改变的暂存区。<br />（2）第二种用法（不使用路径的用法）则会重置引用。根据不同的选项，可以对暂存区或工作区进行重置。<br />参照下面的版本库模型图，可以看不同的参数对第二种重置语法的影响。<br />![image.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1560848637491-a9185e5f-057d-402d-ac41-3657e63fb235.png#align=left&display=inline&height=238&name=image.png&originHeight=265&originWidth=557&size=130160&status=done&width=500)<br />命令格式：git reset [--soft | --mixed | --hard] []<br />（1）使用参数--soft，如 git reset --soft <br />　　会执行上图中的操作①。即只更改引用的指向，不改变暂存区和工作区。<br />（2）使用参数--mixed或者不使用参数（默认为--mixed），如 git reset <br />　　会执行上图中的操作①和②。即更改引用的指向及重置暂存区，但是不改变工作区。<br />（3）使用参数--hard，如git reset --hard <br />　　会执行上图中的全部动作①、②、③，（理解为此时工作区、暂存区、commit都相同）即：<br />　　　　①替换引用的指向。引用指向新的提交ID。<br />　　　　②替换暂存区。替换后，暂存区的内容和引用指向的目录树一致。<br />　　　　③替换工作区。替换后，工作区的内容变得和暂存区一致，也和HEAD所指向的目录树内容相同。<br />注： 引用即HEAD指针
+
+使用：<br />git reset / git reset HEAD<br />仅用HEAD指向的目录树重置暂存区，工作区不会受到影响，相当于将之前用git add命令更新到暂存区的内容撤出暂存区。引用也未改变，因为引用重置到HEAD相当于没有重置。<br />git reset -- filename / git reset HEAD filename<br />仅将文件filename 的改动撤出暂存区，暂存区中其他文件不改变。相当于命令git add filename 的反射操作。<br />git reset --soft HEAD^<br />工作区和暂存区不改变，但是引用向前回退一次。当对最新的提交说明或者提交的更改不满意时，撤销最新的提交以便重新提交。<br />之前提到过修补提交命令git commit --amend，用于对最新的提交进行重新提交以修补错误的提交说明或者错误的提交文件。修补提交命令实际上相当于执行了下面两条命令。（注：文件.git/COMMIT_EDITMSG保存了上次的提交日志）<br />　　git reset --soft HEAD^<br />　　git commit -e -F .git/COMMIT_EDITMSG<br />git reset HEAD^ / git reset --mixed HEAD^<br />工作区不改变，但是暂存区会回退到上一次提交之前，引用也会回退一次。<br />git reset --hard HEAD^<br />彻底撤销最近的提交。引用回退到前一次，而且工作区和暂存区都会回退到上一次提交的状态。自上一次以来的提交全部丢失。
 
 <a name="PRbqH"></a>
 # 五、如何以光速查看一行代码的提交记录
-<a name="J5CN5"></a>
-## 怎么查是谁写的？
-<a name="HNCKd"></a>
-## 命令行工具 git blame
+
+怎么查是谁写的，命令行工具git blame
 
 ```bash
 git blame -L 99,99 package.json 

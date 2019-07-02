@@ -10,9 +10,7 @@ tags: []
 ---
 <a name="d770817a"></a>
 ## 读谷歌开发指南
-
-其实谷歌除了一个分很好的[学习指南](https://developers.google.com/web/fundamentals/?hl=zh-cn)，但很多人都不知道。<br />DOM(Document Object Mode)
-
+[专业高效的在线翻译管理平台](https://www.yicat.vip/)<br />其实谷歌除了一个分很好的[学习指南](https://developers.google.com/web/fundamentals/?hl=zh-cn)，但很多人都不知道。<br />DOM(Document Object Mode)
 <a name="9rT7o"></a>
 ## 前端学习地址和查询地址
 
@@ -34,6 +32,8 @@ tags: []
 - [懒人图库](http://www.lanrentuku.com/)
 - [力扣](https://leetcode-cn.com/)
 - [Mac开发配置手册](https://aaaaaashu.gitbooks.io/mac-dev-setup/content/iTerm/zsh.html)
+- [FEX](http://fex.baidu.com/)
+- [技术峰会](https://ppt.baomitu.com/conference)
 
 <a name="2qNlC"></a>
 ## 推荐的经典的前端书籍
@@ -91,6 +91,10 @@ tags: []
 
 <a name="OaAKW"></a>
 ## 产品
+
+
+<a name="GS7bw"></a>
+## 前端开发全面知识库
 
 
 

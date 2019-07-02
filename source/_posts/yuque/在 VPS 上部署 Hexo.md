@@ -48,7 +48,7 @@ npm install hexo-deployer-git --save
 npm install hero-server --save
 ```
 至此本地环境算搭建好了，下面是写文章
-<a name="85404179"></a>
+<a name="UF0B7"></a>
 ## 本地 Hexo 发表文章
 使用命令新建文章
 
@@ -61,8 +61,7 @@ hexo new "hello Hexo"
 ```bash
 sources/_posts/hello-hexo.md
 ```
-接下来用你喜欢的编辑器编辑 hello-hexo.md 文件，记得要用 markdown 语法。
-
+接下来用你喜欢的编辑器编辑 hello-hexo.md 文件，记得要用 markdown 语法。<br />
 写好以后， 使用 hexo g 命令将 .md 文件渲染成静态文件
 
 ```bash
@@ -73,13 +72,13 @@ hexo g
 ```bash
 hexo server
 ```
-该命令可简写为 hexo s, 现在可以用浏览器打开 [http://localhost:4000](http://localhost:4000/) 访问博客了。
+该命令可简写为 hexo s, 现在可以用浏览器打开 [http://localhost:4000](http://localhost:4000/) 访问博客了。<br />
+（注：以上本地环境搭建完成可以放在远程服务器 vps 上，当然写文章也得在 vps 上写，传统的做法是像架构图那样分离开。）
 
-_（注：以上本地环境搭建完成可以放在远程服务器 vps 上，当然写文章也得在 vps 上写，传统的做法是像架构图那样分离开。）_<br />_
-<a name="bab93a2b"></a>
+<a name="ISZZf"></a>
 ## 远程 VPS 环境搭建
 
-<br />同样要安装 Nodejs 和 git，根据自己的系统自行摸索，此步略过<br />Nginx 配置，我用宝塔 linux 面板一键安装，不用手动配置，如果要手动改，参考配置如下（抄来的，仅供参考）：
+同样要安装 Nodejs 和 git，根据自己的系统自行摸索，此步略过<br />Nginx 配置，我用宝塔 linux 面板一键安装，不用手动配置，如果要手动改，参考配置如下（抄来的，仅供参考）：
 
 ```nginx
 server
@@ -112,6 +111,6 @@ server
     access_log  /home/wwwlogs/blog.log  access;
 }
 ```
-<a name="09bfb3a8"></a>
+<a name="lKz1m"></a>
 ## 未完待续
 

@@ -37,7 +37,6 @@ tags: []
 <a name="6KklE"></a>
 ## 日常
 
-
 1. [网易邮箱大师](https://link.zhihu.com/?target=https%3A//mail.163.com/dashi/)
 1. [网易云音乐](https://link.zhihu.com/?target=https%3A//music.163.com/%23/download)
 1. [chrome](https://link.zhihu.com/?target=https%3A//www.google.com/chrome/)
@@ -54,12 +53,12 @@ tags: []
 1. [OmniGraffle](https://link.zhihu.com/?target=https%3A//www.omnigroup.com/omnigraffle/)，Visio替代品
 1. [番茄土豆](https://link.zhihu.com/?target=https%3A//pomotodo.com/%23apps)，番茄工作法，让你知道其实你一天的工作效率其实低的可怜
 1. [OneDrive](https://link.zhihu.com/?target=https%3A//onedrive.live.com/about/zh-hk/download/)，微软云的桌面版，可以把仓库克隆到Finder里面实现本地无缝云同步
-1. (**_*_2018-10-08 更新_*_**）
+1. (*2018-10-08 更新*）
 1. [Folx](https://link.zhihu.com/?target=https%3A//mac.eltima.com/cn/download-manager.html)，BT下载工具，告别迅雷
 1. [iina](https://link.zhihu.com/?target=https%3A//lhc70000.github.io/iina/)，播放工具，开源软件，完全免费,作者还是校友，厉害厉害（相关：[作者知乎](https://www.zhihu.com/people/hchen-li/answers))
 1. [1password](https://link.zhihu.com/?target=https%3A//1password.com/tour/)，密码管理软件，多终端密码管理
 1. [CAJ云阅读](https://link.zhihu.com/?target=https%3A//itunes.apple.com/us/app/caj%25E4%25BA%2591%25E9%2598%2585%25E8%25AF%25BB/id1121965993%3Fmt%3D12)，mac版的caj阅读器，妈妈再也不用担心我下载的论文读不了了～
-1. (**_*_2019-01-17 更新_*_**）
+1. (*2019-01-17 更新*）
 1. [duet](https://link.zhihu.com/?target=https%3A//www.duetdisplay.com/cn/), 如果你同时拥有一个ipad的话，你一定会需要它。屏幕扩展，让你的ipad成为你的第二个屏幕～
 1. [Things3](https://link.zhihu.com/?target=https%3A//culturedcode.com/things/), to-do软件，个人强推，比上面提到的番茄要好的多哈哈哈，我现在已经把番茄卸载了～
 
@@ -115,6 +114,7 @@ tags: []
 [借助 Alfred 的 Workflows 功能可以做哪些好玩的事情？](https://www.zhihu.com/question/20656680)
 
 3.Dash + alfred 很好用，程序员必备<br />![image.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1560320328726-ed939ec7-6fdc-499b-bb84-4197b8118b1b.png#align=left&display=inline&height=261&name=image.png&originHeight=522&originWidth=720&size=420428&status=done&width=360)
+
 
 这是纯 Dash，加上了 alfred 以后就变成了下面这样：<br />![image.png](https://cdn.nlark.com/yuque/0/2019/png/263301/1560320347074-bf304a63-83ad-4cf8-8c84-48e26e8de750.png#align=left&display=inline&height=221&name=image.png&originHeight=442&originWidth=597&size=170649&status=done&width=298.5)
 

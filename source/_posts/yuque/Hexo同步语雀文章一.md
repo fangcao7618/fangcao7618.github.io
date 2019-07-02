@@ -106,20 +106,22 @@ yuque-hexo sync
 
 <a name="articleHeader5"></a>
 ## 改变主题
-[这是](https://hexo.io/themes/)官方的主题网站<br />将主题clone到你的theme，在配置文件中<br />![](https://cdn.nlark.com/yuque/0/2019/png/263301/1560237648554-f64e1112-1f4d-4648-8fe2-9682dfebd1ff.png#align=left&display=inline&height=76&originHeight=76&originWidth=321&size=0&status=done&width=321)<br />将theme改变为你下载的主题名称<br />然后编译，运行，发布。<br />
-<br />使用next主题的可以参考[官方网址](https://theme-next.iissnan.com/)<br />
+[这是](https://hexo.io/themes/)官方的主题网站<br />将主题clone到你的theme，在配置文件中<br />![](https://cdn.nlark.com/yuque/0/2019/png/263301/1560237648554-f64e1112-1f4d-4648-8fe2-9682dfebd1ff.png#align=left&display=inline&height=76&originHeight=76&originWidth=321&size=0&status=done&width=321)<br />将theme改变为你下载的主题名称<br />然后编译，运行，发布。
+
+使用next主题的可以参考[官方网址](https://theme-next.iissnan.com/)
 
 <a name="articleHeader4"></a>
 ### 配置Travis CI
 
-<br />之前也有不少文章用不同的方法解决上述的问题，例如[利用 Dropbox 同步](http://lucifr.com/2013/06/02/hexo-on-cloud-with-dropbox-and-vps/)或者[利用 Github 的 Webhooks](http://blog.sunnyyan.com/2015/05/01/hexo-auto-generate/) 进行自动部署。这些方法需要付出一定的成本，因为都需要利用到一台 VPS 去完成。而今有一个更加简单而且免费的方法去完成 hexo 的自动部署，就是利用 Travis CI。<br />
-<br />重点来了，详细步骤可参考[用 Travis CI 自动部署 hexo](https://segmentfault.com/a/1190000004667156)，[手把手教你Travis CI](https://www.jianshu.com/p/e22c13d85659),作者已经说的比较详细。<br />需要注意的一点是：在`package.json`中增加`depoly`的命令行语句，防止travis在自动执行到`npm run deploy`这一步的时候报找不到该script的错。
+之前也有不少文章用不同的方法解决上述的问题，例如[利用 Dropbox 同步](http://lucifr.com/2013/06/02/hexo-on-cloud-with-dropbox-and-vps/)或者[利用 Github 的 Webhooks](http://blog.sunnyyan.com/2015/05/01/hexo-auto-generate/) 进行自动部署。这些方法需要付出一定的成本，因为都需要利用到一台 VPS 去完成。而今有一个更加简单而且免费的方法去完成 hexo 的自动部署，就是利用 Travis CI。
+
+重点来了，详细步骤可参考[用 Travis CI 自动部署 hexo](https://segmentfault.com/a/1190000004667156)，[手把手教你Travis CI](https://www.jianshu.com/p/e22c13d85659),作者已经说的比较详细。<br />需要注意的一点是：在package.json中增加depoly的命令行语句，防止travis在自动执行到npm run deploy这一步的时候报找不到该script的错。
 ```
 "scripts": {
   "deploy": "hexo clean && hexo g -d"
 },
 ```
-上述代码加在`dependencies`同级即可。
+上述代码加在dependencies同级即可。
 
 查看TravisCi [https://travis-ci.org/fangcao7618/fangcao7618.github.io](https://travis-ci.org/fangcao7618/fangcao7618.github.io)
 
