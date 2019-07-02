@@ -138,7 +138,7 @@
 <meta property="og:description" content="Hexo博客架构 简单地说，在本地用 markdown 写好文章，用 hexo 生成静态的 html 文件并 push 到远程服务器（vps），vps 再通过 git-hooks 同步网站目录。其实这两个是可以合成一个的，不过每次写文章都要 ssh 登录到 vps，体验可能没那么好。  流程大纲 本地 – 环境搭建，安装 Hexo,包括 hexo-cli, Nodejs, git; 本地 – 写文">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1560501737421-4656534d-8aad-4ddb-834a-c974e81bc942.png#align=left&display=inline&height=420&name=image.png&originHeight=480&originWidth=800&size=61881&status=done&width=700">
-<meta property="og:updated_time" content="2019-06-26T09:30:05.189Z">
+<meta property="og:updated_time" content="2019-07-02T07:10:03.281Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在 VPS 上部署 Hexo">
 <meta name="twitter:description" content="Hexo博客架构 简单地说，在本地用 markdown 写好文章，用 hexo 生成静态的 html 文件并 push 到远程服务器（vps），vps 再通过 git-hooks 同步网站目录。其实这两个是可以合成一个的，不过每次写文章都要 ssh 登录到 vps，体验可能没那么好。  流程大纲 本地 – 环境搭建，安装 Hexo,包括 hexo-cli, Nodejs, git; 本地 – 写文">
@@ -399,8 +399,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-26T17:30:05+08:00">
-                2019-06-26
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-02T15:10:03+08:00">
+                2019-07-02
               </time>
             
           </span>
@@ -427,7 +427,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  620 字
+                  619 字
                 </span>
               
 
@@ -486,27 +486,25 @@
 <p>然后安装两个插件，分别是 git 自动部署插件 <a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="noopener">hexo-deployer-git</a> 和简单的本地web服务器 <a href="https://hexo.io/zh-cn/docs/server.html" target="_blank" rel="noopener">hexo-server</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Documents/code/blog</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">npm install hero-server --save</span><br></pre></td></tr></table></figure>
 
-<p>至此本地环境算搭建好了，下面是写文章<br><a name="85404179"></a></p>
+<p>至此本地环境算搭建好了，下面是写文章<br><a name="UF0B7"></a></p>
 <h2 id="本地-Hexo-发表文章"><a href="#本地-Hexo-发表文章" class="headerlink" title="本地 Hexo 发表文章"></a>本地 Hexo 发表文章</h2><p>使用命令新建文章</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Documents/code</span><br><span class="line">hexo new <span class="string">"hello Hexo"</span></span><br></pre></td></tr></table></figure>
 
 <p>该命令会成一个对应的 .md 文件放置在 sources/_posts 文件夹</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sources/_posts/hello-hexo.md</span><br></pre></td></tr></table></figure>
 
-<p>接下来用你喜欢的编辑器编辑 hello-hexo.md 文件，记得要用 markdown 语法。</p>
-<p>写好以后， 使用 hexo g 命令将 .md 文件渲染成静态文件</p>
+<p>接下来用你喜欢的编辑器编辑 hello-hexo.md 文件，记得要用 markdown 语法。<br><br>写好以后， 使用 hexo g 命令将 .md 文件渲染成静态文件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
 
 <p>然后启动本地 web 服务器 hexo-server</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 
-<p>该命令可简写为 hexo s, 现在可以用浏览器打开 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000</a> 访问博客了。</p>
-<p><em>（注：以上本地环境搭建完成可以放在远程服务器 vps 上，当然写文章也得在 vps 上写，传统的做法是像架构图那样分离开。）</em><br>_
-<a name="bab93a2b"></a></p>
-<h2 id="远程-VPS-环境搭建"><a href="#远程-VPS-环境搭建" class="headerlink" title="远程 VPS 环境搭建"></a>远程 VPS 环境搭建</h2><p><br>同样要安装 Nodejs 和 git，根据自己的系统自行摸索，此步略过<br>Nginx 配置，我用宝塔 linux 面板一键安装，不用手动配置，如果要手动改，参考配置如下（抄来的，仅供参考）：</p>
+<p>该命令可简写为 hexo s, 现在可以用浏览器打开 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000</a> 访问博客了。<br><br>（注：以上本地环境搭建完成可以放在远程服务器 vps 上，当然写文章也得在 vps 上写，传统的做法是像架构图那样分离开。）</p>
+<p><a name="ISZZf"></a></p>
+<h2 id="远程-VPS-环境搭建"><a href="#远程-VPS-环境搭建" class="headerlink" title="远程 VPS 环境搭建"></a>远程 VPS 环境搭建</h2><p>同样要安装 Nodejs 和 git，根据自己的系统自行摸索，此步略过<br>Nginx 配置，我用宝塔 linux 面板一键安装，不用手动配置，如果要手动改，参考配置如下（抄来的，仅供参考）：</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">server</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="comment">#listen [::]:80;</span></span><br><span class="line">    <span class="attribute">server_name</span> www.xxb.me xxb.me;</span><br><span class="line">    <span class="attribute">index</span> index.html index.htm index.php default.html default.htm default.php;</span><br><span class="line">    <span class="comment">#这里要改成网站的根目录</span></span><br><span class="line">    <span class="attribute">root</span>  /path/to/www;  </span><br><span class="line"></span><br><span class="line">    <span class="attribute">include</span> other.conf;</span><br><span class="line">    <span class="comment">#error_page   404   /404.html;</span></span><br><span class="line">    <span class="attribute">location</span> <span class="regexp">~ .*\.(ico|gif|jpg|jpeg|png|bmp|swf)$</span></span><br><span class="line"><span class="regexp"></span>    &#123;</span><br><span class="line">        <span class="attribute">access_log</span>   <span class="literal">off</span>;</span><br><span class="line">        <span class="attribute">expires</span>      <span class="number">1d</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">location</span> <span class="regexp">~ .*\.(js|css|txt|xml)?$</span></span><br><span class="line"><span class="regexp"></span>    &#123;</span><br><span class="line">        <span class="attribute">access_log</span>   <span class="literal">off</span>;</span><br><span class="line">        <span class="attribute">expires</span>      <span class="number">12h</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">        <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ =<span class="number">404</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">access_log</span>  /home/wwwlogs/blog.log  access;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><a name="09bfb3a8"></a></p>
+<p><a name="lKz1m"></a></p>
 <h2 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h2>
       
     </div>
@@ -627,7 +625,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">100</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -769,7 +767,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">81.3k</span>
+    <span title="Site words total count">95k</span>
   
 </div>
 

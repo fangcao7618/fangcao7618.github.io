@@ -138,7 +138,7 @@
 <meta property="og:description" content="创建 Hexo 博客已经有 Hexo 博客的可以跳过。如果你是 Jekyll ，也可以跳过。  安装 Node.js 安装 Hexo 脚手架  12345npm install -g hexo-clihexo init blogcd blognpm install or yarn installhexo server   Hexo建站参考Hexo官方文档：https://hexo.io/zh-c">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1560237648554-f64e1112-1f4d-4648-8fe2-9682dfebd1ff.png#align=left&display=inline&height=76&originHeight=76&originWidth=321&size=0&status=done&width=321">
-<meta property="og:updated_time" content="2019-06-26T09:30:05.228Z">
+<meta property="og:updated_time" content="2019-07-02T07:10:03.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo同步语雀文章一">
 <meta name="twitter:description" content="创建 Hexo 博客已经有 Hexo 博客的可以跳过。如果你是 Jekyll ，也可以跳过。  安装 Node.js 安装 Hexo 脚手架  12345npm install -g hexo-clihexo init blogcd blognpm install or yarn installhexo server   Hexo建站参考Hexo官方文档：https://hexo.io/zh-c">
@@ -399,8 +399,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-26T17:30:05+08:00">
-                2019-06-26
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-02T15:10:03+08:00">
+                2019-07-02
               </time>
             
           </span>
@@ -556,12 +556,14 @@
 <p><a name="articleHeader0"></a></p>
 <h1 id="配置GitHub-pages"><a href="#配置GitHub-pages" class="headerlink" title="配置GitHub pages"></a>配置GitHub pages</h1><p>首先需要一个GitHub账号<br>然后可以<br>具体可参照<a href="https://pages.github.com/" target="_blank" rel="noopener">官方教程</a></p>
 <p><a name="articleHeader5"></a></p>
-<h2 id="改变主题"><a href="#改变主题" class="headerlink" title="改变主题"></a>改变主题</h2><p><a href="https://hexo.io/themes/" target="_blank" rel="noopener">这是</a>官方的主题网站<br>将主题clone到你的theme，在配置文件中<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1560237648554-f64e1112-1f4d-4648-8fe2-9682dfebd1ff.png#align=left&display=inline&height=76&originHeight=76&originWidth=321&size=0&status=done&width=321" alt><br>将theme改变为你下载的主题名称<br>然后编译，运行，发布。<br><br><br>使用next主题的可以参考<a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">官方网址</a><br></p>
+<h2 id="改变主题"><a href="#改变主题" class="headerlink" title="改变主题"></a>改变主题</h2><p><a href="https://hexo.io/themes/" target="_blank" rel="noopener">这是</a>官方的主题网站<br>将主题clone到你的theme，在配置文件中<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1560237648554-f64e1112-1f4d-4648-8fe2-9682dfebd1ff.png#align=left&display=inline&height=76&originHeight=76&originWidth=321&size=0&status=done&width=321" alt><br>将theme改变为你下载的主题名称<br>然后编译，运行，发布。</p>
+<p>使用next主题的可以参考<a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">官方网址</a></p>
 <p><a name="articleHeader4"></a></p>
-<h3 id="配置Travis-CI"><a href="#配置Travis-CI" class="headerlink" title="配置Travis CI"></a>配置Travis CI</h3><p><br>之前也有不少文章用不同的方法解决上述的问题，例如<a href="http://lucifr.com/2013/06/02/hexo-on-cloud-with-dropbox-and-vps/" target="_blank" rel="noopener">利用 Dropbox 同步</a>或者<a href="http://blog.sunnyyan.com/2015/05/01/hexo-auto-generate/" target="_blank" rel="noopener">利用 Github 的 Webhooks</a> 进行自动部署。这些方法需要付出一定的成本，因为都需要利用到一台 VPS 去完成。而今有一个更加简单而且免费的方法去完成 hexo 的自动部署，就是利用 Travis CI。<br><br><br>重点来了，详细步骤可参考<a href="https://segmentfault.com/a/1190000004667156" target="_blank" rel="noopener">用 Travis CI 自动部署 hexo</a>，<a href="https://www.jianshu.com/p/e22c13d85659" target="_blank" rel="noopener">手把手教你Travis CI</a>,作者已经说的比较详细。<br>需要注意的一点是：在<code>package.json</code>中增加<code>depoly</code>的命令行语句，防止travis在自动执行到<code>npm run deploy</code>这一步的时候报找不到该script的错。</p>
+<h3 id="配置Travis-CI"><a href="#配置Travis-CI" class="headerlink" title="配置Travis CI"></a>配置Travis CI</h3><p>之前也有不少文章用不同的方法解决上述的问题，例如<a href="http://lucifr.com/2013/06/02/hexo-on-cloud-with-dropbox-and-vps/" target="_blank" rel="noopener">利用 Dropbox 同步</a>或者<a href="http://blog.sunnyyan.com/2015/05/01/hexo-auto-generate/" target="_blank" rel="noopener">利用 Github 的 Webhooks</a> 进行自动部署。这些方法需要付出一定的成本，因为都需要利用到一台 VPS 去完成。而今有一个更加简单而且免费的方法去完成 hexo 的自动部署，就是利用 Travis CI。</p>
+<p>重点来了，详细步骤可参考<a href="https://segmentfault.com/a/1190000004667156" target="_blank" rel="noopener">用 Travis CI 自动部署 hexo</a>，<a href="https://www.jianshu.com/p/e22c13d85659" target="_blank" rel="noopener">手把手教你Travis CI</a>,作者已经说的比较详细。<br>需要注意的一点是：在package.json中增加depoly的命令行语句，防止travis在自动执行到npm run deploy这一步的时候报找不到该script的错。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">  &quot;deploy&quot;: &quot;hexo clean &amp;&amp; hexo g -d&quot;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
-<p>上述代码加在<code>dependencies</code>同级即可。</p>
+<p>上述代码加在dependencies同级即可。</p>
 <p>查看TravisCi <a href="https://travis-ci.org/fangcao7618/fangcao7618.github.io" target="_blank" rel="noopener">https://travis-ci.org/fangcao7618/fangcao7618.github.io</a></p>
 <p>主题：</p>
 <p>主题选择：<a href="https://theme-next.iissnan.com" target="_blank" rel="noopener">next 主题</a><br>主题二：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
@@ -687,7 +689,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">100</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -829,7 +831,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">81.3k</span>
+    <span title="Site words total count">95k</span>
   
 </div>
 

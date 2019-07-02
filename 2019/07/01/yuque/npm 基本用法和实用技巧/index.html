@@ -1,0 +1,1839 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="基本用法 安装与升级 安装 升级 安装指定版本的 npm   常用命令 npm install npm uninstall npm update npm ls npm adduser npm init npm publish npm unpublish npm deprecate npm dist-tag npm view npm link npm conifg     工作原理 实用技巧 pa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm 基本用法和实用技巧">
+<meta property="og:url" content="http://yoursite.com/2019/07/01/yuque/npm 基本用法和实用技巧/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="基本用法 安装与升级 安装 升级 安装指定版本的 npm   常用命令 npm install npm uninstall npm update npm ls npm adduser npm init npm publish npm unpublish npm deprecate npm dist-tag npm view npm link npm conifg     工作原理 实用技巧 pa">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-02T07:10:03.390Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="npm 基本用法和实用技巧">
+<meta name="twitter:description" content="基本用法 安装与升级 安装 升级 安装指定版本的 npm   常用命令 npm install npm uninstall npm update npm ls npm adduser npm init npm publish npm unpublish npm deprecate npm dist-tag npm view npm link npm conifg     工作原理 实用技巧 pa">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/01/yuque/npm 基本用法和实用技巧/">
+
+
+
+
+
+  <title>npm 基本用法和实用技巧 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/yuque/npm 基本用法和实用技巧/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">npm 基本用法和实用技巧</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-01T18:04:29+08:00">
+                2019-07-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-02T15:10:03+08:00">
+                2019-07-02
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5.7k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  23 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><a href="https://github.com/theicebear/npm-basic-usage#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95" target="_blank" rel="noopener">基本用法</a><ul>
+<li><a href="https://github.com/theicebear/npm-basic-usage#%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%87%E7%BA%A7" target="_blank" rel="noopener">安装与升级</a><ul>
+<li><a href="https://github.com/theicebear/npm-basic-usage#%E5%AE%89%E8%A3%85" target="_blank" rel="noopener">安装</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#%E5%8D%87%E7%BA%A7" target="_blank" rel="noopener">升级</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E7%9A%84-npm" target="_blank" rel="noopener">安装指定版本的 npm</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4" target="_blank" rel="noopener">常用命令</a><ul>
+<li><a href="https://github.com/theicebear/npm-basic-usage#npm-install" target="_blank" rel="noopener">npm install</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#npm-uninstall" target="_blank" rel="noopener">npm uninstall</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#npm-update" target="_blank" rel="noopener">npm update</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#npm-ls" target="_blank" rel="noopener">npm ls</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#npm-adduser" target="_blank" rel="noopener">npm adduser</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#npm-init" target="_blank" rel="noopener">npm init</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#npm-publish" target="_blank" rel="noopener">npm publish</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#npm-unpublish" target="_blank" rel="noopener">npm unpublish</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#npm-deprecate" target="_blank" rel="noopener">npm deprecate</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#npm-dist-tag" target="_blank" rel="noopener">npm dist-tag</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#npm-view" target="_blank" rel="noopener">npm view</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#npm-link" target="_blank" rel="noopener">npm link</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#npm-conifg" target="_blank" rel="noopener">npm conifg</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86" target="_blank" rel="noopener">工作原理</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7" target="_blank" rel="noopener">实用技巧</a><ul>
+<li><a href="https://github.com/theicebear/npm-basic-usage#pacakgejson" target="_blank" rel="noopener">pacakge.json</a><ul>
+<li><a href="https://github.com/theicebear/npm-basic-usage#dependencies" target="_blank" rel="noopener">dependencies</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#optionaldependencies" target="_blank" rel="noopener">optionalDependencies</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#peerdependencies" target="_blank" rel="noopener">peerDependencies</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#bundleddependencies" target="_blank" rel="noopener">bundledDependencies</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#bin" target="_blank" rel="noopener">bin</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#config" target="_blank" rel="noopener">config</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#npmrc" target="_blank" rel="noopener">.npmrc</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#npmignore" target="_blank" rel="noopener">.npmignore</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#scripts" target="_blank" rel="noopener">scripts</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#shrinkwrap" target="_blank" rel="noopener">shrinkwrap</a></li>
+<li><a href="https://github.com/theicebear/npm-basic-usage#cache" target="_blank" rel="noopener">cache</a><br><a name="OUQEc"></a><h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a><a href="https://github.com/theicebear/npm-basic-usage#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95" target="_blank" rel="noopener"></a>基本用法</h2><a name="VACUH"></a><h3 id="安装与升级"><a href="#安装与升级" class="headerlink" title="安装与升级"></a><a href="https://github.com/theicebear/npm-basic-usage#%E5%AE%89%E8%A3%85%E4%B8%8E%E5%8D%87%E7%BA%A7" target="_blank" rel="noopener"></a>安装与升级</h3><a name="nCnNQ"></a><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a><a href="https://github.com/theicebear/npm-basic-usage#%E5%AE%89%E8%A3%85" target="_blank" rel="noopener"></a>安装</h4>安装 Node.js 时会自动安装 npm。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install 4</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<p><a name="h5MEU"></a></p>
+<h4 id="升级"><a href="#升级" class="headerlink" title="升级"></a><a href="https://github.com/theicebear/npm-basic-usage#%E5%8D%87%E7%BA%A7" target="_blank" rel="noopener"></a>升级</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install npm -g</span><br></pre></td></tr></table></figure>
+
+<p><a name="mETJn"></a></p>
+<h4 id="安装指定版本的-npm"><a href="#安装指定版本的-npm" class="headerlink" title="安装指定版本的 npm"></a><a href="https://github.com/theicebear/npm-basic-usage#%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E7%9A%84-npm" target="_blank" rel="noopener"></a>安装指定版本的 npm</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install npm@2 -g</span><br></pre></td></tr></table></figure>
+
+<p><a name="PCoEJ"></a></p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a><a href="https://github.com/theicebear/npm-basic-usage#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4" target="_blank" rel="noopener"></a>常用命令</h3><p><a name="1ZOm6"></a></p>
+<h4 id="npm-install"><a href="#npm-install" class="headerlink" title="npm install"></a><a href="https://github.com/theicebear/npm-basic-usage#npm-install" target="_blank" rel="noopener"></a>npm install</h4><ol>
+<li><p>根据 <code>package.json</code> 文件安装依赖。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装指定的依赖包。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install [&lt;@scope&gt;/]&lt;pkg&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<p>如果当前目录中存在 <code>package.json</code> 文件，则安装满足文件中版本规则的最高版本；否则安装最新版本依赖包。</p>
+</blockquote>
+<ol>
+<li><p>安装指定版本的依赖包。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install [&lt;@scope&gt;/]&lt;pkg&gt;@&lt;tag&gt;</span><br><span class="line">npm install [&lt;@scope&gt;/]&lt;pkg&gt;@&lt;version&gt;</span><br><span class="line">npm install [&lt;@scope&gt;/]&lt;pkg&gt;@&lt;version range&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从本地位置安装依赖。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install &lt;folder&gt;</span><br><span class="line">npm install &lt;tarball file&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<p>可以用 <code>npm pack</code> 生成 <code>&lt;tarball file&gt;</code></p>
+</blockquote>
+<ol>
+<li><p>从网络位置安装依赖。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install &lt;tarball url&gt;</span><br><span class="line">npm install &lt;git:// url&gt;</span><br><span class="line">npm install &lt;github username&gt;/&lt;github project&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常用参数：</p>
+<ul>
+<li><code>-g, --global</code>：安装全局依赖，如果没有指定依赖包名，则将当前目录中的包安装至全局<br></li>
+<li><code>-S, --save</code>：安装依赖的同时将该依赖写入 <code>dependencies</code><br></li>
+<li><code>-D, --save-dev</code>：安装依赖的同时将该依赖写入 <code>devDependencies</code><br></li>
+<li><code>-O, --save-optional</code>：安装依赖的同时将该依赖写入 <code>optionalDependencies</code><br></li>
+<li><code>-E, --save-exact</code>：写入 <code>package.json</code> 时带有确切版本号<br></li>
+<li><code>--no-optional</code>：不安装 optional dependencies，可继承<br></li>
+<li><code>--only={dev[elopment]|prod[uction]}</code>：无视 <code>NODE_ENV</code>，只安装 <code>devDependencies</code> 或仅安装除了 <code>devDependencies</code> 之外的依赖项<br></li>
+<li><code>--dry-run</code>：走一遍安装的过程并报告结果，但实际上没有安装任何依赖<br></li>
+</ul>
+</li>
+<li><p>别名：<code>i</code><br><br><a name="7R8Cr"></a></p>
+<h4 id="npm-uninstall"><a href="#npm-uninstall" class="headerlink" title="npm uninstall"></a><a href="https://github.com/theicebear/npm-basic-usage#npm-uninstall" target="_blank" rel="noopener"></a>npm uninstall</h4></li>
+<li><p>删除一个指定的依赖包，并且完全移除为了该包而安装的任何文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall [&lt;@scope&gt;/]&lt;pkg&gt;[@&lt;version&gt;]... [-S|--save|-D|--save-dev|-O|--save-optional]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常用参数：与 <code>npm install</code> 类似<br></p>
+</li>
+<li><p>别名：<code>remove</code>、<code>rm</code>、<code>r</code>、<code>un</code>、<code>unlink</code><br><br><a name="tKZWE"></a></p>
+<h4 id="npm-update"><a href="#npm-update" class="headerlink" title="npm update"></a><a href="https://github.com/theicebear/npm-basic-usage#npm-update" target="_blank" rel="noopener"></a>npm update</h4></li>
+<li><p>升级所有依赖包至版本规则允许的最新版本，并安装缺失的依赖包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update [&lt;pkg&gt;...]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常用参数：</p>
+<ul>
+<li><code>-g</code>：升级全局依赖包</li>
+<li><code>--dev</code>：同时升级在 <code>devDependencies</code> 中的依赖包</li>
+<li><code>--depth Infinity</code>：从 <code>npm@2.6.1</code> 起 <code>npm update</code> 默认仅升级顶层依赖，使用该参数升级所有依赖包</li>
+<li><code>--save</code>：升级依赖包，同时记录升级后的版本</li>
+</ul>
+</li>
+<li><p>别名：<code>up</code>、<code>upgrade</code><br><br><a name="53moF"></a></p>
+<h4 id="npm-ls"><a href="#npm-ls" class="headerlink" title="npm ls"></a><a href="https://github.com/theicebear/npm-basic-usage#npm-ls" target="_blank" rel="noopener"></a>npm ls</h4></li>
+<li><p>以树形结构打印依赖包及其版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm ls [[&lt;@scope&gt;/]&lt;pkg&gt; ...]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常用参数：</p>
+<ul>
+<li><code>--json</code>：以 JSON 格式输出</li>
+<li><code>--long</code>：输出额外信息</li>
+<li><code>--global</code>：输出全局依赖信息</li>
+<li><code>--depth &lt;int&gt;</code>：输出依赖树的最大深度</li>
+<li><code>--prod[uction]</code>：仅输出 <code>dependencies</code> 中的依赖</li>
+<li><code>--dev</code>：仅输出 <code>devDependencies</code> 中的依赖</li>
+</ul>
+</li>
+<li><p>别名：<code>list</code>、<code>la</code>、<code>ll</code><br><br><a name="6WLpO"></a></p>
+<h4 id="npm-adduser"><a href="#npm-adduser" class="headerlink" title="npm adduser"></a><a href="https://github.com/theicebear/npm-basic-usage#npm-adduser" target="_blank" rel="noopener"></a>npm adduser</h4><p>登录 npm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm adduser</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><a name="0adne"></a></p>
+<h4 id="npm-init"><a href="#npm-init" class="headerlink" title="npm init"></a><a href="https://github.com/theicebear/npm-basic-usage#npm-init" target="_blank" rel="noopener"></a>npm init</h4><ol>
+<li><p>提问，然后产生一个 <code>package.json</code> 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init [-f|--force|-y|--yes]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常用参数：</p>
+<ul>
+<li><code>-f, --force, -y, --yes</code>：使用默认的答案，不再提问</li>
+<li><code>--scope &lt;scope&gt;</code>：指定新模块的 scope，例如 <code>mtfe</code><br><a name="bH3VH"></a><h4 id="npm-publish"><a href="#npm-publish" class="headerlink" title="npm publish"></a><a href="https://github.com/theicebear/npm-basic-usage#npm-publish" target="_blank" rel="noopener"></a>npm publish</h4></li>
+</ul>
+</li>
+<li><p>发布一个新的包，或一个包的新版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm publish [&lt;tarball&gt;|&lt;folder&gt;] [--tag &lt;tag&gt;] [--access &lt;public|restricted&gt;]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<p>如果没有 tarball 或 folder 被指定，则使用当前目录</p>
+</blockquote>
+<ol>
+<li>常用参数：<ul>
+<li><code>--tag &lt;tag&gt;</code>：给被发布的包注册指定的 tag，如果没有该参数，则默认使用 <code>latest</code><br><a name="VBJ8m"></a><h4 id="npm-unpublish"><a href="#npm-unpublish" class="headerlink" title="npm unpublish"></a><a href="https://github.com/theicebear/npm-basic-usage#npm-unpublish" target="_blank" rel="noopener"></a>npm unpublish</h4>取消发布一个包，或一个包的某些版本<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm unpublish [&lt;@scope&gt;/]&lt;pkg&gt;[@&lt;version&gt;]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ol>
+<p><a name="v5tIs"></a></p>
+<h4 id="npm-deprecate"><a href="#npm-deprecate" class="headerlink" title="npm deprecate"></a><a href="https://github.com/theicebear/npm-basic-usage#npm-deprecate" target="_blank" rel="noopener"></a>npm deprecate</h4><p>弃用一个包，或一个包的某些版本，尝试安装这些弃用包的用户将会收到警告</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm deprecate &lt;pkg&gt;[@&lt;version&gt;] &lt;message&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a name="uBrUi"></a></p>
+<h4 id="npm-dist-tag"><a href="#npm-dist-tag" class="headerlink" title="npm dist-tag"></a><a href="https://github.com/theicebear/npm-basic-usage#npm-dist-tag" target="_blank" rel="noopener"></a>npm dist-tag</h4><ol>
+<li><p>给一个包的某个版本注册 tag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm dist-tag add &lt;pkg&gt;@&lt;version&gt; [&lt;tag&gt;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>移除一个 tag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm dist-tag rm &lt;pkg&gt; &lt;tag&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示指定包的所有 tag</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm dist-tag ls [&lt;pkg&gt;]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><a name="iraAO"></a></p>
+<h4 id="npm-view"><a href="#npm-view" class="headerlink" title="npm view"></a><a href="https://github.com/theicebear/npm-basic-usage#npm-view" target="_blank" rel="noopener"></a>npm view</h4><ol>
+<li>显示一个包的详细信息<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm view [&lt;@scope&gt;/]&lt;name&gt;[@&lt;version&gt;] [&lt;field&gt;[.&lt;subfield&gt;]...]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<p><code>&lt;field&gt;</code> 和 <code>&lt;subfield&gt;</code> 表示输出信息中的字段</p>
+</blockquote>
+<ol>
+<li><p>别名：<code>info</code>、<code>show</code>、<code>v</code><br><br><a name="aTxTO"></a></p>
+<h4 id="npm-link"><a href="#npm-link" class="headerlink" title="npm link"></a><a href="https://github.com/theicebear/npm-basic-usage#npm-link" target="_blank" rel="noopener"></a>npm link</h4><p>将一个本地目录中的模块符号链接至一个项目的依赖中，实现上述功能需要两步：</p>
+</li>
+<li><p>在模块目录中执行下面的命令，创建一个从全局依赖指向当前目录的符号链接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm link</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/Cellar/nvm/0.25.4/versions/node/v4.4.4/lib/node_modules/handgrip</span><br><span class="line">-&gt; /Users/Dylan/handgrip</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>在其他目录中执行下面的命令，创建一个从局部依赖指向全局依赖的符号链接<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm link [&lt;@scope&gt;/]&lt;pkg&gt;[@&lt;version&gt;]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<p><code>[&lt;@scope&gt;/]&lt;pkg&gt;[@&lt;version&gt;]</code> 所表示已经执行了第一步的模块，或其所包含的版本</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># npm link handgrip</span><br><span class="line">/Users/Dylan/koalition-boilerplate/node_modules/handgrip</span><br><span class="line">-&gt; /usr/local/Cellar/nvm/0.25.4/versions/node/v4.4.4/lib/node_modules/handgrip</span><br><span class="line">-&gt; /Users/Dylan/handgrip</span><br></pre></td></tr></table></figure>
+
+<p>由于依赖通过符号链接的方式组织，在模块目录中的修改可以立即在其他目录中生效。<br><a name="AO1sx"></a></p>
+<h4 id="npm-conifg"><a href="#npm-conifg" class="headerlink" title="npm conifg"></a><a href="https://github.com/theicebear/npm-basic-usage#npm-conifg" target="_blank" rel="noopener"></a>npm conifg</h4><ol>
+<li><p>设置一个配置项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set &lt;key&gt; &lt;value&gt; [-g|--global]</span><br><span class="line">npm set &lt;key&gt; &lt;value&gt; [-g|--global]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果配置项的值阙如，将采用默认值 <code>true</code>。</p>
+</li>
+<li><p>读取一个配置项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config get &lt;key&gt;</span><br><span class="line">npm get &lt;key&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除一个配置项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config delete key</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列出所有的配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config list</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在编辑器中打开配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config edit</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 <code>--global</code> 来打开全局配置文件。<br><a name="gAGTg"></a></p>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a><a href="https://github.com/theicebear/npm-basic-usage#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86" target="_blank" rel="noopener"></a>工作原理</h2><blockquote>
+<p>下面的内容基本上翻译了 <a href="https://docs.npmjs.com/how-npm-works/npm3" target="_blank" rel="noopener">npm v3 Dependency Resolution</a>、<a href="https://docs.npmjs.com/how-npm-works/npm3-dupe" target="_blank" rel="noopener">npm3 Duplication and Deduplication</a>、<a href="https://docs.npmjs.com/how-npm-works/npm3-nondet" target="_blank" rel="noopener">npm3 Non-determinism</a> 这三篇文章</p>
+</blockquote>
+</li>
+</ol>
+<p>npm v3 依赖解析的主要思想：尽可能地减少间接依赖安装目录的深度，最理想的情况是与直接依赖安装在同一目录下，通过这种方式来减少依赖目录的嵌套，缓解整个依赖目录层次过深的问题。（因为 Windows 中文件路径的长度不能大于 260 个字符。）<br>🌰：<br>假如我们有模块 A，模块 A 依赖了模块 B。</p>
+<p>然后我们创建了已依赖模块 A 的应用 App。<br>在执行 <code>npm install</code> 的时候，npm v3 会把模块 A 及其依赖模块 B 都安装在 <code>/node_modules</code> 目录中。（npm v2 则会把模块 B 会嵌套在模块 A 中。）</p>
+<p>此时，我们的应用 App 又需要依赖模块 C，而模块 C 依赖了另一个版本的模块 B。</p>
+<p>然而，由于模块 B v1.0 已经被安装在了顶层依赖目录中，模块 B v2.0 就无法安装到同一位置了。这种情况下，npm v3 将会默认采用 npm v2 的行为，将这个新的模块 B 嵌套在依赖它的模块中，也就是说，把模块 B v2.0 安装到模块 C 中。</p>
+<p>在控制台打印出依赖树和目录树。</p>
+<hr>
+<p><em>如果再安装一个依赖模块 B v1.0 或 v2.0 会怎么样呢？</em><br>此时，我们的应用 App 又需要依赖模块 D，而模块 D 与模块 C 一样，依赖了模块 B v2.0。</p>
+<p>由于模块 B v1.0 已经被安装在了顶层依赖目录中，模块 B v2.0 就无法安装到同一位置了。因此，尽管模块 C 中已经有了一份拷贝，模块 B v2.0 还是被安装到了模块 D 中（否则就 requrie 不到了）。</p>
+<p>如果一个间接依赖被两个以上的包所依赖，且不能安装在顶层依赖目录中，那么这个间接依赖会被复制一份，并嵌套在直接依赖的目录中。<br>相反地，如果一个间接依赖被两个以上的包所依赖，且被安装在顶层依赖目录中，那么这个依赖就不会被复制，而被依赖它的包所共享。<br>🌰，我们又加了一个依赖模块 E，模块 E 与模块 A 一样，依赖了模块 B v1.0。</p>
+<p>由于模块 B v1.0 已经安装再来顶层依赖目录中，所以不需要复制并嵌套该模块，直接安装模块 E，然后模块 E 就可以与模块 A 共享模块 B v1.0 了。</p>
+<p>在控制台打印出依赖树和目录树。</p>
+<hr>
+<p><em>如果我们把模块 A 升级至 v2.0，模块 A v2.0 不再依赖模块 B v1.0，而是依赖模块 B v2.0，这会怎么样呢？</em><br>执行 <code>npm install mod-a@2</code>，npm v3 将做以下事情：</p>
+<ol>
+<li>移除模块 A v1.0</li>
+<li>安装模块 A v2.0</li>
+<li>保留模块 B v1.0，因为模块 E 仍旧依赖它</li>
+<li>由于模块 B v1.0 还在顶层依赖目录中，模块 B v2.0 被嵌套安装在模块 A v2.0 中</li>
+</ol>
+<p>在控制台打印出依赖树和目录树。</p>
+<p>最后，我们吧模块 E 升级至 v2.0，模块 E v2.0 同样不再依赖模块 B v1.0，而是依赖模块 B v2.0。</p>
+<p>npm v3 将做以下事情：</p>
+<ol>
+<li>移除模块 E v1.0</li>
+<li>安装模块 E v2.0</li>
+<li>由于没有模块依赖模块 B v1.0，移除该模块</li>
+<li>由于顶层依赖目录中没有模块 B，在该目录中安装模块 B v2.0</li>
+</ol>
+<p>在控制台打印出依赖树和目录树。</p>
+<p>现在，模块 B v2.0 几乎出现在了每一个依赖目录中，这显然不够简洁，我们可以执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm dedupe</span><br></pre></td></tr></table></figure>
+
+<p>这条命令可以仅保留顶层依赖目录中的模块 B v2.0，而移除其他次级目录中的拷贝。<br>在控制台打印出目录树。</p>
+<hr>
+<p>我们让 App 回到刚才的一个状态：</p>
+<p>在这个🌰中，我们的应用有以下 <code>package.json</code> 文件：<br>{<br>  “name”: “example3”,<br>  “version”: “1.0.0”,<br>  “description”: “”,<br>  “main”: “index.js”,<br>  “scripts”: {<br>    “test”: “echo &quot;Error: no test specified&quot; &amp;&amp; exit 1”<br>  },<br>  “keywords”: [],<br>  “author”: “”,<br>  “license”: “ISC”,<br>  “dependencies”: {<br>    “mod-a”: “^1.0.0”,<br>    “mod-c”: “^1.0.0”,<br>    “mod-d”: “^1.0.0”,<br>    “mod-e”: “^1.0.0”<br>  }<br>}<br>如果此时运行 <code>npm install</code>，控制台会输出以下结果：</p>
+<p>然后，我们再次把模块 A 升级到 v2.0，模块 A v2.0 不在依赖模块 B v1.0，而是依赖模块 B v2.0：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mod-a@2 --save</span><br></pre></td></tr></table></figure>
+
+<p>控制台输出：</p>
+<p>此时，我们的依赖目录看起来是这样的：</p>
+<p>而且我们得到了一个新的 <code>package.json</code>：<br>{<br>  “name”: “example3”,<br>  “version”: “1.0.0”,<br>  “description”: “”,<br>  “main”: “index.js”,<br>  “scripts”: {<br>    “test”: “echo &quot;Error: no test specified&quot; &amp;&amp; exit 1”<br>  },<br>  “keywords”: [],<br>  “author”: “”,<br>  “license”: “ISC”,<br>  “dependencies”: {<br>    “mod-a”: “^2.0.0”,<br>    “mod-c”: “^1.0.0”,<br>    “mod-d”: “^1.0.0”,<br>    “mod-e”: “^1.0.0”<br>  }<br>}<br>接着，我们运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>控制台输出：</p>
+<p>依赖目录变成了：</p>
+<hr>
+<p><strong>总结：</strong></p>
+<ol>
+<li><p>依赖目录的结构取决于依赖安装的顺序</p>
+</li>
+<li><p><code>npm install</code> （不带参数）安装出的依赖目录结构是稳定的，因为 <code>package.json</code> 中依赖的排列顺序总是字典序<br></p>
+</li>
+<li><p>npm v3 需要尽可能的减少间接依赖安装目录的深度，于是不得不从树根至树叶一级一级遍历下来，寻找可用的最远祖先节点，严重延长了依赖的安装时间<br><br><a name="K9KJm"></a></p>
+<h2 id="实用技巧"><a href="#实用技巧" class="headerlink" title="实用技巧"></a><a href="https://github.com/theicebear/npm-basic-usage#%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7" target="_blank" rel="noopener"></a>实用技巧</h2><p><a name="nSXev"></a></p>
+<h3 id="pacakge-json"><a href="#pacakge-json" class="headerlink" title="pacakge.json"></a><a href="https://github.com/theicebear/npm-basic-usage#pacakgejson" target="_blank" rel="noopener"></a>pacakge.json</h3><p><a name="5DMsW"></a></p>
+<h4 id="dependencies"><a href="#dependencies" class="headerlink" title="dependencies"></a><a href="https://github.com/theicebear/npm-basic-usage#dependencies" target="_blank" rel="noopener"></a>dependencies</h4><p>版本号的写法：</p>
+</li>
+</ol>
+<ul>
+<li><code>version</code>: 必须匹配确切的版本号</li>
+<li><code>&gt;version</code>、<code>&gt;=version</code>、<code>&lt;version</code>、<code>&lt;=version</code></li>
+<li><code>~version</code>：如果 minor 级的版本被确定的话，允许 patch 级的版本变化；否则允许 minor 级版本变化<ul>
+<li><code>~1.2.3</code> := <code>&gt;=1.2.3 &lt;1.3.0</code></li>
+<li><code>~1.2</code> := <code>&gt;=1.2.0 &lt;1.3.0</code></li>
+<li><code>~1</code> := <code>&gt;=1.0.0 &lt;2.0.0</code></li>
+<li><code>~0.2.3</code> := <code>&gt;=0.2.3 &lt;0.3.0</code></li>
+<li><code>~0</code> := <code>&gt;=0.0.0 &lt;1.0.0</code></li>
+<li><code>~1.2.3-beta.2</code> := <code>&gt;=1.2.3-beta.2 &lt;1.3.0</code></li>
+</ul>
+</li>
+<li><code>^version</code>：允许版本号中不修改最左非零位及其前缀的所有版本号更高的变化<ul>
+<li><code>^1.2.3</code> := <code>&gt;=1.2.3 &lt;2.0.0</code></li>
+<li><code>^0.2.3</code> := <code>&gt;=0.2.3 &lt;0.3.0</code></li>
+<li><code>^0.0.3</code> := <code>&gt;=0.0.3 &lt;0.0.4</code></li>
+<li><code>^1.2.3-beta.2</code> := <code>&gt;=1.2.3-beta.2 &lt;2.0.0</code></li>
+<li><code>^0.0.3-beta</code> := <code>&gt;=0.0.3-beta &lt;0.0.4</code></li>
+<li><code>^1.2.x</code> := <code>&gt;=1.2.0 &lt;2.0.0</code></li>
+<li><code>^0.0.x</code> := <code>&gt;=0.0.0 &lt;0.1.0</code></li>
+<li><code>^0.0</code> := <code>&gt;=0.0.0 &lt;0.1.0</code></li>
+<li><code>^1.x</code> := <code>&gt;=1.0.0 &lt;2.0.0</code></li>
+</ul>
+</li>
+<li><code>1.2.x</code>：<code>1.2.0</code>、<code>1.2.1</code> 等，不包括 <code>1.3.0</code></li>
+<li><code>*</code> 或空：任何版本</li>
+<li><code>version1 - version2</code>：<code>&gt;=version1 &lt;=version2</code></li>
+<li><code>range1 || range2</code></li>
+<li><code>tag</code>：指定 tag</li>
+<li><code>file:...</code>：本地路径</li>
+<li><code>http://...</code>、<code>git...</code>：网络路径<ul>
+<li><code>git://github.com/user/project.git#commit-ish</code></li>
+<li><code>git+ssh://user@hostname:project.git#commit-ish</code></li>
+<li><code>git+ssh://user@hostname/project.git#commit-ish</code></li>
+<li><code>git+http://user@hostname/project/blah.git#commit-ish</code></li>
+<li><code>git+https://user@hostname/project/blah.git#commit-ish</code></li>
+</ul>
+</li>
+<li><code>user/repo#commit-ish</code>：GitHub 仓库<br><a name="AJ3R4"></a><h4 id="optionalDependencies"><a href="#optionalDependencies" class="headerlink" title="optionalDependencies"></a><a href="https://github.com/theicebear/npm-basic-usage#optionaldependencies" target="_blank" rel="noopener"></a>optionalDependencies</h4><code>optionalDependencies</code> 中的依赖安装失败时，npm 不会停止整个安装过程。<br>模块本身应当处理由于依赖安装失败导致依赖缺失的问题，🌰如：<br>try {<br>  var foo = require(‘foo’)<br>  var fooVersion = require(‘foo/package.json’).version<br>} catch (er) {<br>  foo = null<br>}<br>if ( notGoodFooVersion(fooVersion) ) {<br>  foo = null<br>}</li>
+</ul>
+<p>// .. then later in your program ..</p>
+<p>if (foo) {<br>  foo.doFooThings()<br>}
+<a name="Tp343"></a></p>
+<h4 id="peerDependencies"><a href="#peerDependencies" class="headerlink" title="peerDependencies"></a><a href="https://github.com/theicebear/npm-basic-usage#peerdependencies" target="_blank" rel="noopener"></a>peerDependencies</h4><p><code>peerDependencies</code> 表示当前模块<strong>适配</strong>其他某些模块，也就是只有当那些指定的模块被安装时，当前模块才会被安装。<br>🌰如：<br>{<br>  “name”: “tea-latte”,<br>  “version”: “1.3.5”,<br>  “peerDependencies”: {<br>    “tea”: “2.x”<br>  }<br>}<br>表示确保模块 tea-latte 只能同模块 tea 2.x 一起安装。</p>
+<blockquote>
+<p>如果 <code>peerDependencies</code> 中的模块没有被明确依赖的话，npm v2 会自动安装这些模块，但 npm v3 不会再安装这些模块，而是输出一个警告。</p>
+</blockquote>
+<p><a name="eljYH"></a></p>
+<h4 id="bundledDependencies"><a href="#bundledDependencies" class="headerlink" title="bundledDependencies"></a><a href="https://github.com/theicebear/npm-basic-usage#bundleddependencies" target="_blank" rel="noopener"></a>bundledDependencies</h4><p><code>bundledDependencies</code> 表示在当前模块打包或发布时，需要被置于模块内部的依赖。<br>使用的时机：</p>
+<ol>
+<li>使用的依赖不是来自于 npm，或者修改了这个依赖</li>
+<li>使用开发者自己的项目作为依赖</li>
+<li>希望在模块中包含一些文件<br><a name="zfgGA"></a><h4 id="bin"><a href="#bin" class="headerlink" title="bin"></a><a href="https://github.com/theicebear/npm-basic-usage#bin" target="_blank" rel="noopener"></a>bin</h4>将可执行的文件安装到 PATH 中。可能安装到的位置有：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># global:</span><br><span class="line">/usr/local/opt/nvm/versions/node/v4.4.4/bin/</span><br><span class="line">/usr/local/bin/</span><br><span class="line"># local:</span><br><span class="line">./node_modules/.bin/</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>🌰：<br>{ “bin” : { “myapp” : “./cli.js” } }<br>当安装这个模块时，npm 会创建一个指向 <code>cli.js</code> 的符号链接。<br>{ “name”: “my-program”,<br>  “version”: “1.2.5”,<br>  “bin”: “./path/to/program” }<br>上面的写法等价于：<br>{ “name”: “my-program”,<br>  “version”: “1.2.5”,<br>  “bin” : { “my-program” : “./path/to/program” } }<br><a name="FozEp"></a></p>
+<h4 id="config"><a href="#config" class="headerlink" title="config"></a><a href="https://github.com/theicebear/npm-basic-usage#config" target="_blank" rel="noopener"></a>config</h4><p><code>package.json</code> 文件中的 <code>config</code> 字段可以用来设置模块脚本中可以用到的配置参数。<br>🌰，如果一个模块有：<br>{ “name” : “foo”,<br>  “config” : { “port” : “8080” } }<br>那么在模块脚本（如 <code>start</code>）中就可以通过 <code>process.env.npm_package_config_port</code>，访问到这个配置。<br>这个配置也可以被命令 <code>npm config set foo:port 8001</code> 覆盖。<br><a name="IkhZh"></a></p>
+<h3 id="npmrc"><a href="#npmrc" class="headerlink" title=".npmrc"></a><a href="https://github.com/theicebear/npm-basic-usage#npmrc" target="_blank" rel="noopener"></a>.npmrc</h3><p>配置文件有：</p>
+<ul>
+<li>项目配置文件（/path/to/my/project/.npmrc）</li>
+<li>用户配置文件（~/.npmrc）</li>
+<li>全局配置文件（/path/to/node/etc/npmrc）</li>
+<li>内置配置文件（/path/to/npm/npmrc）</li>
+</ul>
+<p>环境变量用法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prefix = $&#123;HOME&#125;/.npm-packages</span><br></pre></td></tr></table></figure>
+
+<p>数组用法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">key[] = &quot;first value&quot;</span><br><span class="line">key[] = &quot;second value&quot;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>项目配置文件和用户配置文件的权限必须设置为只能被当前用户读写（0600），否则该配置文件会被 npm 忽略</p>
+</blockquote>
+<p>可以通过 <code>npm config</code> 命令来管理配置文件。<br>常用配置项：</p>
+<ul>
+<li><p><code>cache</code>：npm 本地缓存目录，默认 <code>~/.npm</code></p>
+</li>
+<li><p><code>cache-max</code>：保持缓存项目且不向 registry 检查的最长时间，单位秒，默认 <code>Infinity</code>，缓存中的数据不会自动删除除非执行 <code>npm cache clean</code> 命令</p>
+</li>
+<li><p><code>cache-min</code>：保持缓存项目且不向 registry 检查的最短时间，单位秒，默认 <code>10</code>，可以置为 <code>999999</code> 等以尽量延长缓存生效时间</p>
+</li>
+<li><p><code>depth</code>：<code>npm ls</code> 等命令中的默认深度，默认 <code>Infinity</code></p>
+</li>
+<li><p><code>editor</code>：npm 默认使用的编辑器</p>
+</li>
+<li><p><code>engine-strict</code>：如果置为 <code>true</code>，npm 将会拒绝安装不符合当前 Node.js 版本的模块</p>
+</li>
+<li><p><code>force</code>：强力执行一些命令</p>
+<ul>
+<li>生命周期脚本执行失败不再阻塞安装过程</li>
+<li>发布会覆盖已经发布的版本</li>
+<li>访问 registry 时会跳过缓存</li>
+</ul>
+</li>
+<li><p><code>global</code>：全局模式</p>
+</li>
+<li><p><code>globalconfig</code>：全局配置文件的路径</p>
+</li>
+<li><p><code>global-style</code>：以安装全局依赖的方式安装局部依赖，只有直接依赖会被放在顶层依赖目录中</p>
+</li>
+<li><p><code>https-proxy</code>：代理</p>
+</li>
+<li><p><code>if-present</code>：如果置为 <code>true</code>，<code>npm run-script</code> 就不会在脚本找不到时报错</p>
+</li>
+<li><p><code>ignore-scripts</code>：如果置为 <code>true</code>，npm 就不会运行 <code>package.json</code> 定义的脚本</p>
+</li>
+<li><p><code>init-module</code>：指定 <code>npm init</code> 命令运行的模块</p>
+</li>
+<li><p><code>init-author-name</code>：<code>npm init</code> 使用的默认作者名</p>
+</li>
+<li><p><code>init-author-email</code>：<code>npm init</code> 使用的默认作者邮箱</p>
+</li>
+<li><p><code>init-author-url</code>：<code>npm init</code> 使用的默认作者 URL</p>
+</li>
+<li><p><code>init-license</code>：<code>npm init</code> 使用的默认许可证</p>
+</li>
+<li><p><code>init-version</code>：<code>npm init</code> 使用的默认版本号</p>
+</li>
+<li><p><code>json</code>：<code>npm ls</code> 等命令输出 JSON 格式的数据</p>
+</li>
+<li><p><code>link</code>：如果置为 <code>true</code>，如果全局依赖中有合适的包，安装局部依赖时将会直接链接到这个全局依赖的包；如果全局依赖中没有该包的任何版本，则全局安装这个包，并链接到局部依赖中；其他情况则在局部依赖中安装该包</p>
+</li>
+<li><p><code>long</code>：<code>npm ls</code> 和 <code>npm search</code> 显示额外信息</p>
+</li>
+<li><p><code>message</code>：<code>npm version</code> 写在 git 提交中的信息，<code>%s</code> 将被替换为版本号</p>
+</li>
+<li><p><code>npat</code>：安装时运行测试</p>
+</li>
+<li><p><code>onload-script</code>：指定一个在 npm 加载时 <code>require()</code> 的包，编程使用 npm 时可能会有用</p>
+</li>
+<li><p><code>only</code>：与命令中的 <code>--only</code> 效果类似</p>
+</li>
+<li><p><code>optional</code>：如果置为 <code>false</code>，则不安装 <code>optionalDependencies</code> 中的依赖</p>
+</li>
+<li><p><code>prefix</code>：指定安装全局依赖的路径</p>
+</li>
+<li><p><code>production</code>：如果置为 <code>true</code>，则开启生产模式，<code>npm install</code> 将不安装开发依赖，声明周期脚本运行时自动设置 <code>NODE_ENV=&quot;production&quot;</code></p>
+</li>
+<li><p><code>registry</code>：指定 npm registry 的 URL</p>
+</li>
+<li><p><code>rollback</code>：移除安装失败的模块</p>
+</li>
+<li><p><code>save</code>：与命令中的 <code>--save</code> 效果类似</p>
+</li>
+<li><p><code>scope</code>：与命令中的 <code>--scope</code> 效果类似</p>
+</li>
+<li><p><code>shrinkwrap</code>：如果置为 <code>false</code>，安装时忽略 <code>npm-shrinkwrap.json</code></p>
+</li>
+<li><p><code>progress</code>：如果置为 <code>false</code>，不显示进度条</p>
+</li>
+<li><p><code>loglevel</code>：设置输出日志的 level，置为 <code>silly</code> 可以显示全部日志<br><a name="BE5hK"></a></p>
+<h3 id="npmignore"><a href="#npmignore" class="headerlink" title=".npmignore"></a><a href="https://github.com/theicebear/npm-basic-usage#npmignore" target="_blank" rel="noopener"></a>.npmignore</h3><p>当模块目录中存在 <code>.gitignore</code> 但没有 <code>.npmignore</code> 时，npm 将会忽略 <code>.gitignore</code> 中的文件。如果目录中存在 <code>.npmignore</code>，npm 将会根据 <code>.npmignore</code> 忽略文件。<br>默认被 npm 忽略，不需要添加到 <code>.npmignore</code> 中的文件：</p>
+</li>
+<li><p><code>.*.swp</code></p>
+</li>
+<li><p><code>._*</code></p>
+</li>
+<li><p><code>.DS_Store</code></p>
+</li>
+<li><p><code>.git</code></p>
+</li>
+<li><p><code>.hg</code></p>
+</li>
+<li><p><code>.npmrc</code></p>
+</li>
+<li><p><code>.lock-wscript</code></p>
+</li>
+<li><p><code>.svn</code></p>
+</li>
+<li><p><code>.wafpickle-*</code></p>
+</li>
+<li><p><code>config.gypi</code></p>
+</li>
+<li><p><code>CVS</code></p>
+</li>
+<li><p><code>npm-debug.log</code></p>
+</li>
+</ul>
+<p>除了 bundled dependencies 外，node_modules 中的所有文件也会被忽略。<br>下面的文件即使添加到 <code>.npmignore</code> 中的文件也不会被忽略：</p>
+<ul>
+<li><p><code>package.json</code></p>
+</li>
+<li><p><code>README</code>（及其变体）</p>
+</li>
+<li><p><code>CHANGELOG</code>（及其变体）</p>
+</li>
+<li><p><code>LICENSE</code>、<code>LICENCE</code><br><a name="ZwkeS"></a></p>
+<h3 id="scripts"><a href="#scripts" class="headerlink" title="scripts"></a><a href="https://github.com/theicebear/npm-basic-usage#scripts" target="_blank" rel="noopener"></a>scripts</h3><p>npm 支持的生命周期脚本有：</p>
+</li>
+<li><p><code>prepublish</code>: 发布模块之前执行，也在不带任何参数的局部 <code>npm install</code> 之前执行</p>
+</li>
+<li><p><code>publish</code>、<code>postpublish</code>: 发布模块之后执行</p>
+</li>
+<li><p><code>preinstall</code>: 安装该模块之前执行</p>
+</li>
+<li><p><code>install</code>、<code>postinstall</code>: 安装该模块之后执行</p>
+</li>
+<li><p><code>preuninstall</code>、<code>uninstall</code>: 移除该模块之前执行</p>
+</li>
+<li><p><code>postuninstall</code>: 移除该模块之后执行</p>
+</li>
+<li><p><code>preversion</code>、<code>version</code>: 修改模块版本号之前执行</p>
+</li>
+<li><p><code>postversion</code>: 修改模块版本号之后执行</p>
+</li>
+<li><p><code>pretest</code>、<code>test</code>、<code>posttest</code>: 在 <code>test</code> 命令的前后执行</p>
+</li>
+<li><p><code>prestop</code>、<code>stop</code>、<code>poststop</code>: 在 <code>stop</code> 命令的前后执行</p>
+</li>
+<li><p><code>prestart</code>、<code>start</code>、<code>poststart</code>: 在 <code>start</code> 命令的前后执行.</p>
+</li>
+<li><p><code>prerestart</code>、<code>restart</code>、<code>postrestart</code>: 在 <code>restart</code> 命令的前后执行，如果 <code>restart</code> 脚本没有提供，<code>restart</code> 命令将会执行 <code>stop</code> 脚本再执行 <code>start</code> 脚本</p>
+</li>
+</ul>
+<p>对于自定义名称的脚本，可以通过 <code>npm run-script &lt;pkg&gt; &lt;stage&gt;</code> 来执行，匹配名称的 <em>pre</em> 和 <em>post</em> 命令同样也会执行。<br><a name="aEYq5"></a></p>
+<h3 id="shrinkwrap"><a href="#shrinkwrap" class="headerlink" title="shrinkwrap"></a><a href="https://github.com/theicebear/npm-basic-usage#shrinkwrap" target="_blank" rel="noopener"></a>shrinkwrap</h3><p><code>npm shrinkwrap</code> 可以用来锁定依赖的版本号。<br>一个使用的🌰：</p>
+<ol>
+<li>我们有模块 A：</li>
+</ol>
+<p>{<br>  “name”: “A”,<br>  “version”: “0.0.1”,<br>  “dependencies”: {<br>    “B”: “&lt;0.1.0”<br>  }<br>}</p>
+<ol>
+<li>模块 B：</li>
+</ol>
+<p>{<br>  “name”: “B”,<br>  “version”: “0.0.1”,<br>  “dependencies”: {<br>    “C”: “&lt;0.1.0”<br>  }<br>}</p>
+<ol>
+<li>和模块 C：</li>
+</ol>
+<p>{<br>  “name”: “C”,<br>  “version”: “0.0.1”<br>}</p>
+<ol>
+<li><p>这三个模块都只有 0.0.1 这一个版本。此时运行 <code>npm install A</code>，将会得到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A@0.0.1</span><br><span class="line">`-- B@0.0.1</span><br><span class="line">    `-- C@0.0.1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果模块 B 发布了 0.0.2 版本，此时运行<code>npm install A</code>，将会得到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A@0.0.1</span><br><span class="line">`-- B@0.0.2</span><br><span class="line">    `-- C@0.0.1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>但是模块 A 的作者希望安装原来的版本，那么他可以运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm shrinkwrap</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后在项目目录下得到了一个<code>npm-shrinkwrap.json</code>文件：</p>
+</li>
+</ol>
+<p>{<br>  “name”: “A”,<br>  “version”: “0.0.1”,<br>  “dependencies”: {<br>    “B”: {<br>      “version”: “0.0.1”,<br>      “from”: “B@&lt;0.1.0”,<br>      “resolved”: “<a href="https://registry.npmjs.org/B/-/B-0.0.1.tgz&quot;" target="_blank" rel="noopener">https://registry.npmjs.org/B/-/B-0.0.1.tgz&quot;</a>,<br>      “dependencies”: {<br>        “C”: {<br>          “version”: “0.0.1”,<br>          “from”: “C@&lt;0.1.0”,<br>          “resolved”: “<a href="https://registry.npmjs.org/C/-/C-0.0.1.tgz&quot;" target="_blank" rel="noopener">https://registry.npmjs.org/C/-/C-0.0.1.tgz&quot;</a><br>        }<br>      }<br>    }<br>  }<br>}</p>
+<ol>
+<li><code>npm shrinkwrap</code>命令根据当前目录中的 node_modules 目录锁定了依赖版本号，此时再运行<code>npm install</code>，该命令的行为将变为：<ol>
+<li>重新构造 <code>npm-shrinkwrap.json</code> 中描述的依赖树，如果一个依赖项中的 <code>resolved</code> 字段可用，则使用该字段获取依赖，否则使用 <code>version</code> 字段来获取依赖</li>
+<li>以普通的方式安装 <code>npm-shrinkwrap.json</code> 中缺失的依赖</li>
+</ol>
+</li>
+</ol>
+<hr>
+<p>添加或升级依赖包的方法：</p>
+<ul>
+<li><p>添加或升级一个依赖包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save &lt;pkg&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>升级所有依赖包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --no-shrinkwrap</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>注意事项：</p>
+<ol>
+<li><p>如果 node_modules 目录中的依赖比 <code>package.json</code> 中定义的多或者少，<code>npm shrinkwrap</code> 命令将会失败</p>
+</li>
+<li><p><code>npm shrinkwrap</code> 命令不锁定 <code>devDependencies</code> 中依赖的版本，即 <code>npm-shrinkwrap.json</code> 中不包含开发依赖；如果希望锁定开发依赖的版本，则需要在运行命令时加上 <code>--dev</code> 参数</p>
+</li>
+<li><p>shrinkwrap 不会继承，即执行过程中不会访问依赖的 <code>npm-shrinkwrap.json</code> 文件；但是，依赖中如果有 <code>npm-shrinkwrap.json</code> 文件，在安装该依赖的时就会按照这个文件来安装相关的模块到 node_modules 目录中，如果没有 <code>npm-shrinkwrap.json</code> 文件，开发者需要在使用 shrinkwrap 前自行确认 node_modules 目录中的依赖都是有效的；shrinkwrap 总是据当前目录中的 node_modules 目录中的内容锁定依赖版本号<br><a name="FFYiN"></a></p>
+<h3 id="cache"><a href="#cache" class="headerlink" title="cache"></a><a href="https://github.com/theicebear/npm-basic-usage#cache" target="_blank" rel="noopener"></a>cache</h3><p>npm 将数据缓存在 <code>npm config get cache</code> 命令指定的路径中。<br>当局部安装一个模块时，npm 会执行以下步骤：</p>
+</li>
+<li><p>检查缓存中的模块信息文件（.cache.json，包括 ETag 等信息）是否存在并在免检时间内</p>
+</li>
+<li><p>如果存在合适的缓存信息文件且没有超过免检时间，执行步骤 6</p>
+</li>
+<li><p>获取该模块的最新信息文件，然后计算出合适的模块版本号</p>
+</li>
+<li><p>如果缓存中有该版本号的模块，则执行步骤 6</p>
+</li>
+<li><p>下载该版本号的模块，并将其载入缓存中</p>
+</li>
+<li><p>取缓存中的文件，并将其安装至目标路径中</p>
+</li>
+</ol>
+<p><code>npm cache</code> 命令的用法：</p>
+<ol>
+<li><p>向缓存中添加指定的模块：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm cache add &lt;tarball file&gt;</span><br><span class="line">npm cache add &lt;folder&gt;</span><br><span class="line">npm cache add &lt;tarball url&gt;</span><br><span class="line">npm cache add &lt;name&gt;@&lt;version&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>显示缓存中的数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm cache ls [&lt;path&gt;]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清空缓存：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm cache clean [&lt;path&gt;]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>npm 缓存的改进方案：</p>
+<ol>
+<li><a href="https://github.com/nolanlawson/local-npm" target="_blank" rel="noopener">local-npm</a>：一个本地 npm 镜像，但是仅缓存已经安装过的模块，没有网络时自动回退到本地<br></li>
+<li><a href="https://github.com/mixu/npm_lazy" target="_blank" rel="noopener">npm_lazy</a></li>
+</ol>
+<p>转自：<a href="https://github.com/theicebear/npm-basic-usage" target="_blank" rel="noopener">https://github.com/theicebear/npm-basic-usage</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/01/yuque/REST/" rel="next" title="REST">
+                <i class="fa fa-chevron-left"></i> REST
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/01/yuque/前端性能优化/" rel="prev" title="前端性能优化">
+                前端性能优化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本用法"><span class="nav-number">1.</span> <span class="nav-text">基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装与升级"><span class="nav-number">1.1.</span> <span class="nav-text">安装与升级</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#升级"><span class="nav-number">1.1.2.</span> <span class="nav-text">升级</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装指定版本的-npm"><span class="nav-number">1.1.3.</span> <span class="nav-text">安装指定版本的 npm</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-number">1.2.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-install"><span class="nav-number">1.2.1.</span> <span class="nav-text">npm install</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-uninstall"><span class="nav-number">1.2.2.</span> <span class="nav-text">npm uninstall</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-update"><span class="nav-number">1.2.3.</span> <span class="nav-text">npm update</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-ls"><span class="nav-number">1.2.4.</span> <span class="nav-text">npm ls</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-adduser"><span class="nav-number">1.2.5.</span> <span class="nav-text">npm adduser</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-init"><span class="nav-number">1.2.6.</span> <span class="nav-text">npm init</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-publish"><span class="nav-number">1.2.7.</span> <span class="nav-text">npm publish</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-unpublish"><span class="nav-number">1.2.8.</span> <span class="nav-text">npm unpublish</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-deprecate"><span class="nav-number">1.2.9.</span> <span class="nav-text">npm deprecate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-dist-tag"><span class="nav-number">1.2.10.</span> <span class="nav-text">npm dist-tag</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-view"><span class="nav-number">1.2.11.</span> <span class="nav-text">npm view</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-link"><span class="nav-number">1.2.12.</span> <span class="nav-text">npm link</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-conifg"><span class="nav-number">1.2.13.</span> <span class="nav-text">npm conifg</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工作原理"><span class="nav-number">2.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实用技巧"><span class="nav-number">3.</span> <span class="nav-text">实用技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pacakge-json"><span class="nav-number">3.1.</span> <span class="nav-text">pacakge.json</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dependencies"><span class="nav-number">3.1.1.</span> <span class="nav-text">dependencies</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#optionalDependencies"><span class="nav-number">3.1.2.</span> <span class="nav-text">optionalDependencies</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#peerDependencies"><span class="nav-number">3.1.3.</span> <span class="nav-text">peerDependencies</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bundledDependencies"><span class="nav-number">3.1.4.</span> <span class="nav-text">bundledDependencies</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bin"><span class="nav-number">3.1.5.</span> <span class="nav-text">bin</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#config"><span class="nav-number">3.1.6.</span> <span class="nav-text">config</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#npmrc"><span class="nav-number">3.2.</span> <span class="nav-text">.npmrc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#npmignore"><span class="nav-number">3.3.</span> <span class="nav-text">.npmignore</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#scripts"><span class="nav-number">3.4.</span> <span class="nav-text">scripts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shrinkwrap"><span class="nav-number">3.5.</span> <span class="nav-text">shrinkwrap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cache"><span class="nav-number">3.6.</span> <span class="nav-text">cache</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">95k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>

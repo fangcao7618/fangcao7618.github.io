@@ -140,7 +140,7 @@
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1560475934807-5e3e53e8-bafd-451a-9015-f5bd8b2ce39f.png#align=left&display=inline&height=334&name=image.png&originHeight=375&originWidth=337&size=61909&status=done&width=300">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1560475996798-af83cf98-7ea3-4c4e-a986-6141b4f58511.png#align=left&display=inline&height=590&originHeight=590&originWidth=339&size=0&status=done&width=339">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1560476090513-e3b7d117-31dc-4896-9303-c26e1e919b1b.png#align=left&display=inline&height=561&name=image.png&originHeight=611&originWidth=327&size=106055&status=done&width=300">
-<meta property="og:updated_time" content="2019-06-26T09:30:05.199Z">
+<meta property="og:updated_time" content="2019-07-02T07:10:03.289Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="垃圾回收">
 <meta name="twitter:description" content="作为编写程序的人，是可以做出“这个对象已经不再需要了”这样的判断，但计算机是做不到的。因此，如果程序（通过某个变量等等）可能会直接或间接地引用一个对象，那么这个对象就被视为“存活”；与之相反，已经引用不到的对象被视为“死亡”。将这些“死亡”对象找出来，然后作为垃圾进行回收，这就是 GC 的本质。  三大基础 GC 算法 引用计数法 它的基本原理是，在每个对象中保存该对象的引用计数，当引用发生增减时">
@@ -401,8 +401,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-26T17:30:05+08:00">
-                2019-06-26
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-02T15:10:03+08:00">
+                2019-07-02
               </time>
             
           </span>
@@ -473,16 +473,16 @@
 <p>它的基本原理是，在每个对象中保存该对象的引用计数，当引用发生增减时对计数进行更新。引用计数的增减，一般发生在变量赋值、对象内容更新、函数结束（局部变量不再被引用）等时间点。当一个对象的引用计数变为 0 时，则说明它将来不会再被引用，因此可以释放相应的内存空间。</p>
 <p>引用计数最大的缺点，就是无法释放循环引用的对象。</p>
 <p><a name="wNHUq"></a></p>
-<h4 id="标记清除法-标记压缩法"><a href="#标记清除法-标记压缩法" class="headerlink" title="标记清除法/标记压缩法"></a>标记清除法/标记压缩法</h4><p><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1560475996798-af83cf98-7ea3-4c4e-a986-6141b4f58511.png#align=left&display=inline&height=590&originHeight=590&originWidth=339&size=0&status=done&width=339" alt><br>这个算法假定设置一个叫做根（root）的对象（在 Javascript 里，根是全局对象）。垃圾回收器将定期从根开始，找所有从根开始引用的对象，然后找这些对象引用的对象<br>从 2012 年起，所有现代浏览器都使用了标记-清除垃圾回收算法。所有对 JavaScript 垃圾回收算法的改进都是基于标记-清除算法的改进，并没有改进标记-清除算法本身和它对“对象是否不再需要”的简化定义。<br>标记清除算法有一个缺点，就是在分配了大量对象，并且其中只有一小部分存活的情况下，所消耗的时间会大大超过必要的值，这是因为在清除阶段还需要对大量死亡对象进行扫描。<br></p>
+<h4 id="标记清除法-标记压缩法"><a href="#标记清除法-标记压缩法" class="headerlink" title="标记清除法/标记压缩法"></a>标记清除法/标记压缩法</h4><p><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1560475996798-af83cf98-7ea3-4c4e-a986-6141b4f58511.png#align=left&display=inline&height=590&originHeight=590&originWidth=339&size=0&status=done&width=339" alt><br>这个算法假定设置一个叫做根（root）的对象（在 Javascript 里，根是全局对象）。垃圾回收器将定期从根开始，找所有从根开始引用的对象，然后找这些对象引用的对象<br>从 2012 年起，所有现代浏览器都使用了标记-清除垃圾回收算法。所有对 JavaScript 垃圾回收算法的改进都是基于标记-清除算法的改进，并没有改进标记-清除算法本身和它对“对象是否不再需要”的简化定义。<br>标记清除算法有一个缺点，就是在分配了大量对象，并且其中只有一小部分存活的情况下，所消耗的时间会大大超过必要的值，这是因为在清除阶段还需要对大量死亡对象进行扫描。</p>
 <p><a name="dlS73"></a></p>
-<h4 id="复制收集算法"><a href="#复制收集算法" class="headerlink" title="复制收集算法"></a>复制收集算法</h4><p>在这种算法中，会将从根开始被引用的对象复制到另外的空间中，然后，再将复制的对象所能够引用的对象用递归的方式不断复制下去。<br>但是，和标记相比，将对象复制一份所需要的开销则比较大，因此在“存活”对象比例较高的情况下，反而会比较不利。这种算法的另一个好处是它具有局部性（Lo-cality）。在复制收集过程中，会按照对象被引用的顺序将对象复制到新空间中。于是，关系较近的对象被放在距离较近的内存空间中的可能性会提高，这被称为局部性。局部性高的情况下，内存缓存会更容易有效运作，程序的运行性能也能够得到提高。<br></p>
+<h4 id="复制收集算法"><a href="#复制收集算法" class="headerlink" title="复制收集算法"></a>复制收集算法</h4><p>在这种算法中，会将从根开始被引用的对象复制到另外的空间中，然后，再将复制的对象所能够引用的对象用递归的方式不断复制下去。<br>但是，和标记相比，将对象复制一份所需要的开销则比较大，因此在“存活”对象比例较高的情况下，反而会比较不利。这种算法的另一个好处是它具有局部性（Lo-cality）。在复制收集过程中，会按照对象被引用的顺序将对象复制到新空间中。于是，关系较近的对象被放在距离较近的内存空间中的可能性会提高，这被称为局部性。局部性高的情况下，内存缓存会更容易有效运作，程序的运行性能也能够得到提高。</p>
 <p><a name="qEqzS"></a></p>
 <h2 id="分代回收"><a href="#分代回收" class="headerlink" title="分代回收"></a>分代回收</h2><p>V8 引擎将保存对象的 堆 (heap) 进行了分代:</p>
 <ul>
 <li>对象最初会被分在 新生区(New Space) (1~8M)，新生区的内存分配只需要保有一个指向内存区的指针，不断根据内存大小进行递增，当指针达到新生区的末尾，会有一次垃圾回收清理(小周期)，清理掉新生区中不再活跃的死对象。<br></li>
 <li>对于超过 2 个小周期的对象，则需要将其移动至 老生区(Old Space)。老生区在 标记-清除 或 标记-紧缩 的过程(大周期) 中进行回收。<br></li>
 </ul>
-<p>大周期进行的并不频繁。一次大周期通常是在移动足够多的对象至老生区后才会发生<br>参考：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1560476090513-e3b7d117-31dc-4896-9303-c26e1e919b1b.png#align=left&display=inline&height=561&name=image.png&originHeight=611&originWidth=327&size=106055&status=done&width=300" alt="image.png"><br></p>
+<p>大周期进行的并不频繁。一次大周期通常是在移动足够多的对象至老生区后才会发生<br>参考：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1560476090513-e3b7d117-31dc-4896-9303-c26e1e919b1b.png#align=left&display=inline&height=561&name=image.png&originHeight=611&originWidth=327&size=106055&status=done&width=300" alt="image.png"></p>
 <ul>
 <li><a href="https://juejin.im/post/5cf4d12ee51d45775746b8ea" target="_blank" rel="noopener">JavaScript 垃圾回收机制</a></li>
 <li><a href="https://segmentfault.com/a/1190000004665100" target="_blank" rel="noopener">GC 的三大基础算法</a></li>
@@ -511,8 +511,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/13/yuque/nodejs/" rel="next" title="nodejs">
-                <i class="fa fa-chevron-left"></i> nodejs
+              <a href="/2019/06/13/yuque/vue面试题/" rel="next" title="vue面试题">
+                <i class="fa fa-chevron-left"></i> vue面试题
               </a>
             
           </div>
@@ -607,7 +607,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">100</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -749,7 +749,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">81.3k</span>
+    <span title="Site words total count">95k</span>
   
 </div>
 

@@ -137,7 +137,7 @@
 <meta property="og:site_name" content="FangCao">
 <meta property="og:description" content="React面试题&amp;amp;回答  React在使用 react 的过程中，我们绕不开渲染性能优化问题，因为默认情况下 react 组件的 shouldComponentUpdate 函数会一直返回 true，这回导致所有的组件都会进行耗时的虚拟 DOM 比较。在使用 redux 作为 react 的逻辑层框架时，我们可以使用经典的 PureComponent+ShallowCompare 的方式进">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-26T09:30:05.201Z">
+<meta property="og:updated_time" content="2019-07-02T07:10:03.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React面试题">
 <meta name="twitter:description" content="React面试题&amp;amp;回答  React在使用 react 的过程中，我们绕不开渲染性能优化问题，因为默认情况下 react 组件的 shouldComponentUpdate 函数会一直返回 true，这回导致所有的组件都会进行耗时的虚拟 DOM 比较。在使用 redux 作为 react 的逻辑层框架时，我们可以使用经典的 PureComponent+ShallowCompare 的方式进">
@@ -397,8 +397,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-26T17:30:05+08:00">
-                2019-06-26
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-02T15:10:03+08:00">
+                2019-07-02
               </time>
             
           </span>
@@ -473,7 +473,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">shouldComponentUpdate: <span class="function"><span class="keyword">function</span>(<span class="params">nextProps, nextState</span>) </span>&#123;</span><br><span class="line">  ......</span><br><span class="line">  <span class="comment">// update on any state changes (as is the default)</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.state !== nextState) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// update if props are shallowly not equal</span></span><br><span class="line">  <span class="keyword">return</span> isObjectShallowModified(<span class="keyword">this</span>.props, nextProps);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>借助于 mobx 框架对 Observable 变量引用的跟踪和依赖收集，mobx 能够精确地得到 react 组件对 Observable 变量的依赖图谱，然后再用经典的 ShallowCompare 实现细粒度的 shouldComponentUpdate 函数，以达到 100%无浪费 render。这一切都是自动完成地，fantastic！使用 mobx 后，我们再也无需手动写 shouldComponentUpdate 函数了。<br><a name="react-native"></a></p>
-<h2 id="React-Native"><a href="#React-Native" class="headerlink" title="React Native"></a>React Native</h2><p><a name="f094dd87"></a></p>
+<h2 id="React-Native"><a href="#React-Native" class="headerlink" title="React Native"></a>React Native</h2><p><a name="hqPZT"></a></p>
 <h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ul>
 <li><p>跨平台 （只有 0.2% 的平台特定代码）</p>
 </li>
@@ -503,7 +503,7 @@
 </li>
 <li><p>Flexbox</p>
 </li>
-<li><p>有时候可以加上 Web 跨三端<br><a name="597633ab"></a></p>
+<li><p>有时候可以加上 Web 跨三端<br><a name="9Rhmq"></a></p>
 <h3 id="劣势"><a href="#劣势" class="headerlink" title="劣势"></a>劣势</h3></li>
 <li><p>论成熟度，稳定性，RN 比 不上 iOS 和 Android 原生。</p>
 </li>
@@ -539,13 +539,13 @@
 </li>
 <li><p>还有一些奇怪的 Bug，暂没有修复。</p>
 </li>
-<li><p>SavedInstanceState 在 Android 上跨进程的坑。<br><a name="29329978"></a></p>
+<li><p>SavedInstanceState 在 Android 上跨进程的坑。<br><a name="g6bzL"></a></p>
 <h3 id="不是技术问题的问题"><a href="#不是技术问题的问题" class="headerlink" title="不是技术问题的问题"></a>不是技术问题的问题</h3></li>
 <li><p>要用好 RN 你必须同时熟悉 iOS 和 Android ，当然还有 RN 本身，这就对我们工程师提出了更多挑战。</p>
 </li>
 <li><p>团队的管理，责任的划分。</p>
 </li>
-<li><p>RN 文档及相关资源不如 iOS 和 Android 的丰富。<br><a name="d11195cb"></a></p>
+<li><p>RN 文档及相关资源不如 iOS 和 Android 的丰富。<br><a name="wdoXZ"></a></p>
 <h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p><a href="https://github.com/semlinker/reactjs-interview-questions" target="_blank" rel="noopener">reactjs-interview-questions</a></p>
 </li>
 </ul>
@@ -669,7 +669,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">100</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -811,7 +811,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">81.3k</span>
+    <span title="Site words total count">95k</span>
   
 </div>
 

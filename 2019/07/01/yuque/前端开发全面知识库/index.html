@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前端开发全面知识库，包括HTML5，CSS3和js的基本框架知识，以及DOM和BOM操作的基础知识和一些基本工具和IDE。学习本篇，你将了解到以下知识。 核心 Core HTML5W3C HTML 5 教程W3C HTML5 Chinese Interest Group Wiki菜鸟教程 HTML5 教程 | 菜鸟教程HTML5中文门户 HTML5中国：中国最大的HTML5中文门户 - Power">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端开发全面知识库">
+<meta property="og:url" content="http://yoursite.com/2019/07/01/yuque/前端开发全面知识库/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="前端开发全面知识库，包括HTML5，CSS3和js的基本框架知识，以及DOM和BOM操作的基础知识和一些基本工具和IDE。学习本篇，你将了解到以下知识。 核心 Core HTML5W3C HTML 5 教程W3C HTML5 Chinese Interest Group Wiki菜鸟教程 HTML5 教程 | 菜鸟教程HTML5中文门户 HTML5中国：中国最大的HTML5中文门户 - Power">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1561947585691-8fc1945f-1c3e-4ee3-8b3f-3a37f7350787.jpeg#align=left&display=inline&height=1249&originHeight=435&originWidth=720&size=0&status=done&width=2067">
+<meta property="og:updated_time" content="2019-07-02T07:10:03.396Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端开发全面知识库">
+<meta name="twitter:description" content="前端开发全面知识库，包括HTML5，CSS3和js的基本框架知识，以及DOM和BOM操作的基础知识和一些基本工具和IDE。学习本篇，你将了解到以下知识。 核心 Core HTML5W3C HTML 5 教程W3C HTML5 Chinese Interest Group Wiki菜鸟教程 HTML5 教程 | 菜鸟教程HTML5中文门户 HTML5中国：中国最大的HTML5中文门户 - Power">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1561947585691-8fc1945f-1c3e-4ee3-8b3f-3a37f7350787.jpeg#align=left&display=inline&height=1249&originHeight=435&originWidth=720&size=0&status=done&width=2067">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/01/yuque/前端开发全面知识库/">
+
+
+
+
+
+  <title>前端开发全面知识库 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/01/yuque/前端开发全面知识库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端开发全面知识库</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-01T10:19:19+08:00">
+                2019-07-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-02T15:10:03+08:00">
+                2019-07-02
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.9k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>前端开发全面知识库，包括HTML5，CSS3和js的基本框架知识，以及DOM和BOM操作的基础知识和一些基本工具和IDE。学习本篇，你将了解到以下知识。<br><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1561947585691-8fc1945f-1c3e-4ee3-8b3f-3a37f7350787.jpeg#align=left&display=inline&height=1249&originHeight=435&originWidth=720&size=0&status=done&width=2067" alt><br><a name="FDOJ7"></a></p>
+<h1 id="核心-Core"><a href="#核心-Core" class="headerlink" title="核心 Core"></a>核心 Core</h1><p><a name="bCqHn"></a></p>
+<h3 id="HTML5"><a href="#HTML5" class="headerlink" title="HTML5"></a>HTML5</h3><p>W3C <a href="https://link.zhihu.com/?target=http%3A//www.w3school.com.cn/html5/%3Fspm%3D5176.100239.blogcont71256.17.tjoYI2" target="_blank" rel="noopener">HTML 5 教程</a><br>W3C <a href="https://link.zhihu.com/?target=https%3A//www.w3.org/html/ig/zh/wiki/HTML5%3Fspm%3D5176.100239.blogcont71256.18.tjoYI2" target="_blank" rel="noopener">HTML5 Chinese Interest Group Wiki</a><br>菜鸟教程 <a href="https://link.zhihu.com/?target=http%3A//www.runoob.com/html/html5-intro.html%3Fspm%3D5176.100239.blogcont71256.19.tjoYI2" target="_blank" rel="noopener">HTML5 教程 | 菜鸟教程</a><br>HTML5中文门户 <a href="https://link.zhihu.com/?target=http%3A//www.html5cn.org/%3Fspm%3D5176.100239.blogcont71256.20.tjoYI2" target="_blank" rel="noopener">HTML5中国：中国最大的HTML5中文门户 - Powered by Discuz!</a><br><a name="j26cT"></a></p>
+<h3 id="CSS3"><a href="#CSS3" class="headerlink" title="CSS3"></a>CSS3</h3><p>W3C CSS教程 <a href="https://link.zhihu.com/?target=http%3A//www.w3school.com.cn/css/index.asp%3Fspm%3D5176.100239.blogcont71256.21.tjoYI2%26file%3Dindex.asp" target="_blank" rel="noopener">CSS 教程</a><br>W3C CSS3教程 <a href="https://link.zhihu.com/?target=http%3A//www.w3school.com.cn/css3/index.asp%3Fspm%3D5176.100239.blogcont71256.22.tjoYI2%26file%3Dindex.asp" target="_blank" rel="noopener">CSS3 教程</a><br>菜鸟教程CSS教程 <a href="https://link.zhihu.com/?target=http%3A//www.runoob.com/css/css-tutorial.html%3Fspm%3D5176.100239.blogcont71256.23.tjoYI2" target="_blank" rel="noopener">CSS 教程 | 菜鸟教程</a><br>菜鸟教程CSS3教程 <a href="https://link.zhihu.com/?target=http%3A//www.runoob.com/css3/css3-tutorial.html%3Fspm%3D5176.100239.blogcont71256.24.tjoYI2" target="_blank" rel="noopener">CSS3 教程 | 菜鸟教程</a><br>CSS参考手册 <a href="https://link.zhihu.com/?target=http%3A//css.doyoe.com/%3Fspm%3D5176.100239.blogcont71256.25.tjoYI2" target="_blank" rel="noopener">CSS参考手册_web前端开发参考手册系列</a><br><a name="cteUx"></a></p>
+<h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><p>W3C <a href="https://link.zhihu.com/?target=http%3A//www.w3school.com.cn/js/%3Fspm%3D5176.100239.blogcont71256.26.tjoYI2" target="_blank" rel="noopener">JavaScript 教程</a><br>菜鸟教程 <a href="https://link.zhihu.com/?target=http%3A//www.runoob.com/js/js-tutorial.html%3Fspm%3D5176.100239.blogcont71256.27.tjoYI2" target="_blank" rel="noopener">JavaScript 教程 | 菜鸟教程</a><br>廖雪峰js教程 <a href="https://link.zhihu.com/?target=http%3A//www.liaoxuefeng.com/%3Fspm%3D5176.100239.blogcont71256.28.tjoYI2" target="_blank" rel="noopener">Home - 廖雪峰的官方网站</a><br>js标准参考教程-阮一峰<a href="https://link.zhihu.com/?target=http%3A//javascript.ruanyifeng.com/%3Fspm%3D5176.100239.blogcont71256.29.tjoYI2" target="_blank" rel="noopener">JavaScript 标准参考教程（alpha）</a><br><a name="V1ADR"></a></p>
+<h3 id="jQuery"><a href="#jQuery" class="headerlink" title="jQuery"></a>jQuery</h3><p>W3C <a href="https://link.zhihu.com/?target=http%3A//www.w3school.com.cn/jquery/%3Fspm%3D5176.100239.blogcont71256.30.tjoYI2" target="_blank" rel="noopener">jQuery 教程</a><br>菜鸟教程 <a href="https://link.zhihu.com/?target=http%3A//www.runoob.com/jquery/jquery-tutorial.html%3Fspm%3D5176.100239.blogcont71256.31.tjoYI2" target="_blank" rel="noopener">jQuery 教程 | 菜鸟教程</a><br>极客学院 <a href="https://link.zhihu.com/?target=http%3A//wiki.jikexueyuan.com/project/jquery-tutorial/%3Fspm%3D5176.100239.blogcont71256.32.tjoYI2" target="_blank" rel="noopener">jQuery教程_jQuery开发中文手册[PDF]下载-极客学院Wiki</a><br>廖雪峰 <a href="https://link.zhihu.com/?target=http%3A//www.liaoxuefeng.com/wiki/%3Fspm%3D5176.100239.blogcont71256.33.tjoYI2" target="_blank" rel="noopener">http://www.liaoxuefeng.com/wiki/</a><br>参考手册 <a href="https://link.zhihu.com/?target=http%3A//www.css88.com/jqapi-1.9/%3Fspm%3D5176.100239.blogcont71256.34.tjoYI2" target="_blank" rel="noopener">jQuery API 中文文档(适用jQuery 1.0 - jQuery 3.1)</a><br>参考手册 <a href="https://link.zhihu.com/?target=http%3A//www.runoob.com/manual/jquery/%3Fspm%3D5176.100239.blogcont71256.35.tjoYI2" target="_blank" rel="noopener">jquery 在线手册</a><br><a name="o6QRY"></a></p>
+<h3 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h3><p>阮一峰ES6 <a href="https://link.zhihu.com/?target=http%3A//es6.ruanyifeng.com/%3Fspm%3D5176.100239.blogcont71256.36.tjoYI2" target="_blank" rel="noopener">ECMAScript 6入门</a><br>极客学院 <a href="https://link.zhihu.com/?target=http%3A//wiki.jikexueyuan.com/project/es6/%3Fspm%3D5176.100239.blogcont71256.37.tjoYI2" target="_blank" rel="noopener">ECMAScript 6 入门-极客学院Wiki</a><br>JavaScript 标准参考　阮一峰<a href="https://link.zhihu.com/?target=http%3A//javascript.ruanyifeng.com/advanced/ecmascript6.html%3Fspm%3D5176.100239.blogcont71256.38.tjoYI2" target="_blank" rel="noopener">JavaScript 标准参考教程（alpha）</a><br><a name="oYNmZ"></a></p>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><p><a href="https://link.zhihu.com/?target=https%3A//github.com/parallel-js/parallel.js%3Fspm%3D5176.100239.blogcont71256.39.tjoYI2%26file%3Dparallel.js" target="_blank" rel="noopener">parallel.js</a>: 前后端通用的一个并行库<br><a href="https://link.zhihu.com/?target=https%3A//github.com/madrobby/zepto%3Fspm%3D5176.100239.blogcont71256.40.tjoYI2" target="_blank" rel="noopener">zepto</a>: 用于现代浏览器的兼容 jQuery 的库<br><a href="https://link.zhihu.com/?target=https%3A//github.com/totorojs/totoro%3Fspm%3D5176.100239.blogcont71256.41.tjoYI2" target="_blank" rel="noopener">totoro</a>: 稳定的跨浏览器测试工具<br><a href="https://link.zhihu.com/?target=https%3A//github.com/Zhouzi/TheaterJS%3Fspm%3D5176.100239.blogcont71256.42.tjoYI2" target="_blank" rel="noopener">TheaterJS</a>: 一个用于模拟人输入状态的 JS 库<br><a href="https://link.zhihu.com/?target=https%3A//github.com/markdalgleish/stellar.js%3Fspm%3D5176.100239.blogcont71256.43.tjoYI2%26file%3Dstellar.js" target="_blank" rel="noopener">stellar.js</a>: 前端用于实现异步滚动效果的库，现已不再维护<br><a href="https://link.zhihu.com/?target=https%3A//github.com/Prinzhorn/skrollr%3Fspm%3D5176.100239.blogcont71256.44.tjoYI2" target="_blank" rel="noopener">skrollr</a>: 另一款实现一步滚动的开源库，使用人数众多，可实现各种狂拽酷炫掉渣天的前端效果，看真相<br><a href="https://link.zhihu.com/?target=https%3A//github.com/nolimits4web/Framework7%3Fspm%3D5176.100239.blogcont71256.45.tjoYI2" target="_blank" rel="noopener">Framework7</a>: 前端框架，是开发人员可以基于 web 技术构建 IOS7 程序<br><a href="https://link.zhihu.com/?target=https%3A//github.com/JexCheng/regulex%3Fspm%3D5176.100239.blogcont71256.46.tjoYI2" target="_blank" rel="noopener">regulex</a>: 用于生成 正则表达式 的可视化流程图<br><a href="https://link.zhihu.com/?target=https%3A//github.com/markdown-it/markdown-it%3Fspm%3D5176.100239.blogcont71256.47.tjoYI2" target="_blank" rel="noopener">markdown-it</a>: 新型 Markdown 解析器，快速，支持插件<br><a href="https://link.zhihu.com/?target=https%3A//github.com/sindresorhus/multiline%3Fspm%3D5176.100239.blogcont71256.48.tjoYI2" target="_blank" rel="noopener">multiline</a>: 用于 Javascript 中的多行文本，类似于 Ruby 的 HERE Doc<br><a href="https://link.zhihu.com/?target=https%3A//github.com/sindresorhus/screenfull.js%3Fspm%3D5176.100239.blogcont71256.49.tjoYI2%26file%3Dscreenfull.js" target="_blank" rel="noopener">screenfull.js</a>: 全屏插件，支持各大浏览器<br><a href="https://link.zhihu.com/?target=https%3A//github.com/olivernn/lunr.js%3Fspm%3D5176.100239.blogcont71256.50.tjoYI2%26file%3Dlunr.js" target="_blank" rel="noopener">lunr.js</a>: 类似于 Solr, 但是用于浏览器上的全文搜索引擎，可以为 JSON 创建索引，离线也可以使用<br><a href="https://link.zhihu.com/?target=https%3A//github.com/jeresig/jquery.hotkeys%3Fspm%3D5176.100239.blogcont71256.51.tjoYI2%26file%3Djquery.hotkeys" target="_blank" rel="noopener">jquery.hotkeys</a>: jQuery 插件，用于绑定热键<br><a href="https://link.zhihu.com/?target=https%3A//github.com/breach/breach_core%3Fspm%3D5176.100239.blogcont71256.52.tjoYI2" target="_blank" rel="noopener">breach_core</a>: Javascript 编写的 Browser (浏览器)<br><a href="https://link.zhihu.com/?target=https%3A//github.com/zmmbreeze/octocard%3Fspm%3D5176.100239.blogcont71256.53.tjoYI2" target="_blank" rel="noopener">octocard</a>: 用于生成 Github 信息卡片的库<br><a href="https://link.zhihu.com/?target=https%3A//github.com/lepture/github-cards%3Fspm%3D5176.100239.blogcont71256.54.tjoYI2" target="_blank" rel="noopener">github-cards</a>: 用于生成 Github 信息卡片的库<br><a href="https://link.zhihu.com/?target=https%3A//github.com/openexchangerates/money.js%3Fspm%3D5176.100239.blogcont71256.55.tjoYI2%26file%3Dmoney.js" target="_blank" rel="noopener">money.js</a>: 轻量级货币转换库，web 和 node 皆可用<br><a href="https://link.zhihu.com/?target=https%3A//github.com/openexchangerates/accounting.js%3Fspm%3D5176.100239.blogcont71256.56.tjoYI2%26file%3Daccounting.js" target="_blank" rel="noopener">accounting.js</a>: 轻量级的数字、货币转换库<br><a href="https://link.zhihu.com/?target=https%3A//github.com/mgechev/javascript-algorithms%3Fspm%3D5176.100239.blogcont71256.57.tjoYI2" target="_blank" rel="noopener">javascript-algorithms</a>: Javascript 实现的各种算法集合<br><a href="https://link.zhihu.com/?target=https%3A//github.com/dtao/lazy.js%3Fspm%3D5176.100239.blogcont71256.58.tjoYI2%26file%3Dlazy.js" target="_blank" rel="noopener">lazy.js</a>: 类似于 underscore, 但是会延迟执行，某些场景下，性能会有很大的提升<br><a href="https://link.zhihu.com/?target=https%3A//github.com/seajs/seajs%3Fspm%3D5176.100239.blogcont71256.59.tjoYI2" target="_blank" rel="noopener">seajs</a>: 前端模块加载器，解决模块化、依赖等问题<br><a href="https://link.zhihu.com/?target=https%3A//github.com/davist11/jQuery-One-Page-Nav%3Fspm%3D5176.100239.blogcont71256.60.tjoYI2" target="_blank" rel="noopener">jQuery-One-Page-Nav</a>: 单页应用中一个用于处理导航栏的库<br><a href="https://link.zhihu.com/?target=https%3A//github.com/js-js/js.js%3Fspm%3D5176.100239.blogcont71256.61.tjoYI2%26file%3Djs.js" target="_blank" rel="noopener">js.js</a>: Javascript 实现的 javascript JIT<br><a href="https://link.zhihu.com/?target=https%3A//github.com/jquery/jquery-ui%3Fspm%3D5176.100239.blogcont71256.62.tjoYI2" target="_blank" rel="noopener">jquery-ui</a>: jQuery 团队开发的 UI 相关的前端库，功能强大<br><a href="https://link.zhihu.com/?target=https%3A//github.com/tastejs/todomvc%3Fspm%3D5176.100239.blogcont71256.63.tjoYI2" target="_blank" rel="noopener">todomvc</a>: 分别基于 AngularJS/EmberJS/Backbone等实现的 TODO List, 帮助开发者选择前端 MVC 库<br><a href="https://link.zhihu.com/?target=https%3A//github.com/localForage/localForage%3Fspm%3D5176.100239.blogcont71256.64.tjoYI2" target="_blank" rel="noopener">localForage</a>: Mozilla 出品，用于离线存储，基于IndexedDB, WebSQL 或者 localStorage, 提供一致的接口<br><a href="https://link.zhihu.com/?target=https%3A//github.com/Olical/EventEmitter%3Fspm%3D5176.100239.blogcont71256.65.tjoYI2" target="_blank" rel="noopener">EventEmitter</a>: 浏览器版的 EventEmitter<br><a href="https://link.zhihu.com/?target=https%3A//github.com/marioizquierdo/jquery.serializeJSON%3Fspm%3D5176.100239.blogcont71256.66.tjoYI2%26file%3Djquery.serializeJSON" target="_blank" rel="noopener">jquery.serializeJSON</a>: jQuery 插件，用于将 form 表单序列化成 JSON 数据<br><a href="https://link.zhihu.com/?target=https%3A//github.com/knockout/knockout%3Fspm%3D5176.100239.blogcont71256.67.tjoYI2" target="_blank" rel="noopener">knockout</a>: 前端 MVVM 框架，用于开发富前端应用<br><a href="https://link.zhihu.com/?target=https%3A//github.com/knsv/mermaid%3Fspm%3D5176.100239.blogcont71256.68.tjoYI2" target="_blank" rel="noopener">mermaid</a>: 可以根据文本生成流程图，类似于 Markdown 的语法<br><a href="https://link.zhihu.com/?target=https%3A//github.com/bramp/js-sequence-diagrams%3Fspm%3D5176.100239.blogcont71256.69.tjoYI2" target="_blank" rel="noopener">js-sequence-diagrams</a>: 另一款可以根据文本生成流程图的库，类似于 Markdown 的语法<br><a href="https://link.zhihu.com/?target=https%3A//github.com/facebook/flow%3Fspm%3D5176.100239.blogcont71256.70.tjoYI2" target="_blank" rel="noopener">flow</a>: 一个用来检测 Javascript 语法错误的库， Facebook 出品<br><a href="https://link.zhihu.com/?target=https%3A//github.com/jaukia/zoomooz%3Fspm%3D5176.100239.blogcont71256.71.tjoYI2" target="_blank" rel="noopener">zoomooz</a>: jQuery 插件，用来处理浏览器缩放<br><a href="https://link.zhihu.com/?target=https%3A//github.com/fancyapps/fancyBox%3Fspm%3D5176.100239.blogcont71256.72.tjoYI2" target="_blank" rel="noopener">fancyBox</a>: 一个用于放大缩小图片、Web 内容或者多媒体元素的库，优雅大方<br><a href="https://link.zhihu.com/?target=https%3A//github.com/lhorie/mithril.js%3Fspm%3D5176.100239.blogcont71256.73.tjoYI2%26file%3Dmithril.js" target="_blank" rel="noopener">mithril.js</a>: 轻量型前端 MVC 框架，部分使用场景下性能优于 Angular.js 和 React<br><a href="https://link.zhihu.com/?target=https%3A//github.com/jashkenas/backbone%3Fspm%3D5176.100239.blogcont71256.74.tjoYI2" target="_blank" rel="noopener">backbone</a>: 强大的前端 MVC 库，鼻祖级前端库，最初为了配合 Rails 来模块化前端应用，兼容性良好 (兼容到 IE6)，插件丰富，性能良好<br><a href="https://link.zhihu.com/?target=https%3A//github.com/jasny/jquery.smartbanner%3Fspm%3D5176.100239.blogcont71256.75.tjoYI2%26file%3Djquery.smartbanner" target="_blank" rel="noopener">jquery.smartbanner</a>: smartbanner 是从 IOS6 开始支持的一个新特性, 这个插件提供了对早期 IOS4/5 和 Android 的支持<br><a href="https://link.zhihu.com/?target=https%3A//github.com/flesler/jquery.scrollTo%3Fspm%3D5176.100239.blogcont71256.76.tjoYI2%26file%3Djquery.scrollTo" target="_blank" rel="noopener">jquery.scrollTo</a>: 在页面上以一个元素为起始以动画的方式移动(ScrollTo)到另一个元素， 支持回退等<br><a href="https://link.zhihu.com/?target=https%3A//github.com/vitch/jScrollPane%3Fspm%3D5176.100239.blogcont71256.77.tjoYI2" target="_blank" rel="noopener">jScrollPane</a>: 自定义的滚动条，让所有浏览器都显示一样的滚动条<br><a href="https://link.zhihu.com/?target=https%3A//github.com/peachananr/onepage-scroll%3Fspm%3D5176.100239.blogcont71256.78.tjoYI2" target="_blank" rel="noopener">onepage-scroll</a>: 提供类似于 iPhone6 展示页类似的效果，适用于单页应用，兼容到 IE8<br><a href="https://link.zhihu.com/?target=https%3A//github.com/sakabako/scrollMonitor%3Fspm%3D5176.100239.blogcont71256.79.tjoYI2" target="_blank" rel="noopener">scrollMonitor</a>: 前端插件用来监控元素的滚动事件(进入、退出等)，性能很好<br><a href="https://link.zhihu.com/?target=https%3A//github.com/janpaepke/ScrollMagic%3Fspm%3D5176.100239.blogcont71256.80.tjoYI2" target="_blank" rel="noopener">ScrollMagic</a>: 神奇的滚动交互效果插件，可以在滚动的过程中设置各种各样的动态效果<br><a href="https://link.zhihu.com/?target=https%3A//github.com/infinite-scroll/infinite-scroll%3Fspm%3D5176.100239.blogcont71256.81.tjoYI2" target="_blank" rel="noopener">infinite-scroll</a>: 滚动加载，滚动到最下到自动加载， Paul Irish 大神之作<br><a href="https://link.zhihu.com/?target=https%3A//github.com/LeaVerou/animatable%3Fspm%3D5176.100239.blogcont71256.82.tjoYI2" target="_blank" rel="noopener">animatable</a>: 仅仅依靠 border-width 和 background-position 实现的各种动态效果，看真相<br><a href="https://link.zhihu.com/?target=https%3A//github.com/terrymun/Fluidbox%3Fspm%3D5176.100239.blogcont71256.83.tjoYI2" target="_blank" rel="noopener">Fluidbox</a>: 页面上内嵌图片的放大缩小效果，类似于 Medium 中的效果<br><a href="https://link.zhihu.com/?target=https%3A//github.com/jquery-validation/jquery-validation%3Fspm%3D5176.100239.blogcont71256.84.tjoYI2" target="_blank" rel="noopener">jquery-validation</a>: jQuery 的一个插件，用于校验 Form 表单<br><a href="https://link.zhihu.com/?target=https%3A//github.com/dfcb/BigVideo.js%3Fspm%3D5176.100239.blogcont71256.85.tjoYI2%26file%3DBigVideo.js" target="_blank" rel="noopener">BigVideo.js</a>: jQuery 的一个插件, 用于实现大背景(视频、图片)效果<br><a href="https://link.zhihu.com/?target=https%3A//github.com/kripken/emscripten%3Fspm%3D5176.100239.blogcont71256.86.tjoYI2" target="_blank" rel="noopener">emscripten</a>: 一款基于 LLVM, 可以将 C/C++ 转换成 Javascript 的工具，使得 Javascript 可以近乎 Native 的速度<br><a href="https://link.zhihu.com/?target=https%3A//github.com/kazuhikoarase/qrcode-generator%3Fspm%3D5176.100239.blogcont71256.87.tjoYI2" target="_blank" rel="noopener">qrcode-generator</a>: 各种语言的二维码生成工具<br><a href="https://link.zhihu.com/?target=https%3A//github.com/matthewhudson/device.js%3Fspm%3D5176.100239.blogcont71256.88.tjoYI2%26file%3Ddevice.js" target="_blank" rel="noopener">device.js</a>: 一个可以检测设备类型的工具，可以让我们根据不同的设备来为其定制响应的 Javascript 和 CSS<br><a href="https://link.zhihu.com/?target=https%3A//github.com/jeromeetienne/jquery-qrcode%3Fspm%3D5176.100239.blogcont71256.89.tjoYI2" target="_blank" rel="noopener">jquery-qrcode</a>: jQuery 插件，用来生成二维码<br><a href="https://link.zhihu.com/?target=https%3A//github.com/germanysbestkeptsecret/Wookmark-jQuery%3Fspm%3D5176.100239.blogcont71256.90.tjoYI2" target="_blank" rel="noopener">Wookmark-jQuery</a>: jQuery 的一个插件，可以用来实现瀑布流的效果<br><a href="https://link.zhihu.com/?target=https%3A//github.com/metafizzy/isotope%3Fspm%3D5176.100239.blogcont71256.91.tjoYI2" target="_blank" rel="noopener">isotope</a>: 可以用来过滤、排列布局，实现美观的动态布局切换效果，Demo<br><a href="https://link.zhihu.com/?target=https%3A//github.com/aFarkas/lazysizes%3Fspm%3D5176.100239.blogcont71256.92.tjoYI2" target="_blank" rel="noopener">lazysizes</a>: 功能强大的图片延迟加载工具，可以首先加载一个低质量的图片，然后再加载高质量的图片<br><a href="https://link.zhihu.com/?target=https%3A//github.com/kimmobrunfeldt/progressbar.js%3Fspm%3D5176.100239.blogcont71256.93.tjoYI2%26file%3Dprogressbar.js" target="_blank" rel="noopener">progressbar.js</a>: 简洁美观的进度条，扁平化<br><a href="https://link.zhihu.com/?target=https%3A//github.com/pigshell/pigshell%3Fspm%3D5176.100239.blogcont71256.94.tjoYI2" target="_blank" rel="noopener">pigshell</a>: 一个由 Javascript 实现的Shell, 将互联网当做一个大的文件系统, 通过 cd/ls/cat…..等命令, 可以访问 Facebook/Twitter/Google Drive 等网络服务<br><a href="https://link.zhihu.com/?target=https%3A//github.com/bgrins/spectrum%3Fspm%3D5176.100239.blogcont71256.95.tjoYI2" target="_blank" rel="noopener">spectrum</a>: Js实现的颜色选择器 (Colorpicker)<br><a href="https://link.zhihu.com/?target=https%3A//github.com/hilios/jQuery.countdown%3Fspm%3D5176.100239.blogcont71256.96.tjoYI2%26file%3DjQuery.countdown" target="_blank" rel="noopener">jQuery.countdown</a>: jQuery 倒计时插件<br><a href="https://link.zhihu.com/?target=https%3A//github.com/summernote/summernote%3Fspm%3D5176.100239.blogcont71256.97.tjoYI2" target="_blank" rel="noopener">summernote</a>: WYSIWYG 富文本编辑器<br><a href="https://link.zhihu.com/?target=https%3A//github.com/LeaVerou/awesomplete%3Fspm%3D5176.100239.blogcont71256.98.tjoYI2" target="_blank" rel="noopener">awesomplete</a>: 非常轻型的一个自动补全 JS 库, 没有任何依赖, 配置简单, 美观<br><a href="https://link.zhihu.com/?target=https%3A//github.com/abpetkov/switchery%3Fspm%3D5176.100239.blogcont71256.99.tjoYI2" target="_blank" rel="noopener">switchery</a>: IOS 7 上 Switch 的 JS 实现, 支持 IE8 及以上浏览器<br><a href="https://link.zhihu.com/?target=https%3A//github.com/basecamp/trix%3Fspm%3D5176.100239.blogcont71256.100.tjoYI2" target="_blank" rel="noopener">trix</a>: Basecamp 公司出品的富文本编辑器，简洁小巧<br><a href="https://link.zhihu.com/?target=https%3A//github.com/branding-fe/sensor%3Fspm%3D5176.100239.blogcont71256.101.tjoYI2" target="_blank" rel="noopener">sensor.js</a>: 在智能移动设备浏览器上，通过HTML5的api使用移动设备的功能。定位、运动、倾斜等<br><a href="https://link.zhihu.com/?target=https%3A//github.com/maciejczyzewski/hyhyhy%3Fspm%3D5176.100239.blogcont71256.102.tjoYI2" target="_blank" rel="noopener">hyhyhy</a>: 用于创建 基于 HTML5 的 演示文稿<br><a href="https://link.zhihu.com/?target=https%3A//github.com/brutaldesign/swipebox%3Fspm%3D5176.100239.blogcont71256.103.tjoYI2" target="_blank" rel="noopener">swipebox</a>: jQuery 插件，用于处理移动端的触摸事件<br><a href="https://link.zhihu.com/?target=https%3A//github.com/mailru/FileAPI%3Fspm%3D5176.100239.blogcont71256.104.tjoYI2" target="_blank" rel="noopener">FileAPI</a>: 前端用户处理文件（拖放、多文件上传等）<br><a href="https://link.zhihu.com/?target=https%3A//github.com/RubaXa/Sortable%3Fspm%3D5176.100239.blogcont71256.105.tjoYI2" target="_blank" rel="noopener">Sortable</a>: 现代浏览器上用于实现元素拖拽排序的功能，支持 Meteor, AngularJS, React，不依赖 jQuery<br><a href="https://link.zhihu.com/?target=https%3A//github.com/nolimits4web/Swiper%3Fspm%3D5176.100239.blogcont71256.106.tjoYI2" target="_blank" rel="noopener">Swiper</a>: 用于实现浏览器上的滑动切换效果，支持硬件加速<br><a href="https://link.zhihu.com/?target=https%3A//github.com/liabru/matter-js%3Fspm%3D5176.100239.blogcont71256.107.tjoYI2" target="_blank" rel="noopener">matter-js</a>: 2D 物理效果引擎，碰撞、弹跳等<br><a href="https://link.zhihu.com/?target=https%3A//github.com/senchalabs/jQTouch%3Fspm%3D5176.100239.blogcont71256.108.tjoYI2" target="_blank" rel="noopener">jQTouch</a>: 用于辅助创建手机端的 Web 应用，支持主题、Zepto.js 等<br><a href="https://link.zhihu.com/?target=https%3A//github.com/daniel-lundin/snabbt.js%3Fspm%3D5176.100239.blogcont71256.109.tjoYI2%26file%3Dsnabbt.js" target="_blank" rel="noopener">snabbt.js</a>: 一个利用 Javascript 和 CSS transform 的 animation 库<br><a href="https://link.zhihu.com/?target=https%3A//github.com/c3js/c3%3Fspm%3D5176.100239.blogcont71256.110.tjoYI2" target="_blank" rel="noopener">c3</a>: 基于 D3 的图表库<br><a href="https://link.zhihu.com/?target=https%3A//github.com/ecomfe/echarts%3Fspm%3D5176.100239.blogcont71256.111.tjoYI2" target="_blank" rel="noopener">echarts</a>: 企业级图表库，百度开发<br><a href="https://link.zhihu.com/?target=https%3A//github.com/wagerfield/parallax%3Fspm%3D5176.100239.blogcont71256.112.tjoYI2" target="_blank" rel="noopener">parallax.js</a>: 一个用于响应智能手机 orientation 的库<br><a href="https://link.zhihu.com/?target=https%3A//github.com/benbarnett/jQuery-Animate-Enhanced%3Fspm%3D5176.100239.blogcont71256.113.tjoYI2" target="_blank" rel="noopener">jQuery-Animate-Enhanced</a>: jQuery 动画库的一个增强，用于现代浏览器<br><a href="https://link.zhihu.com/?target=https%3A//github.com/Voog/wysihtml%3Fspm%3D5176.100239.blogcont71256.114.tjoYI2" target="_blank" rel="noopener">wysihtml</a>: 富文本编辑器，适用于现代浏览器<br><a href="https://link.zhihu.com/?target=https%3A//github.com/pornel/slip%3Fspm%3D5176.100239.blogcont71256.115.tjoYI2" target="_blank" rel="noopener">slip</a>: 一个通过滑动或者拖拽来操控列表的库<br><a href="https://link.zhihu.com/?target=https%3A//github.com/evil-icons/evil-icons%3Fspm%3D5176.100239.blogcont71256.116.tjoYI2" target="_blank" rel="noopener">evil-icons</a>: 一个矢量图库，提供 Ruby/Node 等支持<br><a href="https://link.zhihu.com/?target=https%3A//github.com/dimsemenov/PhotoSwipe%3Fspm%3D5176.100239.blogcont71256.117.tjoYI2" target="_blank" rel="noopener">PhotoSwipe</a>: JS 的一个图片展示库<br><a href="https://link.zhihu.com/?target=https%3A//github.com/zzarcon/focusable%3Fspm%3D5176.100239.blogcont71256.118.tjoYI2" target="_blank" rel="noopener">focusable</a>: 是页面上一个元素高亮的库，有图有真相<br><a href="https://link.zhihu.com/?target=https%3A//github.com/paulrouget/firefox.html%3Fspm%3D5176.100239.blogcont71256.119.tjoYI2" target="_blank" rel="noopener">firefox.html</a>: Firefox 在浏览器端的实现 —— HTML 版的 Firefox<br><a href="https://link.zhihu.com/?target=https%3A//github.com/jquery/jquery-mobile%3Fspm%3D5176.100239.blogcont71256.120.tjoYI2" target="_blank" rel="noopener">jquery-mobile</a>: jQuery 团队开发的用于辅助手机端 web app 开发的库，基于 HTML5<br><a href="https://link.zhihu.com/?target=https%3A//github.com/mcasimir/mobile-angular-ui%3Fspm%3D5176.100239.blogcont71256.121.tjoYI2" target="_blank" rel="noopener">mobile-angular-ui</a>: 基于angularjs和bootstarp的web app开发框架<br><a href="https://link.zhihu.com/?target=https%3A//github.com/taye/interact.js%3Fspm%3D5176.100239.blogcont71256.122.tjoYI2%26file%3Dinteract.js" target="_blank" rel="noopener">interact.js</a>: 一个适用于现代浏览器的，用于处理 手势、拖放、缩放等的库<br><a href="https://link.zhihu.com/?target=https%3A//github.com/facebook/rebound-js%3Fspm%3D5176.100239.blogcont71256.123.tjoYI2" target="_blank" rel="noopener">rebound-js</a>: 实现部分物理效果，Facebook 出品<br><a href="https://link.zhihu.com/?target=https%3A//github.com/addyosmani/basket.js%3Fspm%3D5176.100239.blogcont71256.124.tjoYI2%26file%3Dbasket.js" target="_blank" rel="noopener">basket.js</a>: 基于 LocalStorage 的资源加载器，可以用来缓存 script 和 css, 手机端使用速度快于浏览器直接缓存<br><a href="https://link.zhihu.com/?target=https%3A//github.com/cubiq/iscroll%3Fspm%3D5176.100239.blogcont71256.125.tjoYI2" target="_blank" rel="noopener">iscroll</a>: 高性能的滚动(scroll)处理库，功能强大，支持各种事件，不依赖任何的库，且插件丰富, 大众点评的手机端列表滚动就是用这个库处理的<br><a href="https://link.zhihu.com/?target=https%3A//github.com/mozilla/metrics-graphics%3Fspm%3D5176.100239.blogcont71256.126.tjoYI2" target="_blank" rel="noopener">metrics-graphics</a>: 基于 D3 的图表库，简洁、高效，Mozilla 出品<br><a href="https://link.zhihu.com/?target=https%3A//github.com/paypal/accessible-html5-video-player%3Fspm%3D5176.100239.blogcont71256.127.tjoYI2" target="_blank" rel="noopener">accessible-html5-video-player</a>: Paypal 出品的 Video 播放器<br><a href="https://link.zhihu.com/?target=https%3A//github.com/jxnblk/loading%3Fspm%3D5176.100239.blogcont71256.128.tjoYI2" target="_blank" rel="noopener">loading</a>: 几种 Loading 效果，基于 SVG<br><a href="https://link.zhihu.com/?target=https%3A//github.com/mintchaos/flippant.js%3Fspm%3D5176.100239.blogcont71256.129.tjoYI2%26file%3Dflippant.js" target="_blank" rel="noopener">flippant.js</a>: 一款能够漂亮的网页元素翻转效果库，代码许久不更新，不过作为源码学习还是不错的<br><a href="https://link.zhihu.com/?target=https%3A//github.com/visionmedia/move.js%3Fspm%3D5176.100239.blogcont71256.130.tjoYI2%26file%3Dmove.js" target="_blank" rel="noopener">move.js</a>: 基于 CSS3 的前端动画框架<br><a href="https://link.zhihu.com/?target=https%3A//github.com/jlmakes/scrollreveal%3Fspm%3D5176.100239.blogcont71256.131.tjoYI2" target="_blank" rel="noopener">scrollReveal.js</a>: 使元素以非常酷帅的方式进入画布 (Viewpoint)，看 Demo<br><a href="https://link.zhihu.com/?target=https%3A//github.com/Modernizr/Modernizr%3Fspm%3D5176.100239.blogcont71256.132.tjoYI2" target="_blank" rel="noopener">Modernizr</a>: 一个用来检测 HTML5 和 CSS3 支持情况的库<br><a href="https://link.zhihu.com/?target=https%3A//github.com/zurb/foundation-sites%3Fspm%3D5176.100239.blogcont71256.133.tjoYI2" target="_blank" rel="noopener">foundation</a>: 另一款前端模版框架，类似于 Bootstrap<br><a href="https://link.zhihu.com/?target=https%3A//github.com/designmodo/Flat-UI%3Fspm%3D5176.100239.blogcont71256.134.tjoYI2" target="_blank" rel="noopener">Flat-UI</a>: Bootstrap 的一款主题，简洁美观<br><a href="https://link.zhihu.com/?target=https%3A//github.com/fronteed/iCheck%3Fspm%3D5176.100239.blogcont71256.135.tjoYI2" target="_blank" rel="noopener">iCheck</a>: 一款漂亮的 Checkbox 插件<br><a href="https://link.zhihu.com/?target=https%3A//github.com/lyfeyaj/Swipe%3Fspm%3D5176.100239.blogcont71256.136.tjoYI2" target="_blank" rel="noopener">Swipe</a>: 非常轻量级的一个图片滑动切换效果库, 性能良好, 尤其是对手机的支持, 压缩后的大小约 5kb<br><a href="https://link.zhihu.com/?target=https%3A//github.com/kenwheeler/slick%3Fspm%3D5176.100239.blogcont71256.137.tjoYI2" target="_blank" rel="noopener">slick</a>: 功能异常强大的一个图片滑动切换效果库<br><a href="https://link.zhihu.com/?target=https%3A//github.com/t4t5/SocialButtons%3Fspm%3D5176.100239.blogcont71256.138.tjoYI2" target="_blank" rel="noopener">SocialButtons</a>: 漂亮的社交按钮<br><a href="https://link.zhihu.com/?target=https%3A//github.com/t4t5/sweetalert%3Fspm%3D5176.100239.blogcont71256.139.tjoYI2" target="_blank" rel="noopener">sweetalert</a>: 一个非常美观的用于替换浏览器默认 alert 的库<br><a href="https://link.zhihu.com/?target=https%3A//github.com/web-animations/web-animations-js%3Fspm%3D5176.100239.blogcont71256.140.tjoYI2" target="_blank" rel="noopener">web-animations-js</a>: Javascript 实现的 Web Animation API<br><a href="https://link.zhihu.com/?target=https%3A//github.com/maxwellito/vivus%3Fspm%3D5176.100239.blogcont71256.141.tjoYI2" target="_blank" rel="noopener">vivus</a>: 可以动态描绘 SVG 的 JS 库, 支持多种动画<br><a href="https://link.zhihu.com/?target=https%3A//github.com/Selz/plyr%3Fspm%3D5176.100239.blogcont71256.142.tjoYI2" target="_blank" rel="noopener">plyr</a>: 轻量, 小巧, 美观的 HTML5 视频播放器<br><a href="https://link.zhihu.com/?target=https%3A//github.com/sbstjn/timesheet.js%3Fspm%3D5176.100239.blogcont71256.143.tjoYI2%26file%3Dtimesheet.js" target="_blank" rel="noopener">timesheet.js</a>: 基于 HTML5 &amp; CSS3 时间表<br><a href="https://link.zhihu.com/?target=https%3A//github.com/Mango/slideout%3Fspm%3D5176.100239.blogcont71256.144.tjoYI2" target="_blank" rel="noopener">slideout</a>: 一个非常美观的侧滑菜单<br><a name="UaYqG"></a></p>
+<h3 id="包管理工具-Package-Managers"><a href="#包管理工具-Package-Managers" class="headerlink" title="包管理工具 Package Managers"></a>包管理工具 Package Managers</h3><p><a name="l9lq0"></a></p>
+<h4 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h4><p>菜鸟教程NPM 使用介绍 <a href="https://link.zhihu.com/?target=http%3A//www.runoob.com/nodejs/nodejs-npm.html%3Fspm%3D5176.100239.blogcont71256.145.tjoYI2" target="_blank" rel="noopener">NPM 使用介绍 | 菜鸟教程</a><br>淘宝 NPM 镜像 <a href="https://link.zhihu.com/?target=https%3A//npm.taobao.org/%3Fspm%3D5176.100239.blogcont71256.146.tjoYI2" target="_blank" rel="noopener">淘宝 NPM 镜像</a><br>npm 模块安装机制简介 <a href="https://link.zhihu.com/?target=http%3A//www.ruanyifeng.com/blog/2016/01/npm-install.html%3Fspm%3D5176.100239.blogcont71256.147.tjoYI2" target="_blank" rel="noopener">npm 模块安装机制简介 - 阮一峰的网络日志</a><br>npm包搜索地址 <a href="https://link.zhihu.com/?target=https%3A//www.npmjs.com/%3Fspm%3D5176.100239.blogcont71256.148.tjoYI2" target="_blank" rel="noopener">npm</a><br><a name="mmqaY"></a></p>
+<h4 id="Bower"><a href="#Bower" class="headerlink" title="Bower"></a>Bower</h4><p>Bower中文网 <a href="https://link.zhihu.com/?target=http%3A//www.bowercn.com/%3Fspm%3D5176.100239.blogcont71256.149.tjoYI2" target="_blank" rel="noopener">Bower</a><br>Bower：客户端库管理工具-阮一峰 <a href="https://link.zhihu.com/?target=http%3A//javascript.ruanyifeng.com/tool/bower.html%3Fspm%3D5176.100239.blogcont71256.150.tjoYI2" target="_blank" rel="noopener">JavaScript 标准参考教程（alpha）</a><br><a name="CWfGJ"></a></p>
+<h4 id="Yarn"><a href="#Yarn" class="headerlink" title="Yarn"></a>Yarn</h4><p>yarn中文网 <a href="https://link.zhihu.com/?target=https%3A//yarnpkg.com/zh-Hans/%25E5%25BF%25AB%25E9%2580%259F%25E3%2580%2581%25E5%258F%25AF%25E9%259D%25A0%25E3%2580%2581%25E5%25AE%2589%25E5%2585%25A8%25E7%259A%2584%25E4%25BE%259D%25E8%25B5%2596%25E7%25AE%25A1%25E7%2590%2586%3Fspm%3D5176.100239.blogcont71256.151.tjoYI2" target="_blank" rel="noopener">https://yarnpkg.com/zh-Hans/快速、可靠、安全的依赖管理</a><br>YARN 简介 <a href="https://link.zhihu.com/?target=https%3A//www.ibm.com/developerworks/cn/data/library/bd-yarn-intro/%3Fspm%3D5176.100239.blogcont71256.152.tjoYI2" target="_blank" rel="noopener">YARN 简介</a><br><a name="EWm2B"></a></p>
+<h3 id="编辑器-Text-Editors"><a href="#编辑器-Text-Editors" class="headerlink" title="编辑器 Text Editors"></a>编辑器 Text Editors</h3><p><a name="5sPC5"></a></p>
+<h4 id="WebStorm"><a href="#WebStorm" class="headerlink" title="WebStorm"></a>WebStorm</h4><p>官网下载 <a href="https://link.zhihu.com/?target=http%3A//www.jetbrains.com/webstorm/download%3Fspm%3D5176.100239.blogcont71256.153.tjoYI2" target="_blank" rel="noopener">Download WebStorm: The Smartest JavaScript IDE</a><br>前端网破解版下载 <a href="https://link.zhihu.com/?target=http%3A//www.qdfuns.com/tools%3Fspm%3D5176.100239.blogcont71256.154.tjoYI2" target="_blank" rel="noopener">前端工具库 - 前端网（QDFuns）</a><br><a name="ElOiL"></a></p>
+<h4 id="VScode"><a href="#VScode" class="headerlink" title="VScode"></a>VScode</h4><p>官网下载 <a href="https://link.zhihu.com/?target=https%3A//code.visualstudio.com/%3Fspm%3D5176.100239.blogcont71256.155.tjoYI2" target="_blank" rel="noopener">Visual Studio Code - Code Editing. Redefined</a><br>vscode 插件精选 - 献给所有前端工程师<a href="https://link.zhihu.com/?target=https%3A//segmentfault.com/a/1190000006697219%3Fspm%3D5176.100239.blogcont71256.156.tjoYI2" target="_blank" rel="noopener">vscode 插件推荐 - 献给所有前端工程师（更新与2017.3.6）</a><br><a name="58xu0"></a></p>
+<h4 id="SublimeText"><a href="#SublimeText" class="headerlink" title="SublimeText"></a>SublimeText</h4><p>官网下载 <a href="https://link.zhihu.com/?target=https%3A//www.sublimetext.com/%3Fspm%3D5176.100239.blogcont71256.157.tjoYI2" target="_blank" rel="noopener">The text editor you’ll fall in love with</a><br>前端网破解版插件版下载 <a href="https://link.zhihu.com/?target=http%3A//www.qdfuns.com/tools%3Fspm%3D5176.100239.blogcont71256.158.tjoYI2" target="_blank" rel="noopener">前端工具库 - 前端网（QDFuns）</a><br>SublimeCodeIntel: Sublime Text 的代码补全工具，支持多种语言<br>Emmet：一个用于提高开发效率的编辑器插件，前身是Zen coding<br>SublimeLinter: 一个提供代码质量检测的插件<br>SublimeTmpl：快速新建指定的模版文件<br>Syntax-highlighting-for-Sass：sass代码高亮插件<br>MarkdownEditing: Sublime Text 强大的 Markdown 扩展, 提供快捷键, 主题等<br>ApplySyntax: 辅助检测语法插件<br>CTags: Sublime Text Ctags 支持插件, 需要安装 ctags<br>sublime-react: React 代码高亮<br><a name="duONb"></a></p>
+<h4 id="Atom"><a href="#Atom" class="headerlink" title="Atom"></a>Atom</h4><p>官网下载 <a href="https://link.zhihu.com/?target=https%3A//atom.io/%3Fspm%3D5176.100239.blogcont71256.159.tjoYI2" target="_blank" rel="noopener">A hackable text editor for the 21st Century</a><br><a name="ATlsg"></a></p>
+<h4 id="HBuilder"><a href="#HBuilder" class="headerlink" title="HBuilder"></a>HBuilder</h4><p>官网下载 <a href="https://link.zhihu.com/?target=http%3A//www.dcloud.io/%3Fspm%3D5176.100239.blogcont71256.160.tjoYI2" target="_blank" rel="noopener">DCloud - HBuilder、5+、mui、流应用、HTML5专家</a><br><a name="bqnjn"></a></p>
+<h3 id="JS框架-JS-Frameworks"><a href="#JS框架-JS-Frameworks" class="headerlink" title="JS框架 JS Frameworks"></a>JS框架 JS Frameworks</h3><p><a name="APrDN"></a></p>
+<h4 id="Backbone"><a href="#Backbone" class="headerlink" title="Backbone"></a>Backbone</h4><p>Backbone.js API中文文档<a href="https://link.zhihu.com/?target=http%3A//www.css88.com/doc/backbone/%3Fspm%3D5176.100239.blogcont71256.161.tjoYI2" target="_blank" rel="noopener">Backbone.js API中文文档</a><br><a name="VOQMz"></a></p>
+<h4 id="AngularJs"><a href="#AngularJs" class="headerlink" title="AngularJs"></a>AngularJs</h4><p>中文官方文档<a href="https://link.zhihu.com/?target=https%3A//angular.cn/%3Fspm%3D5176.100239.blogcont71256.162.tjoYI2" target="_blank" rel="noopener">Angular</a><br>angularjs中文网<a href="https://link.zhihu.com/?target=http%3A//www.apjs.net/%3Fspm%3D5176.100239.blogcont71256.163.tjoYI2" target="_blank" rel="noopener">AngularJS中文网</a><br>angularjs教程<a href="https://link.zhihu.com/?target=http%3A//www.angularjs.net.cn/%3Fspm%3D5176.100239.blogcont71256.164.tjoYI2" target="_blank" rel="noopener">AngularJS中文网</a><br>Angular 基础入门<a href="https://link.zhihu.com/?target=http%3A//www.cnblogs.com/micua/p/angular-essential.html%3Fspm%3D5176.100239.blogcont71256.165.tjoYI2" target="_blank" rel="noopener">Angular 基础入门 - 汪磊 - 博客园</a><br>angular-masonry: Masonry 的 AngularJS 插件，用于瀑布流<br>angular-schema-form: 根据 JSON 生成响应的 Form 表单<br>restangular: Angular 中用来处理 RESTful API 的插件，可替代 $resource<br>ng-cordova: Cordova 常用组件的 Angular 版本<br>angular-translate: Angular 的国际化 (I18n)<br>ng-inspector: Chrome 插件，用于调试 Angular<br>angularjs-style-guide: AngularJS 代码风格<br>ngReact: React 的 Angular 插件，可以在 Angular 中使用 React Components<br>material: Google Material Design 效果的 Angular 实现<br>angular-local-storage: Angular 插件, 提供了对 localStorage 的友好支持, 并对不支持的浏览器使用 cookie 优雅降级<br>angular-filter: 一组有用的 Angular Filters<br>bindonce: Angular 插件, 用于减少 Watcher 的数量, 提升性能<br><a name="HXa8Z"></a></p>
+<h4 id="React"><a href="#React" class="headerlink" title="React"></a>React</h4><p>英文官方文档<a href="https://link.zhihu.com/?target=https%3A//facebook.github.io/react/docs/hello-world.html%3Fspm%3D5176.100239.blogcont71256.166.tjoYI2" target="_blank" rel="noopener">Hello World - React</a><br>中文官方文档<a href="https://link.zhihu.com/?target=http%3A//reactjs.cn/react/docs/getting-started-zh-CN.html%3Fspm%3D5176.100239.blogcont71256.167.tjoYI2" target="_blank" rel="noopener">入门教程 | React</a><br>gitbooks手册<a href="https://link.zhihu.com/?target=https%3A//hulufei.gitbooks.io/react-tutorial/content/introduction.html%3Fspm%3D5176.100239.blogcont71256.168.tjoYI2" target="_blank" rel="noopener">React 概览 | React 入门教程</a><br>阮一峰react入门<a href="https://link.zhihu.com/?target=http%3A//www.ruanyifeng.com/blog/2015/03/react.html%3Fspm%3D5176.100239.blogcont71256.169.tjoYI2" target="_blank" rel="noopener">React 入门实例教程 - 阮一峰的网络日志</a><br>阮一峰React Router入门<a href="https://link.zhihu.com/?target=http%3A//www.ruanyifeng.com/blog/2016/05/react_router.html%3Fspm%3D5176.100239.blogcont71256.170.tjoYI2" target="_blank" rel="noopener">React Router 使用教程</a><br>React Router 中文文档<a href="https://link.zhihu.com/?target=https%3A//react-guide.github.io/react-router-cn/%3Fspm%3D5176.100239.blogcont71256.171.tjoYI2" target="_blank" rel="noopener">React Router 中文文档</a><br>react-redux 中文文档<a href="https://link.zhihu.com/?target=http%3A//cn.redux.js.org/docs/react-redux/index.html%3Fspm%3D5176.100239.blogcont71256.172.tjoYI2" target="_blank" rel="noopener">Redux 中文文档 Join the chat at https://gitter.im/camsong/redux-in-chinese</a><br>阮一峰Redux 入门教程<a href="https://link.zhihu.com/?target=http%3A//www.ruanyifeng.com/blog%3Fspm%3D5176.100239.blogcont71256.173.tjoYI2" target="_blank" rel="noopener">阮一峰的网络日志</a><br><a href="https://link.zhihu.com/?target=https%3A//github.com/facebook/react%3Fspm%3D5176.100239.blogcont71256.174.tjoYI2" target="_blank" rel="noopener">react</a>: React 框架源代码<br><a href="https://link.zhihu.com/?target=https%3A//github.com/facebook/react-native%3Fspm%3D5176.100239.blogcont71256.175.tjoYI2" target="_blank" rel="noopener">react-native</a>: Facebook 出品的使用 React 开发 IOS 原生应用的框架<br><a href="https://link.zhihu.com/?target=https%3A//github.com/gaearon/react-hot-loader%3Fspm%3D5176.100239.blogcont71256.176.tjoYI2" target="_blank" rel="noopener">react-hot-loader</a>: 实时调整 React 组件效果<br><a href="https://link.zhihu.com/?target=https%3A//github.com/ericclemmons/grunt-react%3Fspm%3D5176.100239.blogcont71256.177.tjoYI2" target="_blank" rel="noopener">grunt-react</a>: React 的 Grunt 组件, 用于将 JSX 编译成 JS<br><a href="https://link.zhihu.com/?target=https%3A//github.com/touchstonejs/touchstonejs%3Fspm%3D5176.100239.blogcont71256.178.tjoYI2" target="_blank" rel="noopener">touchstonejs</a>: 基于 React 的手机应用前端框架<br><a href="https://link.zhihu.com/?target=https%3A//github.com/pheuter/essential-react%3Fspm%3D5176.100239.blogcont71256.179.tjoYI2" target="_blank" rel="noopener">essential-react</a>: 基于 React, ES6, React-Router的一个应用脚手架<br><a href="https://link.zhihu.com/?target=https%3A//github.com/ReactTraining/react-router%3Fspm%3D5176.100239.blogcont71256.180.tjoYI2" target="_blank" rel="noopener">react-router</a>: React 路由解决方案<br><a name="x5WSy"></a></p>
+<h4 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h4><p>vue官方<a href="https://link.zhihu.com/?target=http%3A//cn.vuejs.org/%3Fspm%3D5176.100239.blogcont71256.181.tjoYI2" target="_blank" rel="noopener">vue.js</a><br>vuex官方<a href="https://link.zhihu.com/?target=http%3A//vuex.vuejs.org/zh-cn/%3Fspm%3D5176.100239.blogcont71256.182.tjoYI2" target="_blank" rel="noopener">Introduction · GitBook</a><br>vue-router官方<a href="https://link.zhihu.com/?target=https%3A//router.vuejs.org/zh-cn/%3Fspm%3D5176.100239.blogcont71256.183.tjoYI2" target="_blank" rel="noopener">Introduction · GitBook</a><br><a name="YpSqx"></a></p>
+<h3 id="UI框架-UI-Frameworks"><a href="#UI框架-UI-Frameworks" class="headerlink" title="UI框架 UI Frameworks"></a>UI框架 UI Frameworks</h3><p><a name="lGfl7"></a></p>
+<h4 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h4><p>最受欢迎的 HTML、CSS 和 JS 框架 <a href="https://link.zhihu.com/?target=http%3A//v3.bootcss.com/%3Fspm%3D5176.100239.blogcont71256.184.tjoYI2" target="_blank" rel="noopener">Bootstrap 中文文档 · Bootstrap 是世界上最流行的、移动设备优先的、响应式前端开发框架。</a><br><a name="CsBoP"></a></p>
+<h4 id="Ionic"><a href="#Ionic" class="headerlink" title="Ionic"></a>Ionic</h4><p>一款接近原生的Html5移动App开发框架　会html css js就可以开发apphttp://<a href="https://link.zhihu.com/?target=http%3A//www.ionic.wang/%3Fspm%3D5176.100239.blogcont71256.185.tjoYI2" target="_blank" rel="noopener">www.ionic.wang/</a><br><a name="wFiXQ"></a></p>
+<h4 id="Foundation"><a href="#Foundation" class="headerlink" title="Foundation"></a>Foundation</h4><p>Foundation 中文网 迄今为止最好的响应式前端框架<a href="https://link.zhihu.com/?target=http%3A//www.foundcss.com/%3Fspm%3D5176.100239.blogcont71256.186.tjoYI2" target="_blank" rel="noopener">Foundation中文网 | 方便更多热爱Foundation中文网框架的攻城师们分享、交流自己在前端设计、开发方面的心得。</a><br><a name="taQhW"></a></p>
+<h4 id="FrozenUI"><a href="#FrozenUI" class="headerlink" title="FrozenUI"></a>FrozenUI</h4><p>移动端服务的前端框架<a href="https://link.zhihu.com/?target=http%3A//frozenui.github.io/%3Fspm%3D5176.100239.blogcont71256.187.tjoYI2" target="_blank" rel="noopener">FrozenUI - 专注于移动web的UI框架</a><br><a name="FsgcH"></a></p>
+<h4 id="materializecss"><a href="#materializecss" class="headerlink" title="materializecss"></a>materializecss</h4><p>基于Material Design的主流前端响应式框架<a href="https://link.zhihu.com/?target=http%3A//www.materializecss.cn/%3Fspm%3D5176.100239.blogcont71256.188.tjoYI2" target="_blank" rel="noopener">手册 - Materialize - ?spm=5176.100239.blogcont71256.188.tjoyi2</a><br><a name="KYCs7"></a></p>
+<h4 id="mui"><a href="#mui" class="headerlink" title="mui"></a>mui</h4><p>最接近原生APP体验的高性能前端框架<a href="https://link.zhihu.com/?target=http%3A//dev.dcloud.net.cn/mui/%3Fspm%3D5176.100239.blogcont71256.189.tjoYI2" target="_blank" rel="noopener">MUI-最接近原生APP体验的高性能前端框架</a><br><a name="id30H"></a></p>
+<h4 id="AntDesign"><a href="#AntDesign" class="headerlink" title="AntDesign"></a>AntDesign</h4><p>和react配合的UI框架<a href="https://link.zhihu.com/?target=https%3A//ant.design/%3Fspm%3D5176.100239.blogcont71256.190.tjoYI2" target="_blank" rel="noopener">A UI Design Language</a><br><a name="zCvHj"></a></p>
+<h4 id="eleme"><a href="#eleme" class="headerlink" title="eleme"></a>eleme</h4><p>和vue配合的UI框架<a href="https://link.zhihu.com/?target=http%3A//element.eleme.io/%3Fspm%3D5176.100239.blogcont71256.191.tjoYI2" target="_blank" rel="noopener">Element</a><br><a name="gWwml"></a></p>
+<h3 id="JS预处理-JS-Preprocessors"><a href="#JS预处理-JS-Preprocessors" class="headerlink" title="JS预处理 JS Preprocessors"></a>JS预处理 JS Preprocessors</h3><p><a name="lynat"></a></p>
+<h4 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h4><p>TypeScript 入门教程 菜鸟教程<a href="https://link.zhihu.com/?target=http%3A//www.runoob.com/%3Fspm%3D5176.100239.blogcont71256.192.tjoYI2" target="_blank" rel="noopener">菜鸟教程 - 学的不仅是技术，更是梦想！</a><br>TypeScript中文网<a href="https://link.zhihu.com/?target=https%3A//www.tslang.cn/%3Fspm%3D5176.100239.blogcont71256.193.tjoYI2" target="_blank" rel="noopener">TypeScript中文网 · TypeScript–JavaScript的超集</a><br>TypeScript教程gitbookhttps://<a href="https://link.zhihu.com/?target=http%3A//www.gitbook.com/%3Fspm%3D5176.100239.blogcont71256.194.tjoYI2" target="_blank" rel="noopener">www.gitbook.com/</a><br><a name="k34Pq"></a></p>
+<h4 id="CoffeeScript"><a href="#CoffeeScript" class="headerlink" title="CoffeeScript"></a>CoffeeScript</h4><p>CoffeeScript 中文<a href="https://link.zhihu.com/?target=http%3A//coffee-script.org/%3Fspm%3D5176.100239.blogcont71256.195.tjoYI2" target="_blank" rel="noopener">CoffeeScript 中文</a><br>CoffeeScript 实用手册 极客学院<a href="https://link.zhihu.com/?target=http%3A//wiki.jikexueyuan.com/project/coffeescript/%3Fspm%3D5176.100239.blogcont71256.196.tjoYI2" target="_blank" rel="noopener">CoffeeScript 教程_极客学院 Wiki</a><br><a name="SJyiS"></a></p>
+<h3 id="过程自动化-Process-Automation"><a href="#过程自动化-Process-Automation" class="headerlink" title="过程自动化 Process Automation"></a>过程自动化 Process Automation</h3><p><a name="Y0zgh"></a></p>
+<h4 id="Grunt"><a href="#Grunt" class="headerlink" title="Grunt"></a>Grunt</h4><p>Grunt中文网<a href="https://link.zhihu.com/?target=http%3A//www.gruntjs.net/%3Fspm%3D5176.100239.blogcont71256.197.tjoYI2" target="_blank" rel="noopener">JavaScript世界的构建工具 – Grunt中文网</a><br><a name="BRYaj"></a></p>
+<h4 id="Gulp"><a href="#Gulp" class="headerlink" title="Gulp"></a>Gulp</h4><p>gulp.js 中文网<a href="https://link.zhihu.com/?target=http%3A//www.gulpjs.com.cn/%3Fspm%3D5176.100239.blogcont71256.198.tjoYI2" target="_blank" rel="noopener">基于流的自动化构建工具。 | gulp.js 中文网</a><br>gulp详细入门教程<a href="https://link.zhihu.com/?target=http%3A//www.ydcss.com/%3Fspm%3D5176.100239.blogcont71256.199.tjoYI2" target="_blank" rel="noopener">一点 | gulp详细入门教程</a><br>前端构建工具gulpjs的使用介绍及技巧<a href="https://link.zhihu.com/?target=http%3A//www.cnblogs.com/2050/p/4198792.html%3Fspm%3D5176.100239.blogcont71256.200.tjoYI2" target="_blank" rel="noopener">前端构建工具gulpjs的使用介绍及技巧 - 无双 - 博客园</a><br>Gulp开发教程<a href="https://link.zhihu.com/?target=https%3A//www.w3ctech.com/topic/134%3Fspm%3D5176.100239.blogcont71256.201.tjoYI2" target="_blank" rel="noopener">Gulp开发教程（翻译） - w3ctech - 中国最大的前端技术社区</a><br><a name="cZiCM"></a></p>
+<h3 id="模板引擎-Templating"><a href="#模板引擎-Templating" class="headerlink" title="模板引擎 Templating"></a>模板引擎 Templating</h3><p><a name="GXbJd"></a></p>
+<h4 id="Handlebars"><a href="#Handlebars" class="headerlink" title="Handlebars"></a>Handlebars</h4><p>handlebarsjs官网<a href="https://link.zhihu.com/?target=http%3A//handlebarsjs.com/%3Fspm%3D5176.100239.blogcont71256.202.tjoYI2" target="_blank" rel="noopener">Minimal Templating on Steroids</a><br>Handlebars中文文档<a href="https://link.zhihu.com/?target=http%3A//www.360doc.com/content/%3Fspm%3D5176.100239.blogcont71256.203.tjoYI2" target="_blank" rel="noopener">http://www.360doc.com/content/</a><br>Handlebars.js 中文文档<a href="https://link.zhihu.com/?target=http%3A//keenwon.com/992.html%3Fspm%3D5176.100239.blogcont71256.204.tjoYI2" target="_blank" rel="noopener">Handlebars.js 中文文档</a><br>Handlebars的使用方法文档整理<a href="https://link.zhihu.com/?target=http%3A//www.tuicool.com/articles/fqQFN3%3Fspm%3D5176.100239.blogcont71256.205.tjoYI2" target="_blank" rel="noopener">Handlebars的使用方法文档整理(Handlebars.js) - 推酷</a><br><a name="Iy5jV"></a></p>
+<h4 id="Haml"><a href="#Haml" class="headerlink" title="Haml"></a>Haml</h4><p>haml官方文档<a href="https://link.zhihu.com/?target=https%3A//github.com/haml/haml%3Fspm%3D5176.100239.blogcont71256.206.tjoYI2" target="_blank" rel="noopener">haml/haml</a><br>haml入门<a href="https://link.zhihu.com/?target=http%3A//blog.csdn.net/napoay/article/details/50491363%3Fspm%3D5176.100239.blogcont71256.207.tjoYI2" target="_blank" rel="noopener">haml入门 - 姚攀的博客 - 博客频道 - CSDN.NET</a><br><a name="PZpMf"></a></p>
+<h4 id="Jade"><a href="#Jade" class="headerlink" title="Jade"></a>Jade</h4><p>Jade 官方的英文文档<a href="https://link.zhihu.com/?target=http%3A//www.w3cplus.com/html/how-to-use-jade.html%3Fspm%3D5176.100239.blogcont71256.208.tjoYI2" target="_blank" rel="noopener">Jade的使用_jade 教程_w3cplus</a><br>Jade的使用<a href="https://link.zhihu.com/?target=http%3A//www.w3cplus.com/html/how-to-use-jade.html%3Fspm%3D5176.100239.blogcont71256.209.tjoYI2" target="_blank" rel="noopener">Jade的使用_jade 教程_w3cplus</a><br>带你学习Jade模板引擎视频<a href="https://link.zhihu.com/?target=http%3A//www.imooc.com/learn/259%3Fspm%3D5176.100239.blogcont71256.210.tjoYI2" target="_blank" rel="noopener">带你学习Jade模板引擎-慕课网</a><br><a name="sWmMV"></a></p>
+<h3 id="构建工具-Build-Tools"><a href="#构建工具-Build-Tools" class="headerlink" title="构建工具 Build Tools"></a>构建工具 Build Tools</h3><p><a name="WXGUQ"></a></p>
+<h4 id="RequireJS"><a href="#RequireJS" class="headerlink" title="RequireJS"></a>RequireJS</h4><p>RequireJS 英文网<a href="https://link.zhihu.com/?target=http%3A//requirejs.org/%3Fspm%3D5176.100239.blogcont71256.211.tjoYI2" target="_blank" rel="noopener">RequireJS</a><br>RequireJS 中文网<a href="https://link.zhihu.com/?target=http%3A//requirejs.cn/%3Fspm%3D5176.100239.blogcont71256.212.tjoYI2" target="_blank" rel="noopener">RequireJS 中文网</a><br>require.js的用法-阮一峰<a href="https://link.zhihu.com/?target=http%3A//www.ruanyifeng.com/blog%3Fspm%3D5176.100239.blogcont71256.213.tjoYI2" target="_blank" rel="noopener">阮一峰的网络日志</a><br><a name="nFoOj"></a></p>
+<h4 id="seajs"><a href="#seajs" class="headerlink" title="seajs"></a>seajs</h4><p>seajs文档<a href="https://link.zhihu.com/?target=http%3A//seajs.org/docs/%3Fspm%3D5176.100239.blogcont71256.214.tjoYI2" target="_blank" rel="noopener">A Module Loader for the Web</a><br>SeaJS从入门到原理<a href="https://link.zhihu.com/?target=http%3A//www.tuicool.com/articles/FfEJv2u%3Fspm%3D5176.100239.blogcont71256.215.tjoYI2" target="_blank" rel="noopener">SeaJS从入门到原理 - 推酷</a><br><a name="ozU2B"></a></p>
+<h4 id="Browserify"><a href="#Browserify" class="headerlink" title="Browserify"></a>Browserify</h4><p>官网<a href="https://link.zhihu.com/?target=http%3A//browserify.org/%3Fspm%3D5176.100239.blogcont71256.216.tjoYI2" target="_blank" rel="noopener">Browserify</a><br>github<a href="https://link.zhihu.com/?target=https%3A//github.com/substack/node-browserify/" target="_blank" rel="noopener">https://github.com/substack/node-browserify/</a><br><a name="JfEsk"></a></p>
+<h4 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h4><p>Webpack 中文指南<a href="https://link.zhihu.com/?target=http%3A//webpackdoc.com/%3Fspm%3D5176.100239.blogcont71256.217.tjoYI2" target="_blank" rel="noopener">介紹 | Webpack 中文指南</a><br>webpack的实例<a href="https://link.zhihu.com/?target=http%3A//www.vichily.com/%3Fspm%3D5176.100239.blogcont71256.218.tjoYI2" target="_blank" rel="noopener">VICHILY’S BLOG</a><br>webpack的入门<a href="https://link.zhihu.com/?target=http%3A//www.vichily.com/%3Fspm%3D5176.100239.blogcont71256.219.tjoYI2" target="_blank" rel="noopener">VICHILY’S BLOG</a><br>一小时包教会 —— webpack 入门指南<a href="https://link.zhihu.com/?target=http%3A//www.w2bc.com/Article/50764%3Fspm%3D5176.100239.blogcont71256.220.tjoYI2" target="_blank" rel="noopener">一小时包教会 – webpack 入门指南</a><br><a name="t1He3"></a></p>
+<h3 id="CSS预处理器-CSS-Preprocessors"><a href="#CSS预处理器-CSS-Preprocessors" class="headerlink" title="CSS预处理器 CSS Preprocessors"></a>CSS预处理器 CSS Preprocessors</h3><p><a name="4LeP0"></a></p>
+<h4 id="Sass"><a href="#Sass" class="headerlink" title="Sass"></a>Sass</h4><p>sass入门<a href="https://link.zhihu.com/?target=http%3A//www.w3cplus.com/sassguide/%3Fspm%3D5176.100239.blogcont71256.221.tjoYI2" target="_blank" rel="noopener">sass入门 - sass教程</a><br>sass参考手册<a href="https://link.zhihu.com/?target=http%3A//sass.bootcss.com/docs/sass-reference/%3Fspm%3D5176.100239.blogcont71256.222.tjoYI2" target="_blank" rel="noopener">Sass 参考手册 | Sass 中文文档</a><br>SASS用法指南-阮一峰<a href="https://link.zhihu.com/?target=http%3A//www.ruanyifeng.com/blog/%3Fspm%3D5176.100239.blogcont71256.223.tjoYI2" target="_blank" rel="noopener">阮一峰的网络日志</a><br><a name="1pIQN"></a></p>
+<h4 id="Less"><a href="#Less" class="headerlink" title="Less"></a>Less</h4><p>less中文网<a href="https://link.zhihu.com/?target=http%3A//lesscss.cn/%3Fspm%3D5176.100239.blogcont71256.224.tjoYI2" target="_blank" rel="noopener">Less 中文网</a><br>less快速入门<a href="https://link.zhihu.com/?target=http%3A//less.bootcss.com/%3Fspm%3D5176.100239.blogcont71256.225.tjoYI2" target="_blank" rel="noopener">快速入门 | Less.js 中文文档</a><br><a name="GD9zP"></a></p>
+<h4 id="stylus"><a href="#stylus" class="headerlink" title="stylus"></a>stylus</h4><p>stylus中文文档-张鑫旭<a href="https://link.zhihu.com/?target=http%3A//www.zhangxinxu.com/jq/stylus/%3Fspm%3D5176.100239.blogcont71256.226.tjoYI2" target="_blank" rel="noopener">stylus中文文档 “ 综述 “ 张鑫旭-鑫空间-鑫生活</a><br>亲们阿里云云栖社区已开通专栏，欢迎关注阅读：<a href="https://zhuanlan.zhihu.com/yunqichengxuyuan" target="_blank" rel="noopener">我是程序员 - 知乎专栏</a></p>
+<p>转自：<a href="https://zhuanlan.zhihu.com/p/25604225" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/25604225</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/28/yuque/关于H5页面在iPhoneX适配/" rel="next" title="关于H5页面在iPhoneX适配">
+                <i class="fa fa-chevron-left"></i> 关于H5页面在iPhoneX适配
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/01/yuque/禁止Macoofie/" rel="prev" title="禁止Macoofie">
+                禁止Macoofie <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">100</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#核心-Core"><span class="nav-number">1.</span> <span class="nav-text">核心 Core</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML5"><span class="nav-number">1.0.1.</span> <span class="nav-text">HTML5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS3"><span class="nav-number">1.0.2.</span> <span class="nav-text">CSS3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS"><span class="nav-number">1.0.3.</span> <span class="nav-text">JS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery"><span class="nav-number">1.0.4.</span> <span class="nav-text">jQuery</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6"><span class="nav-number">1.0.5.</span> <span class="nav-text">ES6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插件"><span class="nav-number">1.0.6.</span> <span class="nav-text">插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包管理工具-Package-Managers"><span class="nav-number">1.0.7.</span> <span class="nav-text">包管理工具 Package Managers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NPM"><span class="nav-number">1.0.7.1.</span> <span class="nav-text">NPM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bower"><span class="nav-number">1.0.7.2.</span> <span class="nav-text">Bower</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Yarn"><span class="nav-number">1.0.7.3.</span> <span class="nav-text">Yarn</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编辑器-Text-Editors"><span class="nav-number">1.0.8.</span> <span class="nav-text">编辑器 Text Editors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WebStorm"><span class="nav-number">1.0.8.1.</span> <span class="nav-text">WebStorm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VScode"><span class="nav-number">1.0.8.2.</span> <span class="nav-text">VScode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SublimeText"><span class="nav-number">1.0.8.3.</span> <span class="nav-text">SublimeText</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Atom"><span class="nav-number">1.0.8.4.</span> <span class="nav-text">Atom</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HBuilder"><span class="nav-number">1.0.8.5.</span> <span class="nav-text">HBuilder</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS框架-JS-Frameworks"><span class="nav-number">1.0.9.</span> <span class="nav-text">JS框架 JS Frameworks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Backbone"><span class="nav-number">1.0.9.1.</span> <span class="nav-text">Backbone</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AngularJs"><span class="nav-number">1.0.9.2.</span> <span class="nav-text">AngularJs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#React"><span class="nav-number">1.0.9.3.</span> <span class="nav-text">React</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue"><span class="nav-number">1.0.9.4.</span> <span class="nav-text">Vue</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UI框架-UI-Frameworks"><span class="nav-number">1.0.10.</span> <span class="nav-text">UI框架 UI Frameworks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bootstrap"><span class="nav-number">1.0.10.1.</span> <span class="nav-text">Bootstrap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ionic"><span class="nav-number">1.0.10.2.</span> <span class="nav-text">Ionic</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Foundation"><span class="nav-number">1.0.10.3.</span> <span class="nav-text">Foundation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FrozenUI"><span class="nav-number">1.0.10.4.</span> <span class="nav-text">FrozenUI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#materializecss"><span class="nav-number">1.0.10.5.</span> <span class="nav-text">materializecss</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mui"><span class="nav-number">1.0.10.6.</span> <span class="nav-text">mui</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AntDesign"><span class="nav-number">1.0.10.7.</span> <span class="nav-text">AntDesign</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#eleme"><span class="nav-number">1.0.10.8.</span> <span class="nav-text">eleme</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS预处理-JS-Preprocessors"><span class="nav-number">1.0.11.</span> <span class="nav-text">JS预处理 JS Preprocessors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TypeScript"><span class="nav-number">1.0.11.1.</span> <span class="nav-text">TypeScript</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CoffeeScript"><span class="nav-number">1.0.11.2.</span> <span class="nav-text">CoffeeScript</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过程自动化-Process-Automation"><span class="nav-number">1.0.12.</span> <span class="nav-text">过程自动化 Process Automation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Grunt"><span class="nav-number">1.0.12.1.</span> <span class="nav-text">Grunt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gulp"><span class="nav-number">1.0.12.2.</span> <span class="nav-text">Gulp</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板引擎-Templating"><span class="nav-number">1.0.13.</span> <span class="nav-text">模板引擎 Templating</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Handlebars"><span class="nav-number">1.0.13.1.</span> <span class="nav-text">Handlebars</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Haml"><span class="nav-number">1.0.13.2.</span> <span class="nav-text">Haml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Jade"><span class="nav-number">1.0.13.3.</span> <span class="nav-text">Jade</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建工具-Build-Tools"><span class="nav-number">1.0.14.</span> <span class="nav-text">构建工具 Build Tools</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RequireJS"><span class="nav-number">1.0.14.1.</span> <span class="nav-text">RequireJS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#seajs"><span class="nav-number">1.0.14.2.</span> <span class="nav-text">seajs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Browserify"><span class="nav-number">1.0.14.3.</span> <span class="nav-text">Browserify</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Webpack"><span class="nav-number">1.0.14.4.</span> <span class="nav-text">Webpack</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS预处理器-CSS-Preprocessors"><span class="nav-number">1.0.15.</span> <span class="nav-text">CSS预处理器 CSS Preprocessors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Sass"><span class="nav-number">1.0.15.1.</span> <span class="nav-text">Sass</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Less"><span class="nav-number">1.0.15.2.</span> <span class="nav-text">Less</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#stylus"><span class="nav-number">1.0.15.3.</span> <span class="nav-text">stylus</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">95k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>
