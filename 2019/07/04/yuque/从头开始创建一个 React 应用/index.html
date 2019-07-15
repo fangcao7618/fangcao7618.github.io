@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="作者：紫心人链接：https://zhuanlan.zhihu.com/p/36137966来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 同样的是一篇学习笔记，不过更像是简单翻译+再加工。并不详细介绍 React 的写法。主要内容是：如何从无到有，创建并运行起来一个 React 应用。 React 简介一句话介绍： React 是用于构建用户界面的 JavaScr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从头开始创建一个 React 应用">
+<meta property="og:url" content="http://yoursite.com/2019/07/04/yuque/从头开始创建一个 React 应用/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="作者：紫心人链接：https://zhuanlan.zhihu.com/p/36137966来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 同样的是一篇学习笔记，不过更像是简单翻译+再加工。并不详细介绍 React 的写法。主要内容是：如何从无到有，创建并运行起来一个 React 应用。 React 简介一句话介绍： React 是用于构建用户界面的 JavaScr">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1562224255365-acf5e8ce-453c-4a2c-ac68-33eedceb9518.jpeg#align=left&display=inline&height=469&originHeight=222&originWidth=600&size=0&status=done&width=1268">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1562224255693-8dc9e0fb-2c53-4efe-aa4e-242cd408e5e8.jpeg#align=left&display=inline&height=780&originHeight=443&originWidth=600&size=0&status=done&width=1056">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1562224255320-81d7ceae-12d1-4117-9bfe-4311fb621607.jpeg#align=left&display=inline&height=120&originHeight=120&originWidth=180&size=0&status=done&width=180">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1562224255315-0f644c5f-9b68-4f35-9783-04c451a7e8d3.jpeg#align=left&display=inline&height=120&originHeight=120&originWidth=180&size=0&status=done&width=180">
+<meta property="og:updated_time" content="2019-07-15T02:33:17.964Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从头开始创建一个 React 应用">
+<meta name="twitter:description" content="作者：紫心人链接：https://zhuanlan.zhihu.com/p/36137966来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 同样的是一篇学习笔记，不过更像是简单翻译+再加工。并不详细介绍 React 的写法。主要内容是：如何从无到有，创建并运行起来一个 React 应用。 React 简介一句话介绍： React 是用于构建用户界面的 JavaScr">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1562224255365-acf5e8ce-453c-4a2c-ac68-33eedceb9518.jpeg#align=left&display=inline&height=469&originHeight=222&originWidth=600&size=0&status=done&width=1268">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/04/yuque/从头开始创建一个 React 应用/">
+
+
+
+
+
+  <title>从头开始创建一个 React 应用 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/04/yuque/从头开始创建一个 React 应用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从头开始创建一个 React 应用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-04T15:10:50+08:00">
+                2019-07-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-15T10:33:17+08:00">
+                2019-07-15
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.5k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>作者：紫心人<br>链接：<a href="https://zhuanlan.zhihu.com/p/36137966" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/36137966</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<p>同样的是一篇学习笔记，不过更像是简单翻译+再加工。<br>并不详细介绍 React 的写法。主要内容是：如何从无到有，创建并运行起来一个 React 应用。<br><a name="cbxrP"></a></p>
+<h4 id="React-简介"><a href="#React-简介" class="headerlink" title="React 简介"></a>React 简介</h4><p>一句话介绍： React 是用于构建用户界面的 JavaScript 库。针对的是 View 层。<br><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1562224255365-acf5e8ce-453c-4a2c-ac68-33eedceb9518.jpeg#align=left&display=inline&height=469&originHeight=222&originWidth=600&size=0&status=done&width=1268" alt><br>虽然 React 只是视图层的一个 Library，但并非开箱即用。React 使用了很多较新的语法和关键字，浏览器并不完全支持。要使用 React 就必须将这些内容做一下处理。这样才能在浏览器下运行起来我们创建的 React 应用。</p>
+<hr>
+<p><a name="crT4x"></a></p>
+<h4 id="create-react-app"><a href="#create-react-app" class="headerlink" title="create-react-app"></a>create-react-app</h4><p>React 官方提供了一个脚手架用于初始化React项目，使用 <a href="https://link.zhihu.com/?target=https%3A//github.com/facebook/create-react-app" target="_blank" rel="noopener">create-react-app</a> 可以简化手动设置流程。 官方网站的 Tutorial  也是以此为例。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 安装 create-react-app 并创建 my-app 项目</span><br><span class="line">$ npm install -g create-react-app</span><br><span class="line">$ create-react-app my-app</span><br><span class="line"># 或者</span><br><span class="line"># npm版本在5.2.0+ 可以使用 npx 命令，简洁 </span><br><span class="line">$ npx create-react-app my-app</span><br><span class="line"># 进入项目目录，启动项目</span><br><span class="line">$ cd my-app</span><br><span class="line">$ npm start</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1562224255693-8dc9e0fb-2c53-4efe-aa4e-242cd408e5e8.jpeg#align=left&display=inline&height=780&originHeight=443&originWidth=600&size=0&status=done&width=1056" alt>执行命令结束后信息<br>使用 create-react-app ，你只需要执行命令之后等待安装完依赖，就可以创建一个已经配置好的 React 应用程序，并可以基于此开始你的项目开发。这对新手无疑是很友好的。<br>如果你希望在老项目中引入 React，或着探究 React 到底是怎么运行起来的。那就需要自己动手来配置了。我们使用 <a href="https://link.zhihu.com/?target=http%3A//babeljs.io/" target="_blank" rel="noopener">Babel</a> 和 <a href="https://link.zhihu.com/?target=https%3A//webpack.js.org/" target="_blank" rel="noopener">Webpack</a> 来解决这个问题。</p>
+<hr>
+<p><strong>新建项目</strong><br>我们先使用 npm init 和 git init 来初始化一个项目，然后增加下面三个文件夹：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">+-- dist</span><br><span class="line">+-- public</span><br><span class="line">+-- src</span><br></pre></td></tr></table></figure>
+
+<p>在 public 目录中，存放所有静态资源。其中需要新建一个 index.html 文件，并写入如下内容（下面的HTML内容拷贝自 React 官方文档，并做了一些非常小的修改）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- sourced from https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html --&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;&gt;</span><br><span class="line">    &lt;title&gt;React Starter&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;noscript&gt;</span><br><span class="line">      You need to enable JavaScript to run this app.</span><br><span class="line">    &lt;/noscript&gt;</span><br><span class="line">    &lt;script src=&quot;../dist/bundle.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是上面内容的第十行（为什么没有行数。。。假装有），也就是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这是 React 应用通过JS插入 DOM 结构的根节点。它会在配置 React 入口文件的时候用到。<br>还有第十四行 引入了一个名为 bundle 的 js 文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;../dist/bundle.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这是 React 通过 webpack 打包后最终输出的文件，名字随意。不过本教程中我们使用 bundle。<br>现在我们已经配置好了 HTML 内容。接下来还有更多配置。<br>首先，为了保证我们编写的 React 代码可以编译为浏览器可执行的代码，我们需要使用 Babel做编译工作。</p>
+<hr>
+<p><strong>Babel</strong><br>这里解释一下 Babel 起到什么作用：<br>为了更好的在模块化开发，避免模板和组件分离，减少复杂性。 React 使用 JSX 语法，将 HTML 模板直接嵌入到了 JS 代码里面，这样就做到了模板和组件关联。但是 JS 不支持这种包含 HTML 的语法，所以需要通过工具将 JSX 编译输出成 JS 代码才能使用。<br>而 Babel 就是我们使用的 编译 工具（不仅转换JSX，还有 ES6+ 语法等）<br>关于 Babel 的安装和配置可以查看我之前的一篇笔记：<br><a href="https://zhuanlan.zhihu.com/p/35888257" target="_blank" rel="noopener"><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1562224255320-81d7ceae-12d1-4117-9bfe-4311fb621607.jpeg#align=left&display=inline&height=120&originHeight=120&originWidth=180&size=0&status=done&width=180" alt></a><br>在此处，我们需要安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save-dev babel-core@6.26.0 babel-cli@6.26.0 babel-preset-env@1.6.1 babel-preset-react@6.24.1</span><br></pre></td></tr></table></figure>
+
+<p>因为后续会用到 webpack 。所以此处安装了 babel-core。而这个包也正是主要用来转换我们 React 代码的 Babel 包。<br>然后在项目根目录下创建 .babelrc， 配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;presets&quot;: [&quot;env&quot;, &quot;react&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>env 和 react 预设集分别用于转换 ES6+ 和 React 代码。<br>Babel 就这么简单带过，实际内容也不是很难，比较好理解。</p>
+<hr>
+<p><strong>Webpack</strong><br>如果对 webpack 没有概念，需要先去了解一下。<br>一些关于 webpack 的入门内容也可以查看我的另一篇学习笔记：<br><a href="https://zhuanlan.zhihu.com/p/35896584" target="_blank" rel="noopener"><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1562224255315-0f644c5f-9b68-4f35-9783-04c451a7e8d3.jpeg#align=left&display=inline&height=120&originHeight=120&originWidth=180&size=0&status=done&width=180" alt></a><br>配置 webpack。我们需要安装如下依赖包：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev webpack@4.6.0 webpack-cli@2.0.14 webpack-dev-server@3.1.3 style-loader@0.21.0 css-loader@0.28.11 babel-loader@7.1.4</span><br></pre></td></tr></table></figure>
+
+<p>其中 webpack-dev-server 是为了方便开发过程，将我们的项目在未打包前运行在一个开发服务器上，并且可以配置 修改代码后重新加载页面，这样可以在浏览器中即时反馈代码的修改。<br>style-loader  css-loader  babel-loader 用于加载处理打包过程中 css 和 js 等文件。<br>其中 babel-loader 将 webpack 和之前安装的 babel 结合起来，将 JSX 语法的 js 文件转化后再打包。</p>
+<p>安装之后在项目根目录下创建 webpack.config.js 文件，配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&quot;path&quot;);</span><br><span class="line">const webpack = require(&quot;webpack&quot;);</span><br><span class="line">const bundlePath = path.resolve(__dirname, &quot;dist/&quot;);</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  entry: &quot;./src/index.js&quot;,</span><br><span class="line">  module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: /\.(js|jsx)$/,</span><br><span class="line">        exclude: /(node_modules|bower_components)/,</span><br><span class="line">        loader: &apos;babel-loader&apos;,</span><br><span class="line">        options: &#123; presets: [&apos;env&apos;] &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        test: /\.css$/,</span><br><span class="line">        use: [ &apos;style-loader&apos;, &apos;css-loader&apos; ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  resolve: &#123; extensions: [&apos;*&apos;, &apos;.js&apos;, &apos;.jsx&apos;] &#125;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    publicPath: bundlePath,</span><br><span class="line">    filename: &quot;bundle.js&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    contentBase: path.join(__dirname,&apos;public&apos;),</span><br><span class="line">    port: 3000,</span><br><span class="line">    publicPath: &quot;http://localhost:3000/dist&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [ new webpack.HotModuleReplacementPlugin() ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>此处不再详解每个配置项。补充一下之前学习笔记中没有提到的内容。<br>rules 下的 exclude 字段：用来配置需要排除（不去这些目录下寻找 test 字段正则匹配的文件）的目录或文件<br>resolve 字段：指定 webpack 可以解析哪些拓展名的文件，配置后可以在 文件引入时不带拓展名。<br>devServer 字段： 配置开发服务器，指定服务在本地运行的端口、根目录、静态资源实际目录等。<br>最后 plugins 字段里，我们加入了一个 <a href="https://link.zhihu.com/?target=https%3A//webpack.js.org/guides/hot-module-replacement/" target="_blank" rel="noopener">Hot Module Replacement</a> 插件的实例。这个用于 热更新，避免每次代码修改后刷新页面。</p>
+<p>两个保证 React 运行起来的工具到此就配置完成了。接下来就是 React 方面的配置。</p>
+<hr>
+<p><strong>React</strong><br>安装 react 和  react-dom：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save react@16.3.2 react-dom@16.3.2</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，我们需要在  src 目录下新建一个 React 应用程序的入口文件 index.js。我们需要在这个文件中告诉 React 在哪里插入你想渲染的页面。这个文件十分简单，不过也可以做更多配置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import React from &quot;react&quot;;</span><br><span class="line">import ReactDOM from &quot;react-dom&quot;;</span><br><span class="line">import App from &quot;./App.js&quot;;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;App /&gt;,</span><br><span class="line">  document.getElementById(&quot;root&quot;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>ReactDOM.render是一个函数，它会告诉 React 渲染什么以及在哪里渲染它：<br>此处我们渲染了一个名 App 组件（接下来会创建这个组件）。<br>渲染的位置是 ID 为 ‘root’ 的DOM元素。<br>还记得前面我们单独提到的 public/index.html 文件中的第十行。也就是这个 div 元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这就是 React 要渲染的位置。<br>现在我们在相同的 src 目录下创建 App.js 文件，并插入如下代码（如果你使用 create-react-app 脚手架，此部分应该很熟悉）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component&#125; from &quot;react&quot;</span><br><span class="line">import &quot;./App.css&quot;</span><br><span class="line">class App extends Component&#123;</span><br><span class="line">  render()&#123;</span><br><span class="line">    return(</span><br><span class="line">      &lt;div className=&quot;App&quot;&gt;</span><br><span class="line">        &lt;h1&gt; Hello, World! &lt;/h1&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default App</span><br></pre></td></tr></table></figure>
+
+<p>我们看到这里使用 import 引入了一个 css 文件。我们之前使用 webpack 做了相应的配置，所以可以将 css 文件当做模块引入进来（当然也可以使用scss，相应的配置webpack就好）。接下来在 src 目录下继续创建 App.css文件，并插入如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.App &#123;</span><br><span class="line">  margin: 1rem;</span><br><span class="line">  font-family: Arial, Helvetica, sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后你的目录将会是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">+-- public</span><br><span class="line">| +-- index.html</span><br><span class="line">+-- src</span><br><span class="line">| +-- App.css</span><br><span class="line">| +-- App.js</span><br><span class="line">| +-- index.js</span><br><span class="line">+-- .babelrc</span><br><span class="line">+-- package-lock.json</span><br><span class="line">+-- package.json</span><br><span class="line">+-- webpack.config.js</span><br></pre></td></tr></table></figure>
+
+<p>到此我们手动完成了整个 React 项目从无到有的创建。现在可以使用 webpack-dev-server –mode development 命令来运行这个项目。不过我建议将这个命令配置到 package.json 中，使用 npm start 命令启动项目。<br>你可能会发现 执行命令以后 dist 文件夹下并没有内容产生。那是因为 devServer 生成的文件会直接放在内存中运行，当服务关闭时，这些文件就随之消失了。<br>如果需要生成打包后的文件，可以配置一个 npm 的 build 命令为：<br>webpack –mode production<br>这样执行 npm run build 后就可以在 dist 文件夹下看到文件了。</p>
+<hr>
+<p><strong>总结</strong><br>在我是个特别新的新手的时候，我只会使用各种框架提供的 CLI 来创建一个新的项目。一度对各种概念很是疑惑，不得其解。通过对 babel 、webpack 等工具了解、使用之后，算是对这一套东西在脑子里有了一个粗浅的系统概念。<br>整个配置过程并不复杂，不过涉及了两个工具可能会让新手疑惑。而且这些配置仅仅是支撑起 React 运行起来，还有更多深入的配置需要学习和探索。</p>
+<hr>
+<p><strong>参考文章：</strong><br><a href="https://link.zhihu.com/?target=https%3A//blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658" target="_blank" rel="noopener">Creating a React App… From Scratch —— Jedai Saboteur</a><br><a href="https://link.zhihu.com/?target=https%3A//reactjs.org/tutorial/tutorial.html" target="_blank" rel="noopener">Tutorial —— React</a></p>
+<p><a name="R7agM"></a></p>
+<h4 id="Create-React-App-中文文档"><a href="#Create-React-App-中文文档" class="headerlink" title="Create React App 中文文档"></a><a href="https://s0facebook0github0io.icopy.site/create-react-app/docs/getting-started" target="_blank" rel="noopener">Create React App 中文文档</a></h4>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/04/yuque/create-react-app创建的项目中registerServiceWorker.js文件的作用/" rel="next" title="create-react-app创建的项目中registerServiceWorker.js文件的作用">
+                <i class="fa fa-chevron-left"></i> create-react-app创建的项目中registerServiceWorker.js文件的作用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/04/yuque/js教程/" rel="prev" title="js教程">
+                js教程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#React-简介"><span class="nav-number">1.</span> <span class="nav-text">React 简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#create-react-app"><span class="nav-number">2.</span> <span class="nav-text">create-react-app</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Create-React-App-中文文档"><span class="nav-number">3.</span> <span class="nav-text">Create React App 中文文档</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">131.7k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>

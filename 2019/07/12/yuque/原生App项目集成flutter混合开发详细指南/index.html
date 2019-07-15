@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="方案选择目前主流的混合开发方案有两种集成方式：源码集成： 也就是谷歌官方提供的方案[github.com/flutter/flu…]产物集成： Flutter项目单独开发，开发完成后发布成aar包或者iOS的framework形式，原生项目依赖flutter输出的制品即可。具体可以参考闲鱼的文章两种方式各有优劣，其实产物集成更好一些，不过即使是进行产物集成，也需要弄懂源码集成的方式，因为当有很多">
+<meta property="og:type" content="article">
+<meta property="og:title" content="原生App项目集成flutter混合开发详细指南">
+<meta property="og:url" content="http://yoursite.com/2019/07/12/yuque/原生App项目集成flutter混合开发详细指南/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="方案选择目前主流的混合开发方案有两种集成方式：源码集成： 也就是谷歌官方提供的方案[github.com/flutter/flu…]产物集成： Flutter项目单独开发，开发完成后发布成aar包或者iOS的framework形式，原生项目依赖flutter输出的制品即可。具体可以参考闲鱼的文章两种方式各有优劣，其实产物集成更好一些，不过即使是进行产物集成，也需要弄懂源码集成的方式，因为当有很多">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/webp/263301/1562910991738-2d68621f-466e-4bfe-912f-c15de452cc2c.webp#align=left&display=inline&height=534&originHeight=534&originWidth=1280&size=0&status=done&width=1280">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/webp/263301/1562910991695-d2fdffdd-9334-40a5-a902-9fbd558ccdc3.webp#align=left&display=inline&height=391&originHeight=391&originWidth=686&size=0&status=done&width=686">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/webp/263301/1562910991728-2e90df24-17ee-4ae2-8120-572f3d2abdc2.webp#align=left&display=inline&height=162&originHeight=162&originWidth=798&size=0&status=done&width=798">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/webp/263301/1562910991747-a15693d7-ed99-48c4-9016-7bb7f67cb544.webp#align=left&display=inline&height=447&originHeight=447&originWidth=1280&size=0&status=done&width=1280">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/webp/263301/1562910991739-22406358-1a7e-4a72-8a8c-4455fe12f4d4.webp#align=left&display=inline&height=635&originHeight=635&originWidth=1280&size=0&status=done&width=1280">
+<meta property="og:updated_time" content="2019-07-15T02:33:17.945Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="原生App项目集成flutter混合开发详细指南">
+<meta name="twitter:description" content="方案选择目前主流的混合开发方案有两种集成方式：源码集成： 也就是谷歌官方提供的方案[github.com/flutter/flu…]产物集成： Flutter项目单独开发，开发完成后发布成aar包或者iOS的framework形式，原生项目依赖flutter输出的制品即可。具体可以参考闲鱼的文章两种方式各有优劣，其实产物集成更好一些，不过即使是进行产物集成，也需要弄懂源码集成的方式，因为当有很多">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/webp/263301/1562910991738-2d68621f-466e-4bfe-912f-c15de452cc2c.webp#align=left&display=inline&height=534&originHeight=534&originWidth=1280&size=0&status=done&width=1280">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/12/yuque/原生App项目集成flutter混合开发详细指南/">
+
+
+
+
+
+  <title>原生App项目集成flutter混合开发详细指南 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/yuque/原生App项目集成flutter混合开发详细指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">原生App项目集成flutter混合开发详细指南</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-12T13:58:49+08:00">
+                2019-07-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-15T10:33:17+08:00">
+                2019-07-15
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a name="Pe5ZB"></a></p>
+<h3 id="方案选择"><a href="#方案选择" class="headerlink" title="方案选择"></a>方案选择</h3><p>目前主流的混合开发方案有两种集成方式：<br><strong>源码集成：</strong> 也就是谷歌官方提供的方案[<a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fflutter%2Fflutter%2Fwiki%2FAdd-Flutter-to-existing-apps" target="_blank" rel="noopener">github.com/flutter/flu…</a>]<br><strong>产物集成：</strong> Flutter项目单独开发，开发完成后发布成aar包或者iOS的framework形式，原生项目依赖flutter输出的制品即可。具体可以参考闲鱼的文章<br><img src="https://cdn.nlark.com/yuque/0/2019/webp/263301/1562910991738-2d68621f-466e-4bfe-912f-c15de452cc2c.webp#align=left&display=inline&height=534&originHeight=534&originWidth=1280&size=0&status=done&width=1280" alt><br>两种方式各有优劣，其实产物集成更好一些，不过即使是进行产物集成，也需要弄懂源码集成的方式，因为当有很多和原生交互的功能进行开发的时候，源码集成的方式可以直接调试会方便很多。<br>根据目前我们的情况：<br>1.参与人员都要进行flutter开发、<br>2.持续发布和构建我可以修改控制<br>我们现在这个项目选择了<strong>源码集成</strong>的方式。<br><a name="YUyoJ"></a></p>
+<h3 id="为原生项目集成flutter"><a href="#为原生项目集成flutter" class="headerlink" title="为原生项目集成flutter"></a>为原生项目集成flutter</h3><p>整个的集成方案是参考谷歌方法：[<a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fflutter%2Fflutter%2Fwiki%2FAdd-Flutter-to-existing-apps" target="_blank" rel="noopener">github.com/flutter/flu…</a>]，但是有一些不一样，我是创建了一个flutter项目后，在原生的项目中使用<code>git submodule</code>的形式进行管理的。<br><a name="nj9vl"></a></p>
+<h4 id="1-创建flutter-module-project"><a href="#1-创建flutter-module-project" class="headerlink" title="1.创建flutter module project"></a>1.创建flutter module project</h4><p>我们假定已经有了原生的项目<code>Native-iOS</code>和<code>Native-Android</code>；现在我们需要创建我们的flutter项目。</p>
+<ol>
+<li><p>把我们的flutter的channel切换到master(master分支下是flutter的preview版本)<br><code>flutter channel master</code></p>
+</li>
+<li><p>创建flutter模块的项目<br><code>flutter create -t module {moduleName}</code><br>我这里创建一个flutter的模块项目叫<code>flutter_module</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">➜ flutter create -t module flutter_module</span><br><span class="line">Creating project flutter_module...</span><br><span class="line">  flutter_module/test/widget_test.dart (created)</span><br><span class="line">  ...</span><br><span class="line">  ...</span><br><span class="line">  flutter_module/.idea/workspace.xml (created)</span><br><span class="line">Running &quot;flutter packages get&quot; in flutter_module...                 7.2s</span><br><span class="line">Wrote 12 files.</span><br><span class="line">All done!</span><br><span class="line">Your module code is in flutter_module/lib/main.dart.</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建成功后我们可以看一下目录结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">➜  flutter_module git:(master) ✗ tree -L 2 -a</span><br><span class="line">.</span><br><span class="line">├── .android</span><br><span class="line">│   ├── Flutter</span><br><span class="line">│   ├── app</span><br><span class="line">│   ├── ...</span><br><span class="line">├── .gitignore</span><br><span class="line">├── .ios</span><br><span class="line">│   ├── Config</span><br><span class="line">│   ├── Flutter</span><br><span class="line">│   ├── ...</span><br><span class="line">│   └── Runner.xcworkspace</span><br><span class="line">├── lib</span><br><span class="line">│   └── main.dart</span><br><span class="line">├── pubspec.lock</span><br><span class="line">├── pubspec.yaml</span><br><span class="line">└── test</span><br><span class="line">    └── widget_test.dart</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在flutter的模块项目中包含有一个隐藏的<code>.android</code>和<code>.ios</code>目录这个目录下是可运行的Android和iOS项目，我们的flutter代码还是在<code>lib</code>下编写，注意在<code>.android</code>和<code>.ios</code>目录下都有一个Flutter目录，这个是我们flutter的库项目了。也就是Android用来生成aar，iOS用来生产framework的库。如果我们用<code>flutter create xxx</code> 生成的纯flutter项目是没有这个Flutter目录的。</p>
+</li>
+<li><p>把该项目使用git管理起来，稍后我们要在native项目中以子模块的形式添加进去。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  cd flutter_module</span><br><span class="line">➜  git init</span><br><span class="line">Initialized empty Git repository in /Users/zhiqiangdeng/Documents/ProjectSource/FlutterProject/flutter_module/.git/</span><br><span class="line">➜  flutter_module git:(master) ✗</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><del>初始化git仓库后我们先编辑一下项目下的<code>.gitignore</code>文件，当前这个文件是把项目下的–<code>.ios</code>和<code>.android</code>忽略掉的。这个两个项目我们需要跟踪一下，大家可以去github上找一下iOS和Android的gitignore模版文件，然后添加到这个两个目录中，然后把顶层目录的文件作出如下修改，删除<code>.android和.ios</code>添加<code>.ios/Flutter/Generated.xcconfig</code></del><br><del>.gitignore文件:</del></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-.android/</span><br><span class="line">-.ios/</span><br><span class="line">+.ios/Flutter/Generated.xcconfig</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><strong>上面的内容做一些更正，不需要编辑.gitignore文件使用自动生成的即可。<code>.android</code>和<code>.ios</code>目录在每次执行<code>flutter packages get</code>命令会自动生成（团队其他成员拉取代码后没有.android和.ios执行一下flutter packages get即可）</strong></p>
+<ol start="4">
+<li>提交你的flutter模块项目到你的git服务器(我提交到github上了[<a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fzakiso%2Fflutter-module-demo.git" target="_blank" rel="noopener">github.com/zakiso/flut…</a>]大家可以参考)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin &#123;你的flutter module的仓库地址&#125;</span><br><span class="line">git push origin master</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><a name="zG9h6"></a></p>
+<h3 id="2-给iOS项目集成flutter"><a href="#2-给iOS项目集成flutter" class="headerlink" title="2.给iOS项目集成flutter"></a>2.给iOS项目集成flutter</h3><p>1.进入我们原生的iOS项目根目录中，为它添加一个git submodule，把我们的flutter项目拉取下来.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git submodule add &#123;你的flutter module的仓库地址&#125;</span><br><span class="line">git submodule update</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>2.在项目的<code>Podfile</code>文件中添加下面的代码，在每次执行pod install会运行podhelper.rb</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">platform :ios, &apos;8.0&apos;</span><br><span class="line">use_frameworks!</span><br><span class="line">target &apos;MyApp&apos; do</span><br><span class="line">  pod &apos;AFNetworking&apos;, &apos;~&gt; 2.6&apos;</span><br><span class="line">  xxxx</span><br><span class="line">end</span><br><span class="line">#添加如下两行代码，路径修改为我们的fluter module的路径</span><br><span class="line">flutter_application_path = &apos;./flutter-module-demo&apos;</span><br><span class="line">  eval(File.read(File.join(flutter_application_path, &apos;.ios&apos;, &apos;Flutter&apos;, &apos;podhelper.rb&apos;)), binding)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>3.打开Xcode关闭bitcode配置<code>Build Settings-&gt;Build Options-&gt;Enable Bitcode</code><br>4.添加编译脚本，打开Xcode在 Build Phases中添加<code>New Run Script Phase</code>在里面填入如下脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh&quot; build</span><br><span class="line">&quot;$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh&quot; embed</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2019/webp/263301/1562910991695-d2fdffdd-9334-40a5-a902-9fbd558ccdc3.webp#align=left&display=inline&height=391&originHeight=391&originWidth=686&size=0&status=done&width=686" alt><br>5.项目的配置完成现在需要生成一些配置文件<br>a. 进入原生项目的flutter模块目录中执行<code>flutter packages get</code>命令<br>b. 回到原生项目根目录执行<code>pod install</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">➜  cd flutter-module-demo</span><br><span class="line">➜  flutter-module-demo git:(master) flutter packages get</span><br><span class="line">Running &quot;flutter packages get&quot; in flutter-module-demo...            0.4s</span><br><span class="line">➜  flutter-module-demo git:(master) cd ..</span><br><span class="line">➜  FlutterNativeiOS git:(master) ✗ pod install</span><br><span class="line">Analyzing dependencies</span><br><span class="line">Fetching podspec for `Flutter` from `./flutter-module-demo/.ios/Flutter/engine`</span><br><span class="line">Fetching podspec for `FlutterPluginRegistrant` from `./flutter-module-demo/.ios/Flutter/FlutterPluginRegistrant`</span><br><span class="line">Downloading dependencies</span><br><span class="line">Using AFNetworking (2.6.3)</span><br><span class="line">Installing Flutter (1.0.0)</span><br><span class="line">Installing FlutterPluginRegistrant (0.0.1)</span><br><span class="line">Generating Pods project</span><br><span class="line">Integrating client project</span><br><span class="line">Sending stats</span><br><span class="line">Pod installation complete! There are 3 dependencies from the Podfile and 3 total pods installed.</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>到此为止我们的原生项目就已经集成好了flutter项目了。<br>5.在原生项目中使用flutter，下面以swift项目为例<br>修改AppDelegate.swift:注意AppDelegate是集成自FlutterAppDelegate</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import UIKit</span><br><span class="line">import Flutter</span><br><span class="line">import FlutterPluginRegistrant // Only if you have Flutter Plugins.</span><br><span class="line">@UIApplicationMain</span><br><span class="line">class AppDelegate: FlutterAppDelegate &#123;</span><br><span class="line">  var flutterEngine : FlutterEngine?;</span><br><span class="line">  // Only if you have Flutter plugins.</span><br><span class="line">  override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -&gt; Bool &#123;</span><br><span class="line">    self.flutterEngine = FlutterEngine(name: &quot;io.flutter&quot;, project: nil);</span><br><span class="line">    self.flutterEngine?.run(withEntrypoint: nil);</span><br><span class="line">    GeneratedPluginRegistrant.register(with: self.flutterEngine);</span><br><span class="line">    return super.application(application, didFinishLaunchingWithOptions: launchOptions);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>修改Controller代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import UIKit</span><br><span class="line">import Flutter</span><br><span class="line">class ViewController: UIViewController &#123;</span><br><span class="line">  override func viewDidLoad() &#123;</span><br><span class="line">    super.viewDidLoad()</span><br><span class="line">    let button = UIButton(type:UIButtonType.custom)</span><br><span class="line">	...</span><br><span class="line">    self.view.addSubview(button)</span><br><span class="line">  &#125;</span><br><span class="line">  @objc func handleButtonAction() &#123;</span><br><span class="line">    let flutterEngine = (UIApplication.shared.delegate as? AppDelegate)?.flutterEngine;</span><br><span class="line">    let flutterViewController = FlutterViewController(engine: flutterEngine, nibName: nil, bundle: nil)!;</span><br><span class="line">    self.present(flutterViewController, animated: true, completion: nil)</span><br><span class="line">  &#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>RUN….<br><a name="YIPfW"></a><h3 id="3-iOS项目集成过程梳理"><a href="#3-iOS项目集成过程梳理" class="headerlink" title="3.iOS项目集成过程梳理"></a>3.iOS项目集成过程梳理</h3>整个的集成过程其实总得来说是如下三个步骤：<br>1.将flutter项目放入原生项目的文件夹下<br>2.在podfile中添加<code>podhelper.rb</code>配置<br>3.在Xcode的build phases添加<code>&quot;$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh&quot;</code>iOS编译脚本。<br>其中podhelper.rb文件位于我们flutter模块项目的<code>.ios/Flutter/podhelper.rb</code>下，大家查看它的源码可以发现，它有下面几个作用：<br>1.把Flutter（flutterEngine）和FlutterPluginRegistrant两个库用pod给原生项目导入进入<br>2.如果flutter项目有用到flutter plugin插件，把插件用pod导入<br>3.导入<code>Generated.xcconfig</code>的相关配置信息，在<code>podhelper.rb</code>同级别的目录下还有一个<code>Generated.xcconfig</code>文件，这个文件在使用<code>flutter create xx、flutter run xxx、flutter packages get</code>命令的时候如果该文件不存在则会生成这个文件。这个文件内容如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// This is a generated file; do not edit or check into version control.</span><br><span class="line">FLUTTER_ROOT=/Users/zhiqiangdeng/.flutter_wrapper/1.2.2-pre.43</span><br><span class="line">FLUTTER_APPLICATION_PATH=/Users/zhiqiangdeng/Documents/ProjectSource/XcodeProject/lianhua-order-iOS/order-check-module-flutter</span><br><span class="line">FLUTTER_TARGET=lib/main.dart</span><br><span class="line">FLUTTER_BUILD_DIR=build</span><br><span class="line">SYMROOT=$&#123;SOURCE_ROOT&#125;/../build/ios</span><br><span class="line">FLUTTER_BUILD_NAME=1.0.0</span><br><span class="line">FLUTTER_BUILD_NUMBER=1</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>他记录了当前flutter sdk的目录位置，以及版本号，还有项目模块的目录位置。这个文件的内容在执行<code>pod install</code>的时候会被写入到xcode build setting中，在执行完pod install之后，可以在原生项目根目录使用<code>xcodebuild -showBuildSettings|grep flutter</code> 查看相关的信息。<br><img src="https://cdn.nlark.com/yuque/0/2019/webp/263301/1562910991728-2e90df24-17ee-4ae2-8120-572f3d2abdc2.webp#align=left&display=inline&height=162&originHeight=162&originWidth=798&size=0&status=done&width=798" alt><br>最后一步就是运行程序，运行程序的时候在Build phase添加了<code>xcode_backend.sh</code>该脚本会使用到上面pod install给xcode build setting设置的那些环境变量，然后找到项目目录生成AppFramework。<br><a name="x9bZz"></a></p>
+<h3 id="4-给原生Android项目集成Flutter"><a href="#4-给原生Android项目集成Flutter" class="headerlink" title="4.给原生Android项目集成Flutter"></a>4.给原生Android项目集成Flutter</h3><p>Android的文章很多，这里不再详细描述了<br>1.在原生Android项目中添加子模块，将上面创建的flutter module项目拉取到原生安卓项目中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git submodule add &#123;你的flutter module的仓库地址&#125;</span><br><span class="line">git submodule update</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="EYKda"></a></p>
+<h4 id="2-在根目录的settings-gradle中添加如下配置"><a href="#2-在根目录的settings-gradle中添加如下配置" class="headerlink" title="2.在根目录的settings.gradle中添加如下配置"></a>2.在根目录的<code>settings.gradle</code>中添加如下配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">setBinding(new Binding([gradle: this]))                                 </span><br><span class="line">evaluate(new File(                                                                 </span><br><span class="line">  &apos;&#123;xxxxx你的flutter module目录&#125;/.android/include_flutter.groovy&apos;                    </span><br><span class="line">))      </span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="kTTF4"></a></p>
+<h4 id="3-在原生项目的app目录下的build-gradle文件中添加Flutter库的依赖"><a href="#3-在原生项目的app目录下的build-gradle文件中添加Flutter库的依赖" class="headerlink" title="3.在原生项目的app目录下的build.gradle文件中添加Flutter库的依赖"></a>3.在原生项目的app目录下的build.gradle文件中添加Flutter库的依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  implementation project(&apos;:flutter&apos;)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="9OGh9"></a></p>
+<h4 id="4-在原生代码中集成flutter跳转到flutter页面"><a href="#4-在原生代码中集成flutter跳转到flutter页面" class="headerlink" title="4.在原生代码中集成flutter跳转到flutter页面"></a>4.在原生代码中集成flutter跳转到flutter页面</h4><p>我使用了一个新的Activity进行跳转。具体可以参看源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Button open = findViewById(R.id.openBtn);</span><br><span class="line">open.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void onClick(View v) &#123;</span><br><span class="line">        Intent intent = new Intent();</span><br><span class="line">        intent.setClass(MainActivity.this, MyFlutterActivity.class);</span><br><span class="line">        startActivity(intent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class MyFlutterActivity extends AppCompatActivity &#123;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_flutter);</span><br><span class="line">        final FlutterView flutterView = Flutter.createView(</span><br><span class="line">                this,</span><br><span class="line">                getLifecycle(),</span><br><span class="line">                &quot;route1&quot;</span><br><span class="line">        );</span><br><span class="line">        final FrameLayout layout = findViewById(R.id.flutter_container);</span><br><span class="line">        layout.addView(flutterView);</span><br><span class="line">        final FlutterView.FirstFrameListener[] listeners = new FlutterView.FirstFrameListener[1];</span><br><span class="line">        listeners[0] = new FlutterView.FirstFrameListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onFirstFrame() &#123;</span><br><span class="line">                layout.setVisibility(View.VISIBLE);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        flutterView.addFirstFrameListener(listeners[0]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="cU1Jt"></a></p>
+<h3 id="5-团队中其他同事协同开发"><a href="#5-团队中其他同事协同开发" class="headerlink" title="5.团队中其他同事协同开发"></a>5.团队中其他同事协同开发</h3><ol>
+<li>拉取项目源码<code>git clone xxxxx{项目地址}</code></li>
+<li>初始化项目中的子模块<code>git submodule init &amp;&amp; git submodule update</code></li>
+<li>执行<code>flutter packages get</code> (有时候可能出现无法运行可以进入.ios和.android中分别执行pod install 和 gradle assembleDebug,或者flutter build ios,flutter build apk等命令构建一次)</li>
+<li>Run…</li>
+</ol>
+<p><strong>Android从原生跳到Flutter模块的黑屏问题</strong>，在网上看到很多说设置透明主题的但是没有用，后来看到一种先隐藏显示，等待渲染好第一帧后才显示flutter页面的方法。这里要注意一点要在布局中先把flutter的Container布局设置为InVisible状态，不要使用Gone，用gone的话是不显示也不渲染，用InVisible不显示但是会渲染界面占位置，等待渲染完成后再设置为Visible即可。<br><a name="IdS8P"></a></p>
+<h3 id="6-flutter的版本管理"><a href="#6-flutter的版本管理" class="headerlink" title="6.flutter的版本管理"></a>6.flutter的版本管理</h3><p>在我们的开发过程中遇到了一个问题，就是各个开发者使用的flutter sdk版本不一致，导致一些库无法运行，在网上也遇到有相同问题的人，提出了模仿gradle wrapper来做一个flutter_wrapper的思路。于是我根据自己的需要写了一个flutter_wrapper的小工具。它的主要作用是统一开发人员的本地flutter环境。<br><strong>使用说明</strong></p>
+<ol>
+<li>在你的项目根目录中执行命令下载脚本<br><code>curl -O https://raw.githubusercontent.com/zakiso/flutterw/master/flutterw &amp;&amp; chmod 755 flutterw</code></li>
+<li>下载好脚本后在根目录中使用<br><code>./flutterw init</code><br>该命令会收集你当前系统中的flutter版本，并将相关信息写入<code>flutter_wrapper.properties</code>文件中，团队中所有成员都会以该版本号做为该项目的标准版本</li>
+<li>将flutterw文件和flutter_wrapper.properties文件添加到git中提交到仓库里</li>
+<li>其他成员拉取代码后在项目中使用<code>flutter</code>命令的地方使用<code>./flutterw</code>代替，如果使用ide请选择home目录下对应版本的sdk包</li>
+</ol>
+<p><strong>flutterw做了什么？</strong></p>
+<ol>
+<li>使用flutterw的时候会获取当前目录下的flutter_wrapper.properties文件中的版本号</li>
+<li>去用户的<code>${HOME}/flutter_wrapper/{版本号}/</code> 目录下查找是否有该版本sdk</li>
+<li>如果没有该版本sdk会下载下来，然后使用该目录下的sdk执行命令</li>
+</ol>
+<p><strong>注意事项</strong><br>如果flutter版本是preview的版本是直接使用master的最新代码来管理的。大家可以查看源码很简单，根据自己的需要定制。<br>项目demo我已经传到github中：有遇到问题的可以参考项目源码</p>
+<ul>
+<li>原生Android集成Flutter项目：<ul>
+<li><a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fzakiso%2Fflutter-native-android.git" target="_blank" rel="noopener">github.com/zakiso/flut…</a></li>
+</ul>
+</li>
+<li>原生iOS集成Flutter项目：<ul>
+<li><a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fzakiso%2Fflutter-native-ios.git" target="_blank" rel="noopener">github.com/zakiso/flut…</a></li>
+</ul>
+</li>
+<li>Flutter模块项目：<ul>
+<li><a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fzakiso%2Fflutter-module-demo.git" target="_blank" rel="noopener">github.com/zakiso/flut…</a></li>
+</ul>
+</li>
+<li>Flutter_Wrapper:<ul>
+<li><a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fzakiso%2Fflutterw.git" target="_blank" rel="noopener">github.com/zakiso/flut…</a><br><a name="5s3hx"></a><h3 id="最后："><a href="#最后：" class="headerlink" title="最后："></a>最后：</h3><img src="https://cdn.nlark.com/yuque/0/2019/webp/263301/1562910991747-a15693d7-ed99-48c4-9016-7bb7f67cb544.webp#align=left&display=inline&height=447&originHeight=447&originWidth=1280&size=0&status=done&width=1280" alt> 我们整个项目都是使用git进行管理的，虽然每个开发者都需要安装flutter环境，但是对于小团队来说成本并不高，加上flutter_wrapper也保证了版本的一致性。iOS开发者可以在原来的iOS项目中开发flutter的项目，Android开发者可以在原android项目中开发flutter，flutter开发者也可以自己单独开发flutter项目，这种方式其实对于开发者来说也是很方便的。<br><strong>Everything 用flutter开发的一款App，把记账本日记本，行程，待办等等都装进一个App里</strong><br><a name="KGpXy"></a><h4 id="everythings-app"><a href="#everythings-app" class="headerlink" title="everythings.app/"></a><a href="https://link.juejin.im/?target=https%3A%2F%2Feverythings.app%2F" target="_blank" rel="noopener">everythings.app/</a></h4><img src="https://cdn.nlark.com/yuque/0/2019/webp/263301/1562910991739-22406358-1a7e-4a72-8a8c-4455fe12f4d4.webp#align=left&display=inline&height=635&originHeight=635&originWidth=1280&size=0&status=done&width=1280" alt><br>转自：<a href="https://juejin.im/post/5c6eba82518825626b76f0eb" target="_blank" rel="noopener">https://juejin.im/post/5c6eba82518825626b76f0eb</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/11/yuque/常用的判断技巧/" rel="next" title="常用的判断技巧">
+                <i class="fa fa-chevron-left"></i> 常用的判断技巧
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#方案选择"><span class="nav-number">1.</span> <span class="nav-text">方案选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为原生项目集成flutter"><span class="nav-number">2.</span> <span class="nav-text">为原生项目集成flutter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-创建flutter-module-project"><span class="nav-number">2.1.</span> <span class="nav-text">1.创建flutter module project</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-给iOS项目集成flutter"><span class="nav-number">3.</span> <span class="nav-text">2.给iOS项目集成flutter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-iOS项目集成过程梳理"><span class="nav-number">4.</span> <span class="nav-text">3.iOS项目集成过程梳理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-给原生Android项目集成Flutter"><span class="nav-number">5.</span> <span class="nav-text">4.给原生Android项目集成Flutter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-在根目录的settings-gradle中添加如下配置"><span class="nav-number">5.1.</span> <span class="nav-text">2.在根目录的settings.gradle中添加如下配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-在原生项目的app目录下的build-gradle文件中添加Flutter库的依赖"><span class="nav-number">5.2.</span> <span class="nav-text">3.在原生项目的app目录下的build.gradle文件中添加Flutter库的依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-在原生代码中集成flutter跳转到flutter页面"><span class="nav-number">5.3.</span> <span class="nav-text">4.在原生代码中集成flutter跳转到flutter页面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-团队中其他同事协同开发"><span class="nav-number">6.</span> <span class="nav-text">5.团队中其他同事协同开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-flutter的版本管理"><span class="nav-number">7.</span> <span class="nav-text">6.flutter的版本管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后："><span class="nav-number">8.</span> <span class="nav-text">最后：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#everythings-app"><span class="nav-number">8.1.</span> <span class="nav-text">everythings.app/</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">131.7k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>

@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="JS 教程 JS 教程  JS 简介  JS 使用  JS 输出  JS 语句  JS 语法  JS 注释  JS 变量  JS 运算符  JS 算数  JS 赋值  JS 数据类型  JS 函数  JS 对象  JS 事件  JS 字符串  JS 字符串方法  JS 数字  JS 数字方法  JS 数组  JS 数组方法  JS 数组排序  JS 数组迭代  JS 日期  JS 日期格式  J">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js教程">
+<meta property="og:url" content="http://yoursite.com/2019/07/04/yuque/js教程/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="JS 教程 JS 教程  JS 简介  JS 使用  JS 输出  JS 语句  JS 语法  JS 注释  JS 变量  JS 运算符  JS 算数  JS 赋值  JS 数据类型  JS 函数  JS 对象  JS 事件  JS 字符串  JS 字符串方法  JS 数字  JS 数字方法  JS 数组  JS 数组方法  JS 数组排序  JS 数组迭代  JS 日期  JS 日期格式  J">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-15T02:33:17.960Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js教程">
+<meta name="twitter:description" content="JS 教程 JS 教程  JS 简介  JS 使用  JS 输出  JS 语句  JS 语法  JS 注释  JS 变量  JS 运算符  JS 算数  JS 赋值  JS 数据类型  JS 函数  JS 对象  JS 事件  JS 字符串  JS 字符串方法  JS 数字  JS 数字方法  JS 数组  JS 数组方法  JS 数组排序  JS 数组迭代  JS 日期  JS 日期格式  J">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/04/yuque/js教程/">
+
+
+
+
+
+  <title>js教程 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/04/yuque/js教程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js教程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-04T16:24:06+08:00">
+                2019-07-04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-15T10:33:17+08:00">
+                2019-07-15
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  850 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a name="as7q8"></a></p>
+<h2 id="JS-教程"><a href="#JS-教程" class="headerlink" title="JS 教程"></a>JS 教程</h2><ul>
+<li><p><a href="http://www.w3school.com.cn/js/index.asp" target="_blank" rel="noopener">JS 教程</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_intro.asp" target="_blank" rel="noopener">JS 简介</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_shiyong.asp" target="_blank" rel="noopener">JS 使用</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_output.asp" target="_blank" rel="noopener">JS 输出</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_statements.asp" target="_blank" rel="noopener">JS 语句</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_syntax.asp" target="_blank" rel="noopener">JS 语法</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_comments.asp" target="_blank" rel="noopener">JS 注释</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_variables.asp" target="_blank" rel="noopener">JS 变量</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_operators.asp" target="_blank" rel="noopener">JS 运算符</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_arithmetic.asp" target="_blank" rel="noopener">JS 算数</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_assignment.asp" target="_blank" rel="noopener">JS 赋值</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_datatypes.asp" target="_blank" rel="noopener">JS 数据类型</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_functions.asp" target="_blank" rel="noopener">JS 函数</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_objects.asp" target="_blank" rel="noopener">JS 对象</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_events.asp" target="_blank" rel="noopener">JS 事件</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_strings.asp" target="_blank" rel="noopener">JS 字符串</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_string_methods.asp" target="_blank" rel="noopener">JS 字符串方法</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_numbers.asp" target="_blank" rel="noopener">JS 数字</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_number_methods.asp" target="_blank" rel="noopener">JS 数字方法</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_arrays.asp" target="_blank" rel="noopener">JS 数组</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_array_methods.asp" target="_blank" rel="noopener">JS 数组方法</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_array_sort.asp" target="_blank" rel="noopener">JS 数组排序</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_array_iteration.asp" target="_blank" rel="noopener">JS 数组迭代</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_dates.asp" target="_blank" rel="noopener">JS 日期</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_date_formats.asp" target="_blank" rel="noopener">JS 日期格式</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_date_methods.asp" target="_blank" rel="noopener">JS 日期获取方法</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_date_methods_set.asp" target="_blank" rel="noopener">JS 日期设置方法</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_math.asp" target="_blank" rel="noopener">JS 数学</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_random.asp" target="_blank" rel="noopener">JS 随机</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_booleans.asp" target="_blank" rel="noopener">JS 逻辑</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_comparisons.asp" target="_blank" rel="noopener">JS 比较</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_if_else.asp" target="_blank" rel="noopener">JS 条件</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_switch.asp" target="_blank" rel="noopener">JS Switch</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_loop_for.asp" target="_blank" rel="noopener">JS Loop For</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_loop_while.asp" target="_blank" rel="noopener">JS Loop While</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_break.asp" target="_blank" rel="noopener">JS Break</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_type_conversion.asp" target="_blank" rel="noopener">JS 类型转换</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_bitwise.asp" target="_blank" rel="noopener">JS 位运算</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_regexp.asp" target="_blank" rel="noopener">JS 正则表达式</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_errors.asp" target="_blank" rel="noopener">JS 异常</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_scope.asp" target="_blank" rel="noopener">JS 作用域</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_hoisting.asp" target="_blank" rel="noopener">JS Hoisting</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_strict.asp" target="_blank" rel="noopener">JS 严格模式</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_this.asp" target="_blank" rel="noopener">JS this 关键词</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_let.asp" target="_blank" rel="noopener">JS Let</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_const.asp" target="_blank" rel="noopener">JS Const</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_debugging.asp" target="_blank" rel="noopener">JS 调试</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_conventions.asp" target="_blank" rel="noopener">JS 样式指南</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_best_practices.asp" target="_blank" rel="noopener">JS 最佳实践</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_mistakes.asp" target="_blank" rel="noopener">JS 错误</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_performance.asp" target="_blank" rel="noopener">JS 性能</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_reserved.asp" target="_blank" rel="noopener">JS 保留词</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_versions.asp" target="_blank" rel="noopener">JS 版本</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_es5.asp" target="_blank" rel="noopener">JS 版本 ES5</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_es6.asp" target="_blank" rel="noopener">JS 版本 ES6</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_json.asp" target="_blank" rel="noopener">JS JSON</a><br><a name="yadiU"></a></p>
+<h2 id="JS-表单"><a href="#JS-表单" class="headerlink" title="JS 表单"></a>JS 表单</h2></li>
+<li><p><a href="http://www.w3school.com.cn/js/js_validation.asp" target="_blank" rel="noopener">JS 表单</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_validation_api.asp" target="_blank" rel="noopener">JS 表单 API</a><br><a name="WwGaB"></a></p>
+<h2 id="JS-对象"><a href="#JS-对象" class="headerlink" title="JS 对象"></a>JS 对象</h2></li>
+<li><p><a href="http://www.w3school.com.cn/js/js_object_definition.asp" target="_blank" rel="noopener">JS 对象定义</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_object_properties.asp" target="_blank" rel="noopener">JS 对象属性</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_object_methods.asp" target="_blank" rel="noopener">JS 对象方法</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_object_accessors.asp" target="_blank" rel="noopener">JS 对象访问器</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_object_constructors.asp" target="_blank" rel="noopener">JS 对象构造器</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_object_prototypes.asp" target="_blank" rel="noopener">JS 对象原型</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_object_es5.asp" target="_blank" rel="noopener">JS ECMAScript 5</a><br><a name="QlX82"></a></p>
+<h2 id="JS-函数"><a href="#JS-函数" class="headerlink" title="JS 函数"></a>JS 函数</h2></li>
+<li><p><a href="http://www.w3school.com.cn/js/js_function_definition.asp" target="_blank" rel="noopener">JS 函数定义</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_function_parameters.asp" target="_blank" rel="noopener">JS 函数参数</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_function_invocation.asp" target="_blank" rel="noopener">JS 函数调用</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_function_call.asp" target="_blank" rel="noopener">JS 函数 Call</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_function_apply.asp" target="_blank" rel="noopener">JS 函数 Apply</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_function_closures.asp" target="_blank" rel="noopener">JS 闭包</a><br><a name="7jlzo"></a></p>
+<h2 id="JS-HTML-DOM"><a href="#JS-HTML-DOM" class="headerlink" title="JS HTML DOM"></a>JS HTML DOM</h2></li>
+<li><p><a href="http://www.w3school.com.cn/js/js_htmldom.asp" target="_blank" rel="noopener">DOM 简介</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_htmldom_methods.asp" target="_blank" rel="noopener">DOM 方法</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_htmldom_document.asp" target="_blank" rel="noopener">DOM 文档</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_htmldom_elements.asp" target="_blank" rel="noopener">DOM 元素</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_htmldom_html.asp" target="_blank" rel="noopener">DOM HTML</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_htmldom_css.asp" target="_blank" rel="noopener">DOM CSS</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_htmldom_animate.asp" target="_blank" rel="noopener">DOM 动画</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_htmldom_events.asp" target="_blank" rel="noopener">DOM 事件</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_htmldom_eventlistener.asp" target="_blank" rel="noopener">DOM 事件监听程序</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_htmldom_navigation.asp" target="_blank" rel="noopener">DOM 导航</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_htmldom_nodes.asp" target="_blank" rel="noopener">DOM 节点</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_htmldom_collections.asp" target="_blank" rel="noopener">DOM 集合</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_htmldom_nodelist.asp" target="_blank" rel="noopener">DOM 节点列表</a><br><a name="9IAdO"></a></p>
+<h2 id="JS-Browser-BOM"><a href="#JS-Browser-BOM" class="headerlink" title="JS Browser BOM"></a>JS Browser BOM</h2></li>
+<li><p><a href="http://www.w3school.com.cn/js/js_window.asp" target="_blank" rel="noopener">JS Window</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_window_screen.asp" target="_blank" rel="noopener">JS Screen</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_window_location.asp" target="_blank" rel="noopener">JS Location</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_window_history.asp" target="_blank" rel="noopener">JS History</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_window_navigator.asp" target="_blank" rel="noopener">JS Navigator</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_popup.asp" target="_blank" rel="noopener">JS 弹出框</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_timing.asp" target="_blank" rel="noopener">JS Timing</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_cookies.asp" target="_blank" rel="noopener">JS Cookies</a><br><a name="ptRcA"></a></p>
+<h2 id="JS-AJAX"><a href="#JS-AJAX" class="headerlink" title="JS AJAX"></a>JS AJAX</h2></li>
+<li><p><a href="http://www.w3school.com.cn/js/js_ajax_intro.asp" target="_blank" rel="noopener">AJAX 简介</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_ajax_http.asp" target="_blank" rel="noopener">AJAX XMLHttp</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_ajax_http_send.asp" target="_blank" rel="noopener">AJAX 请求</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_ajax_http_response.asp" target="_blank" rel="noopener">AJAX 响应</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_ajax_xmlfile.asp" target="_blank" rel="noopener">AJAX XML 文件</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_ajax_php.asp" target="_blank" rel="noopener">AJAX PHP</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_ajax_asp.asp" target="_blank" rel="noopener">AJAX ASP</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_ajax_database.asp" target="_blank" rel="noopener">AJAX 数据库</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_ajax_applications.asp" target="_blank" rel="noopener">AJAX 应用程序</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_ajax_examples.asp" target="_blank" rel="noopener">AJAX 实例</a><br><a name="MdQtT"></a></p>
+<h2 id="JS-JSON"><a href="#JS-JSON" class="headerlink" title="JS JSON"></a>JS JSON</h2></li>
+<li><p><a href="http://www.w3school.com.cn/js/js_json_intro.asp" target="_blank" rel="noopener">JSON 简介</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_json_syntax.asp" target="_blank" rel="noopener">JSON 语法</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_json_xml.asp" target="_blank" rel="noopener">JSON vs XML</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_json_datatypes.asp" target="_blank" rel="noopener">JSON 数据类型</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_json_parse.asp" target="_blank" rel="noopener">JSON 解析</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_json_stringify.asp" target="_blank" rel="noopener">JSON 字符串化</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_json_objects.asp" target="_blank" rel="noopener">JSON 对象</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_json_arrays.asp" target="_blank" rel="noopener">JSON 数组</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_json_php.asp" target="_blank" rel="noopener">JSON PHP</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_json_html.asp" target="_blank" rel="noopener">JSON HTML</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_json_jsonp.asp" target="_blank" rel="noopener">JSON JSONP</a><br><a name="o5Pln"></a></p>
+<h2 id="JS-vs-jQuery"><a href="#JS-vs-jQuery" class="headerlink" title="JS vs jQuery"></a>JS vs jQuery</h2></li>
+<li><p><a href="http://www.w3school.com.cn/js/js_jquery_selectors.asp" target="_blank" rel="noopener">jQuery 选择器</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_jquery_elements.asp" target="_blank" rel="noopener">jQuery HTML</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_jquery_css.asp" target="_blank" rel="noopener">jQuery CSS</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_jquery_dom.asp" target="_blank" rel="noopener">jQuery DOM</a><br><a name="ao0rY"></a></p>
+<h2 id="JS-实例"><a href="#JS-实例" class="headerlink" title="JS 实例"></a>JS 实例</h2></li>
+<li><p><a href="http://www.w3school.com.cn/js/js_examples.asp" target="_blank" rel="noopener">JS 实例</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_dom_examples.asp" target="_blank" rel="noopener">JS HTML DOM</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_input_examples.asp" target="_blank" rel="noopener">JS HTML 输入</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_html_objects_examples.asp" target="_blank" rel="noopener">JS HTML 对象</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_events_examples.asp" target="_blank" rel="noopener">JS HTML 事件</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_browser_objects_examples.asp" target="_blank" rel="noopener">JS Browser</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_quiz.asp" target="_blank" rel="noopener">JS 测验</a><br><a name="LtiMm"></a></p>
+<h2 id="JS-参考手册"><a href="#JS-参考手册" class="headerlink" title="JS 参考手册"></a>JS 参考手册</h2></li>
+<li><p><a href="http://www.w3school.com.cn/jsref/index.asp" target="_blank" rel="noopener">JavaScript 对象</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/jsref/index.asp" target="_blank" rel="noopener">HTML DOM 对象</a><br><a name="yPmBE"></a></p>
+<h2 id="建站手册"><a href="#建站手册" class="headerlink" title="建站手册"></a>建站手册</h2></li>
+<li><p><a href="http://www.w3school.com.cn/site/index.asp" target="_blank" rel="noopener">网站构建</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/w3c/index.asp" target="_blank" rel="noopener">万维网联盟 (W3C)</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/browsers/index.asp" target="_blank" rel="noopener">浏览器信息</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/quality/index.asp" target="_blank" rel="noopener">网站品质</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/semweb/index.asp" target="_blank" rel="noopener">语义网</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/careers/index.asp" target="_blank" rel="noopener">职业规划</a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/hosting/index.asp" target="_blank" rel="noopener">网站主机</a><br><a name="link_about"></a></p>
+<h2 id="关于-W3School"><a href="#关于-W3School" class="headerlink" title="关于 W3School"></a><a href="http://www.w3school.com.cn/about/index.asp" target="_blank" rel="noopener">关于 W3School</a></h2><p><a name="link_help"></a></p>
+<h2 id="帮助-W3School"><a href="#帮助-W3School" class="headerlink" title="帮助 W3School"></a><a href="http://www.w3school.com.cn/about/about_helping.asp" target="_blank" rel="noopener">帮助 W3School</a></h2><p><a name="T4NRR"></a></p>
+<h2 id="广告刊例"><a href="#广告刊例" class="headerlink" title="广告刊例"></a><a href="http://www.w3school.com.cn/ad.html" target="_blank" rel="noopener">广告刊例</a></h2><p><a name="A32G9"></a></p>
+<h1 id="JavaScript-特殊字符"><a href="#JavaScript-特殊字符" class="headerlink" title="JavaScript 特殊字符"></a>JavaScript 特殊字符</h1></li>
+<li><p><a href="http://www.w3school.com.cn/js/js_special_characters.asp" target="_blank" rel="noopener"></a></p>
+</li>
+<li><p><a href="http://www.w3school.com.cn/js/js_special_characters.asp" target="_blank" rel="noopener"></a></p>
+</li>
+</ul>
+<p><strong>你可以在 JavaScript 中使用反斜杠来向文本字符串添加特殊字符。</strong><br><a name="dTpeT"></a></p>
+<h2 id="插入特殊字符"><a href="#插入特殊字符" class="headerlink" title="插入特殊字符"></a>插入特殊字符</h2><p>反斜杠用来在文本字符串中插入省略号、换行符、引号和其他特殊字符。<br>请看下面的 JavaScript 代码：<br>var txt=”We are the so-called <code>&quot;Vikings&quot;</code> from the north.”<br>document.write(txt)<br>在 JavaScript 中，字符串使用单引号或者双引号来起始或者结束。这意味着上面的字符串将被截为：We are the so-called。<br>要解决这个问题，就必须把在 “Viking” 中的引号前面加上反斜杠 ()。这样就可以把每个双引号转换为字面上的字符串。<br>var txt=”We are the so-called <code>\&quot;Vikings\&quot;</code> from the north.”<br>document.write(txt)<br>现在 JavaScript 就可以输出正确的文本字符串了：We are the so-called “Vikings” from the north。<br>这是另一个例子：<br>document.write (“You <code>\&amp;</code> me are singing!”) <br>上面的例子会产生以下输出：<br>You &amp; me are singing!<br>下面的表格列出了其余的特殊字符，这些特殊字符都可以使用反斜杠来添加到文本字符串中：</p>
+<table>
+<thead>
+<tr>
+<th align="left">代码</th>
+<th align="left">输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\‘</td>
+<td align="left">单引号</td>
+</tr>
+<tr>
+<td align="left">\“</td>
+<td align="left">双引号</td>
+</tr>
+<tr>
+<td align="left">\&amp;</td>
+<td align="left">和号</td>
+</tr>
+<tr>
+<td align="left">\\</td>
+<td align="left">反斜杠</td>
+</tr>
+<tr>
+<td align="left">\n</td>
+<td align="left">换行符</td>
+</tr>
+<tr>
+<td align="left">\r</td>
+<td align="left">回车符</td>
+</tr>
+<tr>
+<td align="left">\t</td>
+<td align="left">制表符</td>
+</tr>
+<tr>
+<td align="left">\b</td>
+<td align="left">退格符</td>
+</tr>
+<tr>
+<td align="left">\f</td>
+<td align="left">换页符</td>
+</tr>
+</tbody></table>
+<p><a href="http://www.w3school.com.cn/js/js_special_characters.asp" target="_blank" rel="noopener"></a><a href="http://www.w3school.com.cn/js/js_special_characters.asp" target="_blank" rel="noopener"></a><br><a name="tools_reference"></a></p>
+<h5 id="JavaScript-参考手册"><a href="#JavaScript-参考手册" class="headerlink" title="JavaScript 参考手册"></a><a href="http://www.w3school.com.cn/jsref/index.asp" target="_blank" rel="noopener">JavaScript 参考手册</a></h5><p><a name="tools_example"></a></p>
+<h5 id="JavaScript-实例"><a href="#JavaScript-实例" class="headerlink" title="JavaScript 实例"></a><a href="http://www.w3school.com.cn/example/jseg_examples.asp" target="_blank" rel="noopener">JavaScript 实例</a></h5><p><a name="tools_quiz"></a></p>
+<h5 id="JavaScript-测验"><a href="#JavaScript-测验" class="headerlink" title="JavaScript 测验"></a><a href="http://www.w3school.com.cn/js/js_quiz.asp" target="_blank" rel="noopener">JavaScript 测验</a></h5><br>
+
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/04/yuque/从头开始创建一个 React 应用/" rel="next" title="从头开始创建一个 React 应用">
+                <i class="fa fa-chevron-left"></i> 从头开始创建一个 React 应用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/05/yuque/10个流行的JavaScript面试题/" rel="prev" title="10个流行的JavaScript面试题">
+                10个流行的JavaScript面试题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-教程"><span class="nav-number">1.</span> <span class="nav-text">JS 教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-表单"><span class="nav-number">2.</span> <span class="nav-text">JS 表单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-对象"><span class="nav-number">3.</span> <span class="nav-text">JS 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-函数"><span class="nav-number">4.</span> <span class="nav-text">JS 函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-HTML-DOM"><span class="nav-number">5.</span> <span class="nav-text">JS HTML DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-Browser-BOM"><span class="nav-number">6.</span> <span class="nav-text">JS Browser BOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-AJAX"><span class="nav-number">7.</span> <span class="nav-text">JS AJAX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-JSON"><span class="nav-number">8.</span> <span class="nav-text">JS JSON</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-vs-jQuery"><span class="nav-number">9.</span> <span class="nav-text">JS vs jQuery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-实例"><span class="nav-number">10.</span> <span class="nav-text">JS 实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS-参考手册"><span class="nav-number">11.</span> <span class="nav-text">JS 参考手册</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建站手册"><span class="nav-number">12.</span> <span class="nav-text">建站手册</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于-W3School"><span class="nav-number">13.</span> <span class="nav-text">关于 W3School</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#帮助-W3School"><span class="nav-number">14.</span> <span class="nav-text">帮助 W3School</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广告刊例"><span class="nav-number">15.</span> <span class="nav-text">广告刊例</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-特殊字符"><span class="nav-number"></span> <span class="nav-text">JavaScript 特殊字符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#插入特殊字符"><span class="nav-number">1.</span> <span class="nav-text">插入特殊字符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#JavaScript-参考手册"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">JavaScript 参考手册</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#JavaScript-实例"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">JavaScript 实例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#JavaScript-测验"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">JavaScript 测验</span></a></li></ol></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">131.7k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>
