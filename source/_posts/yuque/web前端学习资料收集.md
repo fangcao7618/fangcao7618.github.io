@@ -11,6 +11,30 @@ tags: []
 <a name="d770817a"></a>
 ## 读谷歌开发指南
 [专业高效的在线翻译管理平台](https://www.yicat.vip/)<br />其实谷歌除了一个分很好的[学习指南](https://developers.google.com/web/fundamentals/?hl=zh-cn)，但很多人都不知道。<br />DOM(Document Object Mode)
+
+<a name="2KYmo"></a>
+## [前端开发者手册2019](https://www.yuque.com/ysfe/ykx/fedhb)
+
+
+<a name="ohsFd"></a>
+## 面向亿万用户级的移动端Web解决方案
+[https://github.com/AlloyTeam/Mars](https://github.com/AlloyTeam/Mars)
+
+- [代码结构规范](https://github.com/AlloyTeam/Mars/blob/master/solutions/project-structure.md)
+- 前端跨框架跨平台框架 [http://omijs.org](http://omijs.org/)
+- [字体设置最佳实践](https://github.com/AlloyTeam/Mars/blob/master/solutions/font-family.md)
+- [模拟原生效果实践](https://github.com/AlloyTeam/Mars/blob/master/solutions)
+- [工具类方法汇总](https://github.com/AlloyTeam/Mars/blob/master/tools)
+- [iOS 与 Android 平台上问题列表](https://github.com/AlloyTeam/Mars/blob/master/issues)
+- [高性能 Mobile Web 开发](https://github.com/AlloyTeam/Mars/blob/master/performance)
+- [![](https://cdn.nlark.com/yuque/0/2019/png/263301/1562059458940-8ac72438-d35f-4dc6-a73c-c177483800e8.png#align=left&display=inline&height=24&originHeight=24&originWidth=24&size=0&status=done&width=24)](https://github.com/Tencent/omi)
+- [特效制作解决方案 - css3transform](http://alloyteam.github.io/AlloyTouch/transformjs/)
+- [触摸运动解决方案 - AlloyTouch](https://github.com/AlloyTeam/AlloyTouch)
+- [Mobile 手势解决方案 - AlloyFinger](https://github.com/AlloyTeam/AlloyFinger)
+- [Mobile 裁剪解决方案 - AlloyCrop](https://github.com/AlloyTeam/AlloyCrop)
+- [Mobile 级联选择器](https://github.com/AlloyTeam/AlloyTouch/tree/master/select)
+- [1kb代码搞定移动 Web 开发调试发布错误监控上报用户问题定位 - AlloyLever](https://github.com/AlloyTeam/AlloyLever)
+- [小程序、小游戏以及 Web 通用 Canvas 渲染引擎 - Cax](https://github.com/dntzhang/cax)
 <a name="9rT7o"></a>
 ## 前端学习地址和查询地址
 

@@ -11,6 +11,8 @@ tags: []
 <a name="zvFd0"></a>
 #### [git查看命令地址](https://www.runoob.com/git/git-commit-history.html)
 
+github接口文档：[https://developer.github.com/v3/repos/](https://developer.github.com/v3/repos/)
+
 不了解GitHub,可以看 [https://github.com/xirong/my-git/blob/master/how-to-use-github.md](https://github.com/xirong/my-git/blob/master/how-to-use-github.md)
 
 作为一名开发者，GitHub上面有很多东西值得关注学习，可是刚刚接触GitHub，怎样一步步学习使用GitHub？怎样更高效的利用GitHub？ 在这里搜集整理网络上面的资料，汇总成这么一篇repo 《GitHub使用指南》，供大家一起学习。 ![](https://cdn.nlark.com/yuque/0/2019/png/263301/1560851863515-0c037e73-537f-470a-931e-8bc2e0a0a8e1.png#align=left&display=inline&height=20&originHeight=64&originWidth=64&size=0&status=done&width=20)
