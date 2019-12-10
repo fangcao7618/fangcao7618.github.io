@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="https://www.html.cn/archives/10396本文为 JavaScript Class(类) 中的 Private(私有) 和 Public(公有) 属性 续篇之前我们学习了如何在 ES5 和 ES6 中创建 Animal 类。我们还学习了如何使用 JavaScrip t的原型在这些类之间共享方法。查看我们在之前文章中看到的代码。ES5:JavaScript 代码:funct">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 继承和原型链">
+<meta property="og:url" content="http://yoursite.com/2019/07/16/yuque/JavaScript 继承和原型链/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="https://www.html.cn/archives/10396本文为 JavaScript Class(类) 中的 Private(私有) 和 Public(公有) 属性 续篇之前我们学习了如何在 ES5 和 ES6 中创建 Animal 类。我们还学习了如何使用 JavaScrip t的原型在这些类之间共享方法。查看我们在之前文章中看到的代码。ES5:JavaScript 代码:funct">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-10T06:58:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 继承和原型链">
+<meta name="twitter:description" content="https://www.html.cn/archives/10396本文为 JavaScript Class(类) 中的 Private(私有) 和 Public(公有) 属性 续篇之前我们学习了如何在 ES5 和 ES6 中创建 Animal 类。我们还学习了如何使用 JavaScrip t的原型在这些类之间共享方法。查看我们在之前文章中看到的代码。ES5:JavaScript 代码:funct">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/16/yuque/JavaScript 继承和原型链/">
+
+
+
+
+
+  <title>JavaScript 继承和原型链 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/16/yuque/JavaScript 继承和原型链/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript 继承和原型链</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-16T09:54:57+08:00">
+                2019-07-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-10T14:58:23+08:00">
+                2019-12-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  17 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://www.html.cn/archives/10396" target="_blank" rel="noopener">https://www.html.cn/archives/10396</a><br>本文为 JavaScript Class(类) 中的 Private(私有) 和 Public(公有) 属性 续篇<br>之前我们学习了如何在 ES5 和 ES6 中创建 Animal 类。我们还学习了如何使用 JavaScrip t的原型在这些类之间共享方法。查看我们在之前文章中看到的代码。<br>ES5:<br>JavaScript 代码:<br>function Animal (name, energy) {<br>this.name = name<br>this.energy = energy<br>}</p>
+<p>Animal.prototype.eat = function (amount) {<br>console.log(<code>${this.name} is eating.</code>)<br>this.energy += amount<br>}</p>
+<p>Animal.prototype.sleep = function (length) {<br>console.log(<code>${this.name} is sleeping.</code>)<br>this.energy += length<br>}</p>
+<p>Animal.prototype.play = function (length) {<br>console.log(<code>${this.name} is playing.</code>)<br>this.energy -= length<br>}</p>
+<p>const leo = new Animal(‘Leo’, 7)<br>ES6:<br>JavaScript 代码:<br>class Animal {<br>constructor(name, energy) {<br>this.name = name<br>this.energy = energy<br>}<br>eat(amount) {<br>console.log(<code>${this.name} is eating.</code>)<br>this.energy += amount<br>}<br>sleep() {<br>console.log(<code>${this.name} is sleeping.</code>)<br>this.energy += length<br>}<br>play() {<br>console.log(<code>${this.name} is playing.</code>)<br>this.energy -= length<br>}<br>}</p>
+<p>const leo = new Animal(‘Leo’, 7)<br>现在我们想为特定动物建一个别 class(类) 。 例如，如果我们想要开始制作一堆狗实例，该怎么办？ 这些狗有哪些属性和方法？ 嗯，类似于我们的 Animal 类，我们可以给每只狗一个 name ，一个 energy 等级，以及 eat ，sleep 和 play 的能力。 我们的 Dog 类是独一无二的，我们也可以给Dog 类一些独一无二的的属性，比如一个 breed(品种) 属性以及 bark(吠叫) 的能力。 在 ES5 中，我们的 Dog 类可能看起来像这样:<br>JavaScript 代码:<br>function Dog (name, energy, breed) {<br>this.name = name<br>this.energy = energy<br>this.breed = breed<br>}</p>
+<p>Dog.prototype.eat = function (amount) {<br>console.log(<code>${this.name} is eating.</code>)<br>this.energy += amount<br>}</p>
+<p>Dog.prototype.sleep = function (length) {<br>console.log(<code>${this.name} is sleeping.</code>)<br>this.energy += length<br>}</p>
+<p>Dog.prototype.play = function (length) {<br>console.log(<code>${this.name} is playing.</code>)<br>this.energy -= length<br>}</p>
+<p>Dog.prototype.bark = function () {<br>console.log(‘Woof-Woof!’)<br>this.energy -= .1<br>}</p>
+<p>const charlie = new Dog(‘Charlie’, 10, ‘Goldendoodle’)<br>你应该看出来了，我们刚刚重新创建了 Animal 类并为它添加了一些新属性。 如果我们想创建另一个动物，比如说 Cat ，那么我们必须再次创建一个 Cat 类，将 Animal 类中的所有常用逻辑复制到 Cat ，然后像 Dog 类一样添加 Cat 特定属性。 就是说，我们必须对我们创造的每一种不同类型的动物都这样做。<br>JavaScript 代码:<br>function Dog (name, energy, breed) {}</p>
+<p>function Cat (name, energy, declawed) {}</p>
+<p>function Giraffe (name, energy, height) {}</p>
+<p>function Monkey (name, energy, domesticated) {}<br>这项工作似乎很浪费。 Animal 类是完美的基类。 这意味着它具有我们每只动物的共同特征。 无论我们是创造 狗，猫，长颈鹿还是猴子，它们都会有一个name ，energy 等级，以及 eat ，sleep 和 play 的能力。 那么每当我们为每个不同的动物创建单独的类时，我们是否可以利用 Animal类？ 我们来试试吧。 我将在下面再次粘贴 Animal 类以便于参考。<br>JavaScript 代码:<br>function Animal (name, energy) {<br>this.name = name<br>this.energy = energy<br>}</p>
+<p>Animal.prototype.eat = function (amount) {<br>console.log(<code>${this.name} is eating.</code>)<br>this.energy += amount<br>}</p>
+<p>Animal.prototype.sleep = function (length) {<br>console.log(<code>${this.name} is sleeping.</code>)<br>this.energy += length<br>}</p>
+<p>Animal.prototype.play = function (length) {<br>console.log(<code>${this.name} is playing.</code>)<br>this.energy -= length<br>}</p>
+<p>function Dog (name, energy, breed) {</p>
+<p>}<br>我们对上面的 Dog 构造函数你了解多少？<br>首先，我们知道它需要3个参数，name, energy 和 breed。<br>其次，我们知道它将使用 new 关键字调用，因此我们将拥有一个 this 对象。<br>第三，我们知道我们需要利用 Animal 函数，这样任何狗的实例都会有一个name ，energy 等级，以及 eat ，sleep 和 play 的能力。<br>第三点是有点棘手的问题。 你“利用”一个函数的方式就是调用它。 所以我们知道在 Dog 里面，我们想要调用 Animal 。 我们需要弄清楚的是我们如何在Dog 的上下文中调用 Animal。 这意味着我们想用 Dog 中的 this 关键字调用 Animal。 如果我们正确地做到了，那么 Dog 函数内部将具有 Animal 的所有属性（name ，energy）。 如果你记得 上一节我们所讨论的内容，JavaScript 中的每个函数都有一个 .call方法。<br>.call() 是函数的一个方法，它允许你调用函数时，指定该函数的上下文。<br>听起来正是我们所需要的。我们想在 Dog 上下文中调用 Animal 。<br>JavaScript 代码:<br>function Dog (name, energy, breed) {<br>Animal.call(this, name, energy)</p>
+<p>this.breed = breed<br>}</p>
+<p>const charlie = new Dog(‘Charlie’, 10, ‘Goldendoodle’)</p>
+<p>charlie.name // Charlie<br>charlie.energy // 10<br>charlie.breed // Goldendoodle<br>知道这个，我们就已经成功一半了。你将在上面的代码中注意到，因为这一行是 Animal.call(this, name, energy)， Dog 的每个实例都将有一个 name 和 energy 属性。同样，这样做的原因是，就好像我们使用从 Dog 生成的 this 关键字运行 Animal 函数一样。在我们添加了一个name 和 energy 属性之后，我们又像往常一样添加了一个 breed 属性。<br>请记住，这里的目标是让 Dog 的每个实例不仅具有 Animal 的所有属性，而且还具有所有方法。如果你运行上面的代码，你会注意到如果你尝试运行 charlie.eat(10) ，你将收到一个错误。目前 Dog 的每个实例都具有 Animal（name 和 energy）的属性，但我们没有做任何事情来确保他们也有方法（eat ，sleep 和 play）。<br>让我们考虑如何解决这个问题。我们知道所有 Animal 的方法都位于 Animal.prototype 上。这意味着我们想要确保 Dog 的所有实例都可以访问Animal.prototype 上的方法。如果我们在这里使用我们的好朋友 Object.create 怎么办？如果你还记得，Object.create 允许你创建一个对象，该对象将在失败的查找中委托给另一个对象。所以在我们的例子中，我们想要创建的对象将是 Dog 的原型，而我们想要在失败的查找中委托的对象是Animal.prototype。<br>JavaScript 代码:<br>function Dog (name, energy, breed) {<br>Animal.call(this, name, energy)</p>
+<p>this.breed = breed<br>}</p>
+<p>Dog.prototype = Object.create(Animal.prototype)<br>现在，只要在 Dog 实例上查找失败，JavaScript 就会将该查找委托给 Animal.prototype 。 如果这仍然有点模糊，请重新阅读 JavaScript Prototype(原型) 新手指南 ，其中我们讨论了 Object.create 和 JavaScript 的 原型(prototype) 。<br>让我们一起看完整个代码，然后我们将了解发生的事情。<br>JavaScript 代码:<br>function Animal (name, energy) {<br>this.name = name<br>this.energy = energy<br>}</p>
+<p>Animal.prototype.eat = function (amount) {<br>console.log(<code>${this.name} is eating.</code>)<br>this.energy += amount<br>}</p>
+<p>Animal.prototype.sleep = function (length) {<br>console.log(<code>${this.name} is sleeping.</code>)<br>this.energy += length<br>}</p>
+<p>Animal.prototype.play = function (length) {<br>console.log(<code>${this.name} is playing.</code>)<br>this.energy -= length<br>}</p>
+<p>function Dog (name, energy, breed) {<br>Animal.call(this, name, energy)</p>
+<p>this.breed = breed<br>}</p>
+<p>Dog.prototype = Object.create(Animal.prototype)<br>现在我们已经创建了我们的基类（ Animal ）以及我们的子类（ Dog ），让我们在创建 Dog 实例时看看它的样子。<br>JavaScript 代码:<br>const charlie = new Dog(‘Charlie’, 10, ‘Goldendoodle’)</p>
+<p>charlie.name // Charlie<br>charlie.energy // 10<br>charlie.breed // Goldendoodle<br>到目前为止没有任何花哨的东西，但让我们来看看当我们调用位于 Animal 上的方法时会发生什么。<br>JavaScript 代码:<br>charlie.eat(10)</p>
+<p>/*</p>
+<ol>
+<li>JavaScript checks if charlie has an eat property - it doesn’t.</li>
+<li>JavaScript then checks if Dog.prototype has an eat property<ul>
+<li>it doesn’t.</li>
+</ul>
+</li>
+<li>JavaScript then checks if Animal.prototype has an eat property<ul>
+<li>it does so it calls it.<br></li>
+</ul>
+</li>
+</ol>
+<p>*/<br><br>Dog.prototype 被检查的原因是因为当我们创建一个新的 Dog 实例时，我们使用了 new 关键字。在引擎中，为我们创建的 this 对象委托给Dog.prototype（见下面的注释）。<br><br>JavaScript 代码:<br><br>function Dog (name, energy, breed) {<br><br>// this = Object.create(Dog.prototype)<br><br>Animal.call(this, name, energy)</p>
+<p>this.breed = breed<br>// return this<br>}<br>之所以检查 Animal.prototype 是因为我们用这一行覆盖了 Dog.prototype 以委托给失败的查找的 Animal.prototype<br>JavaScript 代码:<br>Dog.prototype = Object.create(Animal.prototype)<br>现在我们还没有谈到的一件事是，如果 Dog 有自己的方法呢？ 嗯，这是一个简单的解决方案。 就像 Animal 一样，如果我们想在该类的所有实例之间共享一个方法，我们将它添加到函数的原型中。<br>JavaScript 代码:<br>…</p>
+<p>function Dog (name, energy, breed) {<br>Animal.call(this, name, energy)</p>
+<p>this.breed = breed<br>}</p>
+<p>Dog.prototype = Object.create(Animal.prototype)</p>
+<p>Dog.prototype.bark = function () {<br>console.log(‘Woof Woof!’)<br>this.energy -= .1<br>}<br>非常好。我们需要做一个小小的补充。如果你不记得了请回到 JavaScript Prototype(原型) 新手指南 了解详情，我们可以通过使用 instance.constructor 来访问实例的构造函数。<br>JavaScript 代码:<br>function Animal (name, energy) {<br>this.name = name<br>this.energy = energy<br>}</p>
+<p>const leo = new Animal(‘Leo’, 7)<br>console.log(leo.constructor) // Logs the constructor function<br>正如前一篇文章中所解释的那样，“其工作原因是因为任何 Animal 实例都会在失败的查找中委托给 Animal.prototype 。 因此，当你尝试访问leo.prototype 时，leo 没有 prototype 属性，因此它会将该查找委托给 Animal.prototype ，它确实具有 constructor 属性。“<br>我提出这个问题的原因是因为在我们的实现中，我们用一个委托给 Animal.prototype 的对象覆盖了 Dog.prototype 。<br>JavaScript 代码:<br>function Dog (name, energy, breed) {<br>Animal.call(this, name, energy)</p>
+<p>this.breed = breed<br>}</p>
+<p>Dog.prototype = Object.create(Animal.prototype)</p>
+<p>Dog.prototype.bark = function () {<br>console.log(‘Woof Woof!’)<br>this.energy -= .1<br>}<br>这意味着现在，任何打印 Dog 的实例 instance.constructor 都将获得 Animal 构造函数而不是 Dog构造函数。你可以通过运行此代码自行查看 –<br>JavaScript 代码:<br>function Animal (name, energy) {<br>this.name = name<br>this.energy = energy<br>}</p>
+<p>Animal.prototype.eat = function (amount) {<br>console.log(<code>${this.name} is eating.</code>)<br>this.energy += amount<br>}</p>
+<p>Animal.prototype.sleep = function (length) {<br>console.log(<code>${this.name} is sleeping.</code>)<br>this.energy += length<br>}</p>
+<p>Animal.prototype.play = function (length) {<br>console.log(<code>${this.name} is playing.</code>)<br>this.energy -= length<br>}</p>
+<p>function Dog (name, energy, breed) {<br>Animal.call(this, name, energy)</p>
+<p>this.breed = breed<br>}</p>
+<p>Dog.prototype = Object.create(Animal.prototype)</p>
+<p>Dog.prototype.bark = function () {<br>console.log(‘Woof Woof!’)<br>this.energy -= .1<br>}</p>
+<p>const charlie = new Dog(‘Charlie’, 10, ‘Goldendoodle’)<br>console.log(charlie.constructor)<br>请注意，即使 charlie 是 Dog 的直接实例，它也会为你提供 Animal 构造函数。同样，我们可以像上面一样了解这里发生的事情。<br>JavaScript 代码:<br>const charlie = new Dog(‘Charlie’, 10, ‘Goldendoodle’)<br>console.log(charlie.constructor)</p>
+<p>/*</p>
+<ol>
+<li>JavaScript checks if charlie has a constructor property - it doesn’t.</li>
+<li>JavaScript then checks if Dog.prototype has a constructor property<ul>
+<li>it doesn’t because it was deleted when we overwrote Dog.prototype.</li>
+</ul>
+</li>
+<li>JavaScript then checks if Animal.prototype has a constructor property<ul>
+<li>it does so it logs that.<br></li>
+</ul>
+</li>
+</ol>
+<p>*/<br><br>我们该如何解决这个问题？嗯，这很简单。一旦我们覆盖它，我们就可以向 Dog.prototype 添加正确的 constructor 属性。<br><br>JavaScript 代码:<br><br>function Dog (name, energy, breed) {<br><br>Animal.call(this, name, energy)</p>
+<p>this.breed = breed<br>}</p>
+<p>Dog.prototype = Object.create(Animal.prototype)</p>
+<p>Dog.prototype.bark = function () {<br>console.log(‘Woof Woof!’)<br>this.energy -= .1<br>}</p>
+<p>Dog.prototype.constructor = Dog<br>此时如果我们想要创建另一个子类，比如 Cat ，我们将遵循相同的模式。<br>JavaScript 代码:<br>function Cat (name, energy, declawed) {<br>Animal.call(this, name, energy)</p>
+<p>this.declawed = declawed<br>}</p>
+<p>Cat.prototype = Object.create(Animal.prototype)<br>Cat.prototype.constructor = Cat</p>
+<p>Cat.prototype.meow = function () {<br>console.log(‘Meow!’)<br>this.energy -= .1<br>}<br>这种具有委托给它的子类的基类的概念称为继承，它是面向对象编程（OOP）的主要部分。 如果你来自不同的编程语言，你可能已经熟悉OOP和继承了。 在 ES6 classes 之前，在 JavaScript 中，继承是一项非常艰巨的任务，正如你在上面所看到的。你现在只需要了解什么时候使用继承，以及 .call 和 Object.create， this ，和 FN.prototype 的良好组合。- 这些都是高级 JS 主题。让我们看看如何使用 ES6 类来完成同样的事情。<br>首先，让我们回顾一下使用我们的 Animal 类从 ES5 “类” 到 ES6 类的样子。<br>ES5:<br>JavaScript 代码:<br>function Animal (name, energy) {<br>this.name = name<br>this.energy = energy<br>}</p>
+<p>Animal.prototype.eat = function (amount) {<br>console.log(<code>${this.name} is eating.</code>)<br>this.energy += amount<br>}</p>
+<p>Animal.prototype.sleep = function (length) {<br>console.log(<code>${this.name} is sleeping.</code>)<br>this.energy += length<br>}</p>
+<p>Animal.prototype.play = function (length) {<br>console.log(<code>${this.name} is playing.</code>)<br>this.energy -= length<br>}</p>
+<p>const leo = new Animal(‘Leo’, 7)<br>ES6:<br>JavaScript 代码:<br>class Animal {<br>constructor(name, energy) {<br>this.name = name<br>this.energy = energy<br>}<br>eat(amount) {<br>console.log(<code>${this.name} is eating.</code>)<br>this.energy += amount<br>}<br>sleep() {<br>console.log(<code>${this.name} is sleeping.</code>)<br>this.energy += length<br>}<br>play() {<br>console.log(<code>${this.name} is playing.</code>)<br>this.energy -= length<br>}<br>}</p>
+<p>const leo = new Animal(‘Leo’, 7)<br>现在我们已经将我们的 Animal 构造函数重构为 ES6 类，接下来我们需要做的是弄清楚如何重构我们的基类（ Dog ）。好消息是它更加直观。作为参考，在ES5 中，这是我们所拥有的。<br>JavaScript 代码:<br>function Dog (name, energy, breed) {<br>Animal.call(this, name, energy)</p>
+<p>this.breed = breed<br>}</p>
+<p>Dog.prototype = Object.create(Animal.prototype)</p>
+<p>Dog.prototype.bark = function () {<br>console.log(‘Woof Woof!’)<br>this.energy -= .1<br>}</p>
+<p>Dog.prototype.constructor = Dog<br>在我们进入继承之前，让我们使用 ES6 类来重构 Dog ，就像我们在之前的帖子中学到的那样。<br>JavaScript 代码:<br>class Dog {<br>constructor(name, energy, breed) {<br>this.breed = breed<br>}<br>bark() {<br>console.log(‘Woof Woof!’)<br>this.energy -= .1<br>}<br>}<br>看起来很棒。现在，让我们弄清楚如何确保 Dog 继承自 Animal 。我们需要做的第一步是非常直接的。使用 ES6 类，你可以使用此语法 extend 基类<br>JavaScript 代码:<br>class Subclass extends Baseclass {}<br>翻译成我们的例子，这将使我们的 Dog 类看起来像这样：<br>JavaScript 代码:<br>class Animal {<br>constructor(name, energy) {<br>this.name = name<br>this.energy = energy<br>}<br>eat(amount) {<br>console.log(<code>${this.name} is eating.</code>)<br>this.energy += amount<br>}<br>sleep() {<br>console.log(<code>${this.name} is sleeping.</code>)<br>this.energy += length<br>}<br>play() {<br>console.log(<code>${this.name} is playing.</code>)<br>this.energy -= length<br>}<br>}</p>
+<p>class Dog extends Animal {<br>constructor(name, energy, breed) {<br>this.breed = breed<br>}<br>bark() {<br>console.log(‘Woof Woof!’)<br>this.energy -= .1<br>}<br>}<br>在ES5中，为了确保 Dog 的每个实例都具有name 和 energy 属性，我们使用 .call 以在 Dog 实例的上下文中调用 Animal 构造函数。 幸运的是，在 ES6 中，它更直接。 每当你扩展一个基类并且你需要调用那个基类的构造函数时，你调用 super 传递它需要的任何参数即可。 所以在我们的例子中，我们的 Dog构造函数被重构为这样:<br>JavaScript 代码:<br>class Animal {<br>constructor(name, energy) {<br>this.name = name<br>this.energy = energy<br>}<br>eat(amount) {<br>console.log(<code>${this.name} is eating.</code>)<br>this.energy += amount<br>}<br>sleep() {<br>console.log(<code>${this.name} is sleeping.</code>)<br>this.energy += length<br>}<br>play() {<br>console.log(<code>${this.name} is playing.</code>)<br>this.energy -= length<br>}<br>}</p>
+<p>class Dog extends Animal {<br>constructor(name, energy, breed) {<br>super(name, energy) // calls Animal’s constructor</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.breed = breed</span><br></pre></td></tr></table></figure>
+
+<p>}<br>bark() {<br>console.log(‘Woof Woof!’)<br>this.energy -= .1<br>}<br>}<br>就是这样。不使用 .call ，不使用 Object.create ，不用担心重置原型上的构造函数 – 只需 extends基类并确保调用 super 即可。<br>JavaScript 的有趣之处在于你学到的相同模式，最后几篇文章直接融入语言本身。 以前你了解到 Array 的所有实例都可以访问 pop ，slice ，filter 等数组方法的原因是因为所有这些方法都存在于 Array.prototype 中。<br>JavaScript 代码:<br>console.log(Array.prototype)</p>
+<p>/*<br>concat: ?n concat()<br>constructor: ?n Array()<br>copyWithin: ?n copyWithin()<br>entries: ?n entries()<br>every: ?n every()<br>fill: ?n fill()<br>filter: ?n filter()<br>find: ?n find()<br>findIndex: ?n findIndex()<br>forEach: ?n forEach()<br>includes: ?n includes()<br>indexOf: ?n indexOf()<br>join: ?n join()<br>keys: ?n keys()<br>lastIndexOf: ?n lastIndexOf()<br>length: 0n<br>map: ?n map()<br>pop: ?n pop()<br>push: ?n push()<br>reduce: ?n reduce()<br>reduceRight: ?n reduceRight()<br>reverse: ?n reverse()<br>shift: ?n shift()<br>slice: ?n slice()<br>some: ?n some()<br>sort: ?n sort()<br>splice: ?n splice()<br>toLocaleString: ?n toLocaleString()<br>toString: ?n toString()<br>unshift: ?n unshift()<br>values: ?n values()<br>*/<br>你知道，所有 Object 实例都可以访问 hasOwnProperty 和 toString 等方法的原因是因为这些方法存在于 Object.prototype 上。<br>JavaScript 代码:<br>console.log(Object.prototype)</p>
+<p>/*<br>constructor: ?n Object()<br>hasOwnProperty: ?n hasOwnProperty()<br>isPrototypeOf: ?n isPrototypeOf()<br>propertyIsEnumerable: ?n propertyIsEnumerable()<br>toLocaleString: ?n toLocaleString()<br>toString: ?n toString()<br>valueOf: ?n valueOf()<br>*/<br>这对你来说是一个挑战。使用上面的 Array 方法和 Object 方法列表，为什么下面的代码有效？<br>JavaScript 代码:<br>const friends = [‘Mikenzi’, ‘Jake’, ‘Ean’]</p>
+<p>friends.hasOwnProperty(‘push’) // false<br>如果查看 Array.prototype ，则没有 hasOwnProperty 方法。 好吧，如果 Array.prototype 上没有 hasOwnProperty 方法，上面示例中的 friends 数组如何访问 hasOwnProperty？ 原因是因为 Array类扩展了 Object 类。 因此，在上面的示例中，当 JavaScript 看到friends 没有 hasOwnProperty 属性时，它会检查 Array.prototype 是否具有该方法。 当 Array.prototype 没有时，它会检查 Object.prototype 是否有该方法，然后再调用它。 这是我们在这篇博客文章中看到的相同过程。<br>JavaScript 有两种类型 – 原始类型 和 引用类型 。<br>原始类型是 boolean ， number， string，null 和 undefined 并且是不可变的。 其他所有内容都是引用类型，它们都扩展了 Object.prototype 。 这就是为什么你可以为函数和数组添加属性，这就是为什么函数和数组都可以访问 Object.prototype 上的方法。<br>JavaScript 代码:<br>function speak(){}<br>speak.woahFunctionsAreLikeObjects = true<br>console.log(speak.woahFunctionsAreLikeObjects) // true</p>
+<p>const friends = [‘Mikenzi’, ‘Jake’, ‘Ean’]<br>friends.woahArraysAreLikeObjectsToo = true<br>console.log(friends.woahArraysAreLikeObjectsToo) // true<br>英文原文：<a href="https://tylermcginnis.com/javascript-inheritance-and-the-prototype-chain/" target="_blank" rel="noopener">https://tylermcginnis.com/javascript-inheritance-and-the-prototype-chain/</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/16/yuque/ECMAScript 2016,2017 和 2018 中所有新功能的示例/" rel="next" title="ECMAScript 2016,2017 和 2018 中所有新功能的示例">
+                <i class="fa fa-chevron-left"></i> ECMAScript 2016,2017 和 2018 中所有新功能的示例
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/16/yuque/JavaScript Class(类) 中的 Private(私有) 和 Public(公有) 属性/" rel="prev" title="JavaScript Class(类) 中的 Private(私有) 和 Public(公有) 属性">
+                JavaScript Class(类) 中的 Private(私有) 和 Public(公有) 属性 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">185</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">321.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>

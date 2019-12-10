@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="先来点基础的，单行文本溢出省略核心 CSS 语句   overflow: hidden；（文字长度超出限定宽度，则隐藏超出的内容） white-space: nowrap；（设置文字在一行显示，不能换行） text-overflow: ellipsis；（规定当文本溢出时，显示省略符号来代表被修剪的文本）  优点  无兼容问题 响应式截断 文本溢出范围才显示省略号，否则不显示省略号 省略号位置显">
+<meta property="og:type" content="article">
+<meta property="og:title" content="可能是最全的 “文本溢出截断省略” 方案合集">
+<meta property="og:url" content="http://yoursite.com/2019/11/07/yuque/可能是最全的 “文本溢出截断省略” 方案合集/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="先来点基础的，单行文本溢出省略核心 CSS 语句   overflow: hidden；（文字长度超出限定宽度，则隐藏超出的内容） white-space: nowrap；（设置文字在一行显示，不能换行） text-overflow: ellipsis；（规定当文本溢出时，显示省略符号来代表被修剪的文本）  优点  无兼容问题 响应式截断 文本溢出范围才显示省略号，否则不显示省略号 省略号位置显">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/vzEib9IRhZD7No5UQbzHezkzNZSaFbvrY87Tfeia2KTNG639EWVYEbTlHL1hplIqlmUU4BKqmLVRhiaPBmNWqwIWA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1#align=left&display=inline&height=448&originHeight=448&originWidth=640&status=uploading&width=640">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/webp/263301/1573107503257-d714f3a1-5608-44f3-b541-3a9fd57dd76e.webp#align=left&display=inline&height=390&originHeight=390&originWidth=1080&size=0&status=done&width=1080">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/vzEib9IRhZD7No5UQbzHezkzNZSaFbvrYNSial7w86X6y6Z524iaZ1ssGJOAqqJsnDBqh8FialwCRbewaPibQc9wZDA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1#align=left&display=inline&height=448&originHeight=448&originWidth=640&status=uploading&width=640">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/vzEib9IRhZD7No5UQbzHezkzNZSaFbvrYuIAS6NCeg2GqBhMiaE5DXmXHoHRwXUicjvBSR8RAYt8MT4Ria34dpA4hA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1#align=left&display=inline&height=448&originHeight=448&originWidth=640&status=uploading&width=640">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/vzEib9IRhZD7No5UQbzHezkzNZSaFbvrYoCUAicS3Y1VLPu37HmYznqmOzznelvFJOAniak13LY7iaSHTEYTgp0A7w/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1#align=left&display=inline&height=448&originHeight=448&originWidth=640&status=uploading&width=640">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/vzEib9IRhZD7No5UQbzHezkzNZSaFbvrY6ia4nxtHw35gN6LFxtVViaqq8IKo7icgVTrB1icc44m4ibwp7sCW9bQy8nw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1#align=left&display=inline&height=448&originHeight=448&originWidth=640&status=uploading&width=640">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/vzEib9IRhZD7No5UQbzHezkzNZSaFbvrYDeuHgKVoYiaN9BX6dVBCa4fLGLcMrN2XjVnykOibFGrPkLkJQAsChqRQ/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1#align=left&display=inline&height=433&originHeight=433&originWidth=640&status=uploading&width=640">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/vzEib9IRhZD7No5UQbzHezkzNZSaFbvrYULSaF4Phs8iaSKPz4M6uhcIEF81PIpuaibdibDfbIqB9olcrYIdbJiaaSg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1#align=left&display=inline&height=433&originHeight=433&originWidth=640&status=uploading&width=640">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/vzEib9IRhZD7No5UQbzHezkzNZSaFbvrYgxe3v8l5JRicKz6tGcCNutG0UKqgxYONZ5wSIXbM9x7YsSwOe8D4dKA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1#align=left&display=inline&height=140&originHeight=140&originWidth=140&status=uploading&width=140">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/webp/263301/1573107503320-2c8c0e67-592a-474a-bf2d-f344d2885b3a.webp#align=left&display=inline&height=1470&originHeight=1470&originWidth=1080&size=0&status=done&width=1080">
+<meta property="og:updated_time" content="2019-12-10T06:58:23.072Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="可能是最全的 “文本溢出截断省略” 方案合集">
+<meta name="twitter:description" content="先来点基础的，单行文本溢出省略核心 CSS 语句   overflow: hidden；（文字长度超出限定宽度，则隐藏超出的内容） white-space: nowrap；（设置文字在一行显示，不能换行） text-overflow: ellipsis；（规定当文本溢出时，显示省略符号来代表被修剪的文本）  优点  无兼容问题 响应式截断 文本溢出范围才显示省略号，否则不显示省略号 省略号位置显">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_gif/vzEib9IRhZD7No5UQbzHezkzNZSaFbvrY87Tfeia2KTNG639EWVYEbTlHL1hplIqlmUU4BKqmLVRhiaPBmNWqwIWA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1#align=left&display=inline&height=448&originHeight=448&originWidth=640&status=uploading&width=640">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/07/yuque/可能是最全的 “文本溢出截断省略” 方案合集/">
+
+
+
+
+
+  <title>可能是最全的 “文本溢出截断省略” 方案合集 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/yuque/可能是最全的 “文本溢出截断省略” 方案合集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">可能是最全的 “文本溢出截断省略” 方案合集</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-07T14:17:53+08:00">
+                2019-11-07
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-10T14:58:23+08:00">
+                2019-12-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.9k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a name="uGKF4"></a></p>
+<h2 id="先来点基础的，单行文本溢出省略"><a href="#先来点基础的，单行文本溢出省略" class="headerlink" title="先来点基础的，单行文本溢出省略"></a>先来点基础的，单行文本溢出省略</h2><p>核心 CSS 语句 </p>
+<ul>
+<li>overflow: hidden；（文字长度超出限定宽度，则隐藏超出的内容）<br></li>
+<li>white-space: nowrap；（设置文字在一行显示，不能换行）<br></li>
+<li>text-overflow: ellipsis；（规定当文本溢出时，显示省略符号来代表被修剪的文本）<br></li>
+</ul>
+<p>优点</p>
+<ul>
+<li>无兼容问题<br></li>
+<li>响应式截断<br></li>
+<li>文本溢出范围才显示省略号，否则不显示省略号<br></li>
+<li>省略号位置显示刚好<br></li>
+</ul>
+<p>短板</p>
+<ul>
+<li>只支持单行文本截断<br></li>
+</ul>
+<p>适用场景</p>
+<ul>
+<li>适用于单行文本溢出显示省略号的情况<br></li>
+</ul>
+<p>Demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .demo &#123;</span><br><span class="line">        white-space: nowrap;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">        text-overflow: ellipsis;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&quot;demo&quot;&gt;这是一段很长的文本&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>示例图片<br><img src="https://mmbiz.qpic.cn/mmbiz_gif/vzEib9IRhZD7No5UQbzHezkzNZSaFbvrY87Tfeia2KTNG639EWVYEbTlHL1hplIqlmUU4BKqmLVRhiaPBmNWqwIWA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1#align=left&display=inline&height=448&originHeight=448&originWidth=640&status=uploading&width=640" alt><br><a name="6tXAg"></a></p>
+<h2 id="进阶一下，多行文本溢出省略（按行数）"><a href="#进阶一下，多行文本溢出省略（按行数）" class="headerlink" title="进阶一下，多行文本溢出省略（按行数）"></a>进阶一下，多行文本溢出省略（按行数）</h2><p><a name="Vw0dB"></a></p>
+<h3 id="○-纯-CSS-实现方案"><a href="#○-纯-CSS-实现方案" class="headerlink" title="○ 纯 CSS 实现方案"></a>○ 纯 CSS 实现方案</h3><p>核心 CSS 语句</p>
+<ul>
+<li>-webkit-line-clamp: 2；（用来限制在一个块元素显示的文本的行数，2 表示最多显示 2 行。为了实现该效果，它需要组合其他的 WebKit 属性）<br></li>
+<li>display: -webkit-box；（和 1 结合使用，将对象作为弹性伸缩盒子模型显示 ）<br></li>
+<li>-webkit-box-orient: vertical；（和 1 结合使用 ，设置或检索伸缩盒对象的子元素的排列方式 ）<br></li>
+<li>overflow: hidden；（文本溢出限定的宽度就隐藏内容）<br></li>
+<li>text-overflow: ellipsis；（多行文本的情况下，用省略号 “…” 隐藏溢出范围的文本)<br></li>
+</ul>
+<p>优点</p>
+<ul>
+<li>响应式截断<br></li>
+<li>文本溢出范围才显示省略号，否则不显示省略号<br></li>
+<li>省略号显示位置刚好<br></li>
+</ul>
+<p>短板</p>
+<ul>
+<li>兼容性一般：-webkit-line-clamp 属性只有 WebKit 内核的浏览器才支持<br></li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/webp/263301/1573107503257-d714f3a1-5608-44f3-b541-3a9fd57dd76e.webp#align=left&display=inline&height=390&originHeight=390&originWidth=1080&size=0&status=done&width=1080" alt><br>适用场景</p>
+<ul>
+<li>多适用于移动端页面，因为移动设备浏览器更多是基于 WebKit 内核<br></li>
+</ul>
+<p>Demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .demo &#123;</span><br><span class="line">          display: -webkit-box;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">        -webkit-line-clamp: 2;</span><br><span class="line">        -webkit-box-orient: vertical;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&apos;demo&apos;&gt;这是一段很长的文本&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>示例图片<br><img src="https://mmbiz.qpic.cn/mmbiz_gif/vzEib9IRhZD7No5UQbzHezkzNZSaFbvrYNSial7w86X6y6Z524iaZ1ssGJOAqqJsnDBqh8FialwCRbewaPibQc9wZDA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1#align=left&display=inline&height=448&originHeight=448&originWidth=640&status=uploading&width=640" alt><br><a name="dJuob"></a></p>
+<h3 id="○-基于-JavaScript-的实现方案"><a href="#○-基于-JavaScript-的实现方案" class="headerlink" title="○ 基于 JavaScript 的实现方案"></a>○ 基于 JavaScript 的实现方案</h3><p>优点</p>
+<ul>
+<li>无兼容问题<br></li>
+<li>响应式截断<br></li>
+<li>文本溢出范围才显示省略号，否则不显示省略号<br></li>
+</ul>
+<p>短板</p>
+<ul>
+<li>需要 JS 实现，背离展示和行为相分离原则<br></li>
+<li>文本为中英文混合时，省略号显示位置略有偏差<br></li>
+</ul>
+<p>适用场景</p>
+<ul>
+<li>适用于响应式截断，多行文本溢出省略的情况<br></li>
+</ul>
+<p>Demo<br>当前仅适用于文本为中文，若文本中有英文，可自行修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    const text = &apos;这是一段很长的文本&apos;;</span><br><span class="line">    const totalTextLen = text.length;</span><br><span class="line">    const formatStr = () =&gt; &#123;</span><br><span class="line">        const ele = document.getElementsByClassName(&apos;demo&apos;)[0];</span><br><span class="line">        const lineNum = 2;</span><br><span class="line">        const baseWidth = window.getComputedStyle(ele).width;</span><br><span class="line">        const baseFontSize = window.getComputedStyle(ele).fontSize;</span><br><span class="line">        const lineWidth = +baseWidth.slice(0, -2);</span><br><span class="line">        // 所计算的strNum为元素内部一行可容纳的字数(不区分中英文)</span><br><span class="line">        const strNum = Math.floor(lineWidth / +baseFontSize.slice(0, -2));</span><br><span class="line">        let content = &apos;&apos;;</span><br><span class="line">          // 多行可容纳总字数</span><br><span class="line">        const totalStrNum = Math.floor(strNum * lineNum);</span><br><span class="line">        const lastIndex = totalStrNum - totalTextLen;</span><br><span class="line">        if (totalTextLen &gt; totalStrNum) &#123;</span><br><span class="line">            content = text.slice(0, lastIndex - 3).concat(&apos;...&apos;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            content = text;</span><br><span class="line">        &#125;</span><br><span class="line">        ele.innerHTML = content;</span><br><span class="line">    &#125;</span><br><span class="line">    formatStr();</span><br><span class="line">        window.onresize = () =&gt; &#123;</span><br><span class="line">        formatStr();</span><br><span class="line">    &#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&apos;demo&apos;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>示例图片<br><img src="https://mmbiz.qpic.cn/mmbiz_gif/vzEib9IRhZD7No5UQbzHezkzNZSaFbvrYuIAS6NCeg2GqBhMiaE5DXmXHoHRwXUicjvBSR8RAYt8MT4Ria34dpA4hA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1#align=left&display=inline&height=448&originHeight=448&originWidth=640&status=uploading&width=640" alt><br><a name="HIBN5"></a></p>
+<h2 id="再进阶一步，多行文本溢出省略（按高度）"><a href="#再进阶一步，多行文本溢出省略（按高度）" class="headerlink" title="再进阶一步，多行文本溢出省略（按高度）"></a>再进阶一步，多行文本溢出省略（按高度）</h2><p><a name="aGoKr"></a></p>
+<h3 id="○-多行文本溢出不显示省略号"><a href="#○-多行文本溢出不显示省略号" class="headerlink" title="○ 多行文本溢出不显示省略号"></a>○ 多行文本溢出不显示省略号</h3><p>核心 CSS 语句</p>
+<ul>
+<li>overflow: hidden；（文本溢出限定的宽度就隐藏内容）<br></li>
+<li>line-height: 20px；（结合元素高度，高度固定的情况下，设定行高， 控制显示行数）<br></li>
+<li>max-height: 40px；（设定当前元素最大高度）<br></li>
+</ul>
+<p>优点</p>
+<ul>
+<li>无兼容问题<br></li>
+<li>响应式截断<br></li>
+</ul>
+<p>短板</p>
+<ul>
+<li>单纯截断文字, 不展示省略号，观感上较为生硬<br></li>
+</ul>
+<p>适用场景</p>
+<ul>
+<li>适用于文本溢出不需要显示省略号的情况<br></li>
+</ul>
+<p>Demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .demo &#123;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">        max-height: 40px;</span><br><span class="line">        line-height: 20px;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&apos;demo&apos;&gt;这是一段很长的文本&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>示例图片<br><img src="https://mmbiz.qpic.cn/mmbiz_gif/vzEib9IRhZD7No5UQbzHezkzNZSaFbvrYoCUAicS3Y1VLPu37HmYznqmOzznelvFJOAniak13LY7iaSHTEYTgp0A7w/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1#align=left&display=inline&height=448&originHeight=448&originWidth=640&status=uploading&width=640" alt><br><a name="455Zy"></a></p>
+<h3 id="○-伪元素-定位实现多行省略"><a href="#○-伪元素-定位实现多行省略" class="headerlink" title="○ 伪元素 + 定位实现多行省略"></a>○ 伪元素 + 定位实现多行省略</h3><p>核心 CSS 语句</p>
+<ul>
+<li>position: relative; （为伪元素绝对定位）<br></li>
+<li>overflow: hidden; （文本溢出限定的宽度就隐藏内容）<br></li>
+<li>position: absolute;（给省略号绝对定位）<br></li>
+<li>line-height: 20px; （结合元素高度,高度固定的情况下,设定行高, 控制显示行数）<br></li>
+<li>height: 40px; （设定当前元素高度）<br></li>
+<li>::after {}  （设置省略号样式）<br></li>
+</ul>
+<p>优点</p>
+<ul>
+<li>无兼容问题<br></li>
+<li>响应式截断<br></li>
+</ul>
+<p>短板</p>
+<ul>
+<li>无法识别文字的长短，无论文本是否溢出范围, 一直显示省略号<br></li>
+<li>省略号显示可能不会刚刚好，有时会遮住一半文字<br></li>
+</ul>
+<p>适用场景</p>
+<ul>
+<li>适用于对省略效果要求较低，文本一定会溢出元素的情况<br></li>
+</ul>
+<p>Demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .demo &#123;</span><br><span class="line">        position: relative;</span><br><span class="line">        line-height: 20px;</span><br><span class="line">        height: 40px;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;</span><br><span class="line">    .demo::after &#123;</span><br><span class="line">        content: &quot;...&quot;;</span><br><span class="line">        position: absolute;</span><br><span class="line">        bottom: 0;</span><br><span class="line">        right: 0;</span><br><span class="line">        padding: 0 20px 0 10px;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&apos;demo&apos;&gt;这是一段很长的文本&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>示例图片<br><img src="https://mmbiz.qpic.cn/mmbiz_gif/vzEib9IRhZD7No5UQbzHezkzNZSaFbvrY6ia4nxtHw35gN6LFxtVViaqq8IKo7icgVTrB1icc44m4ibwp7sCW9bQy8nw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1#align=left&display=inline&height=448&originHeight=448&originWidth=640&status=uploading&width=640" alt><br><a name="lPq7W"></a></p>
+<h3 id="○-利用-Float-特性，纯-CSS-实现多行省略"><a href="#○-利用-Float-特性，纯-CSS-实现多行省略" class="headerlink" title="○ 利用 Float 特性，纯 CSS 实现多行省略"></a>○ 利用 Float 特性，纯 CSS 实现多行省略</h3><p>核心 CSS 语句</p>
+<ul>
+<li>line-height: 20px；（结合元素高度,高度固定的情况下,设定行高, 控制显示行数）<br></li>
+<li>overflow: hidden；（文本溢出限定的宽度就隐藏内容）<br></li>
+<li>float: right/left；（利用元素浮动的特性实现）<br></li>
+<li>position: relative；（根据自身位置移动省略号位置, 实现文本溢出显示省略号效果）<br></li>
+<li>word-break: break-all；（使一个单词能够在换行时进行拆分）<br></li>
+</ul>
+<p>优点</p>
+<ul>
+<li>无兼容问题<br></li>
+<li>响应式截断<br></li>
+<li>文本溢出范围才显示省略号，否则不显示省略号<br></li>
+</ul>
+<p>短板</p>
+<ul>
+<li>省略号显示可能不会刚刚好，有时会遮住一半文字<br></li>
+</ul>
+<p>适用场景</p>
+<ul>
+<li>适用于对省略效果要求较低，多行文本响应式截断的情况<br></li>
+</ul>
+<p>Demo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">    .demo &#123;</span><br><span class="line">        background: #099;</span><br><span class="line">        max-height: 40px;</span><br><span class="line">        line-height: 20px;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;</span><br><span class="line">    .demo::before&#123;</span><br><span class="line">        float: left;</span><br><span class="line">        content:&apos;&apos;;</span><br><span class="line">        width: 20px;</span><br><span class="line">        height: 40px;</span><br><span class="line">    &#125;</span><br><span class="line">    .demo .text &#123;</span><br><span class="line">        float: right;</span><br><span class="line">        width: 100%;</span><br><span class="line">        margin-left: -20px;</span><br><span class="line">        word-break: break-all;</span><br><span class="line">    &#125;</span><br><span class="line">    .demo::after&#123;</span><br><span class="line">        float:right;</span><br><span class="line">        content:&apos;...&apos;;</span><br><span class="line">        width: 20px;</span><br><span class="line">        height: 20px;</span><br><span class="line">        position: relative;</span><br><span class="line">        left:100%;</span><br><span class="line">        transform: translate(-100%,-100%);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class=&apos;demo&apos;&gt;这是一段很长的文本&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>示例图片<br><img src="https://mmbiz.qpic.cn/mmbiz_gif/vzEib9IRhZD7No5UQbzHezkzNZSaFbvrYDeuHgKVoYiaN9BX6dVBCa4fLGLcMrN2XjVnykOibFGrPkLkJQAsChqRQ/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1#align=left&display=inline&height=433&originHeight=433&originWidth=640&status=uploading&width=640" alt><br>原理讲解<br>有 A、B、C 三个盒子，A 左浮动，B、C 右浮动。设置 A 盒子的高度与 B 盒子高度（或最大高度）要保持一致</p>
+<ol>
+<li>当 B 盒子高度低于 A 盒子，C 盒子仍会处于 B 盒子右下方。<br></li>
+<li>如果 B 盒子文本过多，高度超过了 A 盒子，则 C 盒子不会停留在右下方，而是掉到了 A 盒子下。<br></li>
+<li>接下来对 C 盒子进行相对定位，将 C 盒子位置向右侧移动 100%，并向左上方向拉回一个 C 盒子的宽高（不然会看不到哟）。这样在文本未溢出时不会看到 C 盒子，在文本溢出时，显示 C 盒子。<br></li>
+</ol>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/vzEib9IRhZD7No5UQbzHezkzNZSaFbvrYULSaF4Phs8iaSKPz4M6uhcIEF81PIpuaibdibDfbIqB9olcrYIdbJiaaSg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1#align=left&display=inline&height=433&originHeight=433&originWidth=640&status=uploading&width=640" alt><br><a name="P149R"></a></p>
+<h2 id="收，大道归简，能力封装"><a href="#收，大道归简，能力封装" class="headerlink" title="收，大道归简，能力封装"></a>收，大道归简，能力封装</h2><blockquote>
+<p>凡重复的，让它单一；凡复杂的，让它简单。</p>
+</blockquote>
+<p>每次都要搞一坨代码，太麻烦。这时候你需要考虑将文本截断的能力，封装成一个可随时调用的自定义容器组件。市面上很多 UI 组件库，都提供了同类组件的封装，如基于 Vue 的 ViewUI Pro，或面向小程序提供组件化解决能力的 MinUI。<br><img src="https://mmbiz.qpic.cn/mmbiz_png/vzEib9IRhZD7No5UQbzHezkzNZSaFbvrYgxe3v8l5JRicKz6tGcCNutG0UKqgxYONZ5wSIXbM9x7YsSwOe8D4dKA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1#align=left&display=inline&height=140&originHeight=140&originWidth=140&status=uploading&width=140" alt></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/webp/263301/1573107503320-2c8c0e67-592a-474a-bf2d-f344d2885b3a.webp#align=left&display=inline&height=1470&originHeight=1470&originWidth=1080&size=0&status=done&width=1080" alt><br><a name="hSN1I"></a></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本文介绍了几种目前常见的文本截断省略的方案，各有利弊，各位同学可根据实际开发情况及需求选择方案。如果你还知道更好其他实现方案，欢迎在评论区留下宝贵评论。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/05/yuque/9个项目助你在2020年成为前端大神！/" rel="next" title="9个项目助你在2020年成为前端大神！">
+                <i class="fa fa-chevron-left"></i> 9个项目助你在2020年成为前端大神！
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/07/yuque/高效开发，必知必会的Chrome开发工具/" rel="prev" title="高效开发，必知必会的Chrome开发工具">
+                高效开发，必知必会的Chrome开发工具 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">185</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#先来点基础的，单行文本溢出省略"><span class="nav-number">1.</span> <span class="nav-text">先来点基础的，单行文本溢出省略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进阶一下，多行文本溢出省略（按行数）"><span class="nav-number">2.</span> <span class="nav-text">进阶一下，多行文本溢出省略（按行数）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#○-纯-CSS-实现方案"><span class="nav-number">2.1.</span> <span class="nav-text">○ 纯 CSS 实现方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#○-基于-JavaScript-的实现方案"><span class="nav-number">2.2.</span> <span class="nav-text">○ 基于 JavaScript 的实现方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#再进阶一步，多行文本溢出省略（按高度）"><span class="nav-number">3.</span> <span class="nav-text">再进阶一步，多行文本溢出省略（按高度）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#○-多行文本溢出不显示省略号"><span class="nav-number">3.1.</span> <span class="nav-text">○ 多行文本溢出不显示省略号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#○-伪元素-定位实现多行省略"><span class="nav-number">3.2.</span> <span class="nav-text">○ 伪元素 + 定位实现多行省略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#○-利用-Float-特性，纯-CSS-实现多行省略"><span class="nav-number">3.3.</span> <span class="nav-text">○ 利用 Float 特性，纯 CSS 实现多行省略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#收，大道归简，能力封装"><span class="nav-number">4.</span> <span class="nav-text">收，大道归简，能力封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">5.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">321.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>

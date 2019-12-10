@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="打造前端性能平台https://myslide.cn/slides/17099 What is AST什么是AST?AST是Abstract Syntax Tree（抽象语法树）的缩写。生成抽象语法树需要经过两个阶段：  分词（tokenize） 语义分析(parse)  其中，分词是将源码source code分割成语法单元，语义分析是在分词结果之上分析这些语法单元之间的关系。以var a =">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AST(抽象语法树)">
+<meta property="og:url" content="http://yoursite.com/2019/10/15/yuque/AST(抽象语法树)/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="打造前端性能平台https://myslide.cn/slides/17099 What is AST什么是AST?AST是Abstract Syntax Tree（抽象语法树）的缩写。生成抽象语法树需要经过两个阶段：  分词（tokenize） 语义分析(parse)  其中，分词是将源码source code分割成语法单元，语义分析是在分词结果之上分析这些语法单元之间的关系。以var a =">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1571132632624-882455ab-889b-475d-8a2e-98ee20720161.png#align=left&display=inline&height=155&name=image.png&originHeight=310&originWidth=720&size=168621&status=done&width=360">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571134932036-f8850ff9-2ce3-4581-b70b-1147a67a1719.jpeg#align=left&display=inline&height=229&originHeight=187&originWidth=720&size=0&status=done&width=880">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1571134969219-13882a13-f213-4567-8042-ac12ab661132.png#align=left&display=inline&height=455&name=image.png&originHeight=421&originWidth=690&size=246034&status=done&width=746">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135286531-691b0376-69cc-447c-b9b1-d62cd354be56.jpeg#align=left&display=inline&height=276&originHeight=276&originWidth=379&size=0&status=done&width=379">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135286576-31284477-d529-4b34-ada5-d3c5b2f2ef53.jpeg#align=left&display=inline&height=390&originHeight=390&originWidth=411&size=0&status=done&width=411">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135286546-d264a9cb-9eb1-4157-8bdd-0ee09b0df72d.jpeg#align=left&display=inline&height=216&originHeight=216&originWidth=453&size=0&status=done&width=453">
+<meta property="og:updated_time" content="2019-12-10T06:58:23.086Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AST(抽象语法树)">
+<meta name="twitter:description" content="打造前端性能平台https://myslide.cn/slides/17099 What is AST什么是AST?AST是Abstract Syntax Tree（抽象语法树）的缩写。生成抽象语法树需要经过两个阶段：  分词（tokenize） 语义分析(parse)  其中，分词是将源码source code分割成语法单元，语义分析是在分词结果之上分析这些语法单元之间的关系。以var a =">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1571132632624-882455ab-889b-475d-8a2e-98ee20720161.png#align=left&display=inline&height=155&name=image.png&originHeight=310&originWidth=720&size=168621&status=done&width=360">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/15/yuque/AST(抽象语法树)/">
+
+
+
+
+
+  <title>AST(抽象语法树) | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/15/yuque/AST(抽象语法树)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">AST(抽象语法树)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T17:41:35+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-10T14:58:23+08:00">
+                2019-12-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.8k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  13 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a name="5X4jn"></a></p>
+<h3 id="打造前端性能平台"><a href="#打造前端性能平台" class="headerlink" title="打造前端性能平台"></a>打造前端性能平台</h3><p><a href="https://myslide.cn/slides/17099" target="_blank" rel="noopener">https://myslide.cn/slides/17099</a><br><a name="3rAfI"></a></p>
+<h3 id="What-is-AST"><a href="#What-is-AST" class="headerlink" title="What is AST"></a>What is AST</h3><p>什么是AST?AST是Abstract Syntax Tree（抽象语法树）的缩写。<br><br>生成抽象语法树需要经过两个阶段：</p>
+<ul>
+<li>分词（tokenize）</li>
+<li>语义分析(parse)</li>
+</ul>
+<p>其中，分词是将源码source code分割成语法单元，语义分析是在分词结果之上分析这些语法单元之间的关系。<br>以var a = 42这句代码为例，简单理解，可以得到下面分词结果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;<span class="attr">type</span>:<span class="string">'identifier'</span>,<span class="attr">value</span>:<span class="string">'var'</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">type</span>:<span class="string">'whitespace'</span>,<span class="attr">value</span>:<span class="string">' '</span>&#125;,    </span><br><span class="line">    &#123;<span class="attr">type</span>:<span class="string">'identifier'</span>,<span class="attr">value</span>:<span class="string">'a'</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">type</span>:<span class="string">'whitespace'</span>,<span class="attr">value</span>:<span class="string">' '</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">type</span>:<span class="string">'operator'</span>,<span class="attr">value</span>:<span class="string">'='</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">type</span>:<span class="string">'whitespace'</span>,<span class="attr">value</span>:<span class="string">' '</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">type</span>:<span class="string">'num'</span>,<span class="attr">value</span>:<span class="string">'42'</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">type</span>:<span class="string">'sep'</span>,<span class="attr">value</span>:<span class="string">';'</span>&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>实际使用babylon6解析这一代码时，分词结果为<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1571132632624-882455ab-889b-475d-8a2e-98ee20720161.png#align=left&display=inline&height=155&name=image.png&originHeight=310&originWidth=720&size=168621&status=done&width=360" alt="image.png"><br>生成的抽象语法树为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"type"</span>:<span class="string">"Program"</span>,</span><br><span class="line">    <span class="string">"body"</span>:[</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"type"</span>:<span class="string">"VariableDeclaration"</span>,</span><br><span class="line">            <span class="string">"kind"</span>:<span class="string">"var"</span>,</span><br><span class="line">            <span class="string">"declarations"</span>:&#123;</span><br><span class="line">                <span class="string">"type"</span>:<span class="string">"VariableDeclarator"</span>,</span><br><span class="line">                <span class="string">"id"</span>:&#123;</span><br><span class="line">                    <span class="string">"type"</span>:<span class="string">"Identifier"</span>,</span><br><span class="line">                    <span class="string">"value"</span>:<span class="string">"a"</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="string">"init"</span>:&#123;</span><br><span class="line">                    <span class="string">"type"</span>:<span class="string">"Literal"</span>,</span><br><span class="line">                    <span class="string">"value"</span>:<span class="number">42</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="B1OcE"></a></p>
+<h3 id="社区中有各种AST-parser实现"><a href="#社区中有各种AST-parser实现" class="headerlink" title="社区中有各种AST parser实现"></a>社区中有各种AST parser实现</h3><ul>
+<li>早期有uglifyjs和esprima</li>
+<li>espree, 基于esprima，用于eslint,<a href="https://link.zhihu.com/?target=https%3A//eslint.org/blog/2014/12/espree-esprima" target="_blank" rel="noopener">Introducing Espree, an Esprima alternative</a></li>
+<li>acorn,号称是相对于esprima性能更优， <a href="https://link.zhihu.com/?target=http%3A//marijnhaverbeke.nl/blog/acorn.html" target="_blank" rel="noopener">Acorn: yet another JavaScript parser</a></li>
+<li>babylon,出自acorn,用于babel</li>
+<li>babel-eslint,babel团队维护的，用于配合使用ESLint, <a href="https://link.zhihu.com/?target=https%3A//www.google.com/url%3Fsa%3Dt%26rct%3Dj%26q%3D%26esrc%3Ds%26source%3Dweb%26cd%3D1%26cad%3Drja%26uact%3D8%26ved%3D0ahUKEwj69NX_lpbYAhXsyVQKHfczBPUQFggoMAA%26url%3Dhttps%253A%252F%252Fgithub.com%252Fbabel%252Fbabel-eslint%26usg%3DAOvVaw0x-Lq143pwLICbowM-n1HZ" target="_blank" rel="noopener">GitHub - babel/babel-eslint: ESLint using Babel as the parser.</a></li>
+</ul>
+<p><a name="aXgVi"></a></p>
+<h3 id="AST-in-ESLint"><a href="#AST-in-ESLint" class="headerlink" title="AST in ESLint"></a>AST in ESLint</h3><p>ESLint是一个用来检查和报告JavaScript编写规范的插件化工具，通过配置规则来规范代码，以no-cond-assign规则为例，启用这一规则时，代码中不允许在条件语句中赋值，这一规则可以避免在条件语句中，错误的将判断写成赋值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//check ths user's job title</span></span><br><span class="line"><span class="keyword">if</span>(user.jobTitle = <span class="string">"manager"</span>)&#123;</span><br><span class="line">  user.jobTitle is now incorrect</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ESLint的检查基于AST，除了这些内置规则外，ESLint为我们提供了API，使得我们可以利用源代码生成的AST，开发自定义插件和自定义规则。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    rules: &#123;</span><br><span class="line">        <span class="string">"var-length"</span>: &#123;</span><br><span class="line">            create: <span class="function"><span class="keyword">function</span> (<span class="params">context</span>) </span>&#123;</span><br><span class="line">                <span class="comment">//规则实现</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>自定义规则插件的结构如上，在create方法中，我们可以定义我们关注的语法单元类型并且实现相关的规则逻辑，ESLint会在遍历语法树时，进入对应的单元类型时，执行我们的检查逻辑。<br>比如我们要实现一条规则，要求赋值语句中，变量名长度大于两位</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    rules: &#123;</span><br><span class="line">        <span class="string">"var-length"</span>: &#123;</span><br><span class="line">            create: <span class="function"><span class="keyword">function</span> (<span class="params">context</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;</span><br><span class="line">                    VariableDeclarator: <span class="function"><span class="params">node</span> =&gt;</span> &#123;</span><br><span class="line">                        <span class="keyword">if</span> (node.id.name.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">                            context.report(node, <span class="string">'Variable names should be longer than 1 character'</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>为这一插件编写package.json</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"eslint-plugin-my-eslist-plugin"</span>,</span><br><span class="line">    <span class="string">"version"</span>: <span class="string">"0.0.1"</span>,</span><br><span class="line">    <span class="string">"main"</span>: <span class="string">"index.js"</span>,</span><br><span class="line">    <span class="string">"devDependencies"</span>: &#123;</span><br><span class="line">        <span class="string">"eslint"</span>: <span class="string">"~2.6.0"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"engines"</span>: &#123;</span><br><span class="line">        <span class="string">"node"</span>: <span class="string">"&gt;=0.10.0"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在项目中使用时，通过npm安装依赖后，在配置中启用插件和对应规则</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"plugins"</span>: [</span><br><span class="line">    <span class="string">"my-eslint-plugin"</span></span><br><span class="line">]</span><br><span class="line"><span class="string">"rules"</span>: &#123;</span><br><span class="line">    <span class="string">"my-eslint-plugin/var-length"</span>: <span class="string">"warn"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过这些配置，便可以使用上述自定义插件。</p>
+<p>有时我们不想要发布新的插件，而仅想编写本地自定义规则，这时我们可以通过自定义规则来实现。自定义规则与插件结构大致相同，如下是一个自定义规则，禁止在代码中使用console的方法调用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> disallowedMethods = [<span class="string">"log"</span>, <span class="string">"info"</span>, <span class="string">"warn"</span>, <span class="string">"error"</span>, <span class="string">"dir"</span>];</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    meta: &#123;</span><br><span class="line">        docs: &#123;</span><br><span class="line">            description: <span class="string">"Disallow use of console"</span>,</span><br><span class="line">            category: <span class="string">"Best Practices"</span>,</span><br><span class="line">            recommended: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    create(context) &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            Identifier(node) &#123;</span><br><span class="line">                <span class="keyword">const</span> isConsoleCall = looksLike(node, &#123;</span><br><span class="line">                    name: <span class="string">"console"</span>,</span><br><span class="line">                    parent: &#123;</span><br><span class="line">                        type: <span class="string">"MemberExpression"</span>,</span><br><span class="line">                        property: &#123;</span><br><span class="line">                            name: <span class="function"><span class="params">val</span> =&gt;</span> disallowedMethods.includes(val)</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">                <span class="comment">// find the identifier with name 'console'</span></span><br><span class="line">                <span class="keyword">if</span> (!isConsoleCall) &#123;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                context.report(&#123;</span><br><span class="line">                    node,</span><br><span class="line">                    message: <span class="string">"Using console is not allowed"</span></span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><a name="6tkbA"></a></p>
+<h3 id="AST-in-Babel"><a href="#AST-in-Babel" class="headerlink" title="AST in Babel"></a>AST in Babel</h3><p><a href="https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/plugin-handbook.md" target="_blank" rel="noopener">https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/plugin-handbook.md</a></p>
+<p><a href="https://github.com/Pines-Cheng/blog/issues/53" target="_blank" rel="noopener">https://github.com/Pines-Cheng/blog/issues/53</a><br><a href="https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/plugin-handbook.md" target="_blank" rel="noopener">https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/plugin-handbook.md</a><br>Babel是为使用下一代JavaScript语法特性来开发而存在的编译工具，最初这个项目名为6to5，意为将ES6语法转换为ES5。发展到现在，Babel已经形成了一个强大的生态。<br><br>业界大佬的评价：Babel is the new jQuery</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571134932036-f8850ff9-2ce3-4581-b70b-1147a67a1719.jpeg#align=left&display=inline&height=229&originHeight=187&originWidth=720&size=0&status=done&width=880" alt></p>
+<p>Babel的工作过程经过三个阶段，parse、transform、generate，具体来说，如下图所示，在parse阶段，使用babylon库将源代码转换为AST，在transform阶段，利用各种插件进行代码转换，如图中的JSX transform将React JSX转换为plain object，在generator阶段，再利用代码生成工具，将AST转换成代码。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1571134969219-13882a13-f213-4567-8042-ac12ab661132.png#align=left&display=inline&height=455&name=image.png&originHeight=421&originWidth=690&size=246034&status=done&width=746" alt="image.png"></p>
+<p>Babel为我们提供了API让我们可以对代码进行AST转换并且进行各种操作</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> babylon <span class="keyword">from</span> <span class="string">"babylon"</span>;</span><br><span class="line"><span class="keyword">import</span> traverse <span class="keyword">from</span> <span class="string">"babel-traverse"</span>;</span><br><span class="line"><span class="keyword">import</span> generate <span class="keyword">from</span> <span class="string">"babel-generator"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> code = <span class="string">`function square(n) &#123;</span></span><br><span class="line"><span class="string">    return n * n;</span></span><br><span class="line"><span class="string">&#125;`</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ast = babylon.parse(code);</span><br><span class="line">traverse(ast,&#123;</span><br><span class="line">    enter(path)&#123;</span><br><span class="line">        <span class="keyword">if</span>(path.node.type === <span class="string">'Identifier'</span> &amp;&amp; path.node.name === <span class="string">'n'</span>)&#123;</span><br><span class="line">            path.node.name = <span class="string">'x'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">generate(ast,&#123;&#125;,code)</span><br></pre></td></tr></table></figure>
+
+<p>直接使用这些API的场景倒不多，项目中经常用到的，是各种Babel插件，比如 <a href="https://link.zhihu.com/?target=https%3A//www.npmjs.com/package/babel-plugin-transform-remove-console" target="_blank" rel="noopener">babel-plugin-transform-remove-console</a>插件，可以去除代码中所有对console的方法调用，主要代码如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">&#123; types: t &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    name: <span class="string">"transform-remove-console"</span>,</span><br><span class="line">    visitor: &#123;</span><br><span class="line">      CallExpression(path, state) &#123;</span><br><span class="line">        <span class="keyword">const</span> callee = path.get(<span class="string">"callee"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!callee.isMemberExpression()) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (isIncludedConsole(callee, state.opts.exclude)) &#123;</span><br><span class="line">          <span class="comment">// console.log()</span></span><br><span class="line">          <span class="keyword">if</span> (path.parentPath.isExpressionStatement()) &#123;</span><br><span class="line">            path.remove();</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="comment">//var a = console.log()</span></span><br><span class="line">            path.replaceWith(createVoid0());</span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isIncludedConsoleBind(callee, state.opts.exclude)) &#123;</span><br><span class="line">          <span class="comment">// console.log.bind()</span></span><br><span class="line">          path.replaceWith(createNoop());</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      MemberExpression: &#123;</span><br><span class="line">        exit(path, state) &#123;</span><br><span class="line">          <span class="keyword">if</span> (</span><br><span class="line">            isIncludedConsole(path, state.opts.exclude) &amp;&amp;</span><br><span class="line">            !path.parentPath.isMemberExpression()</span><br><span class="line">          ) &#123;</span><br><span class="line">          <span class="comment">//console.log = func</span></span><br><span class="line">            <span class="keyword">if</span> (</span><br><span class="line">              path.parentPath.isAssignmentExpression() &amp;&amp;</span><br><span class="line">              path.parentKey === <span class="string">"left"</span></span><br><span class="line">            ) &#123;</span><br><span class="line">              path.parentPath.get(<span class="string">"right"</span>).replaceWith(createNoop());</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//var a = console.log</span></span><br><span class="line">              path.replaceWith(createNoop());</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>使用这一插件，可以将程序中如下调用进行转换</p>
+<p><a name="axZEo"></a></p>
+<h3 id="AST-in-Codemod"><a href="#AST-in-Codemod" class="headerlink" title="AST in Codemod"></a>AST in Codemod</h3><p>Codemod可以用来帮助你在一个大规模代码库中，自动化修改你的代码。<br>jscodeshift是一个运行codemods的JavaScript工具，主要依赖于<code>recast</code>和<code>ast-types</code>两个工具库。recast作为JavaScript parser提供AST接口，ast-types提供类型定义。<br>利用jscodeshift接口，完成前面类似功能，将代码中对console的方法调用代码删除</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (fileInfo,api)=&gt;&#123;</span><br><span class="line">    <span class="keyword">const</span> j = api.jscodeshift;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> root = j(fileInfo.source);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> callExpressions = root.find(j.CallExpression,&#123;</span><br><span class="line">        callee:&#123;</span><br><span class="line">            type:<span class="string">'MemberExpression'</span>,</span><br><span class="line">            object:&#123;</span><br><span class="line">                type:<span class="string">'Identifier'</span>,</span><br><span class="line">                name:<span class="string">'console'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    callExpressions.remove();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> root.toSource();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果想要代码看起来更加简洁，也可以使用链式API调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (fileInfo,api)=&gt;&#123;</span><br><span class="line">    <span class="keyword">const</span> j = api.jscodeshift;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> j(fileInfo.source)</span><br><span class="line">        .find(j.CallExpression,&#123;</span><br><span class="line">            callee:&#123;</span><br><span class="line">                type:<span class="string">'MemberExpression'</span>,</span><br><span class="line">                object:&#123;</span><br><span class="line">                    type:<span class="string">'Identifier'</span>,</span><br><span class="line">                    name:<span class="string">'console'</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        .remove()</span><br><span class="line">        .toSource();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在了解了jscodeshift之后，头脑中立即出现了一个疑问，就是我们为什么需要jscodeshift呢？利用AST进行代码转换，Babel不是已经完全搞定了吗？<br><br>带着这个问题进行一番搜索，发现Babel团队这处提交说明<a href="https://link.zhihu.com/?target=https%3A//github.com/babel/babel/pull/3561" target="_blank" rel="noopener">babel-core: add options for different parser/generator</a>。<br>前文提到，Babel处理流程中包括了parse、transform和generation三个步骤。在生成代码的阶段，Babel不关心生成代码的格式，因为生成的编译过的代码目标不是让开发者阅读的，而是生成到发布目录供运行的，这个过程一般还会对代码进行压缩处理。</p>
+<p>这一次过程在使用Babel命令时也有体现，我们一般使用的命令形式为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">babel src -d dist</span><br></pre></td></tr></table></figure>
+
+<p>而在上述场景中，我们的目标是在代码库中，对源码进行处理，这份经过处理的代码仍需是可读的，我们仍要在这份代码上进行开发，这一过程如果用Babel命令来体现，实际是这样的过程</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">babel src -d src</span><br></pre></td></tr></table></figure>
+
+<p>在这样的过程中，我们会检查转换脚本对源代码到底做了哪些变更，来确认我们的转换正确性。这就需要这一个差异结果是可读的，而直接使用Babel完成上述转换时，使用git diff输出差异结果时，这份差异结果是混乱不可读的。<br>基于这个需求，Babel团队现在允许通过配置自定义parser和generator</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"plugins"</span>:[</span><br><span class="line">        <span class="string">"./plugins.js"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">"parserOpts"</span>:&#123;</span><br><span class="line">        <span class="string">"parser"</span>:<span class="string">"recast"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"generatorOpts"</span>:&#123;</span><br><span class="line">        <span class="string">"generator"</span>:<span class="string">"recast"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>假设我们有如下代码，我们通过脚本，将代码中import模式进行修改</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> fs, &#123;readFile&#125; <span class="keyword">from</span> <span class="string">'fs'</span></span><br><span class="line"><span class="keyword">import</span> &#123;resolve&#125; <span class="keyword">from</span> <span class="string">'path'</span></span><br><span class="line"><span class="keyword">import</span> cp <span class="keyword">from</span> <span class="string">'child_process'</span></span><br><span class="line">resolve(__dirname, <span class="string">'./thing'</span>)</span><br><span class="line">readFile(<span class="string">'./thing.js'</span>, <span class="string">'utf8'</span>, (err, string) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(string)</span><br><span class="line">&#125;)</span><br><span class="line">fs.readFile(<span class="string">'./other-thing'</span>, <span class="string">'utf8'</span>, (err, string) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> resolve = <span class="function"><span class="params">string</span> =&gt;</span> string</span><br><span class="line">  <span class="built_in">console</span>.log(resolve())</span><br><span class="line">&#125;)</span><br><span class="line">cp.execSync(<span class="string">'echo "hi"'</span>)</span><br><span class="line"><span class="comment">//转换为</span></span><br><span class="line"><span class="keyword">import</span> fs <span class="keyword">from</span> <span class="string">'fs'</span>;</span><br><span class="line"><span class="keyword">import</span> _path <span class="keyword">from</span> <span class="string">'path'</span>;</span><br><span class="line"><span class="keyword">import</span> cp <span class="keyword">from</span> <span class="string">'child_process'</span></span><br><span class="line">_path.resolve(__dirname, <span class="string">'./thing'</span>)</span><br><span class="line">fs.readFile(<span class="string">'./thing.js'</span>, <span class="string">'utf8'</span>, (err, string) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(string)</span><br><span class="line">&#125;)</span><br><span class="line">fs.readFile(<span class="string">'./other-thing'</span>, <span class="string">'utf8'</span>, (err, string) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> resolve = <span class="function"><span class="params">string</span> =&gt;</span> string</span><br><span class="line">  <span class="built_in">console</span>.log(resolve())</span><br><span class="line">&#125;)</span><br><span class="line">cp.execSync(<span class="string">'echo "hi"'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>完成这一转换的plugin.js为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">babel</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; <span class="attr">types</span>: t &#125; = babel</span><br><span class="line">  <span class="comment">// could just use https://www.npmjs.com/package/is-builtin-module</span></span><br><span class="line">  <span class="keyword">const</span> nodeModules = [</span><br><span class="line">    <span class="string">'fs'</span>, <span class="string">'path'</span>, <span class="string">'child_process'</span>,</span><br><span class="line">  ]</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    name: <span class="string">'node-esmodule'</span>, <span class="comment">// not required</span></span><br><span class="line">    visitor: &#123;</span><br><span class="line">      ImportDeclaration(path) &#123;</span><br><span class="line">        <span class="keyword">const</span> specifiers = []</span><br><span class="line">        <span class="keyword">let</span> defaultSpecifier</span><br><span class="line">        path.get(<span class="string">'specifiers'</span>).forEach(<span class="function"><span class="params">specifier</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (t.isImportSpecifier(specifier)) &#123;</span><br><span class="line">            specifiers.push(specifier)</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            defaultSpecifier = specifier</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">const</span> &#123;<span class="attr">node</span>: &#123;<span class="attr">value</span>: source&#125;&#125; = path.get(<span class="string">'source'</span>)</span><br><span class="line">        <span class="keyword">if</span> (!specifiers.length || !nodeModules.includes(source)) &#123;</span><br><span class="line">          <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">let</span> memberObjectNameIdentifier</span><br><span class="line">        <span class="keyword">if</span> (defaultSpecifier) &#123;</span><br><span class="line">          memberObjectNameIdentifier = defaultSpecifier.node.local</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          memberObjectNameIdentifier = path.scope.generateUidIdentifier(source)</span><br><span class="line">          path.node.specifiers.push(t.importDefaultSpecifier(memberObjectNameIdentifier))</span><br><span class="line">        &#125;</span><br><span class="line">        specifiers.forEach(<span class="function"><span class="params">specifier</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">const</span> &#123;<span class="attr">node</span>: &#123;<span class="attr">imported</span>: &#123;name&#125;&#125;&#125; = specifier</span><br><span class="line">          <span class="keyword">const</span> &#123;referencePaths&#125; = specifier.scope.getBinding(name)</span><br><span class="line">          referencePaths.forEach(<span class="function"><span class="params">refPath</span> =&gt;</span> &#123;</span><br><span class="line">            refPath.replaceWith(</span><br><span class="line">              t.memberExpression(memberObjectNameIdentifier, t.identifier(name))</span><br><span class="line">            )</span><br><span class="line">          &#125;)</span><br><span class="line">          specifier.remove()</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>删除和加上parserOpts和generatorOpts设置运行两次，使用git diff命令输出结果，可以看出明显的差异</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135286531-691b0376-69cc-447c-b9b1-d62cd354be56.jpeg#align=left&display=inline&height=276&originHeight=276&originWidth=379&size=0&status=done&width=379" alt></p>
+<p>使用recast</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135286576-31284477-d529-4b34-ada5-d3c5b2f2ef53.jpeg#align=left&display=inline&height=390&originHeight=390&originWidth=411&size=0&status=done&width=411" alt></p>
+<p>不使用recast<br><a name="UUVeF"></a></p>
+<h3 id="AST-in-Webpack"><a href="#AST-in-Webpack" class="headerlink" title="AST in Webpack"></a>AST in Webpack</h3><p>Webpack是一个JavaScript生态的打包工具，其打出bundle结构是一个IIFE(立即执行函数)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">module</span>)</span>&#123;&#125;)([<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;]);</span><br></pre></td></tr></table></figure>
+
+<p>Webpack在打包流程中也需要AST的支持，它借助acorn库解析源码，生成AST，提取模块依赖关系</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135286546-d264a9cb-9eb1-4157-8bdd-0ee09b0df72d.jpeg#align=left&display=inline&height=216&originHeight=216&originWidth=453&size=0&status=done&width=453" alt></p>
+<p>在各类打包工具中，由Rollup提出，Webpack目前也提供支持的一个特性是treeshaking。treeshaking可以使得打包输出结果中，去除没有引用的模块，有效减少包的体积。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//math.js</span></span><br><span class="line"><span class="keyword">export</span> &#123;doMath, sayMath&#125;</span><br><span class="line"><span class="keyword">const</span> add = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b</span><br><span class="line"><span class="keyword">const</span> subtract = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b</span><br><span class="line"><span class="keyword">const</span> divide = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a / b</span><br><span class="line"><span class="keyword">const</span> multiply = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a * b</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doMath</span>(<span class="params">a, b, operation</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (operation) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'add'</span>:</span><br><span class="line">      <span class="keyword">return</span> add(a, b)</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'subtract'</span>:</span><br><span class="line">      <span class="keyword">return</span> subtract(a, b)</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'divide'</span>:</span><br><span class="line">      <span class="keyword">return</span> divide(a, b)</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'multiply'</span>:</span><br><span class="line">      <span class="keyword">return</span> multiply(a, b)</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`Unsupported operation: <span class="subst">$&#123;operation&#125;</span>`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayMath</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'MATH!'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//main.js</span></span><br><span class="line"><span class="keyword">import</span> &#123;doMath&#125;</span><br><span class="line">doMath(<span class="number">2</span>, <span class="number">3</span>, <span class="string">'multiply'</span>) <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+
+<p>上述代码中，math.js输出doMath,sayMath方法，main.js中仅引用doMath方法，采用Webpack treeshaking特性，再加上uglify的支持，在输出的bundle文件中，可以去掉sayMath相关代码，输出的math.js形如</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123;doMath&#125;</span><br><span class="line"><span class="keyword">const</span> add = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b</span><br><span class="line"><span class="keyword">const</span> subtract = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b</span><br><span class="line"><span class="keyword">const</span> divide = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a / b</span><br><span class="line"><span class="keyword">const</span> multiply = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a * b</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doMath</span>(<span class="params">a, b, operation</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (operation) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'add'</span>:</span><br><span class="line">      <span class="keyword">return</span> add(a, b)</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'subtract'</span>:</span><br><span class="line">      <span class="keyword">return</span> subtract(a, b)</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'divide'</span>:</span><br><span class="line">      <span class="keyword">return</span> divide(a, b)</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'multiply'</span>:</span><br><span class="line">      <span class="keyword">return</span> multiply(a, b)</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">`Unsupported operation: <span class="subst">$&#123;operation&#125;</span>`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>进一步分析main.js中的调用，doMath(2, 3, ‘multiply’) 调用仅会执行doMath的一个分支，math.js中定义的一些help方法如add,subtract,divide实际是不需要的，理论上，math.js最优可以被减少为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> &#123;doMath&#125;</span><br><span class="line"><span class="keyword">const</span> multiply = <span class="function">(<span class="params">a, b</span>) =&gt;</span> a * b</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doMath</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> multiply(a, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>基于AST，进行更为完善的代码覆盖率分析，应当可以实现上述效果，这里只是一个想法，没有具体的实践。参考<a href="https://link.zhihu.com/?target=https%3A//gist.github.com/kentcdodds/5a13a838cb2c915a2fbcd780c5c0de50%23file-learning-code-md" target="_blank" rel="noopener">Faster JavaScript with SliceJS</a></p>
+<p><a name="QTs4W"></a></p>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//www.kenneth-truyers.net/2016/05/27/writing-custom-eslint-rules/" target="_blank" rel="noopener">writing-custom-eslint-rules</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//www.toptal.com/javascript/write-code-to-rewrite-your-code" target="_blank" rel="noopener">Write Code to Rewrite Your Code: jscodeshift</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//babeljs.io/blog/2016/12/07/the-state-of-babel" target="_blank" rel="noopener">The State of Babel</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//www.sitepoint.com/understanding-asts-building-babel-plugin/" target="_blank" rel="noopener">Understanding ASTs by Building Your Own Babel Plugin</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//gist.github.com/kentcdodds/5a13a838cb2c915a2fbcd780c5c0de50%23file-learning-code-md" target="_blank" rel="noopener">Faster JavaScript with SliceJS</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/27289600" target="_blank" rel="noopener">Babel是如何读懂JS代码的</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/32189701" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32189701</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/24/yuque/taro/" rel="next" title="taro">
+                <i class="fa fa-chevron-left"></i> taro
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/15/yuque/前端码农之蜕变 — AST（抽象语法树）/" rel="prev" title="前端码农之蜕变 — AST（抽象语法树）">
+                前端码农之蜕变 — AST（抽象语法树） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">185</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#打造前端性能平台"><span class="nav-number">1.</span> <span class="nav-text">打造前端性能平台</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-AST"><span class="nav-number">2.</span> <span class="nav-text">What is AST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#社区中有各种AST-parser实现"><span class="nav-number">3.</span> <span class="nav-text">社区中有各种AST parser实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AST-in-ESLint"><span class="nav-number">4.</span> <span class="nav-text">AST in ESLint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AST-in-Babel"><span class="nav-number">5.</span> <span class="nav-text">AST in Babel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AST-in-Codemod"><span class="nav-number">6.</span> <span class="nav-text">AST in Codemod</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AST-in-Webpack"><span class="nav-number">7.</span> <span class="nav-text">AST in Webpack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文章"><span class="nav-number">8.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">321.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>

@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="d9faa237-3ef13fc3f-f4b1-77e6af384494 本文中的图可视化由 G6 提供支持。G6 —— 专业的图可视化引擎。让关系数据变得简单透明，让用户获得 Insight。G6 官网：antv.alipay.com/zh-cn/g…。欢迎关注。GitHub：github.com/antvis/g6。欢迎 Star。G6 是一个图可视化引擎。它提供了图的绘制、布局、分析、交互、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3D可视化">
+<meta property="og:url" content="http://yoursite.com/2019/11/30/yuque/3D可视化/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="d9faa237-3ef13fc3f-f4b1-77e6af384494 本文中的图可视化由 G6 提供支持。G6 —— 专业的图可视化引擎。让关系数据变得简单透明，让用户获得 Insight。G6 官网：antv.alipay.com/zh-cn/g…。欢迎关注。GitHub：github.com/antvis/g6。欢迎 Star。G6 是一个图可视化引擎。它提供了图的绘制、布局、分析、交互、">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1575122772897-b1519948-83f5-4887-bf51-8936d4c9fe69.png#align=left&display=inline&height=127&originHeight=192&originWidth=583&size=0&status=done&style=none&width=387">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1575174809222-120e3f91-0886-4daa-a192-e2b46508903b.png#align=left&display=inline&height=697&name=image.png&originHeight=1394&originWidth=2874&size=1004865&status=done&style=none&width=1437">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1575175198425-9e4c7131-4049-41a5-b5ce-f74e35a09638.png#align=left&display=inline&height=796&name=image.png&originHeight=1592&originWidth=2880&size=1153897&status=done&style=none&width=1440">
+<meta property="og:updated_time" content="2019-12-10T06:58:23.025Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3D可视化">
+<meta name="twitter:description" content="d9faa237-3ef13fc3f-f4b1-77e6af384494 本文中的图可视化由 G6 提供支持。G6 —— 专业的图可视化引擎。让关系数据变得简单透明，让用户获得 Insight。G6 官网：antv.alipay.com/zh-cn/g…。欢迎关注。GitHub：github.com/antvis/g6。欢迎 Star。G6 是一个图可视化引擎。它提供了图的绘制、布局、分析、交互、">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1575122772897-b1519948-83f5-4887-bf51-8936d4c9fe69.png#align=left&display=inline&height=127&originHeight=192&originWidth=583&size=0&status=done&style=none&width=387">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/30/yuque/3D可视化/">
+
+
+
+
+
+  <title>3D可视化 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/30/yuque/3D可视化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">3D可视化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-30T21:32:18+08:00">
+                2019-11-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-10T14:58:23+08:00">
+                2019-12-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.1k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>d9faa237-3ef13fc3f-f4b1-77e6af384494</p>
+<p>本文中的图可视化由 G6 提供支持。<br>G6 —— 专业的图可视化引擎。让关系数据变得简单透明，让用户获得 Insight。<br>G6 官网：<a href="https://link.zhihu.com/?target=https%3A//antv.alipay.com/zh-cn/g6/3.x/demo/index.html" target="_blank" rel="noopener">antv.alipay.com/zh-cn/g…</a>。欢迎关注。<br>GitHub：<a href="https://link.zhihu.com/?target=https%3A//github.com/antvis/g6" target="_blank" rel="noopener">github.com/antvis/g6</a>。欢迎 Star。<br><a href="https://github.com/antvis/g6" target="_blank" rel="noopener">G6</a> 是一个图可视化引擎。它提供了图的绘制、布局、分析、交互、动画等图可视化的基础能力。旨在让关系变得透明，简单。让用户获得关系数据的 Insight。</p>
+<p><a href="https://github.com/antvis/G6/blob/master/README-zh_CN.md" target="_blank" rel="noopener">https://github.com/antvis/G6/blob/master/README-zh_CN.md</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/94155959" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/94155959</a></p>
+<p><a href="https://www.cnblogs.com/yeyunfei/p/11151890.html" target="_blank" rel="noopener"> 使用webgl(three.js)搭建一个3D智慧园区、3D建筑，3D消防模拟，web版3D,bim管理系统——第四课（炫酷版一）)</a></p>
+<p><a href="https://www.cnblogs.com/yeyunfei/p/10484241.html" target="_blank" rel="noopener">使用webgl(three.js)创建3D机房，3D机房微模块详细介绍(升级版二)</a><br><a href="https://www.cnblogs.com/yeyunfei/p/7899613.html" target="_blank" rel="noopener">如何用webgl(three.js)搭建一个3D库房-第一课</a><br><a href="https://www.cnblogs.com/yeyunfei/p/8811228.html" target="_blank" rel="noopener">如何用webgl(three.js)搭建一个3D库房,3D密集架,3D档案室,-第二课</a><br><a href="https://www.cnblogs.com/yeyunfei/p/8910482.html" target="_blank" rel="noopener">使用webgl(three.js)搭建一个3D建筑，3D消防模拟——第三课</a><br><a href="https://www.cnblogs.com/yeyunfei/p/9629405.html" target="_blank" rel="noopener">使用webgl(three.js)搭建一个3D智慧园区、3D建筑，3D消防模拟，web版3D,bim管理系统——第四课</a><br><a href="https://www.cnblogs.com/yeyunfei/p/10473050.html" target="_blank" rel="noopener">如何用webgl(three.js)搭建不规则建筑模型，客流量热力图模拟</a><br><a href="https://www.cnblogs.com/yeyunfei/p/11151890.html" target="_blank" rel="noopener"> 使用webgl(three.js)搭建一个3D智慧园区、3D建筑，3D消防模拟，web版3D,bim管理系统——第四课（炫酷版一）</a></p>
+<p>TensorSpace 是一个基于 TensorFlow.js 、Three.js 和 Tween.js 开发，用于对神经网络进行 3D 可视化呈现的库。通过使用 TensorSpace，不仅能展示神经网络的结构，还可以呈现网络的内部特征提取、中间层的数据交互以及最终的结果预测等一系列过程。<br>通过使用 TensorSpace，可以更直观地观察并理解基于 TensorFlow、Keras 以及 TensorFlow.js 开发的神经网络模型。 从工业开发的角度来看，TensorSpace 降低了前端深度学习可视化相关应用的开发门槛。总的来说，TensorSpace 具有以下特性：</p>
+<ul>
+<li>交互 – 使用类 Keras 的 API，在浏览器中构建可交互的 3D 可视化模型。</li>
+<li>直观 – 观察并展示模型中间层预测数据，直观演示模型推测过程。</li>
+<li>集成 – 支持使用 TensorFlow、Keras 以及 TensorFlow.js 训练的模型。</li>
+</ul>
+<p><a name="NHomJ"></a></p>
+<h1 id="基于HTML5和WebGL的三维可视立体动态流程图"><a href="#基于HTML5和WebGL的三维可视立体动态流程图" class="headerlink" title="基于HTML5和WebGL的三维可视立体动态流程图"></a><a href="https://segmentfault.com/a/1190000011511528" target="_blank" rel="noopener">基于HTML5和WebGL的三维可视立体动态流程图</a></h1><p><a name="tmbBa"></a></p>
+<h1 id="基于-HTML5-的工业互联网-3D-可视化应用"><a href="#基于-HTML5-的工业互联网-3D-可视化应用" class="headerlink" title="基于 HTML5 的工业互联网 3D 可视化应用"></a><a href="https://segmentfault.com/a/1190000015377636" target="_blank" rel="noopener">基于 HTML5 的工业互联网 3D 可视化应用</a></h1><ul>
+<li><a href="https://threejs.org/docs/index.html#manual/introduction/Creating-a-scene" target="_blank" rel="noopener">three.js / docs</a></li>
+<li><a href="http://www.ituring.com.cn/article/47975" target="_blank" rel="noopener">Three.js 入门指南</a></li>
+<li><a href="http://www.cnblogs.com/Yimi/p/6007811.html" target="_blank" rel="noopener">three.js右手坐标系， 显示和线条</a><br><a name="WlTw5"></a><h1 id="有哪些值得推荐的前端3D库或其他可视化库？"><a href="#有哪些值得推荐的前端3D库或其他可视化库？" class="headerlink" title="有哪些值得推荐的前端3D库或其他可视化库？"></a>有哪些值得推荐的前端3D库或其他可视化库？</h1>D3.js   <a href="https://link.zhihu.com/?target=https%3A//d3js.org/" target="_blank" rel="noopener">D3.js - Data-Driven Documents</a><br>基于D3.js的three.js    <a href="https://link.zhihu.com/?target=https%3A//threejs.org/" target="_blank" rel="noopener">three.js - Javascript 3D library</a><br>基于three.js 的 *<em>ThingJS  *</em><a href="https://link.zhihu.com/?target=https%3A//threejs.org/" target="_blank" rel="noopener">three.js - Javascript 3D library</a><br>这个ThingJS看起来真的很强大，@香布拉喷 的回答有详细介绍。<br>在线编程，调用ThingJS的API，几百行代码就能写出非常复杂的3D模型，基本能替代简单的Autodesk 3ds Max的操作。<br><a href="https://link.zhihu.com/?target=http%3A//www.thingjs.com/guide/%3Fm%3Ddemo%23_%25E4%25BB%2593%25E5%2582%25A8%25E7%25AE%25A1%25E7%2590%2586" target="_blank" rel="noopener">ThingJS - 物联网3D可视化PaaS平台</a><br>这里面宣称一个ThingJS开发者一天就能做出以下效果的模型</li>
+</ul>
+<p>echart.js<br>g2.js<br>d3.js<br>three.js</p>
+<p>G6 —— 专业的图可视化引擎。让关系数据变得简单透明，让用户获得 Insight。</p>
+<p>ECharts,<br>G2,F2,G6,<br>D3.js,<br>highchart<br>three.js<br>deck.gl，kepler.gl uber出的三维地理信息可视化库</p>
+<p>像threeJS 、babylonJS等通用前端库应该是众所周知了，其他还有比如OSG.js、Openscenegraph、x3Dom等都可以看看。<br>不过，上面基本都是比较通用的3D库，当然门槛也还是有一些，如果只是想实现在web端的3D模型展示（尤其是对于如3D打印、制造业模型等场景），这里也推荐另外一个API开发包:EverAPI<br><a href="https://evercraft.co/api/docs/evercraft/" target="_blank" rel="noopener">https://evercraft.co/api/docs/evercraft/</a></p>
+<p>EverAPI主要针对制造类模型的展示，比如结构树、剖切图等，支持常用的制造格式：stl、stp等。很适合普通开发者或者网站外包团队，因为最少只需要四五条代码就可以实现完整的功能。（像3D协作平台EverCraft,也是基于EverAPI开发的）。</p>
+<p><a href="https://evercraft.co/zh/" target="_blank" rel="noopener">https://evercraft.co/zh/</a><br><a href="https://link.zhihu.com/?target=http%3A//www.thingjs.com/guide/%3Fm%3Ddemo%23_%25E4%25BB%2593%25E5%2582%25A8%25E7%25AE%25A1%25E7%2590%2586" target="_blank" rel="noopener">ThingJS - 物联网3D可视化PaaS平台</a><br>tensorspace.js<br><a href="https://tensorspace.org/index_zh.html" target="_blank" rel="noopener">https://tensorspace.org/index_zh.html</a><br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1575122772897-b1519948-83f5-4887-bf51-8936d4c9fe69.png#align=left&display=inline&height=127&originHeight=192&originWidth=583&size=0&status=done&style=none&width=387" alt></p>
+<p><a href="http://www.thingjs.com/guide/" target="_blank" rel="noopener">http://www.thingjs.com/guide/</a><br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1575174809222-120e3f91-0886-4daa-a192-e2b46508903b.png#align=left&display=inline&height=697&name=image.png&originHeight=1394&originWidth=2874&size=1004865&status=done&style=none&width=1437" alt="image.png"></p>
+<p><strong>3D 可视化系统的小 demo</strong><br>**网址：<a href="https://www.alwxkxk.xyz/" target="_blank" rel="noopener">https://www.alwxkxk.xyz/</a><br>github 源码：<a href="https://github.com/alwxkxk/iot-visualization-examples" target="_blank" rel="noopener">https://github.com/alwxkxk/iot-visualization-examples</a><br>怕大家不会操作，所以还录了个小小的操作视频：<a href="https://test-1251805228.file.myqcloud.com/3D/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%BF%83demo.mp4" target="_blank" rel="noopener">操作视频网址</a></p>
+<p><a href="http://www.hightopo.com/" target="_blank" rel="noopener">http://www.hightopo.com/</a><br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1575175198425-9e4c7131-4049-41a5-b5ce-f74e35a09638.png#align=left&display=inline&height=796&name=image.png&originHeight=1592&originWidth=2880&size=1153897&status=done&style=none&width=1440" alt="image.png"></p>
+<p><a href="http://www.thingjs.com/guide/?m=sample&g=1" target="_blank" rel="noopener">http://www.thingjs.com/guide/?m=sample&amp;g=1</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/18/yuque/Remax(React渲染器)/" rel="next" title="Remax(React渲染器)">
+                <i class="fa fa-chevron-left"></i> Remax(React渲染器)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/01/yuque/推荐 3 个超赞的图表工具，让你0基础做出大神级可视化图表/" rel="prev" title="推荐 3 个超赞的图表工具，让你0基础做出大神级可视化图表">
+                推荐 3 个超赞的图表工具，让你0基础做出大神级可视化图表 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">185</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基于HTML5和WebGL的三维可视立体动态流程图"><span class="nav-number">1.</span> <span class="nav-text">基于HTML5和WebGL的三维可视立体动态流程图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于-HTML5-的工业互联网-3D-可视化应用"><span class="nav-number">2.</span> <span class="nav-text">基于 HTML5 的工业互联网 3D 可视化应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有哪些值得推荐的前端3D库或其他可视化库？"><span class="nav-number">3.</span> <span class="nav-text">有哪些值得推荐的前端3D库或其他可视化库？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">321.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>

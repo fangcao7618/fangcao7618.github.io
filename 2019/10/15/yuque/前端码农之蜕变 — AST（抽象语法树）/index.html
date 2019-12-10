@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="首先，先说明下该文章是译文，原文出自《AST for JavaScript developers》(https://itnext.io/ast-for-javascript-developers-3e79aeb08343)。很少花时间特地翻译一篇文章，咬文嚼字是件很累的事情，实在是这篇写的太棒了，所以忍不住想和大家一起分享。该译文出自我的博客：https://github.com/CodeLitt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端码农之蜕变 — AST（抽象语法树）">
+<meta property="og:url" content="http://yoursite.com/2019/10/15/yuque/前端码农之蜕变 — AST（抽象语法树）/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="首先，先说明下该文章是译文，原文出自《AST for JavaScript developers》(https://itnext.io/ast-for-javascript-developers-3e79aeb08343)。很少花时间特地翻译一篇文章，咬文嚼字是件很累的事情，实在是这篇写的太棒了，所以忍不住想和大家一起分享。该译文出自我的博客：https://github.com/CodeLitt">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432532-8462c99f-5705-47f7-874a-2417732a62a7.jpeg#align=left&display=inline&height=405&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432552-660dec17-3e31-4022-a1fe-59564a1135d5.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432591-70a42543-2e77-4eef-b7a0-b3be129b661f.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432553-ff041346-b8cc-473a-98fc-8defd84c64c7.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432528-3dea303a-65b8-41d7-9dda-10632b705396.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432577-13ee51a8-d922-414c-a6ae-497b8870f2ed.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432555-d45dffb6-ee4c-4b4c-866f-3b6026346320.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432544-fca08436-b0fe-41a1-8254-9c56346e7115.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432579-2a080148-a60e-4753-a3a9-36f4eb4fac04.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432572-12b3ce14-8ccb-49ae-9133-92096daf953d.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432565-7cad3b7f-ed30-455c-a719-1220153e65cb.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432636-0a489f70-1c9f-4e45-9505-f248b34a6d88.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432576-7ada575f-022e-4642-9694-0b4aa9f8295b.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432590-90165c91-78fb-4b90-940b-de70789db14a.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432582-4a032228-850a-4be6-ba18-d7f9f3b943cf.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432570-c740d54a-48a6-45e0-b8c6-285cadec3bc7.jpeg#align=left&display=inline&height=450&originHeight=405&originWidth=720&size=0&status=done&width=800">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432640-8a8126b1-3c30-4d4a-b56f-8a3fa9e476da.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432596-d0cc557c-3ef0-4dcc-b8ee-7aa4d5d29b96.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432606-5bf96453-cb80-496e-894e-a6273a24db42.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432629-8f08292e-69db-49e8-b8cd-f7c9f57efab6.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432632-01274b19-6afc-4f49-b7e9-57a22b630824.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432686-cbaed11f-00c4-4a5c-a148-2600ce68fb75.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432643-729df612-6060-408c-8d90-5ac45a76de65.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432625-9679e405-2399-4ae9-91e9-0ef2cf03596f.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960">
+<meta property="og:updated_time" content="2019-12-10T06:58:23.085Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端码农之蜕变 — AST（抽象语法树）">
+<meta name="twitter:description" content="首先，先说明下该文章是译文，原文出自《AST for JavaScript developers》(https://itnext.io/ast-for-javascript-developers-3e79aeb08343)。很少花时间特地翻译一篇文章，咬文嚼字是件很累的事情，实在是这篇写的太棒了，所以忍不住想和大家一起分享。该译文出自我的博客：https://github.com/CodeLitt">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432532-8462c99f-5705-47f7-874a-2417732a62a7.jpeg#align=left&display=inline&height=405&originHeight=405&originWidth=720&size=0&status=done&width=960">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/15/yuque/前端码农之蜕变 — AST（抽象语法树）/">
+
+
+
+
+
+  <title>前端码农之蜕变 — AST（抽象语法树） | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/15/yuque/前端码农之蜕变 — AST（抽象语法树）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端码农之蜕变 — AST（抽象语法树）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-15T18:30:08+08:00">
+                2019-10-15
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-10T14:58:23+08:00">
+                2019-12-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.7k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>首先，先说明下该文章是译文，原文出自《AST for JavaScript developers》(<a href="https://link.zhihu.com/?target=https%3A//itnext.io/ast-for-javascript-developers-3e79aeb08343" target="_blank" rel="noopener">https://itnext.io/ast-for-javascript-developers-3e79aeb08343</a>)。很少花时间特地翻译一篇文章，咬文嚼字是件很累的事情，实在是这篇写的太棒了，所以忍不住想和大家一起分享。<br>该译文出自我的博客：<a href="https://link.zhihu.com/?target=https%3A//github.com/CodeLittlePrince/blog/issues/19" target="_blank" rel="noopener">https://github.com/CodeLittlePrince/blog/issues/19</a>，我的博客会不定时更新各种类型文章，希望大家支持。<br>OK，我们直接进入正题。<br><a name="Rv7Dh"></a></p>
+<h4 id="为什么要谈AST（抽象语法树）"><a href="#为什么要谈AST（抽象语法树）" class="headerlink" title="为什么要谈AST（抽象语法树）?"></a>为什么要谈AST（抽象语法树）?</h4><p>如果你查看目前任何主流的项目中的 devDependencies，会发现前些年的不计其数的插件诞生。我们归纳一下有：javascript转译、代码压缩、css预处理器、elint、pretiier，等。有很多js模块我们不会在生产环境用到，但是它们在我们的开发过程中充当着重要的角色。所有的上述工具，不管怎样，都建立在了AST这个巨人的肩膀上。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432532-8462c99f-5705-47f7-874a-2417732a62a7.jpeg#align=left&display=inline&height=405&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p>所有的上述工具，不管怎样，都建立在了AST这个巨人的肩膀上。<br>我们定一个小目标，从解释什么是AST开始，然后到怎么从一般代码开始去构建它。我们将简单地接触在AST处理基础上，一些最流行的使用例子和工具。并且，我计划谈下我的js2flowchart项目，它是一个不错的利用AST的demo。OK，让我们开始吧。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432552-660dec17-3e31-4022-a1fe-59564a1135d5.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p><a name="geRYS"></a></p>
+<h4 id="什么是AST（抽象语法树）？"><a href="#什么是AST（抽象语法树）？" class="headerlink" title="什么是AST（抽象语法树）？"></a>什么是AST（抽象语法树）？</h4><p>It is a hierarchical program representation that presents source code structure according to the grammar of a programming language, each AST node corresponds to an item of a source code.</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432591-70a42543-2e77-4eef-b7a0-b3be129b661f.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p>估计很多同学会和图中的喵一样，看完这段官方的定义一脸懵逼。OK，我们来看例子：<br><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432553-ff041346-b8cc-473a-98fc-8defd84c64c7.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p>这很简化。<br>实际上，正真AST每个节点会有更多的信息。但是，这是大体思想。从纯文纯中，我们将得到树形结构的数据。每个条目和树中的节点一一对应。<br>那怎么从纯文本中得到AST呢？哇哦，我们知道当下的编译器都做了这件事前。那我们就看看一般的编译器怎么做的就可以了。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432528-3dea303a-65b8-41d7-9dda-10632b705396.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p>想做一款编译器是个比较消耗发量的事情，但幸运的是，我们无需贯穿编译器的所有知识点，最后将高级语言转译为二进制代码。我们只需要关注词法分析和预发分析。这两步是从代码中生成AST的关键所在。<br>第一步，词法分析，也叫做扫描scanner。它读取我们的代码，然后把它们按照预定的规则合并成一个个的标识tokens。同时，它会移除空白符，注释，等。最后，整个代码将被分割进一个tokens列表（或者说一维数组）。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432577-13ee51a8-d922-414c-a6ae-497b8870f2ed.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p>当词法分析源代码的时候，它会一个一个字母地读取代码，所以很形象地称之为扫描-scans；当它遇到空格，操作符，或者特殊符号的时候，它会认为一个话已经完成了。<br>第二步，语法分析，也解析器。它会将词法分析出来的数组转化成树形的表达形式。同时，验证语法，语法如果有错的话，抛出语法错误。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432555-d45dffb6-ee4c-4b4c-866f-3b6026346320.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p>当生成树的时候，解析器会删除一些没必要的标识tokens（比如不完整的括号），因此AST不是100%与源码匹配的，但是已经能让我们知道如何处理了。说个题外话，解析器100%覆盖所有代码结构生成树叫做CST（具体语法树）</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432544-fca08436-b0fe-41a1-8254-9c56346e7115.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p>我们最终得到的。<br><a name="ZqIav"></a></p>
+<h4 id="the-super-tiny-compiler"><a href="#the-super-tiny-compiler" class="headerlink" title="the-super-tiny-compiler"></a>the-super-tiny-compiler</h4><p>想要学习更多关于编译器的知识？the-super-tiny-compiler，一个贼好的项目。大概200来行代码，几乎每行都有注释。<br><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432579-2a080148-a60e-4753-a3a9-36f4eb4fac04.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p><a name="XgNob"></a></p>
+<h4 id="LangSandbox"><a href="#LangSandbox" class="headerlink" title="LangSandbox"></a>LangSandbox</h4><p>想要自己创建门编程语言？LangSandbox，一个更好的项目。它演示了如何创造一门编程语言。当然，设计编程语言这样的书市面上也一坨坨。所以，这项目更加深入，与the-super-tiny-compiler的项目将Lisp转为C语言不同，这个项目你可以写一个你自己的语言，并且将它编译成C语言或者机器语言，最后运行它。<br>我能直接用三方库来生成AST吗？<br>当然可以！有一坨坨的三方库可以用。你可以访问astexplorer，然后挑你喜欢的库。astexplorer是一个很棒的网站，你可以在线玩转AST，而且除了js，还有很多其它语言的AST库。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432572-12b3ce14-8ccb-49ae-9133-92096daf953d.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt><br><a name="caS0i"></a></p>
+<h4 id="babylon"><a href="#babylon" class="headerlink" title="babylon"></a>babylon</h4><p>我不得不强调一款我觉得很棒的三方库，叫做babylon。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432565-7cad3b7f-ed30-455c-a719-1220153e65cb.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p>它被用在大名鼎鼎的babel中，也许这也是它之所以这么火的原因。因为有babel项目的支持，我们可以意料到它将与时俱进，一直支持最新的JS特性，我们可以放心大胆地用，不怕以后JS又出新版导致代码的大规模重构。另外，它的API也非常的简单，容易使用。<br>Ok，现在你知道怎么将代码生成AST了，让我们继续，来看看现实中的用例。<br>第一个用例，我想谈谈代码转化，没错，就是那个货，babel。<br>Babel is not a ‘tool for having ES6 support’. Well, it is, but it is far not only what it is about.<br>经常把beble和支持es6/7/8联系起来，实际上，这也是我们经常用它的原因。但是，它仅仅是一组插件中的一个。我们也可以使用它来压缩代码，react相关预发转译（如jsx），flow插件等。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432636-0a489f70-1c9f-4e45-9505-f248b34a6d88.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p>babel是一个javascript编译器。宏观来说，它分3个阶段运行代码：解析（parsing），转译（transforming），生成（generation）。我们可以给babel 一些javascript代码，它修改代码然后生成新的代码返回。那它是怎样修改代码的呢？没错！它创建了AST，遍历树，修改tokens，最后从AST中生成新的代码。<br>我们来从下面的demo中看下这个过程：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432576-7ada575f-022e-4642-9694-0b4aa9f8295b.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p>像我之前提到的，babel使用babylon，所以，首先，我们解析代码成AST，然后遍历AST，再反转所有的变量名，最后生成代码。完成！正如我们看到的，第一步（解析）和第三步（生成）看起来非常常规，我们每次都会做这两步。所以，babel接管处理了它俩。最后，我们最为关心的，那就是AST转译这一步了。<br>当我们开发babel-plugin的时候，我们只需要描述转化你AST的节点“visitors”就可以了。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432590-90165c91-78fb-4b90-940b-de70789db14a.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p>将它加入你的babel插件列表中，设置你webpack的babel-loader配置或者 .babelrc中的plugins即可。<br>如果你想要学习怎么创建你的第一个babel-plugin，可以查看Babel-handbook<br><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432582-4a032228-850a-4be6-ba18-d7f9f3b943cf.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p><a name="4vlvz"></a></p>
+<h4 id="jscodeshift"><a href="#jscodeshift" class="headerlink" title="jscodeshift"></a>jscodeshift</h4><p>让我们继续，下一个用例，我想提到的是自动代码重构工具，以及神器JSCodeshift。<br>比如说你想要替换掉所有的老掉牙的匿名函数，把他们变成Lambda表达式（箭头函数）。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432570-c740d54a-48a6-45e0-b8c6-285cadec3bc7.jpeg#align=left&display=inline&height=450&originHeight=405&originWidth=720&size=0&status=done&width=800" alt><br><a name="TLAXm"></a></p>
+<p>####<br>你的代码编辑器很可能没法这么做，因为这并不是简单地查找替换操作。这时候jscodeshift就登场了。<br>如果你听过 jscodeshift，你很可能也听过 codemods，一开始挺这两个词可能很困惑，不过没关系，接下来就解释。jscodeshift是一个跑 codemods的工具。 codemod是一段描述AST要转化成什么样的代码，这思想和babel的插件如出一辙。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432640-8a8126b1-3c30-4d4a-b56f-8a3fa9e476da.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p>所以，如果你想创建自动把你的代码从旧的框架迁移到新的框架，这就是一种很乃思的方式。举个例子，react 16的prop-types重构。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432596-d0cc557c-3ef0-4dcc-b8ee-7aa4d5d29b96.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p>有很多不同的 codemodes已经创建了，你可以保存你需要的，以免手动的修改一坨坨代码，拿去挥霍吧：</p>
+<ul>
+<li><a href="https://link.zhihu.com/?target=https%3A//github.com/facebook/jscodeshift" target="_blank" rel="noopener">https://github.com/facebook/jscodeshift</a></li>
+<li><a href="https://link.zhihu.com/?target=https%3A//github.com/reactjs/react-codemod" target="_blank" rel="noopener">https://github.com/reactjs/react-codemod</a></li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432606-5bf96453-cb80-496e-894e-a6273a24db42.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p>最后一个用例，我想要提到Prettier，因为可能每个码农都在日常工作中用到它。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432629-8f08292e-69db-49e8-b8cd-f7c9f57efab6.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p>Prettier 格式化我们的代码。它调整长句，整理空格，括号等。所以它将代码作为输入，修改后的代码作为输出。听起来很熟悉是吗？当然！</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432632-01274b19-6afc-4f49-b7e9-57a22b630824.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p>思路还是一样。首先，将代码生成AST。之后依然是处理AST，最后生成代码。但是，中间过程其实并不像它看起来那么简单。<br>同样，如果你想学习更多在美化打印背后理论，这里有一本你可以深入的书 《A prettier printer》(<a href="https://link.zhihu.com/?target=http%3A//homepages.inf.ed.ac.uk/wadler/papers/prettier/prettier.pdf" target="_blank" rel="noopener">http://homepages.inf.ed.ac.uk/wadler/papers/prettier/prettier.pdf</a>)。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432686-cbaed11f-00c4-4a5c-a148-2600ce68fb75.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt><br><a name="GfrOb"></a></p>
+<h4 id="js2flowchart"><a href="#js2flowchart" class="headerlink" title="js2flowchart"></a>js2flowchart</h4><p>文章迎来尾声，我们继续，今天最后一件事，我想提及的就是我的库，叫做 js2flowchart(4.5 k stars 在 Github)。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432643-729df612-6060-408c-8d90-5ac45a76de65.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p><a name="ibNEZ"></a></p>
+<p>####<br>顾名思义，它将js代码转化生成svg流程图。<br>这是一个很好的例子，因为它向你展现了你，当你拥有AST时，可以做任何你想要做的事。把AST转回成字符串代码并不是必要的，你可以通过它画一个流程图，或者其它你想要的东西。<br>js2flowchart使用场景是什么呢？通过流程图，你可以解释你的代码，或者给你代码写文档；通过可视化的解释学习其他人的代码；通过简单的js语法，为每个处理过程简单的描述创建流程图。<br><a name="msClO"></a></p>
+<h4 id="js-code-to-svg-flowchart"><a href="#js-code-to-svg-flowchart" class="headerlink" title="js-code-to-svg-flowchart"></a>js-code-to-svg-flowchart</h4><p>马上用最简单的方式尝试一下吧，去线上编辑看看 js-code-to-svg-flowchart<br>你也可以在代码中使用它，或者通过CLI，你只需要指向你想生成SVG的文件就行。而且，还有VS Code插件（链接在项目readme中）<br>那么，它还能做什么呢？哇哦，我这里就不废话了，大家有兴趣直接看这个项目的文档吧。<br>OK，那它是如何工作的呢？</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1571135432625-9679e405-2399-4ae9-91e9-0ef2cf03596f.jpeg#align=left&display=inline&height=540&originHeight=405&originWidth=720&size=0&status=done&width=960" alt></p>
+<p>首先，解析代码成AST，然后，我们遍历AST并且生成另一颗树，我称之为工作流树。它删除很多不重要的额tokens，但是将关键块放在一起，如函数、循环、条件等。再之后，我们遍历工作流树并且创建形状树。每个形状树的节点包含可视化类型、位置、在树中的连接等信息。最后一步，我们遍历所有的形状，生成对应的SVG，合并所有的SVG到一个文件中。</p>
+<p>结尾<br>寻找和筛选资料着实辛苦，希望同学们可以多多支持！</p>
+<p><a href="https://link.zhihu.com/?target=http%3A//segmentfault.com/a/1190000017152442" target="_blank" rel="noopener">http://segmentfault.com/a/1190000017152442</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/51174224" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/51174224</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/15/yuque/AST(抽象语法树)/" rel="next" title="AST(抽象语法树)">
+                <i class="fa fa-chevron-left"></i> AST(抽象语法树)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/17/yuque/React可以写命令行，你知道吗？/" rel="prev" title="React可以写命令行，你知道吗？">
+                React可以写命令行，你知道吗？ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">185</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要谈AST（抽象语法树）"><span class="nav-number">1.</span> <span class="nav-text">为什么要谈AST（抽象语法树）?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是AST（抽象语法树）？"><span class="nav-number">2.</span> <span class="nav-text">什么是AST（抽象语法树）？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#the-super-tiny-compiler"><span class="nav-number">3.</span> <span class="nav-text">the-super-tiny-compiler</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LangSandbox"><span class="nav-number">4.</span> <span class="nav-text">LangSandbox</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#babylon"><span class="nav-number">5.</span> <span class="nav-text">babylon</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jscodeshift"><span class="nav-number">6.</span> <span class="nav-text">jscodeshift</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js2flowchart"><span class="nav-number">7.</span> <span class="nav-text">js2flowchart</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#js-code-to-svg-flowchart"><span class="nav-number">8.</span> <span class="nav-text">js-code-to-svg-flowchart</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">321.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>

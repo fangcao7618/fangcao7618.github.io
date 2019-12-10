@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文为 JavaScript Prototype(原型) 新手指南 续篇，文中 Fields 是对象属性的意思我最喜欢的 JavaScript 社区的一部分原因是每个人似乎总是问 “为什么？” 。 为什么我们要按照这种方式做事？ 一般来说，这个问题的答案需要充满理性和回顾历史背景。 但有时，答案往往更简单 – “因为我们一直以来都是这么做的。”在 上一篇文章 中，我们学习了如何在 ES5 和 ES">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript Class(类) 中的 Private(私有) 和 Public(公有) 属性">
+<meta property="og:url" content="http://yoursite.com/2019/07/16/yuque/JavaScript Class(类) 中的 Private(私有) 和 Public(公有) 属性/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="本文为 JavaScript Prototype(原型) 新手指南 续篇，文中 Fields 是对象属性的意思我最喜欢的 JavaScript 社区的一部分原因是每个人似乎总是问 “为什么？” 。 为什么我们要按照这种方式做事？ 一般来说，这个问题的答案需要充满理性和回顾历史背景。 但有时，答案往往更简单 – “因为我们一直以来都是这么做的。”在 上一篇文章 中，我们学习了如何在 ES5 和 ES">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-10T06:58:22.998Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript Class(类) 中的 Private(私有) 和 Public(公有) 属性">
+<meta name="twitter:description" content="本文为 JavaScript Prototype(原型) 新手指南 续篇，文中 Fields 是对象属性的意思我最喜欢的 JavaScript 社区的一部分原因是每个人似乎总是问 “为什么？” 。 为什么我们要按照这种方式做事？ 一般来说，这个问题的答案需要充满理性和回顾历史背景。 但有时，答案往往更简单 – “因为我们一直以来都是这么做的。”在 上一篇文章 中，我们学习了如何在 ES5 和 ES">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/16/yuque/JavaScript Class(类) 中的 Private(私有) 和 Public(公有) 属性/">
+
+
+
+
+
+  <title>JavaScript Class(类) 中的 Private(私有) 和 Public(公有) 属性 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/16/yuque/JavaScript Class(类) 中的 Private(私有) 和 Public(公有) 属性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript Class(类) 中的 Private(私有) 和 Public(公有) 属性</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-16T09:57:14+08:00">
+                2019-07-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-10T14:58:22+08:00">
+                2019-12-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文为 <a href="https://www.html.cn/archives/10022" target="_blank" rel="noopener">JavaScript Prototype(原型) 新手指南</a> 续篇，文中 Fields 是对象属性的意思<br>我最喜欢的 JavaScript 社区的一部分原因是每个人似乎总是问 “为什么？” 。 为什么我们要按照这种方式做事？ 一般来说，这个问题的答案需要充满理性和回顾历史背景。 但有时，答案往往更简单 – “因为我们一直以来都是这么做的。”<br>在 <a href="https://www.html.cn/archives/10022" target="_blank" rel="noopener">上一篇文章</a> 中，我们学习了如何在 ES5 和 ES6 中创建 JavaScript 类。 我们还讨论了如何通过构造函数向这些类的实例添加 state(状态) ，以及如何通过类的原型在实例之间共享方法。 这是一个简单的 Player类，它包含了我们讨论的有关 ES6 类的所有内容。<br>JavaScript 代码:</p>
+<ol>
+<li>class Player {</li>
+<li>constructor() {</li>
+<li>this.points = 0</li>
+<li>this.assists = 0</li>
+<li>this.rebounds = 0</li>
+<li>this.steals = 0</li>
+<li>}</li>
+<li>addPoints(amount) {</li>
+<li>this.points += amount</li>
+<li>}</li>
+<li>addAssist() {</li>
+<li>this.assists++</li>
+<li>}</li>
+<li>addRebound() {</li>
+<li>this.rebounds++</li>
+<li>}</li>
+<li>addSteal() {</li>
+<li>this.steals++</li>
+<li>}</li>
+<li>}</li>
+</ol>
+<p>我们看看这段代码，我们能不能让它更直观一点呢？方法很好理解，都很自然。那么构造函数呢？什么是 constructor ？为什么我们必须在这里定义实例值？现在，这些问题已经有了答案，但是为什么我们不能向实例中添加 state(状态) ，就像方法那样？比如：<br>JavaScript 代码:</p>
+<ol>
+<li>class Player {</li>
+<li>points = 0</li>
+<li>assists = 0</li>
+<li>rebounds = 0</li>
+<li>steals = 0</li>
+<li>addPoints(amount) {</li>
+<li>this.points += amount</li>
+<li>}</li>
+<li>addAssist() {</li>
+<li>this.assists++</li>
+<li>}</li>
+<li>addRebound() {</li>
+<li>this.rebounds++</li>
+<li>}</li>
+<li>addSteal() {</li>
+<li>this.steals++</li>
+<li>}</li>
+<li>}</li>
+</ol>
+<p>事实上，这是 <a href="https://github.com/tc39/proposal-class-fields" target="_blank" rel="noopener">Class Fields Declaration</a> 提案的基础，该提案目前处于 TC-39 流程的 <a href="https://www.html.cn/archives/7742" target="_blank" rel="noopener">第3阶段</a> 。 此提议允许您直接将实例属性添加为类的属性，而无需使用构造方法。 非常漂亮，但是如果我们看一些 React 代码，这个提案真的很棒。 这是一个典型的 React 组件。 它具有本地 state(状态) ，一些方法以及一些静态属性被添加到类中。<br>JavaScript 代码:</p>
+<ol>
+<li>class PlayerInput extends Component {</li>
+<li>constructor(props) {</li>
+<li>super(props)</li>
+<li>this.state = {</li>
+<li>username: ‘’</li>
+<li>}</li>
+<li></li>
+<li>this.handleChange = this.handleChange.bind(this)</li>
+<li>}</li>
+<li>handleChange(event) {</li>
+<li>this.setState({</li>
+<li>username: event.target.value</li>
+<li>})</li>
+<li>}</li>
+<li>render() {</li>
+<li>…</li>
+<li>}</li>
+<li>}</li>
+<li></li>
+<li>PlayerInput.propTypes = {</li>
+<li>id: PropTypes.string.isRequired,</li>
+<li>label: PropTypes.string.isRequired,</li>
+<li>onSubmit: PropTypes.func.isRequired,</li>
+<li>}</li>
+<li></li>
+<li>PlayerInput.defaultProps = {</li>
+<li>label: ‘Username’,</li>
+<li>}</li>
+</ol>
+<p>让我们看看新的 Class Fields 提议如何改进上面的代码首先，我们可以将 state(状态) 变量从构造函数中取出，并将其直接定义为类的属性（或“字段”）。<br>JavaScript 代码:</p>
+<ol>
+<li>class PlayerInput extends Component {</li>
+<li>state = {</li>
+<li>username: ‘’</li>
+<li>}</li>
+<li>constructor(props) {</li>
+<li>super(props)</li>
+<li></li>
+<li>this.handleChange = this.handleChange.bind(this)</li>
+<li>}</li>
+<li>handleChange(event) {</li>
+<li>this.setState({</li>
+<li>username: event.target.value</li>
+<li>})</li>
+<li>}</li>
+<li>render() {</li>
+<li>…</li>
+<li>}</li>
+<li>}</li>
+<li></li>
+<li>PlayerInput.propTypes = {</li>
+<li>id: PropTypes.string.isRequired,</li>
+<li>label: PropTypes.string.isRequired,</li>
+<li>onSubmit: PropTypes.func.isRequired,</li>
+<li>}</li>
+<li></li>
+<li>PlayerInput.defaultProps = {</li>
+<li>label: ‘Username’,</li>
+<li>}</li>
+</ol>
+<p>很酷，但没什么好兴奋的。 我们继续吧。 在上一篇文章中，我们讨论了如何使用 static 关键字向类本身添加静态方法。 但是，根据 ES6 类规范，这只对方法有效，对于值则无效。 这就是为什么在上面的代码中，我们必须在我们定义完 PlayerInput 之后，再在 class 外面将 propTypes 和 defaultProps 添加到 PlayerInput ，而不是在 class 体内定义他们的原因。 再说一遍，它们不能像静态方法那样直接放入 class 体内呢? 好消息是，这也包含在 Class Fields 提案中。 所以现在不仅可以在类体中定义静态方法，还可以定义静态值。 这对我们的代码意味着我们可以将 propTypes 和 defaultProps 移动到 class 体内定义。<br>JavaScript 代码:</p>
+<ol>
+<li>class PlayerInput extends Component {</li>
+<li>static propTypes = {</li>
+<li>id: PropTypes.string.isRequired,</li>
+<li>label: PropTypes.string.isRequired,</li>
+<li>onSubmit: PropTypes.func.isRequired,</li>
+<li>}</li>
+<li>static defaultProps = {</li>
+<li>label: ‘Username’</li>
+<li>}</li>
+<li>state = {</li>
+<li>username: ‘’</li>
+<li>}</li>
+<li>constructor(props) {</li>
+<li>super(props)</li>
+<li></li>
+<li>this.handleChange = this.handleChange.bind(this)</li>
+<li>}</li>
+<li>handleChange(event) {</li>
+<li>this.setState({</li>
+<li>username: event.target.value</li>
+<li>})</li>
+<li>}</li>
+<li>render() {</li>
+<li>…</li>
+<li>}</li>
+<li>}</li>
+</ol>
+<p>这样代码看上去好多了，但我们仍然有丑陋的 constructor 方法和 super 调用。 同样，我们现在需要构造函数的原因是为了将 handleChange 方法绑定到恰当的上下文中。 如果我们能找到另一种方法来确保始终在恰当的上下文中调用 handleChange ，那么我们可以摆脱掉 constructor 。<br>如果您以前使用过箭头函数，就会知道它们没有自己的 this 关键字。相反，this 关键字是按 lexically(词法) 绑定的。这是一种奇特的说法，当你在箭头函数中使用 this 关键字时，事情会按照你所期望的方式运行。利用这些知识并将其与 “Class Fields” 提案相结合起来，如果我们将 handleChange 方法替换为箭头函数呢？这看起来有点奇怪，但是通过这样做，我们可以解决绑定问题，因为，箭头函数是通过 lexically(词法) 绑定 this 的。<br>JavaScript 代码:</p>
+<ol>
+<li>class PlayerInput extends Component {</li>
+<li>static propTypes = {</li>
+<li>id: PropTypes.string.isRequired,</li>
+<li>label: PropTypes.string.isRequired,</li>
+<li>onSubmit: PropTypes.func.isRequired,</li>
+<li>}</li>
+<li>static defaultProps = {</li>
+<li>label: ‘Username’</li>
+<li>}</li>
+<li>state = {</li>
+<li>username: ‘’</li>
+<li>}</li>
+<li>handleChange = (event) =&gt; {</li>
+<li>this.setState({</li>
+<li>username: event.target.value</li>
+<li>})</li>
+<li>}</li>
+<li>render() {</li>
+<li>…</li>
+<li>}</li>
+<li>}</li>
+</ol>
+<p>你看上面的代码，这比我们开始的原始类要好得多，这都要感谢 “Class Fields” 提案，它将很快成为 EcmaScript 规范的一部分。<br>从开发者体验的角度来看，Class Fields 提案优势很明显。 然而，他们有一些缺点，很少被谈论。 在上一篇文章中，我们讨论了 ES6 类实际上只是 Pseudoclassical Instantiation(伪类实例化) 模式的语法糖。也就是说，当你向类添加方法时，这就像在函数原型中添加方法一样。<br>JavaScript 代码:</p>
+<ol>
+<li>class Animal {</li>
+<li>eat() {}</li>
+<li>}</li>
+<li></li>
+<li>// 等价于</li>
+<li></li>
+<li>function Animal () {}</li>
+<li>Animal.prototype.eat = function () {}</li>
+</ol>
+<p>这是高效的，因为 eat 定义一次并在类的所有实例之间共享。 这与 Class Fields 有什么关系？ 好吧，正如我们上面所看到的， Class Fields 被添加到实例中。 这意味着对于我们创建的每个实例，我们将创建一个新的 eat 方法。<br>JavaScript 代码:</p>
+<ol>
+<li>class Animal {</li>
+<li>eat() {}</li>
+<li>sleep = () =&gt; {}</li>
+<li>}</li>
+<li></li>
+<li>// 等价于</li>
+<li></li>
+<li>function Animal () {</li>
+<li>this.sleep = function () {}</li>
+<li>}</li>
+<li></li>
+<li>Animal.prototype.eat = function () {}</li>
+</ol>
+<p>请注意 sleep 如何放在实例上，而不是放在 Animal.prototype 上。这是件坏事吗？嗯，有可能。在不进行度量的情况下对性能进行宽泛的描述通常不是一个好主意。您需要在应用程序中回答的问题是，您从 Class Fields 中获得的开发人员体验是否超过了潜在的性能损失。<br>如果你想在你的应用程序中使用我们之前谈到的任何内容，你需要使用 <a href="https://babeljs.io/docs/en/babel-plugin-proposal-class-properties" target="_blank" rel="noopener">babel-plugin-transform-class-properties</a> 插件。<br><a name="SWaeh"></a></p>
+<h2 id="Private-私有-属性"><a href="#Private-私有-属性" class="headerlink" title="Private(私有) 属性"></a>Private(私有) 属性</h2><p>Class Fields 提案的另一个内容时是 “private fields (私有属性)” 。 有时，当您构建一个类时，您希望拥有不暴露给外界的私有值。 从历史上看， JavaScript 缺乏真正私有值 的能力，所以我们通过约定，用下划线标记它们。<br>JavaScript 代码:</p>
+<ol>
+<li>class Car {</li>
+<li>_milesDriven = 0</li>
+<li>drive(distance) {</li>
+<li>this._milesDriven += distance</li>
+<li>}</li>
+<li>getMilesDriven() {</li>
+<li>return this._milesDriven</li>
+<li>}</li>
+<li>}</li>
+</ol>
+<p>在上面的示例中，我们依靠 Car class（类）的实例通过调用 getMilesDriven 方法来获取汽车的里程数。但是，因为没有什么能使 _milesDriven成为私有的，所以任何实例都可以访问它。<br>JavaScript 代码:</p>
+<ol>
+<li>const tesla = new Car()</li>
+<li>tesla.drive(10)</li>
+<li>console.log(tesla._milesDriven)</li>
+</ol>
+<p>有个奇特的（hacky）方法，就是使用 WeakMaps 可以解决这个问题，但如果存在更简单的解决方案，那将会很好。 同样，Class Fields 提案正在拯救我们。 根据提议，您可以使用 ＃ 创建私有字段。 是的，你没有看错， ＃ 。 我们来看看它对我们的代码有什么影响，<br>JavaScript 代码:</p>
+<ol>
+<li>class Car {</li>
+<li>#milesDriven = 0</li>
+<li>drive(distance) {</li>
+<li>this.#milesDriven += distance</li>
+<li>}</li>
+<li>getMilesDriven() {</li>
+<li>return this.#milesDriven</li>
+<li>}</li>
+<li>}</li>
+</ol>
+<p>我们可以用速记语法更进一步简化<br>JavaScript 代码:</p>
+<ol>
+<li>class Car {</li>
+<li>#milesDriven = 0</li>
+<li>drive(distance) {</li>
+<li>#milesDriven += distance</li>
+<li>}</li>
+<li>getMilesDriven() {</li>
+<li>return #milesDriven</li>
+<li>}</li>
+<li>}</li>
+<li></li>
+<li>const tesla = new Car()</li>
+<li>tesla.drive(10)</li>
+<li>tesla.getMilesDriven() // 10</li>
+<li>tesla.#milesDriven // Invalid</li>
+</ol>
+<p>如果您对私有属性背后的更多细节/决策感兴趣，那么这里有一篇 <a href="https://github.com/tc39/proposal-private-fields/blob/master/FAQ.md" target="_blank" rel="noopener">很好的文章</a>。<br>目前 <a href="https://github.com/babel/proposals/issues/12" target="_blank" rel="noopener">有一个 PR</a> 将私有属性添加到 Babel ，以便您可以在应用中使用它们。<br>英文原文：<a href="https://tylermcginnis.com/javascript-private-and-public-class-fields/" target="_blank" rel="noopener">https://tylermcginnis.com/javascript-private-and-public-class-fields/</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/16/yuque/JavaScript 继承和原型链/" rel="next" title="JavaScript 继承和原型链">
+                <i class="fa fa-chevron-left"></i> JavaScript 继承和原型链
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/16/yuque/现代 CSS 选择器指南/" rel="prev" title="现代 CSS 选择器指南">
+                现代 CSS 选择器指南 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">185</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Private-私有-属性"><span class="nav-number">1.</span> <span class="nav-text">Private(私有) 属性</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">321.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>

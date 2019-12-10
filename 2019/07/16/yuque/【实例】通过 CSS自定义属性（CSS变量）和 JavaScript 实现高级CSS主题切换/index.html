@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在本教程中，我们将使用 CSS自定义属性（也称为CSS变量）来为简单的HTML页面实现主题切换。 我们将创建暗黑和明亮的示例主题，然后编写JavaScript 以在用户单击按钮时在两者之间切换。如果你以前没接触过，请先阅读CSS变量(自定义属性)实用指南及注意事项这篇文章就像在典型的编程语言中一样，变量用于保存或存储值。 在CSS中，它们通常用于存储颜色，字体名称，字体大小，长度单位等。然后可以在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【实例】通过 CSS自定义属性（CSS变量）和 JavaScript 实现高级CSS主题切换">
+<meta property="og:url" content="http://yoursite.com/2019/07/16/yuque/【实例】通过 CSS自定义属性（CSS变量）和 JavaScript 实现高级CSS主题切换/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="在本教程中，我们将使用 CSS自定义属性（也称为CSS变量）来为简单的HTML页面实现主题切换。 我们将创建暗黑和明亮的示例主题，然后编写JavaScript 以在用户单击按钮时在两者之间切换。如果你以前没接触过，请先阅读CSS变量(自定义属性)实用指南及注意事项这篇文章就像在典型的编程语言中一样，变量用于保存或存储值。 在CSS中，它们通常用于存储颜色，字体名称，字体大小，长度单位等。然后可以在">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-10T06:58:22.985Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【实例】通过 CSS自定义属性（CSS变量）和 JavaScript 实现高级CSS主题切换">
+<meta name="twitter:description" content="在本教程中，我们将使用 CSS自定义属性（也称为CSS变量）来为简单的HTML页面实现主题切换。 我们将创建暗黑和明亮的示例主题，然后编写JavaScript 以在用户单击按钮时在两者之间切换。如果你以前没接触过，请先阅读CSS变量(自定义属性)实用指南及注意事项这篇文章就像在典型的编程语言中一样，变量用于保存或存储值。 在CSS中，它们通常用于存储颜色，字体名称，字体大小，长度单位等。然后可以在">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/16/yuque/【实例】通过 CSS自定义属性（CSS变量）和 JavaScript 实现高级CSS主题切换/"/>
+
+
+
+
+
+  <title>【实例】通过 CSS自定义属性（CSS变量）和 JavaScript 实现高级CSS主题切换 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/16/yuque/【实例】通过 CSS自定义属性（CSS变量）和 JavaScript 实现高级CSS主题切换/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【实例】通过 CSS自定义属性（CSS变量）和 JavaScript 实现高级CSS主题切换</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-16T15:20:32+08:00">
+                2019-07-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-10T14:58:22+08:00">
+                2019-12-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.9k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在本教程中，我们将使用 CSS自定义属性（也称为CSS变量）来为简单的HTML页面实现主题切换。 我们将创建暗黑和明亮的示例主题，然后编写JavaScript 以在用户单击按钮时在两者之间切换。<br>如果你以前没接触过，请先阅读<a href="https://www.html.cn/archives/9587" target="_blank" rel="noopener">CSS变量(自定义属性)实用指南及注意事项</a>这篇文章<br>就像在典型的编程语言中一样，变量用于保存或存储值。 在CSS中，它们通常用于存储颜色，字体名称，字体大小，长度单位等。然后可以在样式表中的多个位置引用和重用它们。 大多数开发人员都会引用 “CSS变量” ，但官方名称是 自定义属性。<br>CSS自定义属性可以修改可在整个样式表中引用的变量。 以前，只有使用Sass等CSS预处理器才能实现这一点。<br><a name="aRNLa"></a></p>
+<h2 id="理解-root-和-var"><a href="#理解-root-和-var" class="headerlink" title="理解 :root 和 var()"></a>理解 :root 和 var()</h2><p>在创建动态主题示例之前，让我们了解自定义属性的基本基础知识。<br><a href="https://www.w3.org/TR/css-variables/#custom-property" target="_blank" rel="noopener">自定义属性</a> 是一个名称以两个连字符（ - ）开头的属性，如 –foo。 定义后可以使用 var() 引用的变量。 让我们考虑这个例子：<br>CSS 代码:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">--bg-color</span>: <span class="number">#000</span>;</span><br><span class="line">  <span class="attribute">--text-color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在:root选择器中定义自定义属性意味着它们可以作用于全局文档中所有元素。:root是一个CSS伪类，它匹配文档的根元素 – <html>元素。它类似于 html 选择器，但具有更高的<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" target="_blank" rel="noopener">优先级</a>。<br>您可以在文档中的任何位置访问 :root 中的自定义属性的值：<br>CSS 代码:</html></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">var</span>(--text-color);</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--bg-color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>您还可以在CSS变量中包含回退值。例如：<br>CSS 代码:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">var</span>(--text-color, #000);</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--bg-color, #fff);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果未定义自定义属性，则使用其回退值代替。<br>除了 :root 或 html 选择器之外的CSS选择器内定义的自定义属性使变量可用于匹配元素及其子元素。<br><a name="KxY3p"></a></p>
+<h2 id="CSS自定义属性与预处理器变量"><a href="#CSS自定义属性与预处理器变量" class="headerlink" title="CSS自定义属性与预处理器变量"></a>CSS自定义属性与预处理器变量</h2><p>诸如 Sass 之类的CSS预处理器通常用于辅助前端Web开发。预处理器的其中一个有用功能就包括变量。但是Sass变量和CSS自定义属性之间有什么区别？</p>
+<ul>
+<li>CSS自定义属性在现代浏览器中进行本机解析。 预处理器变量需要编译到标准CSS文件中，并且所有变量都转换为值。</li>
+<li>JavaScript可以访问和修改自定义属性。 预处理程序变量编译一次，只有它们的最终值在客户端上可用。<br><a name="QyDwB"></a><h2 id="编写一个简单的HTML页面"><a href="#编写一个简单的HTML页面" class="headerlink" title="编写一个简单的HTML页面"></a>编写一个简单的HTML页面</h2>让我们从为项目创建一个文件夹开始：<br>BASH 代码:</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir css-variables-theming</span><br></pre></td></tr></table></figure>
+
+<p>接下来，在项目的文件夹中添加一个 index.html 文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> css-variables-theming</span><br><span class="line">touch index.html</span><br></pre></td></tr></table></figure>
+
+<p>并添加以下内容：<br>HTML 代码:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"navbar"</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"Light/Dark"</span> <span class="attr">id</span>=<span class="string">"toggle-theme"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span>What is Lorem Ipsum?<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span>Lorem Ipsum is simply dummy text of the printing and typesetting industry...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">  Copyright 2018</span><br><span class="line"><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>我们使用 <nav> 标签添加一个导航栏，页脚和容器 <div> ，容器中包含一个按钮（用于在明暗主题之间切换）和一些虚拟 Lorem Ipsum 文本。</div></nav></p>
+<p><a name="BQzUo"></a></p>
+<h2 id="为我们的HTML页面编写基本CSS"><a href="#为我们的HTML页面编写基本CSS" class="headerlink" title="为我们的HTML页面编写基本CSS"></a>为我们的HTML页面编写基本CSS</h2><p>现在让我们为页面添加样式。在 <head><meta name="generator" content="Hexo 3.9.0"> 中使用内联 <style> 标记的同一文件中添加以下CSS样式：<br />HTML 代码:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">* &#123;</span><br><span class="line">  margin: 0;</span><br><span class="line">&#125;</span><br><span class="line">html&#123;</span><br><span class="line">  height: 100%;</span><br><span class="line">&#125;</span><br><span class="line">body&#123;</span><br><span class="line">  height: 100%;</span><br><span class="line">  font-family: -apple-system, BlinkMacSystemFont“Segoe UI”, “Roboto”, “Oxygen”, “Ubuntu”, “Cantarell”,</span><br><span class="line"> “Fira Sans”, “Droid Sans”, “Helvetica Neue”,sans-serif;  </span><br><span class="line">  display: flex;</span><br><span class="line">  flex-direction: column;</span><br><span class="line">&#125;</span><br><span class="line">nav&#123;</span><br><span class="line">  background: hsl(350, 50%, 50%);</span><br><span class="line"><span class="css">  <span class="selector-tag">padding</span>: 1<span class="selector-class">.3rem</span>;</span></span><br><span class="line">  color: hsl(350, 50%, 10%);</span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="selector-class">.container</span>&#123;</span></span><br><span class="line">  flex: 1;</span><br><span class="line"><span class="css">  <span class="selector-tag">background</span><span class="selector-pseudo">:hsl(350</span>, 50%, 95%);</span></span><br><span class="line">  padding: 1rem;</span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="selector-tag">p</span><span class="selector-class">.content</span>&#123;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">padding</span>: 0<span class="selector-class">.7rem</span>;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">font-size</span>: 0<span class="selector-class">.7rem</span>;</span></span><br><span class="line">  color: hsl(350, 50%, 50%);</span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="selector-class">.container</span> <span class="selector-tag">h2</span><span class="selector-class">.title</span>&#123;</span></span><br><span class="line">  padding: 1rem;</span><br><span class="line">  color: hsl(350, 50%, 20%);</span><br><span class="line">&#125;</span><br><span class="line">footer&#123;</span><br><span class="line">  background: hsl(350, 93%, 88%);</span><br><span class="line">  padding: 1rem;</span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="selector-tag">input</span><span class="selector-attr">[type=button]</span> &#123;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">color</span><span class="selector-pseudo">:hsl(350</span>, 50%, 20%);</span></span><br><span class="line"><span class="css">  <span class="selector-tag">padding</span>: 0<span class="selector-class">.3rem</span>;</span></span><br><span class="line">  font-size: 1rem;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>CSS3 HSL（色调，饱和度，亮度）表示法用于定义颜色。 色调是色环上的角度，示例使用350表示红色。 通过更改饱和度（颜色百分比）和亮度（百分比），所有页面颜色都使用不同的变化。<br />使用HSL，我们只需更改色调值，即可轻松尝试主题的不同主色。 我们还可以使用CSS变量作为色调值，并通过更改样式表中的单个值或使用JavaScript动态更改颜色主题来切换颜色主题。<br />这是页面的屏幕截图：<br /><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563262096084-3f45d0e3-462c-466d-b829-33530cde777e.png#align=left&display=inline&height=255&name=image.png&originHeight=510&originWidth=294&size=33241&status=done&width=147" alt="image.png"></p>
+<p>我们将这个例子放到在线的 CodePen 中演示：</p>
+<p><a href="https://codepen.io/feiwen8772/embed/xavqRo?height=460&theme-id=0&slug-hash=xavqRo&default-tab=css%2Cresult&animations=run&editable=&embed-version=2&user=feiwen8772&name=cp_embed_1">演示链接</a></p>
+<p>让我们使用CSS变量来保存页面中所有颜色的色调值。在 <style> 标记顶部的 :root 选择器中添加一个全局CSS变量：<br />CSS 代码:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">  <span class="attribute">--main-hue </span>: <span class="number">350</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来，我们用 -main-hue 变量替换 hsl() 颜色中的所有硬编码350值。例如，这是导航选择器：<br />CSS 代码:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">nav</span>&#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">hsl</span>(var(--main-hue) , <span class="number">50%</span>, <span class="number">50%</span>);</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">1.3rem</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">hsl</span>(var(--main-hue), <span class="number">50%</span>, <span class="number">10%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在，如果要指定除红色以外的其他颜色，则只需将相应的值指定给 –main-hue 即可。这里有一些例子：<br />CSS 代码:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">  <span class="attribute">--red-hue</span>: <span class="number">360</span>;</span><br><span class="line">  <span class="attribute">--blue-hue</span>: <span class="number">240</span>;</span><br><span class="line">  <span class="attribute">--green-hue</span>: <span class="number">120</span>;</span><br><span class="line">  <span class="attribute">--main-hue </span>: <span class="built_in">var</span>(--red-hue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们为红色，蓝色和绿色定义了三个自定义属性，然后将 –red-hue 变量分配给–main-hue。<br />这是一个屏幕截图，其中包含不同值的页面 –main-hue ：<br /><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563262348159-e04d8b06-c3a9-4ae7-b305-3ad8a75186ef.png#align=left&display=inline&height=255&name=image.png&originHeight=510&originWidth=882&size=124319&status=done&width=441" alt="image.png"></p>
+<p>CSS自定义属性提供了几个好处：</p>
+<ul>
+<li>可以在单独位置定义值。</li>
+<li>可以适当地命名该值以帮助维护和可读性。</li>
+<li>可以使用JavaScript动态更改该值。 例如，–main-hue 可以设置为0到360之间的任何值。</li>
+</ul>
+<p>使用JavaScript从一组预定义值或用户提交的hue值（它应该在0到360之间）动态设置 –main-hue 的值，我们可以为用户提供许多彩色主题的可能性。<br />以下代码行将 –main-hue 的值设置为240（蓝色）：<br />JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.documentElement.style.setProperty(<span class="string">'--main-hue'</span>, <span class="number">240</span>);</span><br></pre></td></tr></table></figure>
+
+<p>查看以下 <a href="https://codepen.io/feiwen8772/embed/JagNpJ?height=460&theme-id=0&slug-hash=JagNpJ&default-tab=css%2Cresult&animations=run&editable=&embed-version=2&user=feiwen8772&name=cp_embed_2">CodePen</a> ，其显示了一个完整示例，允许您在红色，蓝色和绿色之间动态切换主题：<br /><br>他是页面的截图：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563262441529-9da27b04-b322-474e-98ba-f8f2f20ee73b.png#align=left&display=inline&height=258&name=image.png&originHeight=516&originWidth=933&size=125544&status=done&width=466.5" alt="image.png"></p>
+<p><a name="AETB3"></a></p>
+<h2 id="添加CSS暗黑主题"><a href="#添加CSS暗黑主题" class="headerlink" title="添加CSS暗黑主题"></a>添加CSS暗黑主题</h2><p>现在让我们为这个页面提供一个暗黑的主题。 为了更好地控制不同实体的颜色，我们需要添加更多变量。<br />通过页面的样式，我们可以在:root中定义对应颜色的自定义属性后，用变量替换不同选择器中的所有HSL颜色：<br />CSS 代码:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">  <span class="comment">/*...*/</span></span><br><span class="line">  <span class="attribute">--nav-bg-color</span>: <span class="built_in">hsl</span>(var(--main-hue) , <span class="number">50%</span>, <span class="number">50%</span>);</span><br><span class="line">  <span class="attribute">--nav-text-color</span>: <span class="built_in">hsl</span>(var(--main-hue), <span class="number">50%</span>, <span class="number">10%</span>);</span><br><span class="line">  <span class="attribute">--container-bg-color</span>: <span class="built_in">hsl</span>(var(--main-hue) , <span class="number">50%</span>, <span class="number">95%</span>);</span><br><span class="line">  <span class="attribute">--content-text-color</span>: <span class="built_in">hsl</span>(var(--main-hue) , <span class="number">50%</span>, <span class="number">50%</span>);</span><br><span class="line">  <span class="attribute">--title-color</span>: <span class="built_in">hsl</span>(var(--main-hue) , <span class="number">50%</span>, <span class="number">20%</span>);</span><br><span class="line">  <span class="attribute">--footer-bg-color</span>: <span class="built_in">hsl</span>(var(--main-hue) , <span class="number">93%</span>, <span class="number">88%</span>);</span><br><span class="line">  <span class="attribute">--button-text-color</span>: <span class="built_in">hsl</span>(var(--main-hue), <span class="number">50%</span>, <span class="number">20%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用了自定义属性的适当名称。 例如， –nav-bg-color 是指导航背景的颜色，而 –nav-text-color是指导航前景/文本的颜色。<br />现在复制 :root 选择器及其内容，但添加一个暗黑属性值的主题：<br />CSS 代码:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span><span class="selector-attr">[theme='dark']</span>&#123;</span><br><span class="line">  <span class="comment">/*...*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果将具有dark值的 theme 属性添加到 <html> 元素，则会激活此主题。<br />我们现在可以手动插入这些变量的值，通过减少 HSL 颜色的亮度值来提供暗主题，或者我们可以使用其他技术，例如常用的 invert() 和 brightness() 等CSS滤镜调整图像的渲染，但也可以与任何其他元素一起使用。<br />将以下代码添加到 :root[theme=’dark’]：<br />CSS 代码:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span><span class="selector-attr">[theme='dark']</span> &#123;</span><br><span class="line">  <span class="attribute">--red-hue</span>: <span class="number">360</span>;</span><br><span class="line">  <span class="attribute">--blue-hue</span>: <span class="number">240</span>;</span><br><span class="line">  <span class="attribute">--green-hue</span>: <span class="number">120</span>;</span><br><span class="line">  <span class="attribute">--main-hue</span>: <span class="built_in">var</span>(--blue-hue);</span><br><span class="line">  <span class="attribute">--nav-bg-color</span>: <span class="built_in">hsl</span>(var(--main-hue), <span class="number">50%</span>, <span class="number">90%</span>);</span><br><span class="line">  <span class="attribute">--nav-text-color</span>: <span class="built_in">hsl</span>(var(--main-hue), <span class="number">50%</span>, <span class="number">10%</span>);</span><br><span class="line">  <span class="attribute">--container-bg-color</span>: <span class="built_in">hsl</span>(var(--main-hue), <span class="number">50%</span>, <span class="number">95%</span>);</span><br><span class="line">  <span class="attribute">--content-text-color</span>: <span class="built_in">hsl</span>(var(--main-hue), <span class="number">50%</span>, <span class="number">50%</span>);</span><br><span class="line">  <span class="attribute">--title-color</span>: <span class="built_in">hsl</span>(--main-hue, 50%, 20%);</span><br><span class="line">  <span class="attribute">--footer-bg-color</span>: <span class="built_in">hsl</span>(var(--main-hue), <span class="number">93%</span>, <span class="number">88%</span>);</span><br><span class="line">  <span class="attribute">--button-text-color</span>: <span class="built_in">hsl</span>(var(--main-hue), <span class="number">50%</span>, <span class="number">20%</span>);</span><br><span class="line">  <span class="attribute">filter</span>: <span class="built_in">invert</span>(1) <span class="built_in">brightness</span>(0.6);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>invert() 过滤器反转所选元素中的所有颜色（在这种情况下每个元素都会应用）。 可以用百分比或数字指定反转值。 值 100％ 或 1 将完全反转元素的色调，饱和度和亮度值。<br />brightness() 滤镜使元素更亮或更暗。 值为 0 会导致完全黑色的元素。<br />invert() 滤镜使一些元素非常明亮。 通过设置 brightness(0.6) 来降低这些要求。<br />暗黑主题，不同程度的色调：<br /><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563262554495-cf125945-5d5b-48e8-8714-6d0375b4953a.png#align=left&display=inline&height=258&name=image.png&originHeight=516&originWidth=933&size=107757&status=done&width=466.5" alt="image.png"><br><a name="8gn5I"></a></p>
+<h2 id="使用JavaScript切换主题"><a href="#使用JavaScript切换主题" class="headerlink" title="使用JavaScript切换主题"></a>使用JavaScript切换主题</h2><p>现在，当用户点击 Dark / Light 按钮时，我们现在使用JavaScript在暗黑和高亮主题之间切换。 在 index.html 中，使用以下代码在结束 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body> 之前添加内联 <script> ：<br />JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> toggleBtn = <span class="built_in">document</span>.querySelector(<span class="string">"#toggle-theme"</span>);</span><br><span class="line">toggleBtn.addEventListener(<span class="string">'click'</span>, e =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"Switching theme"</span>);</span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">document</span>.documentElement.hasAttribute(<span class="string">'theme'</span>))&#123;</span><br><span class="line">    <span class="built_in">document</span>.documentElement.removeAttribute(<span class="string">'theme'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.documentElement.setAttribute(<span class="string">'theme'</span>, <span class="string">'dark'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>document.documentElement 引用文档的根DOM元素 – 即 <html> 元素。 此代码使用 .hasAttribute() 方法检查 theme 属性是否存在，如果该属性不存在则添加 dark 值，从而导致切换到暗黑主题。 否则，它会删除该属性，从而切换到高亮主题。<br><a name="qCb0a"></a></p>
+<h2 id="使用JavaScript更改CSS自定义属性"><a href="#使用JavaScript更改CSS自定义属性" class="headerlink" title="使用JavaScript更改CSS自定义属性"></a>使用JavaScript更改CSS自定义属性</h2><p>使用JavaScript，我们可以访问自定义属性并动态更改其值。 在我们的示例中，我们对亮度值进行了硬编码，但它可以动态更改。 首先，在 Dark / Light 按钮旁边的 HTML 页面中添加 slider input：<br />HTML 代码:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"range"</span> <span class="attr">id</span>=<span class="string">"darknessSlider"</span> <span class="attr">name</span>=<span class="string">"darkness"</span> <span class="attr">value</span>=<span class="string">"1"</span> <span class="attr">min</span>=<span class="string">"0.3"</span> <span class="attr">max</span>=<span class="string">"1"</span> <span class="attr">step</span>=<span class="string">"0.1"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>slider 从 1 开始，允许用户将其减小到 0.3 ，步长为 0.1 。<br />接下来，在:root[theme='dark']中为暗度值添加一个自定义属性，初始值为1 ：<br />CSS 代码:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span><span class="selector-attr">[theme='dark']</span>&#123;</span><br><span class="line">  <span class="comment">/*...*/</span></span><br><span class="line">  <span class="attribute">--theme-darkness</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将 brightness 滤镜更改为此自定义属性而不是硬编码值：<br />CSS 代码:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">filter</span>: <span class="selector-tag">invert</span>(1) <span class="selector-tag">brightness</span>(<span class="selector-tag">var</span>(<span class="selector-tag">--theme-darkness</span>));</span><br></pre></td></tr></table></figure>
+
+<p>最后，添加以下代码以将 --theme-darkness 的值与 slider 值同步：<br />JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> darknessSlider = <span class="built_in">document</span>.querySelector(<span class="string">"#darknessSlider"</span>);</span><br><span class="line">darknessSlider.addEventListener(<span class="string">'change'</span>, (e)=&gt;&#123;</span><br><span class="line">  <span class="keyword">const</span> val = darknessSlider.value</span><br><span class="line">  <span class="built_in">document</span>.documentElement.style.setProperty(<span class="string">'--theme-darkness'</span>, val);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>我们正在监听滑块的 change 事件，并使用 setProperty() 方法相应地设置 --theme-darkness 的值。<br />我们还可以将 brightness 滤镜应用于高亮主题。 在 :root 选择器的顶部添加 --theme-darkness 自定义属性：<br />CSS 代码:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">  <span class="comment">/*...*/</span></span><br><span class="line">  <span class="attribute">--theme-darkness</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在同一选择器的底部添加 brightness 滤镜：<br />CSS 代码:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">  <span class="comment">/*...*/</span></span><br><span class="line">  <span class="attribute">filter</span>: <span class="built_in">brightness</span>(var(--theme-darkness));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>您可以在以下在线的 <a href="https://codepen.io/feiwen8772/embed/wEVejG?height=460&theme-id=0&slug-hash=wEVejG&default-tab=css%2Cresult&animations=run&editable=&embed-version=2&user=feiwen8772&name=cp_embed_3">CodePen</a> 中演示中找到此示例的完整代码：<br />这是最后一个例子的暗黑主题的截图：<br /><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563262771981-1253e4d1-8839-4743-8e1d-911c59c8f5dd.png#align=left&display=inline&height=258&name=image.png&originHeight=516&originWidth=933&size=115480&status=done&width=466.5" alt="image.png"></p>
+<p>这个是高亮主题的截图：<br /><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563262786134-fce22625-b1ab-4e79-8544-f22bf29a0238.png#align=left&display=inline&height=258&name=image.png&originHeight=516&originWidth=933&size=113189&status=done&width=466.5" alt="image.png"></p>
+<p><a name="xQpXn"></a></p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>在本教程中，我们已经了解了如何使用CSS自定义属性来创建主题并在它们之间动态切换。 我们使用了HSL配色方案，它允许我们指定具有色调，饱和度和亮度值的颜色以及CSS滤镜（invert 和brightness）以创建浅色主题的暗色版本。<br />如果您想了解有关CSS主题的更多信息，请参阅以下链接进一步阅读：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables#Basic_usage">Using CSS custom properties (variables)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/HSL_and_HSV">HSL and HSV</a></li>
+<li><a href="https://css-tricks.com/css-custom-properties-theming/">CSS Custom Properties and Theming</a></li>
+<li><a href="https://medium.com/@mwichary/dark-theme-in-a-day-3518dde2955a">Dark theme in a day</a></li>
+</ul>
+<p>原文链接：<a href="https://www.sitepoint.com/css-theming-custom-properties-javascript/">https://www.sitepoint.com/css-theming-custom-properties-javascript/</a><br /><a href=""></a></p>
+</style></head></p>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/16/yuque/React 性能分析器介绍/" rel="next" title="React 性能分析器介绍">
+                <i class="fa fa-chevron-left"></i> React 性能分析器介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/16/yuque/JS 中提升幸福度的小技巧/" rel="prev" title="JS 中提升幸福度的小技巧">
+                JS 中提升幸福度的小技巧 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/1916867.png"
+                alt="FangCao" />
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">185</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解-root-和-var"><span class="nav-number">1.</span> <span class="nav-text">理解 :root 和 var()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS自定义属性与预处理器变量"><span class="nav-number">2.</span> <span class="nav-text">CSS自定义属性与预处理器变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写一个简单的HTML页面"><span class="nav-number">3.</span> <span class="nav-text">编写一个简单的HTML页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为我们的HTML页面编写基本CSS"><span class="nav-number">4.</span> <span class="nav-text">为我们的HTML页面编写基本CSS</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">321.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>

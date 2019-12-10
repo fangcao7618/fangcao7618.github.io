@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="原文标题：Javascript - Event order原文链接：https://www.quirksmode.org/js/events_order.htmlNetscape 4 只支持事件捕获，Explorer只支持事件冒泡。Netscape 6和 Konqueror冒泡和捕获均支持，但Opera 和iCab冒泡和捕获均不支持。在介绍事件的那篇文章（文章链接：https://www.quir">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript - 事件顺序">
+<meta property="og:url" content="http://yoursite.com/2019/08/02/yuque/Javascript - 事件顺序/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="原文标题：Javascript - Event order原文链接：https://www.quirksmode.org/js/events_order.htmlNetscape 4 只支持事件捕获，Explorer只支持事件冒泡。Netscape 6和 Konqueror冒泡和捕获均支持，但Opera 和iCab冒泡和捕获均不支持。在介绍事件的那篇文章（文章链接：https://www.quir">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-10T06:58:23.148Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript - 事件顺序">
+<meta name="twitter:description" content="原文标题：Javascript - Event order原文链接：https://www.quirksmode.org/js/events_order.htmlNetscape 4 只支持事件捕获，Explorer只支持事件冒泡。Netscape 6和 Konqueror冒泡和捕获均支持，但Opera 和iCab冒泡和捕获均不支持。在介绍事件的那篇文章（文章链接：https://www.quir">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/02/yuque/Javascript - 事件顺序/">
+
+
+
+
+
+  <title>Javascript - 事件顺序 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/yuque/Javascript - 事件顺序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Javascript - 事件顺序</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-02T15:33:13+08:00">
+                2019-08-02
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-10T14:58:23+08:00">
+                2019-12-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.4k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>原文标题：Javascript - Event order<br>原文链接：<a href="https://www.quirksmode.org/js/events_order.html" target="_blank" rel="noopener">https://www.quirksmode.org/js/events_order.html</a><br>Netscape 4 只支持事件捕获，Explorer只支持事件冒泡。Netscape 6和 Konqueror冒泡和捕获均支持，但Opera 和iCab冒泡和捕获均不支持。<br>在介绍事件的那篇文章（文章链接：<a href="https://www.quirksmode.org/js/introevents.html）中，我提了个看起来比较难以理解的问题：“假设一个元素及其祖先元素的事件句柄指向了同一事件，哪个先触发？”不出意料，这取决于**浏览器**。" target="_blank" rel="noopener">https://www.quirksmode.org/js/introevents.html）中，我提了个看起来比较难以理解的问题：“假设一个元素及其祖先元素的事件句柄指向了同一事件，哪个先触发？”不出意料，这取决于**浏览器**。</a><br>这个问题其实很简单。假定一个父元素内有一个子元素：<br>———————————–<br>| element1                                |<br>|   ————————-     |<br>|   |element2                       |     |<br>|   ————————-     |<br>|                                                |<br>———————————–<br>二者均有一个onClick事件句柄。如果用户点击了元素2，就会触发元素1和元素2的点击事件。可两个事件哪个先被触发呢？哪个事件句柄先执行呢？换句话说，事件顺序是怎样？<br><a name="YCIzi"></a></p>
+<h2 id="两种模型"><a href="#两种模型" class="headerlink" title="两种模型"></a>两种模型</h2><p>可以预见的是，很久以前Netscape和Microsoftde的做法就是截然不同的。</p>
+<ul>
+<li>Netscape指定元素1的事件先发生，称之为事件_捕获_。</li>
+<li>Microsoft表示元素2的事件先发生，称之为事件_冒泡_。</li>
+</ul>
+<p>以上的两种做法完全背道而驰。Explorer只支持事件冒泡。Mozilla,Opera 7和Konqueror冒泡和捕获均支持。旧版本的Opera和iCab冒泡和捕获均不支持。<br><a name="cBCeK"></a></p>
+<h2 id="事件捕获"><a href="#事件捕获" class="headerlink" title="事件捕获"></a>事件捕获</h2><p>当你使用事件捕获时：<br>| |<br>—————| |—————–<br>| element1     | |                         |<br>|   ———–| |———–       |<br>|   |element2  \ /                  |     |<br>|   ————————-     |<br>|        Event CAPTURING           |<br>———————————–<br>元素1的事件句柄先被触发，元素2的事件句柄后被触发。<br><a name="qmKq3"></a></p>
+<h2 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h2><p>当你使用事件冒泡时：<br>/ &lt;br /&gt;—————| |—————–<br>| element1     | |                |<br>|   ———–| |———–     |<br>|   |element2  | |          |     |<br>|   ————————-     |<br>|        Event BUBBLING           |<br>———————————–<br>元素2的事件句柄先被触发，元素1的事件句柄后被触发。<br><a name="M5hOe"></a></p>
+<h2 id="W3C模型"><a href="#W3C模型" class="headerlink" title="W3C模型"></a>W3C模型</h2><p>W3C明智地在争论中保持了中立。<strong>任何发生在W3C事件模型中的事件首先会被捕获，直到它到达目标元素才会冒泡。</strong><br>| |  / &lt;br /&gt;—————–| |–| |—————–<br>| element1       | |  | |                |<br>|   ————-| |–| |———–     |<br>|   |element2    \ /  | |          |     |<br>|   ——————————–     |<br>|        W3C event model                 |<br>——————————————<br>Web开发者可以选择是否在捕获或冒泡阶段注册一个事件句柄。这可以通过在先进模型那篇有相应解释的addEventListener()方法实现。如果它的最后一个参数是true，事件句柄会为捕获阶段而设置，如果是false，事件句柄会为冒泡阶段而设置。<br>假设你这样做了<br>element1.addEventListener(‘click’,doSomething2,true)<br>element2.addEventListener(‘click’,doSomething,false)<br>假如用户点击元素2，会发生以下情况：</p>
+<ol>
+<li>点击事件发生在捕获阶段。事件看起来好像元素2的任何祖先元素都有对应于捕获阶段的onclick事件句柄。</li>
+<li>元素1上绑定的doSomething2()事件被执行。</li>
+<li>事件传递到目标，没有发现任何一个对应捕获阶段的事件句柄。事件移向冒泡阶段并执行在冒泡阶段为元素2注册的doSomething()。</li>
+<li>事件又一次向上传递并检查目标的任何祖先元素是否有对应冒泡阶段的事件句柄。最后没有发现任何句柄，因此什么也没发生。</li>
+</ol>
+<p>顺序反过来就是<br>element1.addEventListener(‘click’,doSomething2,false)<br>element2.addEventListener(‘click’,doSomething,false)<br>现在如果用户点击元素2，会发生以下情况：</p>
+<ol>
+<li>点击事件发生于捕获阶段。事件会查看元素2的任何祖先元素是否存在对于捕获阶段的onclick事件句柄，但没有发现。</li>
+<li>事件传递到目标。事件移动到自己的冒泡阶段并执行为元素2注册的对应冒泡阶段的doSomething()。</li>
+<li>事件再次向上移动并检查目标的任何祖先元素是否有对应冒泡阶段的事件句柄。</li>
+<li>事件在元素1上发现了事件句柄。于是doSomething2()被执行。<br><a name="Ymh76"></a><h2 id="兼容传统模型"><a href="#兼容传统模型" class="headerlink" title="兼容传统模型"></a>兼容传统模型</h2>在支持W3C DOM的浏览器中，一个传统的事件注册<br>element1.onclick = doSomething2;<br>被视为在<strong>冒泡阶段</strong>注册。<br><a name="n32co"></a><h2 id="事件冒泡的使用"><a href="#事件冒泡的使用" class="headerlink" title="事件冒泡的使用"></a>事件冒泡的使用</h2>很少有web开发者自觉使用事件捕获或冒泡。现在的Web网页没有必要将一个冒泡事件与几个不同的事件句柄绑定。用户可能会对点击一次鼠标后发生多个动作感到困惑，而你通常会保持你的事件处理脚本彼此分离。当用户点击了一个元素，一个动作被触发，点击另一个元素就会触发另一个动作。<br>当然在未来这种情况也许会改变，能有向上兼容的模型当然更好。但现在事件捕获和冒泡的主要实际应用是<strong>默认功能的注册</strong>。
+<a name="dlIL3"></a><h2 id="这总会发生"><a href="#这总会发生" class="headerlink" title="这总会发生"></a>这总会发生</h2>你首先需要理解事件捕获或冒泡总会发生。如果你为整个文档定义了一个普通的onclick事件句柄：<br>document.onclick = doSomething;<br>if (document.captureEvents) document.captureEvents(Event.CLICK);<br>文档中的任何点击事件都将冒泡到文档并触发那个事件句柄。仅当一个在它之前的事件处理脚本命令该事件停止冒泡，事件才不会冒泡到文档。<br><a name="2E7TI"></a><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2>由于任何事件都要在文档上结束，因此默认事件句柄成为可能。假设你有下面这个页面：<br>————————————<br>| document                                 |<br>|   —————  ————  |<br>|   | element1    |  | element2 |     |<br>|   —————  ————  |<br>|                                                  |<br>————————————</li>
+</ol>
+<p>element1.onclick = doSomething;<br>element2.onclick = doSomething;<br>document.onclick = defaultFunction;</p>
+<p>现在假如用户点击元素1或元素2，doSomething()被执行。只要愿意，你可以终止事件的传递。如果你没有终止它，事件会冒泡到defaultFunction()。如果用户点击了其他地方，defaultFunction()也被执行。这在某些时候会很有用。<br>在拖拽脚本中设置文档宽度事件句柄很有必要。通常一个图层的mousedown事件会选中这一图层，并使它响应mousemove事件。尽管mousedown为了避免浏览器bug通常在这一图层注册，但其他的事件句柄一定是文档宽度。<br>记住浏览器法则第一条：<strong>任何事都可能发生，尤其是当你没有准备时。</strong>可能当用户大幅度地移动鼠标时脚本无法正常工作，导致鼠标不会在图层上出现。</p>
+<ul>
+<li>如果onmousemove事件句柄注册给了图层，图层就不会对鼠标移动做出反应，这会让人困惑。</li>
+<li>如果onmouseup事件句柄在图层上被注册，事件就不会被捕获。所以图层会保持对鼠标的反应，甚至当用户以为自己放下图层后仍会保持反应。</li>
+</ul>
+<p>所以在这种情况下冒泡是很有用的，因为在文档层面注册你的事件句柄能保证它们总会被执行。<br><a name="acCiS"></a></p>
+<h2 id="关闭这个功能"><a href="#关闭这个功能" class="headerlink" title="关闭这个功能"></a>关闭这个功能</h2><p>但你经常想要停用所有的捕获和冒泡，因为这样函数间就不会彼此干扰。除此之外如果你的文档结构很复杂(有很多嵌套表格之类)，你可以通过关闭冒泡来节省系统资源。浏览器必须查看事件目标的每一个祖先元素是否存在事件句柄。即使什么都没发现，搜索仍然会耗费不少时间。<br>在微软模式下你必须设置事件的cancleBubble属性的值为true。<br>window.event.cancelBubble = true<br>W3C模型中你必须调用stopPropagation()方法。<br>e.stopPropagation()<br>这会阻止冒泡阶段事件的传递。在跨浏览器时：<br>function doSomething(e)<br>{<br>  if (!e) var e = window.event;<br>  e.cancelBubble = true;<br>  if (e.stopPropagation) e.stopPropagation();<br>}<br>在浏览器中设置cancleBubble属性无法保证不会有负面效果。浏览器会创建属性。当然它并没有真正禁止冒泡，但任这种分配本身是安全的。<br><a name="7thHX"></a></p>
+<h2 id="当前目标"><a href="#当前目标" class="headerlink" title="当前目标"></a>当前目标</h2><p>正如早先所见，拥有target或srcElement的事件包含了事件发生时对元素的一个引用。我们的例子是元素2，因为用户会点击它。<br>理解在冒泡和捕获阶段（或任意一个）目标不变是很重要的：<strong>它始终保持对元素2的引用。</strong><br>但假设我们注册了以下这些事件句柄;<br>element1.onclick = doSomething;<br>element2.onclick = doSomething;<br>如果用户点击元素2，doSomething()会被执行两次。但你怎么知道是哪个HTML元素最近绑定了这个事件？target/srcElement没有给出线索，因为元素2是事件的源头，它们经常指向元素2。<br>为解决这个问题W3C增加了currentTarget属性。它包含了最近绑定了事件的元素的引用：这正是我们需要的。不幸的是，微软模式并没有一个与之相似的属性。<br>你可以使用<strong>this</strong>关键字，在例子中它指向事件绑定的那个HTML元素，就像currentTarget。<br><a name="wXUPe"></a></p>
+<h2 id="微软模型的问题"><a href="#微软模型的问题" class="headerlink" title="微软模型的问题"></a>微软模型的问题</h2><p>但当你使用微软事件注册模型时this关键字没有指向HTML元素。结合微软模型中一个与currentTarget类似的属性的缺点，这意味着如果你这样做的话：<br>element1.attachEvent(‘onclick’,doSomething)<br>element2.attachEvent(‘onclick’,doSomething)<br>你无法知道是哪个HTML元素最近绑定了事件。这是微软事件注册模型最严重的问题，也是我从不使用它的原因，哪怕是IE/WIN才有的应用我也不使用。<br>我希望微软可以尽快地添加一个类似currentTarget的属性—或者干脆遵从标准？Web开发者需要这个好消息。<br><a name="YHDuq"></a></p>
+<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p>如果你从头到尾看完了这篇文章，建议你应该继续看看鼠标事件（文章链接：<a href="https://www.quirksmode.org/js/events_mouse.html）。" target="_blank" rel="noopener">https://www.quirksmode.org/js/events_mouse.html）。</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/02/yuque/网页性能管理详解/" rel="next" title="网页性能管理详解">
+                <i class="fa fa-chevron-left"></i> 网页性能管理详解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/02/yuque/DOM事件第二弹（UIEvent事件）/" rel="prev" title="DOM事件第二弹（UIEvent事件）">
+                DOM事件第二弹（UIEvent事件） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">185</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#两种模型"><span class="nav-number">1.</span> <span class="nav-text">两种模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件捕获"><span class="nav-number">2.</span> <span class="nav-text">事件捕获</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件冒泡"><span class="nav-number">3.</span> <span class="nav-text">事件冒泡</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#W3C模型"><span class="nav-number">4.</span> <span class="nav-text">W3C模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#兼容传统模型"><span class="nav-number">5.</span> <span class="nav-text">兼容传统模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件冒泡的使用"><span class="nav-number">6.</span> <span class="nav-text">事件冒泡的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这总会发生"><span class="nav-number">7.</span> <span class="nav-text">这总会发生</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">8.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关闭这个功能"><span class="nav-number">9.</span> <span class="nav-text">关闭这个功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当前目标"><span class="nav-number">10.</span> <span class="nav-text">当前目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微软模型的问题"><span class="nav-number">11.</span> <span class="nav-text">微软模型的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#尾声"><span class="nav-number">12.</span> <span class="nav-text">尾声</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">321.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>

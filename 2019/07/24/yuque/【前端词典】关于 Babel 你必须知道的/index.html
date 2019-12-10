@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="我第一次打开搜索引擎查询关于 Babel 的资料时，出现的竟然是关于 Babel 的传说。后来我花了小一天的时间去了解这个传说（来自《旧约圣经》）。  Babel Tower 是全人类联手建造的一个建筑，人们决心合力修建一座通天高塔。因为人们心里少了对上帝的敬畏，多了为自己歌功颂德的功利。上帝不希望这个奇观建成，于是让人们分化成不同的语言，令其不能交流。之后，因为沟通不畅，工程被迫放弃，而且人类从">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【前端词典】关于 Babel 你必须知道的">
+<meta property="og:url" content="http://yoursite.com/2019/07/24/yuque/【前端词典】关于 Babel 你必须知道的/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="我第一次打开搜索引擎查询关于 Babel 的资料时，出现的竟然是关于 Babel 的传说。后来我花了小一天的时间去了解这个传说（来自《旧约圣经》）。  Babel Tower 是全人类联手建造的一个建筑，人们决心合力修建一座通天高塔。因为人们心里少了对上帝的敬畏，多了为自己歌功颂德的功利。上帝不希望这个奇观建成，于是让人们分化成不同的语言，令其不能交流。之后，因为沟通不畅，工程被迫放弃，而且人类从">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/webp/263301/1563959897622-2cc021d7-0a63-490f-98a5-8b5d9a82ac63.webp#align=left&display=inline&height=301&originHeight=301&originWidth=1080&size=0&status=done&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/webp/263301/1563959897610-5ed8da19-6a4f-4951-a2bb-a32f53bb74ea.webp#align=left&display=inline&height=228&originHeight=228&originWidth=880&size=0&status=done&width=880">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/webp/263301/1563959897636-650f353e-9b8b-4e29-8f90-4bfd076ae4bf.webp#align=left&display=inline&height=595&originHeight=595&originWidth=1080&size=0&status=done&width=1080">
+<meta property="og:updated_time" content="2019-12-10T06:58:23.226Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【前端词典】关于 Babel 你必须知道的">
+<meta name="twitter:description" content="我第一次打开搜索引擎查询关于 Babel 的资料时，出现的竟然是关于 Babel 的传说。后来我花了小一天的时间去了解这个传说（来自《旧约圣经》）。  Babel Tower 是全人类联手建造的一个建筑，人们决心合力修建一座通天高塔。因为人们心里少了对上帝的敬畏，多了为自己歌功颂德的功利。上帝不希望这个奇观建成，于是让人们分化成不同的语言，令其不能交流。之后，因为沟通不畅，工程被迫放弃，而且人类从">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/webp/263301/1563959897622-2cc021d7-0a63-490f-98a5-8b5d9a82ac63.webp#align=left&display=inline&height=301&originHeight=301&originWidth=1080&size=0&status=done&width=1080">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/24/yuque/【前端词典】关于 Babel 你必须知道的/">
+
+
+
+
+
+  <title>【前端词典】关于 Babel 你必须知道的 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/24/yuque/【前端词典】关于 Babel 你必须知道的/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【前端词典】关于 Babel 你必须知道的</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-24T10:00:22+08:00">
+                2019-07-24
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-10T14:58:23+08:00">
+                2019-12-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>我第一次打开搜索引擎查询关于 Babel 的资料时，出现的竟然是关于 Babel 的传说。后来我花了小一天的时间去了解这个传说（来自《旧约圣经》）。</p>
+<blockquote>
+<p>Babel Tower 是全人类联手建造的一个建筑，人们决心合力修建一座通天高塔。因为人们心里少了对上帝的敬畏，多了为自己歌功颂德的功利。上帝不希望这个奇观建成，于是让人们分化成不同的语言，令其不能交流。之后，因为沟通不畅，工程被迫放弃，而且人类从此不再团结，因为语言不通而分化成不同部落，并由于沟通问题，经常发生战乱，因此再无力撼动上帝的权威。</p>
+</blockquote>
+<p>了解完这个神话之后，我后面就好好的去了解了一些有关 Babel 的知识，下面就是正题。</p>
+<blockquote>
+<p>内容已经发布在 gitHub 了，欢迎围观 Star，更多文章都在 gitHub。</p>
+</blockquote>
+<p><a name="rksTb"></a></p>
+<h2 id="什么是-Babel"><a href="#什么是-Babel" class="headerlink" title="什么是 Babel"></a>什么是 Babel</h2><blockquote>
+<p>Babel 官方文档: <a href="https://babeljs.io/" target="_blank" rel="noopener">https://babeljs.io/</a></p>
+</blockquote>
+<p>我们知道各个浏览器对 JavaScript 版本的支持各不相同，有很多优秀的新语法都不能直接在浏览器中运行。为了解决这个“沟通不畅”的问题，所以就有了 Babel，Babel 的出现使得我们可以无须顾忌的去使用 ES6+ 的语法。</p>
+<blockquote>
+<p>Babel is a JavaScript compiler.</p>
+</blockquote>
+<p>这也是为何我们必须使用 ES6+ 语法的前提条件。</p>
+<blockquote>
+<p>如果你现在还不清楚 ES6+ 语法的话，赶快学习去吧，要不然你就只能回家继承几十亿的家产啦。</p>
+</blockquote>
+<p><a name="FjInO"></a></p>
+<h2 id="Babel-如何编译"><a href="#Babel-如何编译" class="headerlink" title="Babel 如何编译"></a>Babel 如何编译</h2><p>先看下面这张图：<img src="https://cdn.nlark.com/yuque/0/2019/webp/263301/1563959897622-2cc021d7-0a63-490f-98a5-8b5d9a82ac63.webp#align=left&display=inline&height=301&originHeight=301&originWidth=1080&size=0&status=done&width=1080" alt><br>你会发现 ES6 的语法确实被编译成浏览器可以识别的版本了，你是不是也在问这是怎么做到的呢？<br><a name="wZeKm"></a></p>
+<h3 id="babel-编译的阶段"><a href="#babel-编译的阶段" class="headerlink" title="babel 编译的阶段"></a>babel 编译的阶段</h3><blockquote>
+<p>babel 总共分为三个阶段：解析，转换，生成。</p>
+</blockquote>
+<p>我们需要知道现在 babel 本身是不具备这种转化功能，提供这些转化功能的是一个个 plugin。所以我们没有配置任何 plugin 的时候，经过 Babel 输出的代码是没有改变的。<br><img src="https://cdn.nlark.com/yuque/0/2019/webp/263301/1563959897610-5ed8da19-6a4f-4951-a2bb-a32f53bb74ea.webp#align=left&display=inline&height=228&originHeight=228&originWidth=880&size=0&status=done&width=880" alt><br><a name="IMRPx"></a></p>
+<h3 id="Plugin-——-transform-的载体"><a href="#Plugin-——-transform-的载体" class="headerlink" title="Plugin —— transform 的载体"></a>Plugin —— transform 的载体</h3><blockquote>
+<p>Babel 自 6.0 起，就不再对代码进行转换。现在只负责图中的 parse 和 generate 流程，转换代码的 transform 过程全都交给插件去做。</p>
+</blockquote>
+<p>例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模板字面量</span></span><br><span class="line"><span class="keyword">const</span> name = <span class="string">'小生方勤'</span>;</span><br><span class="line"><span class="keyword">let</span> hello = <span class="string">`hello <span class="subst">$&#123;name&#125;</span>`</span>;</span><br></pre></td></tr></table></figure>
+
+<p>上面是一个简单的模板字面量的例子，我们清楚这个是 ES6 的新特性，在不支持 ES6 的运行平台这段代码是会报错的，所以我们需要 Babel 来将其编译成 ES5 的代码。<br>所以我们需要如下来配置 babel：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// .babelrc 文件</span><br><span class="line">&#123; </span><br><span class="line">  <span class="attr">"plugins"</span>: [</span><br><span class="line">    <span class="string">"transform-es2015-template-literals"</span>  // 转译模版字符串的 plugins</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"presets"</span>: [<span class="string">"env"</span>, <span class="string">"stage-2"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>preset（即一组预先设定的插件）</p>
+<blockquote>
+<p>preset: babel 插件集合的预设，包含某些插件 plugin。显然像上面那样一个一个配置插件会非常的麻烦，为了方便，babel 为我们提供了一个配置项叫做 persets（预设）。</p>
+</blockquote>
+<p>当前 babel 推荐使用 babel-preset-env 替代 babel-preset-es201X ,env 的支持范围更广，包含es201X 的所有语法编译，并且它可以根据项目运行平台的支持情况自行选择编译版本。<br><a name="a5sAj"></a></p>
+<h4 id="plugins-与-presets-同时存在的执行顺序"><a href="#plugins-与-presets-同时存在的执行顺序" class="headerlink" title="plugins 与 presets 同时存在的执行顺序"></a>plugins 与 presets 同时存在的执行顺序</h4><ol>
+<li>先执行 plugins 的配置项,再执行 Preset 的配置项；<br></li>
+<li>plugins 配置项，按照声明顺序执行；<br></li>
+<li>Preset 配置项，按照声明逆序执行。<br></li>
+</ol>
+<p>列入以下代码的执行顺序为：</p>
+<ol>
+<li>transform-es2015-template-literals<br></li>
+<li>stage-2<br></li>
+<li>env<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// .babelrc 文件</span><br><span class="line">&#123; </span><br><span class="line"><span class="attr">"plugins"</span>: [</span><br><span class="line"><span class="string">"transform-es2015-template-literals"</span>,  // 转译模版字符串的 plugins</span><br><span class="line">],</span><br><span class="line"><span class="attr">"presets"</span>: [</span><br><span class="line">[<span class="string">"env"</span>, &#123;</span><br><span class="line">// 是否自动引入 polyfill，开启此选项必须保证已经安装了 babel-polyfill</span><br><span class="line">// “usage” | “entry” | false, defaults to false.</span><br><span class="line">"useBuiltIns": "usage"</span><br><span class="line">&#125;], "stage-2"]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>这里讲一讲 useBuiltIns 配置<br>我们可能在全局引入 babel-polyfill，这样打包后的整个文件体积必然是会变大的。<br>但是通过设置 “useBuiltIns”:”usage” 能够把 babel-polyfill 中你需要用到的部分提取出来，不需要的去除。<br>useBuiltIns 参数说明：</p>
+<ol>
+<li>false: 不对 polyfills 做任何操作<br></li>
+<li>entry: 根据 target 中浏览器版本的支持，将 polyfills 拆分引入，仅引入有浏览器不支持的 polyfill<br></li>
+<li>usage(新)：检测代码中 ES6/7/8 等的使用情况，仅仅加载代码中用到的 polyfills<br><br><a name="glPtf"></a><h2 id="Babel-相关模块简要说明"><a href="#Babel-相关模块简要说明" class="headerlink" title="Babel 相关模块简要说明"></a>Babel 相关模块简要说明</h2>了解过 Babel 的同学，是否也觉得的模块有点多呢？我开始学习的时候就有这种感觉。其实每个模块是各司其职的。<br><img src="https://cdn.nlark.com/yuque/0/2019/webp/263301/1563959897636-650f353e-9b8b-4e29-8f90-4bfd076ae4bf.webp#align=left&display=inline&height=595&originHeight=595&originWidth=1080&size=0&status=done&width=1080" alt><br><a name="1f4ec"></a><h3 id="babel-core（核心）"><a href="#babel-core（核心）" class="headerlink" title="babel-core（核心）"></a>babel-core（核心）</h3>这个模块是最能顾名思义的了，即 babel 的核心模块。babel 的核心 api 都在这个模块中。也就是这个模块会把我们写的 js 代码抽象成 AST 树；然后再将 plugins 转译好的内容解析为 js 代码。<br>具体怎么工作的这里就不详细说了，因为我也不知道。<br><a name="4pEfp"></a><h3 id="babel-cli"><a href="#babel-cli" class="headerlink" title="babel-cli"></a>babel-cli</h3><blockquote>
+<p>babel-cli 官方文档：<a href="https://babeljs.io/docs/en/babel-cli/" target="_blank" rel="noopener">https://babeljs.io/docs/en/babel-cli/</a></p>
+</blockquote>
+</li>
+</ol>
+<p>babel-cli 是一个通过命令行对 js 文件进行转换的工具。<br>当然我们一般不会使用到这个模块，因为一般我们都不会手动去做这个工作，这个工作基本都集成到模块化管理工具中去了，比如 webpack、Rollup 等。<br>简单使用（需要先安装 babel-cli）：</p>
+<ol>
+<li>babel test.js -o compiled.js<br><br><a name="B20Jj"></a><h3 id="babel-node"><a href="#babel-node" class="headerlink" title="babel-node"></a>babel-node</h3>babel-node 是 babel-cli 的一部分，所以它在安装 babel-cli 的时候也同时安装了。<br>它使 ES6+ 可以直接运行在 node 环境中。<br><a name="LWy5X"></a><h3 id="babel-polyfill-内部集成了-core-js-和-regenerator"><a href="#babel-polyfill-内部集成了-core-js-和-regenerator" class="headerlink" title="babel-polyfill(内部集成了 core-js 和 regenerator)"></a>babel-polyfill(内部集成了 core-js 和 regenerator)</h3>babel 对一些新的 API 是无法转换，比如 Generator、Set、Proxy、Promise 等全局对象，以及新增的一些方法：includes、Array.form 等。所以这个时候就需要一些工具来为浏览器做这个兼容。<blockquote>
+<p>官网的定义：babel-polyfill 是为了模拟一个完整的 ES6+ 环境，旨在用于应用程序而不是库/工具。</p>
+</blockquote>
+</li>
+</ol>
+<p>babel-polyfill 主要有两个缺点：</p>
+<ol>
+<li>使用 babel-polyfill 会导致打出来的包非常大，很多其实没有用到，对资源来说是一种浪费。<br></li>
+<li>babel-polyfill 可能会污染全局变量，给很多类的原型链上都作了修改，这就有不可控的因素存在。<br></li>
+</ol>
+<p>因为上面两个问题，所以在 Babel7 中增加了 babel-preset-env，我们设置 “useBuiltIns”:”usage”这个参数值就可以实现按需加载 babel-polyfill 啦。<br><a name="aTzOc"></a></p>
+<h3 id="babel-runtime-amp-babel-plugin-transform-runtime"><a href="#babel-runtime-amp-babel-plugin-transform-runtime" class="headerlink" title="babel-runtime &amp; babel-plugin-transform-runtime"></a>babel-runtime &amp; babel-plugin-transform-runtime</h3><blockquote>
+<p>在使用 Babel6 的时候， .babelrc 文件中会使用 babel-plugin-transform-runtime，而 package.json 中的 dependencies 同时包含了 babel-runtime，因为在使用 babel-plugin-transform-runtime 的时候必须把 babel-runtime 当做依赖。</p>
+</blockquote>
+<p>.babelrc 配置：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"presets"</span>: [</span><br><span class="line">    [<span class="string">"env"</span>]</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"plugins"</span>: [</span><br><span class="line">    [<span class="string">"transform-runtime"</span>, &#123;</span><br><span class="line">      "helpers": false, // defaults to true</span><br><span class="line">      "polyfill": false, // defaults to true</span><br><span class="line">      "regenerator": true, // defaults to true</span><br><span class="line">      "moduleName": "babel-runtime" // defaults to "babel-runtime"</span><br><span class="line">    &#125;]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们在启用插件 babel-plugin-transform-runtime 后，Babel 就会使用 babel-runtime 下的工具函数，将一些浏览器不能支持的特性重写，然后在项目中使用。</p>
+<blockquote>
+<p>babel-runtime 内部也集成了 core-js、 regenerator、helpers 等</p>
+</blockquote>
+<p>由于采用了沙盒机制，这种做法不会污染全局变量，也不会去修改内建类的原型，所以会有重复引用的问题。<br>现在最好的实践应该是在 babel-preset-env 设置 “useBuiltIns”: “usage”，按需引入 polyfill。<br><a name="zdTTI"></a></p>
+<h3 id="三种方案对比"><a href="#三种方案对比" class="headerlink" title="三种方案对比"></a>三种方案对比</h3><table>
+<thead>
+<tr>
+<th align="center">方案</th>
+<th align="center">优点</th>
+<th align="center">缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">@babel/runtime &amp; @babel/plugin-transform-runtime</td>
+<td align="center">按需引入, 打包体积小</td>
+<td align="center">不能兼容实例方法</td>
+</tr>
+<tr>
+<td align="center">@babel/polyfill</td>
+<td align="center">完整模拟 ES2015+ 环境</td>
+<td align="center">打包体积过大, 污染全局对象和内置的对象原型</td>
+</tr>
+<tr>
+<td align="center">@babel/preset-env</td>
+<td align="center">按需引入, 可配置性高</td>
+<td align="center">小生不知 -_-</td>
+</tr>
+</tbody></table>
+<p><a name="AkO2X"></a></p>
+<h2 id="babel7-的一些变化"><a href="#babel7-的一些变化" class="headerlink" title="babel7 的一些变化"></a>babel7 的一些变化</h2><p><a name="RC33H"></a></p>
+<h3 id="preset-的变更："><a href="#preset-的变更：" class="headerlink" title="preset 的变更："></a>preset 的变更：</h3><blockquote>
+<p>淘汰 es201x，删除 stage-x，推荐 env</p>
+</blockquote>
+<p>如果你还在使用 es201x，官方建议使用 env 进行替换。淘汰并不是删除，只是不推荐使用。<br>但 stage-x 是直接被删了，也就是说在 babel7 中使用 es201X 是会报错的。<br><a name="ROZx3"></a></p>
+<h3 id="包名称变化"><a href="#包名称变化" class="headerlink" title="包名称变化"></a>包名称变化</h3><p>babel 7 的一个重大变化，把所有 babel-* 重命名为 @babel/*，<br>例如：</p>
+<ol>
+<li>babel-cli —&gt; @babel/cli。<br></li>
+<li>babel-preset-env —&gt; @babel/preset-env<br><br><a name="rg41i"></a><h3 id="低版本-node-不再支持"><a href="#低版本-node-不再支持" class="headerlink" title="低版本 node 不再支持"></a>低版本 node 不再支持</h3>babel 7.0 开始不再支持 nodejs 0.10, 0.12, 4, 5 这四个版本，相当于要求 nodejs &gt;= 6。<br>还有一些包从其他包独立出来的变化等等<br><a name="D7sHM"></a><h3 id="关于如何配置-Babel"><a href="#关于如何配置-Babel" class="headerlink" title="关于如何配置 Babel"></a>关于如何配置 Babel</h3>接下来我会专门写一篇关于开发环境配置的问题，也就是自己完成脚手架的功能，所以这里就不提如何配置 Babel 啦。</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/23/yuque/性能规范缘由/" rel="next" title="性能规范缘由">
+                <i class="fa fa-chevron-left"></i> 性能规范缘由
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/25/yuque/egg/" rel="prev" title="egg">
+                egg <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">185</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-Babel"><span class="nav-number">1.</span> <span class="nav-text">什么是 Babel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Babel-如何编译"><span class="nav-number">2.</span> <span class="nav-text">Babel 如何编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#babel-编译的阶段"><span class="nav-number">2.1.</span> <span class="nav-text">babel 编译的阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Plugin-——-transform-的载体"><span class="nav-number">2.2.</span> <span class="nav-text">Plugin —— transform 的载体</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#plugins-与-presets-同时存在的执行顺序"><span class="nav-number">2.2.1.</span> <span class="nav-text">plugins 与 presets 同时存在的执行顺序</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Babel-相关模块简要说明"><span class="nav-number">3.</span> <span class="nav-text">Babel 相关模块简要说明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#babel-core（核心）"><span class="nav-number">3.1.</span> <span class="nav-text">babel-core（核心）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#babel-cli"><span class="nav-number">3.2.</span> <span class="nav-text">babel-cli</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#babel-node"><span class="nav-number">3.3.</span> <span class="nav-text">babel-node</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#babel-polyfill-内部集成了-core-js-和-regenerator"><span class="nav-number">3.4.</span> <span class="nav-text">babel-polyfill(内部集成了 core-js 和 regenerator)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#babel-runtime-amp-babel-plugin-transform-runtime"><span class="nav-number">3.5.</span> <span class="nav-text">babel-runtime &amp; babel-plugin-transform-runtime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三种方案对比"><span class="nav-number">3.6.</span> <span class="nav-text">三种方案对比</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#babel7-的一些变化"><span class="nav-number">4.</span> <span class="nav-text">babel7 的一些变化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#preset-的变更："><span class="nav-number">4.1.</span> <span class="nav-text">preset 的变更：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包名称变化"><span class="nav-number">4.2.</span> <span class="nav-text">包名称变化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#低版本-node-不再支持"><span class="nav-number">4.3.</span> <span class="nav-text">低版本 node 不再支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于如何配置-Babel"><span class="nav-number">4.4.</span> <span class="nav-text">关于如何配置 Babel</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">321.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>

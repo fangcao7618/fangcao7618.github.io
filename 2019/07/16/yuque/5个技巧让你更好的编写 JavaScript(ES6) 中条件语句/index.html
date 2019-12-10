@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="使用 JavaScript 时，我们经常需要处理很多条件语句，这里分享5个小技巧，可以让你编写更好/更清晰的条件语句。 1.使用 Array.includes 来处理多个条件我们来看看下面的例子：JavaScript 代码: 123456// conditionfunction test(fruit) &amp;#123;  if (fruit == &apos;apple&apos; || fruit == &apos;strawb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5个技巧让你更好的编写 JavaScript(ES6) 中条件语句">
+<meta property="og:url" content="http://yoursite.com/2019/07/16/yuque/5个技巧让你更好的编写 JavaScript(ES6) 中条件语句/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="使用 JavaScript 时，我们经常需要处理很多条件语句，这里分享5个小技巧，可以让你编写更好/更清晰的条件语句。 1.使用 Array.includes 来处理多个条件我们来看看下面的例子：JavaScript 代码: 123456// conditionfunction test(fruit) &amp;#123;  if (fruit == &apos;apple&apos; || fruit == &apos;strawb">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-10T06:58:22.987Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="5个技巧让你更好的编写 JavaScript(ES6) 中条件语句">
+<meta name="twitter:description" content="使用 JavaScript 时，我们经常需要处理很多条件语句，这里分享5个小技巧，可以让你编写更好/更清晰的条件语句。 1.使用 Array.includes 来处理多个条件我们来看看下面的例子：JavaScript 代码: 123456// conditionfunction test(fruit) &amp;#123;  if (fruit == &apos;apple&apos; || fruit == &apos;strawb">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/16/yuque/5个技巧让你更好的编写 JavaScript(ES6) 中条件语句/">
+
+
+
+
+
+  <title>5个技巧让你更好的编写 JavaScript(ES6) 中条件语句 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/16/yuque/5个技巧让你更好的编写 JavaScript(ES6) 中条件语句/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">5个技巧让你更好的编写 JavaScript(ES6) 中条件语句</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-16T14:50:32+08:00">
+                2019-07-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-10T14:58:22+08:00">
+                2019-12-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.5k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>使用 JavaScript 时，我们经常需要处理很多条件语句，这里分享5个小技巧，可以让你编写更好/更清晰的条件语句。<br><a name="jvTyj"></a></p>
+<h2 id="1-使用-Array-includes-来处理多个条件"><a href="#1-使用-Array-includes-来处理多个条件" class="headerlink" title="1.使用 Array.includes 来处理多个条件"></a>1.使用 Array.includes 来处理多个条件</h2><p>我们来看看下面的例子：<br>JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// condition</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">fruit</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (fruit == <span class="string">'apple'</span> || fruit == <span class="string">'strawberry'</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'red'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>乍一看，上面的例子看起来似乎没什么问题。 但是，如果我们还有更多的红色水果呢？比如樱桃（cherry）和蔓越莓（cranberries）。 我们是否要用更多的 || 操作符来扩展该语句呢？<br>我们可以使用 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" target="_blank" rel="noopener">Array.includes</a> 重写上面的条件语句。<br>JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">fruit</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">const</span> redFruits=[<span class="string">'apple'</span>,<span class="string">'strawberry'</span>,<span class="string">'cherry'</span>,<span class="string">'cranberries'</span>];</span><br><span class="line">	<span class="keyword">if</span>(redFruits.includes(fruit))&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'red'</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(<span class="string">'cherry'</span>)</span><br><span class="line">red</span><br></pre></td></tr></table></figure>
+
+<p>我们将红色水果（条件）提取到一个数组中。这样做，可以让代码看起来更整洁。</p>
+<p><a name="VQJCj"></a></p>
+<h2 id="2-减少嵌套，提前使用-return-语句"><a href="#2-减少嵌套，提前使用-return-语句" class="headerlink" title="2.减少嵌套，提前使用 return 语句"></a>2.减少嵌套，提前使用 return 语句</h2><p>让我们扩展前面的示例，再包含另外两个条件：</p>
+<ul>
+<li>如果没有提供水果，抛出错误</li>
+<li>接受水果 quantity（数量）参数，如果超过 10，则并打印相关信息。</li>
+</ul>
+<p>JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">unction test(fruit, quantity) &#123;</span><br><span class="line">  <span class="keyword">const</span> redFruits = [<span class="string">'apple'</span>, <span class="string">'strawberry'</span>, <span class="string">'cherry'</span>, <span class="string">'cranberries'</span>];</span><br><span class="line"> </span><br><span class="line">  <span class="comment">// 条件 1：fruit 必须有值</span></span><br><span class="line">  <span class="keyword">if</span> (fruit) &#123;</span><br><span class="line">    <span class="comment">// 条件 2：必须为红色</span></span><br><span class="line">    <span class="keyword">if</span> (redFruits.includes(fruit)) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'red'</span>);</span><br><span class="line"> </span><br><span class="line">      <span class="comment">// 条件 3：数量必须大于 10</span></span><br><span class="line">      <span class="keyword">if</span> (quantity &gt; <span class="number">10</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'big quantity'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'No fruit!'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 测试结果</span></span><br><span class="line">test(<span class="literal">null</span>); <span class="comment">// 抛出错误：No fruits</span></span><br><span class="line">test(<span class="string">'apple'</span>); <span class="comment">// 打印：red</span></span><br><span class="line">test(<span class="string">'apple'</span>, <span class="number">20</span>); <span class="comment">// 打印：red，big quantity</span></span><br></pre></td></tr></table></figure>
+
+<p>看看上面的代码，我们有：<br>– 1 个 if / else 语句过滤掉无效条件<br>– 3 层 if 语句嵌套（分别是条件1,2和3）<br>我个人遵循的一般规则是 在发现无效条件时提前 return。<br>JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 在发现无效条件时提前 return */</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">fruit, quantity</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> redFruits = [<span class="string">'apple'</span>, <span class="string">'strawberry'</span>, <span class="string">'cherry'</span>, <span class="string">'cranberries'</span>];</span><br><span class="line"> </span><br><span class="line">  <span class="comment">// 条件 1：提前抛出错误</span></span><br><span class="line">  <span class="keyword">if</span> (!fruit) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'No fruit!'</span>);</span><br><span class="line"> </span><br><span class="line">  <span class="comment">// 条件2：必须为红色</span></span><br><span class="line">  <span class="keyword">if</span> (redFruits.includes(fruit)) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'red'</span>);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 条件 3：数量必须大于 10</span></span><br><span class="line">    <span class="keyword">if</span> (quantity &gt; <span class="number">10</span>) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'big quantity'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样做，我们可以减少一个嵌套层级。 这种编码风格很好，特别是当你的 if 语句很长时（想象一下，你需要滚动到最底部才知道那里有一个 else 语句，这样代码的可读性就变得很差了）。<br>如果通过反转条件并提前 return ，我们可以进一步减少嵌套。 请查看下面的条件 2 ，看看我们是如何做到的：<br>JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 在发现无效条件时提前 return */</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">fruit, quantity</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> redFruits = [<span class="string">'apple'</span>, <span class="string">'strawberry'</span>, <span class="string">'cherry'</span>, <span class="string">'cranberries'</span>];</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">if</span> (!fruit) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'No fruit!'</span>); <span class="comment">// 条件 1：提前抛出错误</span></span><br><span class="line">  <span class="keyword">if</span> (!redFruits.includes(fruit)) <span class="keyword">return</span>;  <span class="comment">// 条件 2：当 fruit 不是红色的时候，提前 return</span></span><br><span class="line"> </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'red'</span>);</span><br><span class="line"> </span><br><span class="line">  <span class="comment">// 条件 3：必须是大量存在</span></span><br><span class="line">  <span class="keyword">if</span> (quantity &gt; <span class="number">10</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'big quantity'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过反转条件2的条件，我们的代码现在没有嵌套语句了。 当我们有很长的逻辑代码时，这种技巧非常有用，我们希望在条件不满足时停止下一步的处理。<br>然而，这并不是严格的规定。问问自己，这个版本（没有嵌套）是否要比前一个版本（条件 2 有嵌套）的更好、可具可读性？<br>对我来说，我会选择前一个版本（条件 2 有嵌套）。 这是因为：</p>
+<ul>
+<li>代码简短直接，嵌套 if 更清晰</li>
+<li>反转条件可能会引发更多的思考过程（增加认知负担）</li>
+</ul>
+<p>因此，始终追求更少的嵌套，提前 return，但是不要过度。但不要过度。如果您感兴趣，这里有一篇文章和 StackOverflow 的讨论， 进一步讨论这个话题：</p>
+<ul>
+<li><a href="http://blog.timoxley.com/post/47041269194/avoid-else-return-early" target="_blank" rel="noopener">Avoid Else, Return Early</a> by Tim Oxley</li>
+<li><a href="https://softwareengineering.stackexchange.com/questions/18454/should-i-return-from-a-function-early-or-use-an-if-statement" target="_blank" rel="noopener">StackOverflow 上关于 if/else 代码风格的讨论</a></li>
+</ul>
+<p><a name="28mJg"></a></p>
+<h2 id="3-使用函数的默认参数-和-解构"><a href="#3-使用函数的默认参数-和-解构" class="headerlink" title="3.使用函数的默认参数 和 解构"></a>3.使用函数的默认参数 和 解构</h2><p>我想下面的代码可能看起来很熟悉，我们在使用 JavaScript 时总是需要检查 null / undefined 值并分配默认值：<br>JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">fruit, quantity</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!fruit) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">const</span> q = quantity || <span class="number">1</span>; <span class="comment">// 如果没有提供 quantity 参数，则默认为 1</span></span><br><span class="line"> </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`We have <span class="subst">$&#123;q&#125;</span> <span class="subst">$&#123;fruit&#125;</span>!`</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 测试结果</span></span><br><span class="line">test(<span class="string">'banana'</span>); <span class="comment">// We have 1 banana!</span></span><br><span class="line">test(<span class="string">'apple'</span>, <span class="number">2</span>); <span class="comment">// We have 2 apple!</span></span><br></pre></td></tr></table></figure>
+
+<p>实际上，我们可以通过分配默认函数参数来消除变量 q 。<br>JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">fruit, quantity = <span class="number">1</span></span>) </span>&#123; <span class="comment">// i如果没有提供 quantity 参数，则默认为 1</span></span><br><span class="line">  <span class="keyword">if</span> (!fruit) <span class="keyword">return</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`We have <span class="subst">$&#123;quantity&#125;</span> <span class="subst">$&#123;fruit&#125;</span>!`</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 测试结果</span></span><br><span class="line">test(<span class="string">'banana'</span>); <span class="comment">// We have 1 banana!</span></span><br><span class="line">test(<span class="string">'apple'</span>, <span class="number">2</span>); <span class="comment">// We have 2 apple!</span></span><br></pre></td></tr></table></figure>
+
+<p>更简单直观不是吗？ 请注意，每个函数参数都有自己的默认值。 例如，我们也可以为 fruit 分配一个默认值：function test(fruit = ‘unknown’, quantity = 1)。</p>
+<blockquote>
+<p>注：如果你还不了解 ES6 中函数默认参数的新特性，可以查看 <a href="https://www.html.cn/archives/8151" target="_blank" rel="noopener">JavaScript 函数中默认参数</a> 了解更多详情。</p>
+</blockquote>
+<p>如果我们的 fruit 是一个 Object 对象怎么办？ 我们可以指定默认参数吗？<br>JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">fruit</span>) </span>&#123; </span><br><span class="line">  <span class="comment">// 如果有值，则打印 fruit.name</span></span><br><span class="line">  <span class="keyword">if</span> (fruit &amp;&amp; fruit.name)  &#123;</span><br><span class="line">    <span class="built_in">console</span>.log (fruit.name);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'unknown'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//测试结果</span></span><br><span class="line">test(<span class="literal">undefined</span>); <span class="comment">// unknown</span></span><br><span class="line">test(&#123; &#125;); <span class="comment">// unknown</span></span><br><span class="line">test(&#123; <span class="attr">name</span>: <span class="string">'apple'</span>, <span class="attr">color</span>: <span class="string">'red'</span> &#125;); <span class="comment">// apple</span></span><br></pre></td></tr></table></figure>
+
+<p>看看上面的例子，我们想要的是如果 fruit.name 可用则打印水果名称，否则将打印 unknown 。我们可以使用默认函数参数和解构(destructing) 来避免 fruit &amp;&amp; fruit.name 这样的检查。<br>JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 解构 —— 只获得 name 属性</span></span><br><span class="line"><span class="comment">// 参数默认分配空对象 &#123;&#125;</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">&#123;name&#125; = &#123;&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log (name || <span class="string">'unknown'</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//测试结果</span></span><br><span class="line">test(<span class="literal">undefined</span>); <span class="comment">// unknown</span></span><br><span class="line">test(&#123; &#125;); <span class="comment">// unknown</span></span><br><span class="line">test(&#123; <span class="attr">name</span>: <span class="string">'apple'</span>, <span class="attr">color</span>: <span class="string">'red'</span> &#125;); <span class="comment">// apple</span></span><br></pre></td></tr></table></figure>
+
+<p>由于我们只需要来自 fruit 的 name 属性，我们可以使用 {name} 来解构参数，然后我们可以在代码中使用 name 作为变量来取代fruit.name。<br>我们还将空对象 {} 指定为默认值。 如果我们不这样做，你将在执行行测试时遇到test(undefined) – Cannot destructure property name of ‘undefined’ or ‘null’.(无法解析’undefined’或’null’的属性名称)。 因为 undefined中 没有 name 属性。<br>如果您不介意使用第三方库，有几种方法可以减少空检查：</p>
+<ul>
+<li>使用 <a href="https://www.html.cn/doc/lodash/#_getobject-path-defaultvalue" target="_blank" rel="noopener">Lodash get</a> 函数</li>
+<li>使用 Facebook 开源的 <a href="https://github.com/facebookincubator/idx" target="_blank" rel="noopener">idx</a> 库（需搭配 Babeljs）</li>
+</ul>
+<blockquote>
+<p>注：如果你还不了解 ES6 中 destructure(解构) 的新特性，可以查看 <a href="https://www.html.cn/archives/tag/%E8%A7%A3%E6%9E%84" target="_blank" rel="noopener">https://www.html.cn/archives/tag/解构</a> 这些文章了解更多详情。</p>
+</blockquote>
+<p>以下是使用Lodash的示例：<br><br>JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入 lodash 库，我们将获得 _.get()</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">fruit</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(_.get(fruit, <span class="string">'name'</span>, <span class="string">'unknown'</span>); <span class="comment">// 获取 name 属性，如果没有分配，则设为默认值 unknown</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//测试结果</span></span><br><span class="line">test(<span class="literal">undefined</span>); <span class="comment">// unknown</span></span><br><span class="line">test(&#123; &#125;); <span class="comment">// unknown</span></span><br><span class="line">test(&#123; <span class="attr">name</span>: <span class="string">'apple'</span>, <span class="attr">color</span>: <span class="string">'red'</span> &#125;); <span class="comment">// apple</span></span><br></pre></td></tr></table></figure>
+
+<p>您可以在这里 <a href="http://jsbin.com/bopovajiye/edit?js,console" target="_blank" rel="noopener">运行演示代码</a> 。此外，如果你喜欢函数式编程（FP），您可以选择使用<a href="https://github.com/lodash/lodash/wiki/FP-Guide" target="_blank" rel="noopener">Lodash fp</a> ，Lodash的函数式能版本（方法名更改为 get 或 getOr）。</p>
+<p><a name="8jo3Z"></a></p>
+<h2 id="4-选择-Map-Object-字面量，而不是Switch语"><a href="#4-选择-Map-Object-字面量，而不是Switch语" class="headerlink" title="4.选择 Map / Object 字面量，而不是Switch语"></a>4.选择 Map / Object 字面量，而不是Switch语</h2><p>让我们看看下面的例子，我们想根据颜色打印水果：<br>JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">color</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 使用 switch case 语句，根据颜色找出对应的水果</span></span><br><span class="line">  <span class="keyword">switch</span> (color) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'red'</span>:</span><br><span class="line">      <span class="keyword">return</span> [<span class="string">'apple'</span>, <span class="string">'strawberry'</span>];</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'yellow'</span>:</span><br><span class="line">      <span class="keyword">return</span> [<span class="string">'banana'</span>, <span class="string">'pineapple'</span>];</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'purple'</span>:</span><br><span class="line">      <span class="keyword">return</span> [<span class="string">'grape'</span>, <span class="string">'plum'</span>];</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> [];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//测试结果</span></span><br><span class="line">test(<span class="literal">null</span>); <span class="comment">// []</span></span><br><span class="line">test(<span class="string">'yellow'</span>); <span class="comment">// ['banana', 'pineapple']</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的代码似乎没有错，但我觉得它很冗长。使用具有更清晰语法的 object 字面量可以实现相同的结果：<br>JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用对象字面量，根据颜色找出对应的水果</span></span><br><span class="line">  <span class="keyword">const</span> fruitColor = &#123;</span><br><span class="line">    red: [<span class="string">'apple'</span>, <span class="string">'strawberry'</span>],</span><br><span class="line">    yellow: [<span class="string">'banana'</span>, <span class="string">'pineapple'</span>],</span><br><span class="line">    purple: [<span class="string">'grape'</span>, <span class="string">'plum'</span>]</span><br><span class="line">  &#125;;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">color</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> fruitColor[color] || [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或者，您可以使用 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank" rel="noopener">Map</a> 来实现相同的结果：<br>JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用 Map ，根据颜色找出对应的水果</span></span><br><span class="line">  <span class="keyword">const</span> fruitColor = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line">    .set(<span class="string">'red'</span>, [<span class="string">'apple'</span>, <span class="string">'strawberry'</span>])</span><br><span class="line">    .set(<span class="string">'yellow'</span>, [<span class="string">'banana'</span>, <span class="string">'pineapple'</span>])</span><br><span class="line">    .set(<span class="string">'purple'</span>, [<span class="string">'grape'</span>, <span class="string">'plum'</span>]);</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">color</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> fruitColor.get(color) || [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map" target="_blank" rel="noopener">Map</a> 是 ES2015(ES6) 引入的新的对象类型，允许您存储键值对。<br>我们是不是应该禁止使用 switch 语句呢？ 不要局限于此。 就个人而言，我尽可能使用对象字面量，但我不会设置硬规则来阻止使用 switch ，是否使用应该根据你的场景而决定。<br>Todd Motto 有一篇文章深入地研究了 switch语句与对象字面量，你可以在 <a href="https://toddmotto.com/deprecating-the-switch-statement-for-object-literals/" target="_blank" rel="noopener">这里</a> 阅读。</p>
+<p><a name="zUph1"></a></p>
+<h3 id="重构语法"><a href="#重构语法" class="headerlink" title="重构语法"></a>重构语法</h3><p>对于上面的示例，我们实际上可以使用 Array.filter 来重构我们的代码，以实现相同的结果。<br>JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'apple'</span>, <span class="attr">color</span>: <span class="string">'red'</span> &#125;, </span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'strawberry'</span>, <span class="attr">color</span>: <span class="string">'red'</span> &#125;, </span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'banana'</span>, <span class="attr">color</span>: <span class="string">'yellow'</span> &#125;, </span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'pineapple'</span>, <span class="attr">color</span>: <span class="string">'yellow'</span> &#125;, </span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'grape'</span>, <span class="attr">color</span>: <span class="string">'purple'</span> &#125;, </span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'plum'</span>, <span class="attr">color</span>: <span class="string">'purple'</span> &#125;</span><br><span class="line">];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">color</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 使用 Array filter  ，根据颜色找出对应的水果</span></span><br><span class="line"> </span><br><span class="line">  <span class="keyword">return</span> fruits.filter(<span class="function"><span class="params">f</span> =&gt;</span> f.color == color);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总有不止一种方法可以达到相同的效果。对于这个例子我们展示了 4 种实现方法。编码很有趣！</p>
+<p><a name="Vo7hy"></a></p>
+<h2 id="5-使用-Array-every-和-Array-some-来处理全部-部分满足条件"><a href="#5-使用-Array-every-和-Array-some-来处理全部-部分满足条件" class="headerlink" title="5. 使用 Array.every 和 Array.some 来处理全部/部分满足条件"></a>5. 使用 Array.every 和 Array.some 来处理全部/部分满足条件</h2><p>最后一个小技巧更多地是利用新的（但不是那么新的）Javascript Array函数来减少代码行。查看下面的代码，我们想检查所有水果是否都是红色的：<br>JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'apple'</span>, <span class="attr">color</span>: <span class="string">'red'</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'banana'</span>, <span class="attr">color</span>: <span class="string">'yellow'</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'grape'</span>, <span class="attr">color</span>: <span class="string">'purple'</span> &#125;</span><br><span class="line">  ];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> isAllRed = <span class="literal">true</span>;</span><br><span class="line"> </span><br><span class="line">  <span class="comment">// 条件：所有的水果都必须是红色</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> f <span class="keyword">of</span> fruits) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isAllRed) <span class="keyword">break</span>;</span><br><span class="line">    isAllRed = (f.color == <span class="string">'red'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  <span class="built_in">console</span>.log(isAllRed); <span class="comment">// false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码太长了！我们可以使用 Array.every 减少行数：<br>JavaScript 代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'apple'</span>, <span class="attr">color</span>: <span class="string">'red'</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'banana'</span>, <span class="attr">color</span>: <span class="string">'yellow'</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">'grape'</span>, <span class="attr">color</span>: <span class="string">'purple'</span> &#125;</span><br><span class="line">];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 条件：是否存在红色的水果</span></span><br><span class="line">  <span class="keyword">const</span> isAnyRed = fruits.some(<span class="function"><span class="params">f</span> =&gt;</span> f.color == <span class="string">'red'</span>);</span><br><span class="line"> </span><br><span class="line">  <span class="built_in">console</span>.log(isAnyRed); <span class="comment">// true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fruits.some(<span class="function"><span class="params">f</span>=&gt;</span>&#123;<span class="built_in">console</span>.log(f);<span class="keyword">if</span>(f.color==<span class="string">'red'</span>)&#123;<span class="keyword">return</span> f&#125;&#125;)</span><br><span class="line">&#123;<span class="attr">name</span>: <span class="string">"apple"</span>, <span class="attr">color</span>: <span class="string">"red"</span>&#125;</span><br><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p><a name="ddtso"></a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>让我们一起生成更多可读代码。我希望你能在本文中学到一些新东西。<br>就这样。编码快乐！<br>英文原文：<a href="https://scotch.io/bar-talk/5-tips-to-write-better-conditionals-in-javascript" target="_blank" rel="noopener">https://scotch.io/bar-talk/5-tips-to-write-better-conditionals-in-javascript</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/16/yuque/现代 CSS 选择器指南/" rel="next" title="现代 CSS 选择器指南">
+                <i class="fa fa-chevron-left"></i> 现代 CSS 选择器指南
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/16/yuque/React 性能分析器介绍/" rel="prev" title="React 性能分析器介绍">
+                React 性能分析器介绍 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">185</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-使用-Array-includes-来处理多个条件"><span class="nav-number">1.</span> <span class="nav-text">1.使用 Array.includes 来处理多个条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-减少嵌套，提前使用-return-语句"><span class="nav-number">2.</span> <span class="nav-text">2.减少嵌套，提前使用 return 语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-使用函数的默认参数-和-解构"><span class="nav-number">3.</span> <span class="nav-text">3.使用函数的默认参数 和 解构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-选择-Map-Object-字面量，而不是Switch语"><span class="nav-number">4.</span> <span class="nav-text">4.选择 Map / Object 字面量，而不是Switch语</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重构语法"><span class="nav-number">4.1.</span> <span class="nav-text">重构语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-使用-Array-every-和-Array-some-来处理全部-部分满足条件"><span class="nav-number">5.</span> <span class="nav-text">5. 使用 Array.every 和 Array.some 来处理全部/部分满足条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">321.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>

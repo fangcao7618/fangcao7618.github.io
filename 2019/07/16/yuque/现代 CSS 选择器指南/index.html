@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="https://www.html.cn/archives/10323我已经使用CSS多年了，但直到最近我还没有深入研究过关于 CSS 选择器的主题。为什么我需要学习 CSS 选择器呢？ 我们现在知道了所有的内部选择器了吗？问题是(至少对我来说是这样)随着时间的推移，很容易习惯在每个项目上使用相同的习惯的选择器集合来完成你要做的事情。因此，我自己对 CSS 选择器知识进行了深入的审查，并发现了一些有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="现代 CSS 选择器指南">
+<meta property="og:url" content="http://yoursite.com/2019/07/16/yuque/现代 CSS 选择器指南/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="https://www.html.cn/archives/10323我已经使用CSS多年了，但直到最近我还没有深入研究过关于 CSS 选择器的主题。为什么我需要学习 CSS 选择器呢？ 我们现在知道了所有的内部选择器了吗？问题是(至少对我来说是这样)随着时间的推移，很容易习惯在每个项目上使用相同的习惯的选择器集合来完成你要做的事情。因此，我自己对 CSS 选择器知识进行了深入的审查，并发现了一些有">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-10T06:58:22.997Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="现代 CSS 选择器指南">
+<meta name="twitter:description" content="https://www.html.cn/archives/10323我已经使用CSS多年了，但直到最近我还没有深入研究过关于 CSS 选择器的主题。为什么我需要学习 CSS 选择器呢？ 我们现在知道了所有的内部选择器了吗？问题是(至少对我来说是这样)随着时间的推移，很容易习惯在每个项目上使用相同的习惯的选择器集合来完成你要做的事情。因此，我自己对 CSS 选择器知识进行了深入的审查，并发现了一些有">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/16/yuque/现代 CSS 选择器指南/">
+
+
+
+
+
+  <title>现代 CSS 选择器指南 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/16/yuque/现代 CSS 选择器指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">现代 CSS 选择器指南</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-16T09:58:52+08:00">
+                2019-07-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-10T14:58:22+08:00">
+                2019-12-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.3k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://www.html.cn/archives/10323" target="_blank" rel="noopener">https://www.html.cn/archives/10323</a><br>我已经使用CSS多年了，但直到最近我还没有深入研究过关于 CSS 选择器的主题。<br>为什么我需要学习 CSS 选择器呢？ 我们现在知道了所有的内部选择器了吗？<br>问题是(至少对我来说是这样)随着时间的推移，很容易习惯在每个项目上使用相同的习惯的选择器集合来完成你要做的事情。<br>因此，我自己对 CSS 选择器知识进行了深入的审查，并发现了一些有趣的内容，这些内容对我来说是新的，或者是以前我从来没有想过这些使用方式。<br>我还发现了一些很酷的新选择器，将来可用，但还没有广泛使用。<br>我们一起来深入研究一下各种类型的 CSS 选择器吧。 您在日常工作中已经使用了，或者本文没涉及到的 CSS 选择器技能欢迎留言告诉我。<br>准备好提升你的 CSS 选择器技能了吗？我们一起 GO！<br><a name="G1HRE"></a></p>
+<h2 id="组合选择器"><a href="#组合选择器" class="headerlink" title="组合选择器"></a>组合选择器</h2><p>让我们从熟悉的选择器开始。组合选择器用于选择子元素和兄弟元素，并且相信大家已经使用了很长一段时间了吧。</p>
+<ul>
+<li>一般子元素选择器（空格）。例如A B。</li>
+<li>直接子元素选择器。例如 A &gt; B 。</li>
+<li>相邻兄弟元素选择器。例如 A + B。</li>
+<li>一般兄弟元素选择器。例如 A ~ B。</li>
+</ul>
+<p>您应该熟悉相邻兄弟元素选择器 A + B ，他会选择紧跟 A 的 B 元素。但是一般兄弟元素选择器 A~B 呢？ 他将选择跟随 A 的所有兄弟 B 元素：<br>以下是实例：<br>See the Pen <a href="https://codepen.io/feiwen8772/pen/xmxzYB/" target="_blank" rel="noopener">组合选择器 Combinator Selectors</a> by feiwen8772 (<a href="https://codepen.io/feiwen8772" target="_blank" rel="noopener">@feiwen8772</a>) on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.0<br>第二行 New York 行被选中是因为它紧跟在第一行之后 table tbody tr:first-child + tr，并且最后两个城市被高亮显示，因为他们被一般兄弟选择器 table tbody tr:nth-child(4) ~ tr 匹配，也就是第四行之后的所有行。<br><a name="GAqOX"></a></p>
+<h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><p>我非常喜欢属性选择器。当您需要将包含某个属性的元素与特定值匹配时，它们可以非常灵活。<br>See the Pen <a href="https://codepen.io/dgwyer/pen/MGLZEK/" target="_blank" rel="noopener">Attribute Selectors #1</a> by David Gwyer (<a href="https://codepen.io/dgwyer" target="_blank" rel="noopener">@dgwyer</a>) on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.0<br>此示例演示如何选择所有复选框元素并将样式应用于其匹配标签，以使其变为粗体和蓝色。<br>然后，我们覆盖具有特定名称的 chk2 复选框的样式，并将其匹配的标签着色为红色。 请注意其他表单元素标签如何不受影响且未应用标签样式。<br>属性选择器不仅适用于表单元素，它们还可以定位任何元素的属性。 您可以匹配任何属性，而不仅仅是官方支持的属性。 此外，您可以检查属性是否存在，如下所示：<br>CSS 代码:</p>
+<ol>
+<li>button[icon]</li>
+</ol>
+<p>这匹配包含 icon 属性的 <button> 元素。它将匹配 icon 属性，无论 icon 属性是空值还是设置为特定值。 更多例子：<br>See the Pen <a href="https://codepen.io/dgwyer/pen/pVGGye/" target="_blank" rel="noopener">Attribute Selectors #2</a> by David Gwyer (<a href="https://codepen.io/dgwyer" target="_blank" rel="noopener">@dgwyer</a>) on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.0<br>第一个链接没有 target 属性，因此不匹配。 接下来的两个链接是匹配的，因为它们的 target 属性具有空值或特定值的属性。 最后，最后一个链接设置为粉红色，因为它 fluffy 属性匹配。 它的值无关紧要，只需要与 a[fluffy] 选择器相匹配即可。<br>一个实际的例子可能是突出显示没有alt属性的图像。 此属性对于网页的可访问性来说是所必需的，因此对于SEO而言，确保所有图像元素都包含此属性非常重要。<br>我们可以使用以下规则来实现此目的：<br>CSS 代码:</button></p>
+<ol>
+<li>img:not([alt]) {</li>
+<li>border: 2px red dashed;</li>
+<li>}</li>
+</ol>
+<p>See the Pen <a href="https://codepen.io/dgwyer/pen/OZdqLp/" target="_blank" rel="noopener">Attribute Selectors #3</a> by David Gwyer (<a href="https://codepen.io/dgwyer" target="_blank" rel="noopener">@dgwyer</a>) on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.0<br>如果要匹配属性值的特定部分，则可以使用一些非常有用的选择器。</p>
+<ul>
+<li>A[attr^=val] – 属性值以 val 开头。</li>
+<li>A[attr|=val] – 属性值以 val 开头，或者以 val- 开头。</li>
+<li>A[attr$=val] – 属性值以 val 结尾。</li>
+<li>A[attr*=val] – 属性值中包含 val 。</li>
+<li>A[attr~=val] – 匹配用空格分隔的属性值列表，并且列表中包含 val 。</li>
+</ul>
+<p>以下是每个例子：<br>See the Pen <a href="https://codepen.io/dgwyer/pen/MGLdvE/" target="_blank" rel="noopener">Attribute Selectors #4</a> by David Gwyer (<a href="https://codepen.io/dgwyer" target="_blank" rel="noopener">@dgwyer</a>) on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.0<br>前两个示例非常相似，不同之处是 A[attr|=val] 匹配后跟一个 - 字符串的值。 这对于匹配语言属性 lang 很有用。 例如 </p><p lang="en-us">。<br>使用 A[attr$=”val”] 可以轻松匹配文件扩展名，并且与 ::after 相结合你可以轻松显示匹配文件。 注意使用 attr() 方法和 content 属性将它与静态字符串连接起来。<br>A[attr*=val] 显示了无论使用何种协议或子域，您都可以匹配特定域 mysite.com。<br>最后，A[attr<del>=val]，它非常适合匹配由空格分隔的值列表组成的属性中的值。 这只匹配整个单词而不是单词片段，而 *= 匹配单词片段，因此单词复数形式将不匹配。这个有点不好理解：例如某 div 元素的 categories 属性为 <div categories="table wooden maple">，其 categories 属性用空格分隔。那么 div[categories</div></del>=”table”] 将匹配各元素，还有一个特别要注意的是， <div categories="wooden maple table"> 也将被匹配。而 <div categories="wooden maple tables"> 或者 <div categories="wooden tableee maple"> 都不会被 div[categories~=”table”] 匹配。<br>以上所有属性选择器示例都区分大小写。 但是我们有一个技巧。 如果我们在结束方括号之前插入一个 i ，我们可以启用区分大小写的匹配，这有点类似于 JavaScript 中的正则表达式匹配。<br>See the Pen <a href="https://codepen.io/dgwyer/pen/LmaYzp/" target="_blank" rel="noopener">Attribute Selectors #5</a> by David Gwyer (<a href="https://codepen.io/dgwyer" target="_blank" rel="noopener">@dgwyer</a>) on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.0<br>除 Internet Explorer 和 Microsoft Edge 外，大多数主流浏览器都支持不区分大小写的匹配。<br><a name="WAn5m"></a></div></div></div></p>
+<h3 id="用户交互选择器"><a href="#用户交互选择器" class="headerlink" title="用户交互选择器"></a>用户交互选择器</h3><p>如果您处理过表单样式，那么您之前无疑会遇到这些类型的伪类选择器：</p>
+<ul>
+<li>:enabled</li>
+<li>:disabled</li>
+<li>:checked</li>
+</ul>
+<p>例如，我们可以使用 :checked 来设置一个简单的待办事项列表。<br>See the Pen <a href="https://codepen.io/dgwyer/pen/BxbjoO/" target="_blank" rel="noopener">User Interface Selectors #1</a> by David Gwyer (<a href="https://codepen.io/dgwyer" target="_blank" rel="noopener">@dgwyer</a>) on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.0<br>这是非常标准的，但我们可以使用其他一些有趣的伪类。 :default 匹配一个或多个元素，这些元素是一组相关元素中的默认元素。这也可以与复位按钮类型组合使用。<br>See the Pen <a href="https://codepen.io/dgwyer/pen/ELMoNK/" target="_blank" rel="noopener">User Interface Selectors #2</a> by David Gwyer (<a href="https://codepen.io/dgwyer" target="_blank" rel="noopener">@dgwyer</a>) on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.0<br>我们可以使用伪类选择器来匹配输入值是否与 CSS 直接有效，以及在提交表单之前检查是否需要任何元素。</p>
+<ul>
+<li>:valid</li>
+<li>:invalid</li>
+<li>:required</li>
+<li>:optional (即不必须)</li>
+</ul>
+<p>See the Pen <a href="https://codepen.io/dgwyer/pen/qYvpMP/" target="_blank" rel="noopener">User Interface Selectors #3</a> by David Gwyer (<a href="https://codepen.io/dgwyer" target="_blank" rel="noopener">@dgwyer</a>) on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.0<br>如果您开始输入个人 email 输入字段，则必须检查有效性。 但是，工作 email 地址始终是必需的，并且需要有效检查有效性，因此不能留空。 还要注意我们可以链接伪类选择器（例如 :required:invalid ）来实现我们所需要的。<br>接下来，如果表单元素（支持 min 和 max 属性）在范围内，我们有两个可以匹配的伪类。</p>
+<ul>
+<li>:in-range</li>
+<li>:out-of-range</li>
+</ul>
+<p>See the Pen <a href="https://codepen.io/dgwyer/pen/Jvzpgz/" target="_blank" rel="noopener">User Interface Selectors #4</a> by David Gwyer (<a href="https://codepen.io/dgwyer" target="_blank" rel="noopener">@dgwyer</a>) on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.0<br>同样，我们可以使用重置按钮类型来重置数字输入元素的默认值。<br>为了完善本节，我们来看看 :read-only ，:read-write 和 :placeholder-shown 的伪类。<br>See the Pen <a href="https://codepen.io/dgwyer/pen/ZoPREB/" target="_blank" rel="noopener">User Interface Selectors #5</a> by David Gwyer (<a href="https://codepen.io/dgwyer" target="_blank" rel="noopener">@dgwyer</a>) on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.0<br>使用这些可以轻松匹配只读或可写（可编辑）的元素。 匹配元素不必是表单输入字段，如示例中所示。<br>最后，:placeholder-shown 将匹配尚未与之交互的元素，并仍显示默认占位符文本。 应谨慎使用此特定选择器，因为它尚未得到广泛支持。<br><a name="ECLFk"></a></p>
+<h2 id="结构选择器"><a href="#结构选择器" class="headerlink" title="结构选择器"></a>结构选择器</h2><p>结构选择器非常强大，基于它们在DOM中的位置匹配元素。 它们使您可以灵活地将元素与CSS完全匹配，否则需要 JavaScript 执行相同的操作。<br>这种类型的选择器与显示的选择器不同，因为其中一些选择器允许您传入参数来修改选择器的工作方式。<br>例如：nth-child() 接收一个值，该值将匹配特定子元素相对于其父容器的值。<br>因此，如果我们有一个项目列表，则以下选择器将匹配第三个项目：<br>CSS 代码:</p>
+<ol>
+<li>ul:nth-child(3)</li>
+</ol>
+<p>但是，参数不是必须是简单的数字，它可以是一个简单的表达式，而使伪类更强大。<br>有效表达式有：</p>
+<ul>
+<li>ul:nth-child(2) – 匹配第 2 个子元素</li>
+<li>ul:nth-child(4n) – 匹配每 4th 个子元素（4,8,12，…）</li>
+<li>ul:nth-child(2n + 1) – 匹配每 2n + 1 个子元素偏移一个（1,3,5，…）</li>
+<li>ul:nth-child(3n - 1) – 匹配每 3n – 1 个子元素偏移负数1（2,5,8，…）</li>
+<li>ul:nth-child(odd) – 匹配奇数元素（1,3,5，…）</li>
+<li>ul:nth-child(even) – 匹配偶数元素（2,4,6，…）</li>
+</ul>
+<p>表达式变量 n 总是从零开始，因此确切地计算出哪些元素将匹配，n 从 0 开始，然后 n 为 1 ，依此类推以编译元素列表。<br>这里还有 1 个简单而实用的小技巧，我们把 n 当做负数来用，会发生什么呢？</p>
+<ul>
+<li>ul li:nth-child(-n+3) – 匹配第 1 到 第 3 个 li 子元素 （1,2,3）</li>
+<li>ul li:nth-child(-2n+6) – 匹配每 2th 个子元素，最多不超过第 8 个 li 子元素 （2,4,6，8）</li>
+<li>ul li:nth-child(n + 10):nth-child(-n + 12) – 匹配第 10 到 第 12 个 li 子元素 （10,11,12）</li>
+</ul>
+<p>例如：<br>See the Pen <a href="https://codepen.io/feiwen8772/pen/jXOeKY/" target="_blank" rel="noopener">jXOeKY</a> by feiwen8772 (<a href="https://codepen.io/feiwen8772" target="_blank" rel="noopener">@feiwen8772</a>) on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.0<br>您可以将简单表达式与以下结构选择器一起使用：</p>
+<ul>
+<li>:nth-child()</li>
+<li>:nth-last-child()</li>
+<li>:nth-of-type()</li>
+<li>:nth-last-of-type()</li>
+</ul>
+<p>See the Pen <a href="https://codepen.io/dgwyer/pen/MGxzEq/" target="_blank" rel="noopener">Structural Selectors #1</a> by David Gwyer (<a href="https://codepen.io/dgwyer" target="_blank" rel="noopener">@dgwyer</a>) on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.0<br>:nth-last-child() 和 :nth-last-of-type() 非常类似于 :nth-child() 和 nth-of-type() ，唯一区别是 :nth-last-child() 和 :nth-last-of-type() 是从最后一个元素开始匹配，而不是第一个元素开始匹配。<br>通过玩各种组合，您可以通过选择器获得相当多的创意。 例如，之前的示例包含选择器：<br>CSS 代码:</p>
+<ol>
+<li>ul:last-of-type li:nth-last-of-type(2)::after {</li>
+<li>content: “(2nd from end)”;</li>
+<li>/* Other styles… */</li>
+<li>}</li>
+</ol>
+<p>这匹配第 2 个无序列表中最后一个列表项之后的伪元素。 如果你一直在努力解码一个复杂的选择器，那么最好从右到左阅读它，这样它就可以在逻辑上解构。<br>下一组选择器是专用的结构选择器，因为它们只匹配特定的子元素。 您无法将表达式传递给它们以修改其行为。</p>
+<ul>
+<li>:first-child</li>
+<li>:last-child</li>
+<li>:only-child</li>
+<li>:first-of-type</li>
+<li>:last-of-type</li>
+</ul>
+<p>See the Pen <a href="https://codepen.io/dgwyer/pen/JvzwJE/" target="_blank" rel="noopener">Structural Selectors #2</a> by David Gwyer (<a href="https://codepen.io/dgwyer" target="_blank" rel="noopener">@dgwyer</a>) on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.0<br>乍一看，这里有很多事情，你在使用这些类型的选择器时需要小心，因为你可能得到你没想到的结果。<br>例如，您可能想知道为什么在 <section> 标记内的等等……文本是蓝色的。 实际上所有部分内容都是蓝色的，因为它是主 div 容器的最后一个子节点。 其他部分元素通过其他选择器覆盖自己的颜色，使单个段落变为蓝色。<br>如果你觉得这些结构选择器还不够，或者你觉得记不住，使用起来很麻烦，那么你可以使用 <a href="https://www.html.cn/archives/8400" target="_blank" rel="noopener">Family.scss</a> – 轻松搞定这些 :nth-child 伪类 :nth-child<br><a name="i6WrR"></a></section></p>
+<h2 id="否定、排除选择器"><a href="#否定、排除选择器" class="headerlink" title="否定、排除选择器"></a>否定、排除选择器</h2><p>CSS 否定伪类选择器 :not(X)，是以一个简单的以选择器 X 为参数的功能性标记函数，将从匹配的元素集合中排除选择器 X 所匹配的元素。选择器 X 中不能包含另外一个 :not 选择器。<br>:not() 伪类的优先级即为它参数选择器的优先级。 可以利用这个伪类提高规则的优先级。例如， #foo:not(#bar) 和 #foo 会匹配相同的元素。 但是前者的优先级更高。但是 :not() 伪类不像其它伪类，它不会增加选择器的优先级。<br>:not() 伪类可以将一个或多个以逗号分隔的选择器作为其参数。但是以多个以逗号分隔的选择器作为参数是实验性的，尚未广泛支持。<br>:not() 伪类时我们得选择器组合更加灵活，我们来看一些简单应用：<br>See the Pen <a href="https://codepen.io/feiwen8772/pen/XoWoLV/" target="_blank" rel="noopener">:not() 伪类</a> by feiwen8772 (<a href="https://codepen.io/feiwen8772" target="_blank" rel="noopener">@feiwen8772</a>) on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.0<br>上例中，.content :not(.notice) em 匹配了 .content 中所有的 em 元素，但是排除了 .content .notice 中 em 元素。<br>我们再来看看 :not() 和其他伪类选择器结合的例子：<br>See the Pen <a href="https://codepen.io/feiwen8772/pen/kkELxa/" target="_blank" rel="noopener">:not伪类</a> by feiwen8772 (<a href="https://codepen.io/feiwen8772" target="_blank" rel="noopener">@feiwen8772</a>) on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.0<br>在做一个有间隔线的列表时，我们通常会去除最后一个 li 下的横线。li:not(:last-child) 表示除了最后一个 li 元素之外的所有其他 li 元素。<br><a name="RS3hr"></a></p>
+<h2 id="内容选择器"><a href="#内容选择器" class="headerlink" title="内容选择器"></a>内容选择器</h2><p>这些属于用于匹配内容的一组专用选择器。我们可以立即使用的是：</p>
+<ul>
+<li>::first-line</li>
+<li>::first-letter</li>
+<li>::selection – 兼容方案：<a href="https://www.html.cn/archives/5169" target="_blank" rel="noopener">/archives/5169</a></li>
+</ul>
+<p>See the Pen <a href="https://codepen.io/feiwen8772/pen/dwygxY/" target="_blank" rel="noopener">Content Selectors #1</a> by feiwen8772 (<a href="https://codepen.io/feiwen8772" target="_blank" rel="noopener">@feiwen8772</a>) on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.0<br>::first-line 和 ::first-letter 仅在应用于块级元素时才起作用。另外要小心只在特定元素上使用 ::first-letter ，否则每个段落都可能会应用。<br>目前还没有一些令人兴奋的内容选择器，但是当它们得到支持时，它们将开启各种可能性。<br>以下是需要注意的内容选择器列表：</p>
+<ul>
+<li>::inactive-selection?—?非活动窗口内的选定内容</li>
+<li>::spelling-error?—?检查可编辑元素的拼写和语法</li>
+<li>::grammar-error?—?匹配语法错误</li>
+<li>::marker?—?匹配列表项标记</li>
+<li>::placeholder?—?匹配表单元素的 placeholder 文本样式；兼容方案：<a href="https://www.html.cn/archives/5689" target="_blank" rel="noopener">/archives/5689</a><br><a name="9pFxQ"></a><h2 id="其他选择器"><a href="#其他选择器" class="headerlink" title="其他选择器"></a>其他选择器</h2>我们接下来提到其他几个选择器不适合不适合归类到上面任何类别。 别担心我们差不多完成了！ 不幸的是，其中大部分是实验性的，所以你必须等待一段时间才能在生产中使用它们。<br>:target 选择器的目标是一个 id 与当前 URL 的一部分匹配的元素。 比如下面 URL 匹配该URL页面中 id 为 part1 的元素：<br>CSS 代码:</li>
+</ul>
+<ol>
+<li><a href="https://css88.com#part1" target="_blank" rel="noopener">https://css88.com#part1</a></li>
+</ol>
+<p>我们可以将该元素应用以下样式：<br>CSS 代码:</p>
+<ol>
+<li>:target { border: 1px red solid; }</li>
+</ol>
+<p>其实 :target 选择器目前可以用于一些特殊的用例，欢迎查看： <a href="https://www.html.cn/archives/6256" target="_blank" rel="noopener">:target 伪类使用技巧</a><br>如果你有一个很大的选择器，那么 :matches() 可以帮助简化它。例如，如果您有以下选择器：<br>CSS 代码:</p>
+<ol>
+<li>nav p.content,</li>
+<li>header p.content,</li>
+<li>main p.content,</li>
+<li>sidebar p.content,</li>
+<li>footer p.content {</li>
+<li>margin: 15px;</li>
+<li>padding: 10px;</li>
+<li>}</li>
+</ol>
+<p>然后可以通过 :matches() 简化，相当于：<br>太好了！这将有助于使样式表更具可读性。<br>接下来我们还有一个 :any-link 选择器，这个选择器是:link 和 :visited 组合的简写。 所以下面这两个选择器实际上是相同的：<br>CSS 代码:</p>
+<ol>
+<li>:any-link {</li>
+<li>color: red;</li>
+<li>}</li>
+<li></li>
+<li>:link, :visited {</li>
+<li>color: red;</li>
+<li>}</li>
+</ol>
+<p>本文中最后两个选择器：</p>
+<ul>
+<li>:dir()</li>
+<li>:lang()</li>
+</ul>
+<p>这些都与您网站的语言有关。<br>:dir() 接受参数 ltr 或 rtl ，具体取决于您要匹配的文本的方向，目前仅 Firefox 支持。<br>所以：:dir(rtl) 会匹配所有具有 RTL 方向内容的元素。<br>HTML文档中的每个元素都可以使用 lang 属性设置自己的单独语言。<br>CSS 代码:</p>
+<ol>
+<li><div lang="en">The language of this element is set to English.</div></li>
+<li><div lang="el">Η γλ?σσα αυτο? του στοιχε?ου ?χει οριστε? στα ελληνικ?.</div></li>
+<li><div lang="is">Tungumál ?essa ?áttar er sett á íslensku.</div>
+
+</li>
+</ol>
+<p>将相同的基本文本输入到三个 <div> 标记中，但将特定国家/地区添加到内容的末尾。此外，lang 属性中使用的国家代码代表相应的国家/地区。<br>CSS 代码:</div></p>
+<ol>
+<li>:lang(en) { color: red; }</li>
+<li>:lang(el) { color: green; }</li>
+<li>:lang(is) { color: blue; }</li>
+</ol>
+<p>演示：<br>See the Pen <a href="https://codepen.io/dgwyer/pen/xjBoNG/" target="_blank" rel="noopener">Misc Selectors</a> by David Gwyer (<a href="https://codepen.io/dgwyer" target="_blank" rel="noopener">@dgwyer</a>) on <a href="https://codepen.io/" target="_blank" rel="noopener">CodePen</a>.0<br>好消息是所有主流浏览器都支持 :lang() 选择器。<br><a name="zLli9"></a></p>
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p>如果你试图查找一个选择器，或者需要深入研究CSS规范，那么你可能需要查看一些有用的资源：</p>
+<ul>
+<li><a href="https://www.html.cn/archives/1635" target="_blank" rel="noopener">当前可用的 CSS 的选择器集合</a></li>
+<li><a href="https://developer.mozilla.org/en-US/" target="_blank" rel="noopener">MDN Web Docs</a></li>
+<li><a href="https://www.w3.org/Style/CSS/specs.en.html" target="_blank" rel="noopener">CSS Specifications</a></li>
+<li><a href="https://caniuse.com/" target="_blank" rel="noopener">Can I Use</a><br><a name="3EBul"></a><h2 id="最后…"><a href="#最后…" class="headerlink" title="最后…"></a>最后…</h2>我希望你会发现这篇文章很有用。 可以帮助刷新你的CSS选择器技能，并尝试各种可能性。<br>使用纯 CSS 可以做很多很酷的事情，这在几年前是不可能实现的。<br>对于能够在纯 CSS 中进行一些非常高级的样式和动画的设计师来说，这是令人兴奋的，并且所有人都看不到一行 JavaScript 。<br>本文大部分内容来自：<a href="https://blog.logrocket.com/level-up-your-css-selector-skills-5d7bb45ddd37" target="_blank" rel="noopener">https://blog.logrocket.com/level-up-your-css-selector-skills-5d7bb45ddd37</a>，在这篇文章的基础上做了很多内容的改进。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/16/yuque/JavaScript Class(类) 中的 Private(私有) 和 Public(公有) 属性/" rel="next" title="JavaScript Class(类) 中的 Private(私有) 和 Public(公有) 属性">
+                <i class="fa fa-chevron-left"></i> JavaScript Class(类) 中的 Private(私有) 和 Public(公有) 属性
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/16/yuque/5个技巧让你更好的编写 JavaScript(ES6) 中条件语句/" rel="prev" title="5个技巧让你更好的编写 JavaScript(ES6) 中条件语句">
+                5个技巧让你更好的编写 JavaScript(ES6) 中条件语句 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">185</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#组合选择器"><span class="nav-number">1.</span> <span class="nav-text">组合选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性选择器"><span class="nav-number">2.</span> <span class="nav-text">属性选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户交互选择器"><span class="nav-number">2.1.</span> <span class="nav-text">用户交互选择器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结构选择器"><span class="nav-number">3.</span> <span class="nav-text">结构选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#否定、排除选择器"><span class="nav-number">4.</span> <span class="nav-text">否定、排除选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容选择器"><span class="nav-number">5.</span> <span class="nav-text">内容选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他选择器"><span class="nav-number">6.</span> <span class="nav-text">其他选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源"><span class="nav-number">7.</span> <span class="nav-text">资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后…"><span class="nav-number">8.</span> <span class="nav-text">最后…</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">321.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>

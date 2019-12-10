@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="注：本文翻译自 React 官方博客，并且已经更新到最新的 React 中文文档中，马上查看《介绍 React 性能分析器》React 16.5 增加了对新的开发者工具 DevTools 性能分析插件的支持。 此插件使用 React 实验性的 Profiler API 来收集有关每个组件渲染的用时信息，以便识别 React 应用程序中的性能瓶颈。 它将与我们即将推出的time slicing（时间">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React 性能分析器介绍">
+<meta property="og:url" content="http://yoursite.com/2019/07/16/yuque/React 性能分析器介绍/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="注：本文翻译自 React 官方博客，并且已经更新到最新的 React 中文文档中，马上查看《介绍 React 性能分析器》React 16.5 增加了对新的开发者工具 DevTools 性能分析插件的支持。 此插件使用 React 实验性的 Profiler API 来收集有关每个组件渲染的用时信息，以便识别 React 应用程序中的性能瓶颈。 它将与我们即将推出的time slicing（时间">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561530-163dc167-40b9-4970-b955-706b602e2199.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561656-c30aee8b-90ab-445c-8789-76a587ef5397.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561553-85e6e6e8-a125-4f82-aa03-5395f4668d8a.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561480-685e86b2-a0f7-4082-ada7-0165ac7349ec.png#align=left&display=inline&height=60&originHeight=60&originWidth=601&size=0&status=done&width=601">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/gif/263301/1563261561546-fc55b671-3f3d-41b1-8a38-bd316dd8d391.gif#align=left&display=inline&height=348&originHeight=348&originWidth=898&size=0&status=done&width=898">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561621-5f5d4c49-dfae-412a-a5f3-1e4dd7e771e6.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/gif/263301/1563261561520-0f884d43-5944-4097-87ec-f4fffe5eb60c.gif#align=left&display=inline&height=348&originHeight=348&originWidth=898&size=0&status=done&width=898">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/gif/263301/1563261561546-8ff44875-beaf-41fb-bf5f-03c1613c07d9.gif#align=left&display=inline&height=348&originHeight=348&originWidth=898&size=0&status=done&width=898">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/gif/263301/1563261561546-385eae52-0359-4cda-8919-ca446010caf4.gif#align=left&display=inline&height=348&originHeight=348&originWidth=898&size=0&status=done&width=898">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561509-62533a3d-c579-4c84-b34a-55d251ccd7d2.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561640-3b7f13ad-bd04-47ef-a815-440f3797bee8.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/gif/263301/1563261561579-9054ed84-5ce1-49a7-b3e7-e90c3f5a3c38.gif#align=left&display=inline&height=322&originHeight=322&originWidth=898&size=0&status=done&width=898">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561534-896aaf44-1be9-4ba1-a6ea-14478232bff7.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561643-2fcebd0e-adf6-4f3b-b3e7-5ddfaf9f3857.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561579-e31cb1ea-f163-4772-b94c-c3688763f04d.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/gif/263301/1563261561599-7d885682-38e4-4e5b-8719-620176eea751.gif#align=left&display=inline&height=322&originHeight=322&originWidth=898&size=0&status=done&width=898">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561586-6a9fedb2-c1f1-4851-9139-004ed15a182c.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/gif/263301/1563261561641-ff2a27de-3dd7-4bbf-9344-79d3e37d70c7.gif#align=left&display=inline&height=322&originHeight=322&originWidth=898&size=0&status=done&width=898">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561606-3885313a-e3b2-4ec7-b38e-761e05812543.png#align=left&display=inline&height=484&originHeight=484&originWidth=1012&size=0&status=done&width=1012">
+<meta property="og:updated_time" content="2019-12-10T06:58:22.986Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React 性能分析器介绍">
+<meta name="twitter:description" content="注：本文翻译自 React 官方博客，并且已经更新到最新的 React 中文文档中，马上查看《介绍 React 性能分析器》React 16.5 增加了对新的开发者工具 DevTools 性能分析插件的支持。 此插件使用 React 实验性的 Profiler API 来收集有关每个组件渲染的用时信息，以便识别 React 应用程序中的性能瓶颈。 它将与我们即将推出的time slicing（时间">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561530-163dc167-40b9-4970-b955-706b602e2199.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/16/yuque/React 性能分析器介绍/">
+
+
+
+
+
+  <title>React 性能分析器介绍 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/16/yuque/React 性能分析器介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React 性能分析器介绍</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-16T15:18:57+08:00">
+                2019-07-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-10T14:58:22+08:00">
+                2019-12-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>注：本文翻译自 React 官方博客，并且已经更新到最新的 React 中文文档中，马上查看《<a href="http://react.css88.com/blog/2018/09/10/introducing-the-react-profiler.html" target="_blank" rel="noopener">介绍 React 性能分析器</a>》<br>React 16.5 增加了对新的开发者工具 DevTools 性能分析插件的支持。 此插件使用 React <a href="https://github.com/reactjs/rfcs/pull/51" target="_blank" rel="noopener">实验性的 Profiler API</a> 来收集有关每个组件渲染的用时信息，以便识别 React 应用程序中的性能瓶颈。 它将与我们即将推出的<a href="https://www.html.cn/blog/2018/03/01/sneak-peek-beyond-react-16.html" target="_blank" rel="noopener">time slicing（时间分片） 和 suspense（悬停）</a> 功能完全兼容。<br>此博客文章涵盖以下主题：</p>
+<ul>
+<li><a href="https://www.html.cn/archives/9696#profiling-an-application" target="_blank" rel="noopener">分析一个应用程序的性能</a></li>
+<li><a href="https://www.html.cn/archives/9696#reading-performance-data" target="_blank" rel="noopener">查看性能数据</a><ul>
+<li><a href="https://www.html.cn/archives/9696#browsing-commits" target="_blank" rel="noopener">浏览 commits</a></li>
+<li><a href="https://www.html.cn/archives/9696#filtering-commits" target="_blank" rel="noopener">过滤 commits</a></li>
+<li><a href="https://www.html.cn/archives/9696#flame-chart" target="_blank" rel="noopener">火焰图表</a></li>
+<li><a href="https://www.html.cn/archives/9696#ranked-chart" target="_blank" rel="noopener">排序图表</a></li>
+<li><a href="https://www.html.cn/archives/9696#component-chart" target="_blank" rel="noopener">组件图表</a></li>
+<li><a href="https://www.html.cn/archives/9696#interactions" target="_blank" rel="noopener">交互</a></li>
+</ul>
+</li>
+<li><a href="https://www.html.cn/archives/9696#troubleshooting" target="_blank" rel="noopener">发现并修复故障</a><ul>
+<li><a href="https://www.html.cn/archives/9696#no-profiling-data-has-been-recorded-for-the-selected-root" target="_blank" rel="noopener">没有为选定的 root 节点记录分析数据</a></li>
+<li><a href="https://www.html.cn/archives/9696#no-timing-data-to-display-for-the-selected-commit" target="_blank" rel="noopener">选中的 commit 没有显示计时数据</a></li>
+</ul>
+</li>
+<li><a href="https://www.html.cn/archives/9696#deep-dive-video" target="_blank" rel="noopener">深入视频</a><br><a name="S0G6g"></a><h2 id="分析一个应用程序的性能（Profiling-an-application）"><a href="#分析一个应用程序的性能（Profiling-an-application）" class="headerlink" title="分析一个应用程序的性能（Profiling an application）"></a>分析一个应用程序的性能（Profiling an application）</h2>DevTools 将为支持新的 Profiler API 的应用显示 “Profiler” 选项卡：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561530-163dc167-40b9-4970-b955-706b602e2199.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840" alt><blockquote>
+<p>注意：<br>注意：<code>react-dom</code> 16.5+ 在 DEV 模式下支持性能分析。如果生产环境的包需要用到，你可以试用 <code>react-dom/profiling</code> 。 你可以在 <a href="https://fb.me/react-profiling" target="_blank" rel="noopener">fb.me/react-profiling</a> 中阅读有关如何使用该包的更多信息。</p>
+</blockquote>
+</li>
+</ul>
+<p>“Profiler”面板初始打开将是空的。单击 record(录制) 按钮就可以开始分析：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561656-c30aee8b-90ab-445c-8789-76a587ef5397.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840" alt><br>一旦开始录制，DevTools 将在每次应用程序渲染时自动收集性能信息。就像正常使用您的应用程序一样。当你想完成分析时，单击 “Stop(停止)” 按钮即可。<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561553-85e6e6e8-a125-4f82-aa03-5395f4668d8a.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840" alt><br>假设您的应用程序在分析时至少渲染过一次，那么 DevTools 将显示几种查看性能数据的方法。我们将在下面逐一说明。<br><a name="BbGU2"></a></p>
+<h2 id="查看性能数据"><a href="#查看性能数据" class="headerlink" title="查看性能数据"></a>查看性能数据</h2><p><a name="loX1B"></a></p>
+<h3 id="浏览-commits（Browsing-commits）"><a href="#浏览-commits（Browsing-commits）" class="headerlink" title="浏览 commits（Browsing commits）"></a>浏览 commits（Browsing commits）</h3><p>从概念上讲，React 分两个阶段工作：</p>
+<ul>
+<li><strong>render(渲染)</strong>阶段，确定需要对DOM进行哪些更改。在此阶段，React 调用 render 方法，然后将结果与之前的渲染进行比较。</li>
+<li><strong>commit(提交)</strong>阶段，是 React 做出任何更新的阶段。(对于 React DOM 来时，这是React插入，更新和删除DOM节点的时候。) React 也在这个阶段调用 <code>componentDidMount</code> 和 <code>componentDidUpdate</code> 等生命周期函数。</li>
+</ul>
+<p>DevTools Profiler(分析器) 根据 commits(提交) 对性能信息进行分组。commits(提交) 显示在靠近 Profiler(分析器) 顶部的条形图中：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561480-685e86b2-a0f7-4082-ada7-0165ac7349ec.png#align=left&display=inline&height=60&originHeight=60&originWidth=601&size=0&status=done&width=601" alt><br>图表中的每个条形表示单独的一次 commit(提交)，当前选定的 commit(提交) 颜色为黑色。 您可以单击条形栏（或左/右箭头按钮）以选择其他 commit(提交) 。<br>每个条形图的颜色和高度对应于 commit(提交) 渲染所需的时间 （较高的黄色竖条比较短的蓝色竖条耗时更长）。<br><a name="bSYuk"></a></p>
+<h3 id="过滤-commits（Filtering-commits）"><a href="#过滤-commits（Filtering-commits）" class="headerlink" title="过滤 commits（Filtering commits）"></a>过滤 commits（Filtering commits）</h3><p>您录制的时间越长，您的应用渲染的次数就越多。 在某些情况下，您最终可能会有 <em>很多次</em> 的 commits(提交) 而很难轻松处理。 Profiler(分析器) 提供了一种过滤机制来帮助解决这个问题。 使用它来指定阈值，Profiler(分析器) 将隐藏所有比该值 <em>更快</em> 的 commits(提交) 。<br><img src="https://cdn.nlark.com/yuque/0/2019/gif/263301/1563261561546-fc55b671-3f3d-41b1-8a38-bd316dd8d391.gif#align=left&display=inline&height=348&originHeight=348&originWidth=898&size=0&status=done&width=898" alt><br><a name="1l8Ik"></a></p>
+<h3 id="火焰图表（Flame-chart）"><a href="#火焰图表（Flame-chart）" class="headerlink" title="火焰图表（Flame chart）"></a>火焰图表（Flame chart）</h3><p>火焰图表视图表示特定 commits(提交) 对应的应用的状态。 图表中的每个横条代表一个 React 组件（例如 <code>App</code> ，<code>Nav</code> ）。 横条的大小和颜色表示渲染组件及其子组件所需的时间。 （横条的宽度表示组件上次渲染时花费的时间，颜色表示当前 commits(提交) 部分所花费的时间。）<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561621-5f5d4c49-dfae-412a-a5f3-1e4dd7e771e6.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840" alt></p>
+<blockquote>
+<p>注意：<br>横条的宽度表示在上次渲染时渲染组件（及其子组件）所需的时间。 如果组件未作为此次 commit 的一部分重新渲染，则时间表示先前的渲染。 组件越宽，渲染时间越长。<br>横条的颜色表示组件（及其子组件）在所选 commit 中渲染的时间。 黄色组件花费更多时间，蓝色组件花费更少时间，并且灰色组件在此 commit 期间根本不渲染。</p>
+</blockquote>
+<p>例如，上面显示的 commit 总共需要 18.4 ms 进行渲染。 <code>Router</code> 组件渲染是耗时是最多（耗时 18.4 ms）。 大部分时间是因为它的两个子组件，<code>Nav</code>（8.4ms）和 <code>Route</code>（7.9ms）。 剩下的时间消耗分布在剩余的子节点之间，或者组件自身的 <code>render</code> 方法上。<br>您可以通过单击组件放大或缩小火焰图：<br><img src="https://cdn.nlark.com/yuque/0/2019/gif/263301/1563261561520-0f884d43-5944-4097-87ec-f4fffe5eb60c.gif#align=left&display=inline&height=348&originHeight=348&originWidth=898&size=0&status=done&width=898" alt><br>单击组件就可以选择它，并在右侧面板中显示信息，其中包括其 commit 时的 props 和 state 。 您可以深入了解这些内容以了解有关组件在提交期间实际渲染的内容的更多信息：<br><img src="https://cdn.nlark.com/yuque/0/2019/gif/263301/1563261561546-8ff44875-beaf-41fb-bf5f-03c1613c07d9.gif#align=left&display=inline&height=348&originHeight=348&originWidth=898&size=0&status=done&width=898" alt><br>在某些情况下，选择一个组件并在 commit 之间进行切换时，还会提供有关组件渲染原因的提示：<br><img src="https://cdn.nlark.com/yuque/0/2019/gif/263301/1563261561546-385eae52-0359-4cda-8919-ca446010caf4.gif#align=left&display=inline&height=348&originHeight=348&originWidth=898&size=0&status=done&width=898" alt><br>上图显示 <code>state.scrollOffset</code> 在两次 commit 之间发生了变化。这可能是导致 <code>List</code> 组件重新渲染的原因。<br><a name="GzssD"></a></p>
+<h3 id="排序图表（Ranked-chart）"><a href="#排序图表（Ranked-chart）" class="headerlink" title="排序图表（Ranked chart）"></a>排序图表（Ranked chart）</h3><p>排序图视图表示单个 commit 。 图表中的每个横条代表一个 React 组件（例如 <code>App</code> ，<code>Nav</code> ）。 对图表进行排序，以便渲染时间最长的组件位于顶部。<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561509-62533a3d-c579-4c84-b34a-55d251ccd7d2.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840" alt></p>
+<blockquote>
+<p>注意：<br>组件的渲染时间包括渲染其子项所花费的时间，因此渲染时间最长的组件通常靠近树的顶部。</p>
+</blockquote>
+<p>与火焰图一样，您可以通过单击组件放大或缩小排序图表。<br><a name="3Jyi8"></a></p>
+<h3 id="组件图表（Component-chart）"><a href="#组件图表（Component-chart）" class="headerlink" title="组件图表（Component chart）"></a>组件图表（Component chart）</h3><p>有时，在分析时需要查看特定组件的渲染次数。 组件图以柱状图的形式提供此信息。 图表中的每个竖条表示组件渲染的时间。 每个条的颜色和高度对应于组件在特定 commit中 <em>相对于其他组件</em> 渲染所花费的时间。<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561640-3b7f13ad-bd04-47ef-a815-440f3797bee8.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840" alt><br>上图显示 <code>List</code> 组件渲染了 11 次。 它还表明，每次渲染时，它都是 commits 中最“昂贵”的组件（意味着它花费的时间最长）。<br>要查看此图表，请双击组件 <em>或</em> 选择组件，然后单击右侧详细信息窗格中的蓝色条形图图标。 您可以通过单击右侧详细信息窗格中的 “x” 按钮返回上一个图表。 您可以双击特定栏以查看有关该 commit 的更多信息。<br><img src="https://cdn.nlark.com/yuque/0/2019/gif/263301/1563261561579-9054ed84-5ce1-49a7-b3e7-e90c3f5a3c38.gif#align=left&display=inline&height=322&originHeight=322&originWidth=898&size=0&status=done&width=898" alt><br>如果在本次分析会话期间所选组件根本未渲染，则将显示以下消息：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561534-896aaf44-1be9-4ba1-a6ea-14478232bff7.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840" alt><br><a name="9dc3w"></a></p>
+<h3 id="交互（Interactions）"><a href="#交互（Interactions）" class="headerlink" title="交互（Interactions）"></a>交互（Interactions）</h3><p>React 最近添加了另一个用于记录触发更新动作的API(实验中)。使用此 API 记录的 interactions 也将显示在 Profiler 中：<br>React 最近添加了另一个用于跟踪更新原因的 <a href="https://fb.me/react-interaction-tracing" target="_blank" rel="noopener">实验API</a> 。跟踪此API的 “交互（interactions）” 也将显示在 Profiler(分析器) 中：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561643-2fcebd0e-adf6-4f3b-b3e7-5ddfaf9f3857.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840" alt><br>上图显示了一个跟踪四个交互（interactions）的分析会话。 每行代表一个被跟踪的交互（interactions）。 沿着行的彩色圆点表示与该交互（interactions）相关的 commit（提交 ）。<br>你还可以从火焰图和排名图中查看为某次 commit 记录的 interaction：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561579-e31cb1ea-f163-4772-b94c-c3688763f04d.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840" alt><br>你可以通过单击它们，在 interaction 和 commits 之间互相切换：<br><img src="https://cdn.nlark.com/yuque/0/2019/gif/263301/1563261561599-7d885682-38e4-4e5b-8719-620176eea751.gif#align=left&display=inline&height=322&originHeight=322&originWidth=898&size=0&status=done&width=898" alt><br>跟踪API仍然是新的，我们将在以后的博客文章中更详细地介绍它。<br><a name="ciGMM"></a></p>
+<h2 id="发现并修复故障"><a href="#发现并修复故障" class="headerlink" title="发现并修复故障"></a>发现并修复故障</h2><p><a name="hiMAI"></a></p>
+<h3 id="没有为选定的-root-节点记录分析数据"><a href="#没有为选定的-root-节点记录分析数据" class="headerlink" title="没有为选定的 root 节点记录分析数据"></a>没有为选定的 root 节点记录分析数据</h3><p>如果您的应用程序有多个 “roots”，则在分析后可能会看到以下消息：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561586-6a9fedb2-c1f1-4851-9139-004ed15a182c.png#align=left&display=inline&height=402&originHeight=402&originWidth=840&size=0&status=done&width=840" alt><br>此消息表示 “Elements” 面板中选择的 root 节点没有分析数据。<br>在这种情况下，尝试在该面板中选择不同的 root 节点以查看该 root 节点的分析信息：<br><img src="https://cdn.nlark.com/yuque/0/2019/gif/263301/1563261561641-ff2a27de-3dd7-4bbf-9344-79d3e37d70c7.gif#align=left&display=inline&height=322&originHeight=322&originWidth=898&size=0&status=done&width=898" alt><br><a name="fwsZm"></a></p>
+<h3 id="选中的-commit-没有显示计时数据"><a href="#选中的-commit-没有显示计时数据" class="headerlink" title="选中的 commit 没有显示计时数据"></a>选中的 commit 没有显示计时数据</h3><p>有时可能会因为 commits 太快，以至于 <code>performance.now()</code> 还没有把相关有意义的时序信息传递给 DevTools。在这种情况下，将显示以下界面：<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563261561606-3885313a-e3b2-4ec7-b38e-761e05812543.png#align=left&display=inline&height=484&originHeight=484&originWidth=1012&size=0&status=done&width=1012" alt><br><a name="HUZek"></a></p>
+<h2 id="深入视频"><a href="#深入视频" class="headerlink" title="深入视频"></a>深入视频</h2><p>以下视频演示了如何使用 React Profiler(分析器) 来检测和改善实际 React 应用程序中的性能瓶颈。</p>
+<p><a href></a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/16/yuque/5个技巧让你更好的编写 JavaScript(ES6) 中条件语句/" rel="next" title="5个技巧让你更好的编写 JavaScript(ES6) 中条件语句">
+                <i class="fa fa-chevron-left"></i> 5个技巧让你更好的编写 JavaScript(ES6) 中条件语句
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/16/yuque/【实例】通过 CSS自定义属性（CSS变量）和 JavaScript 实现高级CSS主题切换/" rel="prev" title="【实例】通过 CSS自定义属性（CSS变量）和 JavaScript 实现高级CSS主题切换">
+                【实例】通过 CSS自定义属性（CSS变量）和 JavaScript 实现高级CSS主题切换 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">185</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分析一个应用程序的性能（Profiling-an-application）"><span class="nav-number">1.</span> <span class="nav-text">分析一个应用程序的性能（Profiling an application）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看性能数据"><span class="nav-number">2.</span> <span class="nav-text">查看性能数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览-commits（Browsing-commits）"><span class="nav-number">2.1.</span> <span class="nav-text">浏览 commits（Browsing commits）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤-commits（Filtering-commits）"><span class="nav-number">2.2.</span> <span class="nav-text">过滤 commits（Filtering commits）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#火焰图表（Flame-chart）"><span class="nav-number">2.3.</span> <span class="nav-text">火焰图表（Flame chart）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排序图表（Ranked-chart）"><span class="nav-number">2.4.</span> <span class="nav-text">排序图表（Ranked chart）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组件图表（Component-chart）"><span class="nav-number">2.5.</span> <span class="nav-text">组件图表（Component chart）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交互（Interactions）"><span class="nav-number">2.6.</span> <span class="nav-text">交互（Interactions）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发现并修复故障"><span class="nav-number">3.</span> <span class="nav-text">发现并修复故障</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#没有为选定的-root-节点记录分析数据"><span class="nav-number">3.1.</span> <span class="nav-text">没有为选定的 root 节点记录分析数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选中的-commit-没有显示计时数据"><span class="nav-number">3.2.</span> <span class="nav-text">选中的 commit 没有显示计时数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深入视频"><span class="nav-number">4.</span> <span class="nav-text">深入视频</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">321.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>

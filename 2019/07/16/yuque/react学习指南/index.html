@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ReactJS 或简称 React 是用于开发 Web 应用程序的前端或 GUI 的领先 JavaScript 库之一。在 Facebook 的支持下，React JS（也称为React）近年来实现了跨越式发展，并成为基于组件的 GUI 开发名副其实的库。 当我正在研究学习 React 的正确姿势时，我遇到了这个优秀的 React 开发者线路图，它概述了什么是必须要学的，什么是好的知识，以及你作为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react学习指南">
+<meta property="og:url" content="http://yoursite.com/2019/07/16/yuque/react学习指南/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="ReactJS 或简称 React 是用于开发 Web 应用程序的前端或 GUI 的领先 JavaScript 库之一。在 Facebook 的支持下，React JS（也称为React）近年来实现了跨越式发展，并成为基于组件的 GUI 开发名副其实的库。 当我正在研究学习 React 的正确姿势时，我遇到了这个优秀的 React 开发者线路图，它概述了什么是必须要学的，什么是好的知识，以及你作为">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563240561146-421049f8-4ffc-462e-b19c-8b8c743a110b.png#align=left&display=inline&height=2949&name=react.png&originHeight=2949&originWidth=1542&size=579378&status=done&width=1542">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563240561146-421049f8-4ffc-462e-b19c-8b8c743a110b.png#align=left&display=inline&height=2949&name=react.png&originHeight=2949&originWidth=1542&size=579378&status=done&width=1542">
+<meta property="og:updated_time" content="2019-12-10T06:58:23.013Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react学习指南">
+<meta name="twitter:description" content="ReactJS 或简称 React 是用于开发 Web 应用程序的前端或 GUI 的领先 JavaScript 库之一。在 Facebook 的支持下，React JS（也称为React）近年来实现了跨越式发展，并成为基于组件的 GUI 开发名副其实的库。 当我正在研究学习 React 的正确姿势时，我遇到了这个优秀的 React 开发者线路图，它概述了什么是必须要学的，什么是好的知识，以及你作为">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563240561146-421049f8-4ffc-462e-b19c-8b8c743a110b.png#align=left&display=inline&height=2949&name=react.png&originHeight=2949&originWidth=1542&size=579378&status=done&width=1542">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/16/yuque/react学习指南/"/>
+
+
+
+
+
+  <title>react学习指南 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/16/yuque/react学习指南/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">react学习指南</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-16T09:28:22+08:00">
+                2019-07-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-10T14:58:23+08:00">
+                2019-12-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.5k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>ReactJS 或简称 React 是用于开发 Web 应用程序的前端或 GUI 的领先 JavaScript 库之一。<br>在 Facebook 的支持下，React JS（也称为React）近年来实现了跨越式发展，并成为基于组件的 GUI 开发名副其实的库。</p>
+<p>当我正在研究学习 React 的正确姿势时，我遇到了这个优秀的 React 开发者线路图，它概述了什么是必须要学的，什么是好的知识，以及你作为一名 React 开发人员需要学习的一些额外的知识。<br>这个 React 开发者线路图是由 <a href="https://github.com/adam-golab/react-developer-roadmap" target="_blank" rel="noopener">adam-golab</a> 构建的，它概述了成为 React 开发人员可以采用的学习线路和库。</p>
+<p>那么，如果您想知道接下来作为 React 开发人员应该学什么？ 然后这个路线图可以帮助你成为更好的 React 开发人员。<br>但是，如果你想知道在哪里学习那些必修技能，那么别担心，我会分享了一些免费资源或者付费的在线课程，你可以学习这些技能。当然学习任何技能最好的开始都是其官网的技术文档。</p>
+<p><a name="cHZRQ"></a></p>
+<h2 id="2018-React-开发者线路图"><a href="#2018-React-开发者线路图" class="headerlink" title="2018 React 开发者线路图"></a>2018 React 开发者线路图<img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563240561146-421049f8-4ffc-462e-b19c-8b8c743a110b.png#align=left&display=inline&height=2949&name=react.png&originHeight=2949&originWidth=1542&size=579378&status=done&width=1542" alt="react.png"></h2><p>这里是我正在谈论的 React 开发者线路图：<img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563240561146-421049f8-4ffc-462e-b19c-8b8c743a110b.png#align=left&display=inline&height=2949&name=react.png&originHeight=2949&originWidth=1542&size=579378&status=done&width=1542" alt="react.png"><br>图谱来源: <a href="https://github.com/adam-golab/react-developer-roadmap/blob/master/roadmap-cn.png" target="_blank" rel="noopener">https://github.com/adam-golab/react-developer-roadmap/blob/master/roadmap-cn.png</a><br>现在，让我们一步一步地浏览线路图，了解如何在2018年学习成为 React 开发人员的基本技能：</p>
+<p><a name="BUy6v"></a></p>
+<h2 id="1-基础"><a href="#1-基础" class="headerlink" title="1) 基础"></a>1) 基础</h2><p>无论你在 Web 开发中学习哪个框架或库，你都必须掌握基础知识，当我说基础知识时，我指的是 HTML ，CSS 和 JavaScript ，这三个是 Web 开发的三大支柱。<br><a name="IEwz8"></a></p>
+<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>它是 Web 开发人员的第一支柱和最重要的技能之一，因为它提供了网页的结构。</p>
+<ul>
+<li><p>HTML5 基本标签</p>
+</li>
+<li><p>HTML5 的标签属性</p>
+</li>
+<li><p><a href="https://www.html.cn/archives/1668" target="_blank" rel="noopener">HTML 语义化的重要性</a></p>
+</li>
+<li><p>HTML5 中的一些新特性</p>
+</li>
+<li><p><a href="https://www.html.cn/archives/8052" target="_blank" rel="noopener">head 元素中的一些标签及属性</a> ，写出满足自己需求的 <head><meta name="generator" content="Hexo 3.9.0"> 头部标签，可以很有效的增强页面的可用性。<br><a name="bya4K"></a></head></p>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><p>它是 Web 开发的第二个支柱，用于设置网页样式，使网页看起来很漂亮。<br>如果你想学习 CSS ，你可以看看 ：</p>
+</li>
+<li><p><a href="https://www.html.cn/book/css/" target="_blank" rel="noopener">css参考手册</a> ；</p>
+</li>
+<li><p><a href="https://www.html.cn/archives/tag/css" target="_blank" rel="noopener">css 相关的教程文章</a> ；</p>
+</li>
+<li><p>CSS3 中的一些新特性；</p>
+</li>
+<li><p>当然还有现在炙手可热的 <a href="https://www.html.cn/archives/5744" target="_blank" rel="noopener">flexbox 布局</a> 教程；</p>
+</li>
+<li><p>以及<a href="https://www.html.cn/archives/8510" target="_blank" rel="noopener">grid 布局</a> 教程；</p>
+</li>
+<li><p>性能方面：重绘(repaints)与重排(reflows)<br><a name="30hvN"></a></p>
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>这是 Web 开发的第三个支柱，用于使您的网页具有交互性。 这也是 React 框架背后的原因，因此在尝试学习 React JS 之前，您应该了解 JavaScript 并掌握它。<br>如果您想从头学习 JavaScript ，我建议：</p>
+</li>
+<li><p>熟悉基本的语法， 看看 <a href="https://www.html.cn/archives/9922" target="_blank" rel="noopener">JavaScript 完全手册（2018版）</a> 。</p>
+</li>
+<li><p>掌握 DOM 以及 BOM 相关的基本知识，建议买本书看看，系统学习；</p>
+</li>
+<li><p>掌握 JavaScript 中的一些术语以及经典机制，比如 ：</p>
+</li>
+<li><p><a href="https://www.html.cn/archives/7262" target="_blank" rel="noopener">闭包</a></p>
+</li>
+<li><p><a href="https://www.html.cn/archives/7255" target="_blank" rel="noopener">作用域和 this 上下文</a></p>
+</li>
+<li><p>原始值和引用值</p>
+</li>
+<li><p><a href="https://www.html.cn/archives/7924" target="_blank" rel="noopener">变量和函数提升(Hoisting)</a></p>
+</li>
+<li><p><a href="https://www.html.cn/archives/10086" target="_blank" rel="noopener">JavaScript 设计模式</a></p>
+</li>
+<li><p><a href="https://www.html.cn/archives/10022" target="_blank" rel="noopener">JavaScript 中的原型</a></p>
+</li>
+<li><p>DOM事件模型（事件冒泡，捕获）</p>
+</li>
+<li><p>promises，<a href="https://www.html.cn/archives/7980" target="_blank" rel="noopener">async/await</a> 函数</p>
+</li>
+<li><p><a href="https://www.html.cn/archives/7833" target="_blank" rel="noopener">函数式编程</a></p>
+</li>
+<li><p>不可变数据结构（immutable）</p>
+</li>
+<li><p><a href="https://www.html.cn/archives/5916" target="_blank" rel="noopener">继承</a></p>
+</li>
+<li><p><a href="https://www.html.cn/archives/6974" target="_blank" rel="noopener">Modules（模块）</a></p>
+</li>
+<li><p>…</p>
+</li>
+<li><p>现在 JavaScript 基本都使用 ES6 规范写的，所以你必须了解 <a href="https://www.html.cn/archives/9958" target="_blank" rel="noopener">ES6 新特性</a>；</p>
+</li>
+<li><p>AJAX (XHR) 请求；</p>
+</li>
+<li><p>基本的 <a href="https://www.html.cn/archives/8175" target="_blank" rel="noopener">JavaScript 调试</a></p>
+</li>
+</ul>
+<p>以上是入门基础，很多人虽然能做项目完成工作，但是对于这些基础肯能了解不多，这样往往很容易触碰到天花板。个人认为作为一个前端开发工程师，这些基础概念，基本知识都应该很好的掌握。虽然学习概念性东西有点枯燥，但是当你真正了解这些的时候，你会觉得学什么都得心应手，融汇贯通。前端的大门也随之为你敞开。<br><a name="mrJ59"></a></p>
+<h2 id="2）一般开发技能"><a href="#2）一般开发技能" class="headerlink" title="2）一般开发技能"></a>2）一般开发技能</h2><p>无论您是前端开发人员还是后端开发人员，甚至是全栈软件工程师，都无关紧要。 您必须了解一些在编程世界中生存的一般开发技能，以下是其中一些的列表：<br><a name="3gqKB"></a></p>
+<h3 id="2-1）学习-GIT"><a href="#2-1）学习-GIT" class="headerlink" title="2.1）学习 GIT"></a>2.1）学习 GIT</h3><p>您必须在 2018 年完全了解 Git。尝试在 GitHub 上创建一些仓库，与其他人共享您的代码，并学习如何从您喜欢的 IDE 下载Github 上的代码。这里有一份 <a href="https://www.html.cn/doc/git-guide/" target="_blank" rel="noopener">git – 简明指南</a> 可以作为你最简入门。</p>
+<p><a name="fOEsw"></a></p>
+<h3 id="2-2）了解-HTTP-S-协议"><a href="#2-2）了解-HTTP-S-协议" class="headerlink" title="2.2）了解 HTTP(S) 协议"></a>2.2）了解 HTTP(S) 协议</h3><p>如果您想成为一名 Web 开发人员，那么了解 HTTP 并掌握它是绝对必要的。<br>我不是要求您阅读规范，但您至少应该熟悉常见的 <a href="https://www.html.cn/archives/9341" target="_blank" rel="noopener">HTTP 请求方法，如 GET，POST，PUT，PATCH，DELETE，OPTIONS</a> 以及 HTTP / HTTPS 的工作原理。<br><a name="gSU9y"></a></p>
+<h3 id="2-3）学习终端-terminal"><a href="#2-3）学习终端-terminal" class="headerlink" title="2.3）学习终端 terminal"></a>2.3）学习终端 terminal</h3><p>虽然前端开发人员学习 Linux 或终端并不是强制性的，但我强烈建议你熟悉终端，配置你的shell（bash，zsh，csh）等。如果你想学习终端和 bash 那么我建议你去看看 <a href="https://www.html.cn/archives/10107" target="_blank" rel="noopener">终端使用初级教程</a>。
+<a name="8C9e1"></a></p>
+<h3 id="2-4）算法和数据结构"><a href="#2-4）算法和数据结构" class="headerlink" title="2.4）算法和数据结构"></a>2.4）算法和数据结构</h3><p>好吧，这又是一般编程技巧之一，不管是成为 React 开发人员或其他程序员都需要这个。<br>要学习数据结构和算法，您可以阅读一些书籍或加入一个好的课程，如 <a href="https://ke.qq.com/course/343564?flowToken=1006042" target="_blank" rel="noopener">【专题课】前端面试防虐指南——算法篇</a>。<br>而且，如果您喜欢的课程不仅仅是课程，那么每个开发人员都应该阅读 <a href="http://www.java67.com/2015/09/top-10-algorithm-books-every-programmer-read-learn.html" target="_blank" rel="noopener">10本算法书籍清单</a>。
+<a name="3KUvs"></a></p>
+<h3 id="2-5）学习设计模式"><a href="#2-5）学习设计模式" class="headerlink" title="2.5）学习设计模式"></a>2.5）学习设计模式</h3><p>就像算法和数据结构一样，学习设计模式以成为 React Developer 并不是必须的，但是通过学习它将为自己创造一个美好的世界。<br>首先来看看什么是设计模，式并<a href="https://www.html.cn/archives/10086" target="_blank" rel="noopener">了解 JavaScript 中的常用的几种设计模式</a>。 然后你可以再买书看看，这项技能是编程经验总结，不会过时。<br>以上 基础部分 和 一般开发技能 也可以作为任何其他前端框架或库（如 Angular 和 Vue.js）的学习基础。这些都是作为一名前端开发工程师的必备技能。<br><a name="GQOo3"></a></p>
+<h2 id="3）学习-React-JS"><a href="#3）学习-React-JS" class="headerlink" title="3）学习 React JS"></a>3）学习 React JS</h2><p>现在，我们切入正题。 你必须学习 React ，学习它成为一名 React 开发人员。 学习React的最佳地点是官方网站，这里有 <a href="https://react.css88.com/" target="_blank" rel="noopener">React 最新的中文文档</a> ，但作为初学者，它对您来说可能是至关重要的。<br>假如你看中文文档一下子摸不着头脑，我建议你先看看这两篇文章作为你最简入门：</p>
+<ul>
+<li><a href="https://www.html.cn/archives/9710" target="_blank" rel="noopener">React入门教程 – 概述和实际演练</a>（React官方推荐的入门教程）</li>
+<li><a href="https://www.html.cn/archives/9415" target="_blank" rel="noopener">React 教程：2018年学习 React.js 的综合指南</a> ，通过实例讲解 React 最重要的部分和知识点。</li>
+</ul>
+<p>入门后建议你看看 构建 React 应用的基础知识，以及官方文档中的一些细节知识：</p>
+<ul>
+<li><a href="https://www.html.cn/archives/9427" target="_blank" rel="noopener">React 教程：如何使用 webpack 4 和 Babel 构建 React 应用(2018)</a></li>
+<li><a href="https://react.css88.com/" target="_blank" rel="noopener">React 文档</a> 中的一些细节以及 <a href="http://react.css88.com/tutorial/tutorial.html" target="_blank" rel="noopener">React 官方入门教程：简介 React</a></li>
+</ul>
+<p>再深入一点你必须学习：</p>
+<ul>
+<li><a href="https://www.html.cn/archives/9426" target="_blank" rel="noopener">React 组件模式</a></li>
+<li><a href="https://www.html.cn/archives/9471" target="_blank" rel="noopener">React 教程：函数作为子组件(Function as Child Components),即 渲染回调(Render Callback)</a></li>
+<li><a href="https://www.html.cn/archives/9462" target="_blank" rel="noopener">React 教程：深入理解 React 高阶组件（Higher Order Component，简称：HOC）</a></li>
+</ul>
+<p>当然 React 周边一些非常有用的库，比如：Redux，MobX，React-Router等等，也是非常必要的，我们将在后面详细说明。<br><a name="LCJiM"></a></p>
+<h2 id="4）学习构建工具"><a href="#4）学习构建工具" class="headerlink" title="4）学习构建工具"></a>4）学习构建工具</h2><p>如果你想成为一名专业的 React 开发人员，那么你应该花一些时间熟悉一下你将作为 web 开发人员使用的工具，比如内置工具，单元测试工具，调试工具等。<br>首先，本路线图中提到了一些构建工具：<br>Package Managers</p>
+<ul>
+<li>npm</li>
+<li>yarn</li>
+<li>pnpm</li>
+<li>Task Runners</li>
+<li><a href="https://www.html.cn/archives/8029" target="_blank" rel="noopener">npm scripts</a></li>
+<li>gulp</li>
+<li><a href="https://www.html.cn/archives/9436" target="_blank" rel="noopener">Webpack</a>, <a href="https://webpack.css88.com/" target="_blank" rel="noopener">中文文档</a></li>
+<li>Rollup</li>
+<li><a href="https://www.html.cn/doc/parcel/" target="_blank" rel="noopener">Parcel</a></li>
+</ul>
+<p>顺便说一下，学习所有这些工具并不重要，对于初学者来说，只需学习 npm 和 Webpack 应该足够了。 一旦您对 Web 开发和 React 生态有了更多的了解，您就可以探索其他工具了。<br>如果您想学习 Webpack ，那么 <a href="https://ke.qq.com/course/334441" target="_blank" rel="noopener">【专题课】从0到1深度理解webpack</a> 是一个很好的开始。<br><a name="4eaqT"></a></p>
+<h2 id="5）样式（Styling）"><a href="#5）样式（Styling）" class="headerlink" title="5）样式（Styling）"></a>5）样式（Styling）</h2><p>如果您的目标是成为像 React 开发人员这样的前端开发人员，那么了解一些 样式（Styling）相关的知识非常有必要。 线路图中提到了很多东西，比如：</p>
+<ul>
+<li>CSS 预处理</li>
+<li><a href="https://www.html.cn/doc/sass/" target="_blank" rel="noopener">Sass/SCSS</a></li>
+<li><a href="https://postcss.org/" target="_blank" rel="noopener">PostCSS</a></li>
+<li><a href="http://lesscss.org/" target="_blank" rel="noopener">Less</a></li>
+<li><a href="http://stylus-lang.com/" target="_blank" rel="noopener">Stylus</a></li>
+<li>CSS 框架</li>
+<li><a href="https://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap</a></li>
+<li><a href="https://materializecss.com/" target="_blank" rel="noopener">Materialize</a>、<a href="https://material-ui.com/" target="_blank" rel="noopener">MaterialUI</a>、<a href="https://getmdl.io/" target="_blank" rel="noopener">Material Design Lite</a></li>
+<li><a href="https://bulma.io/" target="_blank" rel="noopener">Bulma</a></li>
+<li><a href="https://semantic-ui.com/" target="_blank" rel="noopener">Semantic UI</a></li>
+<li>CSS 架构</li>
+<li><a href="http://getbem.com/" target="_blank" rel="noopener">BEM</a></li>
+<li><a href="https://github.com/css-modules/css-modules" target="_blank" rel="noopener">CSS Modules</a></li>
+<li><a href="https://acss.io/" target="_blank" rel="noopener">Atomic</a></li>
+<li><a href="https://github.com/stubbornella/oocss/wiki" target="_blank" rel="noopener">OOCSS</a></li>
+<li><a href="https://smacss.com/" target="_blank" rel="noopener">SMACSS</a></li>
+<li><a href="https://suitcss.github.io/" target="_blank" rel="noopener">SUITCSS</a></li>
+<li>CSS in JS</li>
+<li><a href="https://www.styled-components.com/" target="_blank" rel="noopener">Styled Components</a></li>
+<li><a href="https://formidable.com/open-source/radium/" target="_blank" rel="noopener">Radium</a></li>
+<li><a href="https://emotion.sh/" target="_blank" rel="noopener">Emotion</a></li>
+<li><a href="http://cssinjs.org/" target="_blank" rel="noopener">JSS</a></li>
+<li><a href="https://github.com/Khan/aphrodite" target="_blank" rel="noopener">Aphrodite</a></li>
+</ul>
+<p>看到蒙了是吧，这么多东西？不用担心，你不必学会每一样技能，根据你团队情况和个人喜好，每种学习一样就好，其他都类似，掌握应该不难。<br><a name="eyohB"></a></p>
+<h2 id="6）State-状态-管理"><a href="#6）State-状态-管理" class="headerlink" title="6）State(状态) 管理"></a>6）State(状态) 管理</h2><p>这是 React 开发人员关注的另一个重要领域。注：很多人都说 React 其实很简单，只要懂得 2 件事情，就是 Prop(属性) 和 State(状态)，可见 State(状态) 管理 的重要性。 路线图提到了要掌握的以下概念和框架：</p>
+<ul>
+<li><a href="https://react.css88.com/docs/faq-state.html" target="_blank" rel="noopener">Component State</a> / <a href="https://react.css88.com/docs/context.html" target="_blank" rel="noopener">Context API</a></li>
+<li><a href="https://redux.js.org/" target="_blank" rel="noopener">Redux</a></li>
+<li>异步 actions (副作用)</li>
+<li><a href="https://github.com/reduxjs/redux-thunk" target="_blank" rel="noopener">Redux Thunk</a></li>
+<li><a href="https://github.com/Lukasz-pluszczewski/redux-better-promise" target="_blank" rel="noopener">Redux Better Promise</a></li>
+<li><a href="https://redux-saga.js.org/" target="_blank" rel="noopener">Redux Saga</a></li>
+<li><a href="https://redux-observable.js.org/" target="_blank" rel="noopener">Redux Observable</a></li>
+<li>数据持久化</li>
+<li><a href="https://github.com/rt2zz/redux-persist" target="_blank" rel="noopener">Redux Persist</a></li>
+<li><a href="https://github.com/adam-golab/redux-phoenix" target="_blank" rel="noopener">Redux Phoenix</a></li>
+<li><a href="https://redux-form.com/" target="_blank" rel="noopener">Redux Form</a></li>
+<li><a href="https://mobx.js.org/" target="_blank" rel="noopener">MobX</a></li>
+</ul>
+<p>如果这对你来说太多了的话，我建议你首先只关注 Redux ，因为 Redux 是目前应用最广泛的 React 状态（State）管理库，等有了一定的经验之后再学习其他内容。<br><a name="ClTp2"></a></p>
+<h2 id="7）类型检查"><a href="#7）类型检查" class="headerlink" title="7）类型检查"></a>7）类型检查</h2><p>由于 JavaScript 是一种弱类型语言，弱（或松散）类型的语言不强制执行对象的类型。这允许更多的灵活性，但是又将类型安全和类型检查拒之门外。所以编译器无法捕捉这些与类型相关的 bug 。<br>随着应用程序的增长，您可以通过类型检查捕获大量错误，特别是如果您可以使用 JavaScript 扩展语言(如 Flow 或 <a href="https://www.html.cn/doc/typescript/" target="_blank" rel="noopener">TypeScript</a> ) 来对整个应用程序进行类型检查的话。<br>但即使你不使用它们，React 也有一些 <a href="https://react.css88.com/docs/static-type-checking.html" target="_blank" rel="noopener">内置的类型检查功能</a> ，学习它们可以帮助你尽早发现 bug 。<br>TypeScript 如今增长势头很猛，并且 TypeScript 也可以编写 Angular 和 Vue 等应用，所以我认为 TypeScript 值得我们学习。<br><a name="Qwffg"></a></p>
+<h2 id="8）表单"><a href="#8）表单" class="headerlink" title="8）表单"></a>8）表单</h2><p>除了类型检查之外，还可以学习像 <a href="https://redux-form.com/" target="_blank" rel="noopener">Redux Form</a> 这样的表单助手，它提供了在 Redux 中管理表单状态的最佳方法。<br>除了Redux Form之外，您还可以查看：</p>
+<ul>
+<li><p><a href="https://github.com/jaredpalmer/formik" target="_blank" rel="noopener">Formik</a></p>
+</li>
+<li><p><a href="https://github.com/formsy/formsy-react" target="_blank" rel="noopener">Formsy</a></p>
+</li>
+<li><p><a href="https://github.com/final-form/final-form" target="_blank" rel="noopener">Final Form</a><br><a name="b8OBS"></a></p>
+<h2 id="9）路由"><a href="#9）路由" class="headerlink" title="9）路由"></a>9）路由</h2><p>组件是 React 功能强大的声明性编程模型的核心，而路由组件是任何应用程序的重要组成部分。<br><a href="https://reacttraining.com/react-router/" target="_blank" rel="noopener">React-Router</a> 提供了一组导航组件，这些组件与您的应用程序以声明方式组合。<br>无论您是希望为Web应用程序设置可收藏的 URL 还是在 React Native 中导航的可组合方式，React Router 都可以在 React 渲染的任何位置工作。<br>除了 React-Router 之外，您还可以查看：</p>
+</li>
+<li><p><a href="https://router5.js.org/" target="_blank" rel="noopener">Router5</a></p>
+</li>
+<li><p><a href="https://github.com/faceyspacey/redux-first-router" target="_blank" rel="noopener">Redux-First Router</a></p>
+</li>
+<li><p><a href="https://reach.tech/router/" target="_blank" rel="noopener">Reach Router</a><br><a name="QRyEp"></a></p>
+<h2 id="10）API-客户端"><a href="#10）API-客户端" class="headerlink" title="10）API 客户端"></a>10）API 客户端</h2><p>当今，您很少会去构建一个独立的 GUI ，相反，您将有更多机会使用 REST 和 GraphQL 等API构建与其他应用程序通信的应用。<br>值得庆幸的是，React 开发人员可以使用许多API客户端，以下是它们的列表：</p>
+</li>
+<li><p>REST</p>
+</li>
+<li><p><a href="https://www.html.cn/archives/9907" target="_blank" rel="noopener">Fetch</a></p>
+</li>
+<li><p><a href="https://visionmedia.github.io/superagent/" target="_blank" rel="noopener">SuperAgent</a></p>
+</li>
+<li><p><a href="https://github.com/axios/axios" target="_blank" rel="noopener">axios</a></p>
+</li>
+<li><p>GraphQL</p>
+</li>
+<li><p><a href="https://www.apollographql.com/docs/react/" target="_blank" rel="noopener">Apollo</a></p>
+</li>
+<li><p><a href="https://facebook.github.io/relay/" target="_blank" rel="noopener">Relay</a></p>
+</li>
+<li><p><a href="https://github.com/FormidableLabs/urql" target="_blank" rel="noopener">urql</a></p>
+</li>
+</ul>
+<p>REST API 方面，国内目前很多人使用 Axios，理由也很简单，它确实简单好用，再加上 Vue2.0之后，尤大大推荐大家用 axios 。Axios 本质上也是对原生 XHR 的封装，和 jQuery Ajax 类似，只不过它是Promise 的实现版本，符合最新的 ES 规范，从它的官网上可以看到它有以下几条特性：</p>
+<ul>
+<li>从 node.js 创建 http 请求</li>
+<li>支持 Promise API</li>
+<li>客户端支持防止CSRF</li>
+<li>提供了一些并发请求的接口（重要，方便了很多的操作）</li>
+</ul>
+<p>Fetch API（ES6+）执行对 REST API 的 HTTP请求，提供了一个获取资源的接口（包括跨域）。任何使用过 XMLHttpRequest 的人都能轻松上手，但新的API提供了更强大和灵活的功能集。Fetch 提供了对 Request 和 Response （以及其他与网络请求有关的）对象的通用定义。使之今后可以被使用到更多地应用场景中：无论是service workers、Cache API、又或者是其他处理请求和响应的方式，甚至是任何一种需要你自己在程序中生成响应的方式。它还提供了一种定义，将 CORS 和 HTTP 原生的头信息结合起来，取代了原来那种分离的定义。实际工作中，很多前端开发工程师觉得 Fetch API 使用起来不是很方便，而且代码丑陋，其实只是我们平常没用太多跟底层的东西。Fetch API 的优势主要优势也在于它更加底层：</p>
+<ul>
+<li>更加底层，提供的API丰富（request, response）</li>
+<li>脱离了XHR，是ES规范里新的实现方式</li>
+</ul>
+<p>GraphQL 方面推荐 Apollo 。Apollo 客户端是我的最爱，它提供了一种使用GraphQL构建客户端应用程序的简便方法。 该客户端旨在帮助您快速构建一个使用GraphQL获取数据并可与任何JavaScript前端一起使用的 UI 。<br><a name="AOtDG"></a></p>
+<h2 id="11）实用程序库（Utility-Libraries）"><a href="#11）实用程序库（Utility-Libraries）" class="headerlink" title="11）实用程序库（Utility Libraries）"></a>11）实用程序库（Utility Libraries）</h2><p>这些库使您的工作更轻松。 React 开发人员可以使用许多实用程序库，如下所示：</p>
+<ul>
+<li><a href="https://www.html.cn/doc/lodash/" target="_blank" rel="noopener">Lodash</a> 、<a href="https://www.html.cn/doc/underscore/" target="_blank" rel="noopener">Underscore.js</a></li>
+<li><a href="https://momentjs.com/" target="_blank" rel="noopener">Moment</a></li>
+<li><a href="https://github.com/JedWatson/classnames" target="_blank" rel="noopener">classnames</a></li>
+<li><a href="http://numeraljs.com/" target="_blank" rel="noopener">Numeral</a></li>
+<li><a href="http://reactivex.io/" target="_blank" rel="noopener">RxJS</a></li>
+<li><a href="https://ramdajs.com/" target="_blank" rel="noopener">Ramda</a></li>
+</ul>
+<p>我不建议你学习所有这些，线路图也是如此建议的。如果你仔细观察 Lodash ，Moment 和 Classnames 是用黄色的，说明你应该从这几个开始学习。<br><a name="VDy0R"></a></p>
+<h2 id="12）测试"><a href="#12）测试" class="headerlink" title="12）测试"></a>12）测试</h2><p>注意，这是 React 开发人员的一项重要技能，经常被忽视，但如果你想比其他开发人员更牛逼，那么你应该学习一些测试库。 此外，您还拥有用于单元测试，集成测试和端到端测试的库。<br>以下是路线图中提到的库列表：</p>
+<ul>
+<li>单元测试</li>
+<li><a href="https://facebook.github.io/jest/" target="_blank" rel="noopener">Jest</a></li>
+<li><a href="http://airbnb.io/enzyme/" target="_blank" rel="noopener">Enzyme</a></li>
+<li><a href="http://sinonjs.org/" target="_blank" rel="noopener">Sinon</a></li>
+<li><a href="https://mochajs.org/" target="_blank" rel="noopener">Mocha</a></li>
+<li><a href="http://www.chaijs.com/" target="_blank" rel="noopener">Chai</a></li>
+<li><a href="https://github.com/avajs/ava" target="_blank" rel="noopener">AVA</a></li>
+<li><a href="https://github.com/substack/tape" target="_blank" rel="noopener">Tape</a></li>
+<li>端到端测试</li>
+<li><a href="https://www.seleniumhq.org/" target="_blank" rel="noopener">Selenium</a>, <a href="http://webdriver.io/" target="_blank" rel="noopener">Webdriver</a></li>
+<li><a href="https://cypress.io/" target="_blank" rel="noopener">Cypress</a></li>
+<li><a href="https://pptr.dev/" target="_blank" rel="noopener">Puppeteer</a></li>
+<li><a href="https://github.com/cucumber/cucumber-js" target="_blank" rel="noopener">Cucumber.js</a></li>
+<li>集成测试</li>
+<li><a href="https://karma-runner.github.io/" target="_blank" rel="noopener">Karma</a></li>
+</ul>
+<p>您可以更具你们团队或你个人喜好学习所需的库，但是如果你刚开始学习这一块内容的话，我建议你使用 Jest 。 当然 Mocha 也受到很多开发者的青睐，但是学习曲线相对较陡，但这也说明了它可以提供更好的灵活性和可扩展性。<br><a name="id2xb"></a></p>
+<h2 id="13）国际化"><a href="#13）国际化" class="headerlink" title="13）国际化"></a>13）国际化</h2><p>这是开发前端的另一个重要主题，帮助你的应用可以在全球使用。 您可能需要支持 日本，中国，西班牙和其他欧洲国家的本地 GUI 版本和语言包。<br>线路图建议您学习以下技术：</p>
+<ul>
+<li><a href="https://github.com/yahoo/react-intl" target="_blank" rel="noopener">React Intl</a></li>
+<li><a href="https://react.i18next.com/" target="_blank" rel="noopener">React i18next</a></li>
+</ul>
+<p>这两个库都提供了 React 组件和 API 来格式化日期，数字和字符串，包括复数和处理翻译。<br><a name="SEmI9"></a></p>
+<h2 id="14）服务器端渲染"><a href="#14）服务器端渲染" class="headerlink" title="14）服务器端渲染"></a>14）服务器端渲染</h2><p>您应该知道服务器端渲染和客户端渲染之间的区别，在讨论支持使用 React 的服务器端渲染的库之前，请先弄清楚他们直接的区别。<br>好吧，在客户端渲染中，您的浏览器会下载一个最小的HTML页面。 然后它渲染 JavaScript 并将内容填充到其中。<br>在服务器端呈现的情况下，React组件在服务器上呈现，输出的HTML内容将传递到客户端或浏览器。<br>线路图建议遵循服务器端渲染：</p>
+<ul>
+<li><a href="https://nextjs.org/" target="_blank" rel="noopener">Next.js</a></li>
+<li><a href="https://github.com/jaredpalmer/after.js" target="_blank" rel="noopener">After.js</a></li>
+<li><a href="https://github.com/alidcastano/rogue.js" target="_blank" rel="noopener">Rogue</a></li>
+</ul>
+<p>但是，我建议只学习 Next.js 应该足够了。<br><a name="BOYYr"></a></p>
+<h2 id="15）静态站点生成器"><a href="#15）静态站点生成器" class="headerlink" title="15）静态站点生成器"></a>15）静态站点生成器</h2><p><a href="https://www.gatsbyjs.org/" target="_blank" rel="noopener">Gatsby.js</a> 是一个现代静态站点生成器。 您可以使用 Gatsby 创建个性化的网站。 它们将您的数据与 JavaScript 相结合，并创建格式良好的HTML内容。React 官网就是用 Gatsby.js 生成的。例如：<a href="https://react.css88.com/" target="_blank" rel="noopener">React 中文文档</a><br><a name="2h1fK"></a></p>
+<h2 id="16）后端框架集成"><a href="#16）后端框架集成" class="headerlink" title="16）后端框架集成"></a>16）后端框架集成</h2><p><a href="https://shakacode.gitbooks.io/react-on-rails/content/" target="_blank" rel="noopener">React on Rails</a> 将 Rails 与 Facebook 的 React 前端框架（服务器渲染）集成在一起。 它提供 Server 渲染，通常用于SEO爬虫索引和UX性能，而不是 rails/webpacker 提供的。<br><a name="SH6fl"></a></p>
+<h2 id="17）移动端应用"><a href="#17）移动端应用" class="headerlink" title="17）移动端应用"></a>17）移动端应用</h2><p>这是学习 React 真正有好处的另一个领域，因为 React Native 正迅速成为用 JavaScript 开发原生移动应用程序外观和体验的标准方法。<br>线路图建议您学习以下库：</p>
+<ul>
+<li><a href="https://facebook.github.io/react-native/" target="_blank" rel="noopener">React Native</a></li>
+<li><a href="https://cordova.apache.org/" target="_blank" rel="noopener">Cordova</a>/<a href="https://phonegap.com/" target="_blank" rel="noopener">Phonegap</a></li>
+</ul>
+<p>但是，我认为，只要学习 React Native 就足够了。<br><a name="sr7UW"></a></p>
+<h2 id="18）桌面端应用"><a href="#18）桌面端应用" class="headerlink" title="18）桌面端应用"></a>18）桌面端应用</h2><p>还有一些基于 React 的框架来构建像 React Native Windows 这样的桌面 GUI，它允许您使用 React 构建本机 UWP 和 WPF 应用程序。<br>线路图建议使用以下库：</p>
+<ul>
+<li><a href="https://proton-native.js.org/" target="_blank" rel="noopener">Proton Native</a></li>
+<li><a href="https://electronjs.org/" target="_blank" rel="noopener">Electron</a></li>
+<li><a href="https://github.com/Microsoft/react-native-windows" target="_blank" rel="noopener">React Native Windows</a></li>
+</ul>
+<p>我个人推荐使用 Electron ，还是比较简单方便的，其他我也没用过，还要进一步探索。 如果你已经掌握了 React ，你可以看一下它们。<br><a name="SWAFf"></a></p>
+<h2 id="19）虚拟现实"><a href="#19）虚拟现实" class="headerlink" title="19）虚拟现实"></a>19）虚拟现实</h2><p>如果您有兴趣构建基于虚拟现实的应用程序，那么您还有一些像 <a href="https://facebook.github.io/react-360/" target="_blank" rel="noopener">React 360</a> 这样的框架，它允许您使用React 创建 360° 全景体验和VR体验。 如果您对该领域感兴趣，可以进一步探索 React 360 。<br><a name="O0vws"></a></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>这就是2018年的 React 学习线路图。 它确实非常全面，很有可能你在2018年剩下的时间里都不会学到所有这些，但不要担心，所有的技术在2019年仍然有效，你可以放心地将它用作2018年的React 学习线路图。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/15/yuque/js异步发展的流程/" rel="next" title="js异步发展的流程">
+                <i class="fa fa-chevron-left"></i> js异步发展的流程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/16/yuque/git操作---防遗忘/" rel="prev" title="git操作---防遗忘">
+                git操作---防遗忘 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/1916867.png"
+                alt="FangCao" />
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">185</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-React-开发者线路图"><span class="nav-number">1.</span> <span class="nav-text">2018 React 开发者线路图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-基础"><span class="nav-number">2.</span> <span class="nav-text">1) 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML"><span class="nav-number">2.1.</span> <span class="nav-text">HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS"><span class="nav-number">2.2.</span> <span class="nav-text">CSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript"><span class="nav-number">2.3.</span> <span class="nav-text">JavaScript</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2）一般开发技能"><span class="nav-number">3.</span> <span class="nav-text">2）一般开发技能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1）学习-GIT"><span class="nav-number">3.1.</span> <span class="nav-text">2.1）学习 GIT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2）了解-HTTP-S-协议"><span class="nav-number">3.2.</span> <span class="nav-text">2.2）了解 HTTP(S) 协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3）学习终端-terminal"><span class="nav-number">3.3.</span> <span class="nav-text">2.3）学习终端 terminal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4）算法和数据结构"><span class="nav-number">3.4.</span> <span class="nav-text">2.4）算法和数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5）学习设计模式"><span class="nav-number">3.5.</span> <span class="nav-text">2.5）学习设计模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3）学习-React-JS"><span class="nav-number">4.</span> <span class="nav-text">3）学习 React JS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4）学习构建工具"><span class="nav-number">5.</span> <span class="nav-text">4）学习构建工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5）样式（Styling）"><span class="nav-number">6.</span> <span class="nav-text">5）样式（Styling）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6）State-状态-管理"><span class="nav-number">7.</span> <span class="nav-text">6）State(状态) 管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7）类型检查"><span class="nav-number">8.</span> <span class="nav-text">7）类型检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8）表单"><span class="nav-number">9.</span> <span class="nav-text">8）表单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9）路由"><span class="nav-number">10.</span> <span class="nav-text">9）路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10）API-客户端"><span class="nav-number">11.</span> <span class="nav-text">10）API 客户端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11）实用程序库（Utility-Libraries）"><span class="nav-number">12.</span> <span class="nav-text">11）实用程序库（Utility Libraries）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12）测试"><span class="nav-number">13.</span> <span class="nav-text">12）测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13）国际化"><span class="nav-number">14.</span> <span class="nav-text">13）国际化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14）服务器端渲染"><span class="nav-number">15.</span> <span class="nav-text">14）服务器端渲染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15）静态站点生成器"><span class="nav-number">16.</span> <span class="nav-text">15）静态站点生成器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16）后端框架集成"><span class="nav-number">17.</span> <span class="nav-text">16）后端框架集成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17）移动端应用"><span class="nav-number">18.</span> <span class="nav-text">17）移动端应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18）桌面端应用"><span class="nav-number">19.</span> <span class="nav-text">18）桌面端应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19）虚拟现实"><span class="nav-number">20.</span> <span class="nav-text">19）虚拟现实</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">21.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">321.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>

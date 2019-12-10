@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="https://juejin.im/post/5de5be53f265da05c33fcbb4 git源码地址：https://github.com/lanzhsh/react-vue-koa/tree/master/utils-lan 前言前端开发有时会处理一部分后台返回的数据,或者根据数据判断做一些处理;这个时候就非常有必要将一些常用的工具类封装起来;本文根据常用的一些工具类封装了 59 个方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用的 59 个类（项目需要的基础函数）">
+<meta property="og:url" content="http://yoursite.com/2019/12/09/yuque/常用的 59 个类（项目需要的基础函数）/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="https://juejin.im/post/5de5be53f265da05c33fcbb4 git源码地址：https://github.com/lanzhsh/react-vue-koa/tree/master/utils-lan 前言前端开发有时会处理一部分后台返回的数据,或者根据数据判断做一些处理;这个时候就非常有必要将一些常用的工具类封装起来;本文根据常用的一些工具类封装了 59 个方">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-10T06:58:23.023Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用的 59 个类（项目需要的基础函数）">
+<meta name="twitter:description" content="https://juejin.im/post/5de5be53f265da05c33fcbb4 git源码地址：https://github.com/lanzhsh/react-vue-koa/tree/master/utils-lan 前言前端开发有时会处理一部分后台返回的数据,或者根据数据判断做一些处理;这个时候就非常有必要将一些常用的工具类封装起来;本文根据常用的一些工具类封装了 59 个方">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/09/yuque/常用的 59 个类（项目需要的基础函数）/">
+
+
+
+
+
+  <title>常用的 59 个类（项目需要的基础函数） | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/09/yuque/常用的 59 个类（项目需要的基础函数）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">常用的 59 个类（项目需要的基础函数）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-09T16:45:07+08:00">
+                2019-12-09
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-10T14:58:23+08:00">
+                2019-12-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.4k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  22 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://juejin.im/post/5de5be53f265da05c33fcbb4" target="_blank" rel="noopener">https://juejin.im/post/5de5be53f265da05c33fcbb4</a></p>
+<p>git源码地址：<a href="https://github.com/lanzhsh/react-vue-koa/tree/master/utils-lan" target="_blank" rel="noopener">https://github.com/lanzhsh/react-vue-koa/tree/master/utils-lan</a><br><a name="Ti2UI"></a></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前端开发有时会处理一部分后台返回的数据,或者根据数据判断做一些处理;<br>这个时候就非常有必要将一些常用的工具类封装起来;<br>本文根据常用的一些工具类封装了 59 个方法,当然还有很多用的较少前期没有录入,后期持续跟新;<br>源码地址,<a href="https://github.com/lanzhsh/react-vue-koa/tree/master/utils-lan" target="_blank" rel="noopener">utils-lan 源码地址</a>,欢迎 star!
+<a name="2rprP"></a></p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>1.方法一</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm i -S utils-lan  </span><br><span class="line"><span class="keyword">import</span> utils <span class="keyword">from</span> <span class="string">'utils-lan'</span>  </span><br><span class="line"><span class="built_in">console</span>.log(utils.arrJudge([<span class="string">'1'</span>,<span class="string">'2'</span>]))</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>2.方法二<br>git clone <a href="https://github.com/lanzhsh/react-vue-koa/tree/master/utils-lan" target="_blank" rel="noopener">utils-lan 源码地址</a>下来导入项目;<br>3.关于类名<br>是根据字面量来命名的,方法首个驼峰表示所属类型,后面是方法作用;<br>如 arrAndSet 一看就是数组的方法,是处理交集的;<br>如果实在难以忍受,可以采用方法 2,导入本地对项目进行更改.<br><a name="apgx8"></a></p>
+<h1 id="arr"><a href="#arr" class="headerlink" title="arr"></a>arr</h1><p><a name="zNdoz"></a></p>
+<h2 id="1-arrAndSet"><a href="#1-arrAndSet" class="headerlink" title="1.arrAndSet"></a>1.arrAndSet</h2><p>并集</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 数组并集,只支持一维数组</span></span><br><span class="line"><span class="comment"> * @param &#123;Array&#125; arrOne</span></span><br><span class="line"><span class="comment"> * @param &#123;Array&#125; arrTwo</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> arrAndSet = <span class="function">(<span class="params">arrOne, arrTwo</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> arrOne.concat(arrTwo.filter(<span class="function"><span class="params">v</span> =&gt;</span> !arrOne.includes(v)))</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="b1rYX"></a></p>
+<h2 id="2-arrIntersection"><a href="#2-arrIntersection" class="headerlink" title="2.arrIntersection"></a>2.arrIntersection</h2><p>交集</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 数组交集,只支持一维数组</span><br><span class="line"> * @param &#123;Array&#125; arrOne</span><br><span class="line"> * @param &#123;Array&#125; arrTwo</span><br><span class="line"> */</span><br><span class="line">export const arrIntersection = (arrOne, arrTwo) =&gt; &#123;</span><br><span class="line">  return arrOne.filter(v =&gt; arrTwo.includes(v))</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="8pOHI"></a></p>
+<h2 id="3-arrDifference"><a href="#3-arrDifference" class="headerlink" title="3.arrDifference"></a>3.arrDifference</h2><p>差集</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 数组差集,只支持一维数组</span><br><span class="line"> * @param &#123;Array&#125; arrOne</span><br><span class="line"> * @param &#123;Array&#125; arrTwo</span><br><span class="line"> * eg: [1, 2, 3] [2, 4, 5] 差集为[1,3,4,5]</span><br><span class="line"> */</span><br><span class="line">export const arrDifference = (arrOne, arrTwo) =&gt; &#123;</span><br><span class="line">  return arrOne.concat(arrTwo).filter(v =&gt; !arrOne.includes(v) || !arrTwo.includes(v))</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="fOiHZ"></a></p>
+<h2 id="4-arrTwoToArrObj"><a href="#4-arrTwoToArrObj" class="headerlink" title="4.arrTwoToArrObj"></a>4.arrTwoToArrObj</h2><p>两个数组合并成一个数组对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 两个数组合并成一个对象数组,考虑到复杂度,所以目前支持两个一维数组</span><br><span class="line"> * @param &#123;Array&#125; arrOne</span><br><span class="line"> * @param &#123;Array&#125; arrTwo</span><br><span class="line"> * @param &#123;oneKey&#125; oneKey 选填,如果两个都未传,直接以 arrOne 的值作为 key,arrTwo 作为 value</span><br><span class="line"> * @param &#123;twoKey&#125; twoKey</span><br><span class="line"> */</span><br><span class="line">export const arrTwoToArrObj = (arrOne, arrTwo, oneKey, twoKey) =&gt; &#123;</span><br><span class="line">  if(!oneKey&amp;&amp;!twoKey)&#123;</span><br><span class="line">    return arrOne.map((oneKey, i) =&gt; (&#123; [oneKey]:arrTwo[i] &#125;))</span><br><span class="line">    // 或者</span><br><span class="line">   // return Object.assign(&#123;&#125;, arrOne, arrTwo)</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    return arrOne.map((oneKey, i) =&gt; (&#123; oneKey, twoKey: arrTwo[i] &#125;))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="sagfp"></a></p>
+<h2 id="5-arrObjSum"><a href="#5-arrObjSum" class="headerlink" title="5.arrObjSum"></a>5.arrObjSum</h2><p>数组对象求和</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 数组对象求和</span><br><span class="line"> * @param &#123;Object&#125; arrObj 数组对象</span><br><span class="line"> * @param &#123;String&#125; key 数组对应的 key 值</span><br><span class="line"> */</span><br><span class="line">export const arrObjSum = (obj, key) =&gt; &#123;</span><br><span class="line">  return arrObj.reduce((prev, cur) =&gt; prev + cur.key, 0)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="buHtR"></a></p>
+<h2 id="6-arrConcat"><a href="#6-arrConcat" class="headerlink" title="6.arrConcat"></a>6.arrConcat</h2><p>数组合并</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 数组合并,目前合并一维</span><br><span class="line"> * @param &#123;Array&#125; arrOne 数组</span><br><span class="line"> * @param &#123;Array&#125; arrTwo 数组</span><br><span class="line"> */</span><br><span class="line">export const arrConcat = (arrOne, arrTwo) =&gt; &#123;</span><br><span class="line">  return [...arrOne, ...arrTwo]</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="WsgCK"></a></p>
+<h2 id="7-arrSum"><a href="#7-arrSum" class="headerlink" title="7.arrSum"></a>7.arrSum</h2><p>数组求和</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 数组求和</span><br><span class="line"> * @param &#123;Array&#125; arr 数组</span><br><span class="line"> */</span><br><span class="line">export const arrSum = arr =&gt; &#123;</span><br><span class="line">  return arr.reduce((prev, cur)=&gt; &#123;</span><br><span class="line">    return prev + cur</span><br><span class="line">  &#125;, 0)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="P7gtK"></a></p>
+<h2 id="8-arrIncludeValue"><a href="#8-arrIncludeValue" class="headerlink" title="8.arrIncludeValue"></a>8.arrIncludeValue</h2><p>数组是否包含某值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 数组是否包含某值</span><br><span class="line"> * @param &#123;Array&#125; arr 数组</span><br><span class="line"> * @param &#123;&#125;  value 值,目前只支持 String,Number,Boolean</span><br><span class="line"> */</span><br><span class="line">export const arrIncludeValue = (arr,  value) =&gt; &#123;</span><br><span class="line">  return arr.includes( value)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="uwdQg"></a></p>
+<h2 id="9-arrMax"><a href="#9-arrMax" class="headerlink" title="9.arrMax"></a>9.arrMax</h2><p>数组最大值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 数组最大值</span><br><span class="line"> * @param &#123;Array&#125; arr  数组</span><br><span class="line"> */</span><br><span class="line">export const arrMax = arr =&gt; &#123;</span><br><span class="line">  return Math.max(...arr)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="CpZ4l"></a></p>
+<h2 id="10-arrRemoveRepeat"><a href="#10-arrRemoveRepeat" class="headerlink" title="10.arrRemoveRepeat"></a>10.arrRemoveRepeat</h2><p>数组去重</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 数组去重</span><br><span class="line"> * @param &#123;Array&#125; arr  数组</span><br><span class="line"> */</span><br><span class="line">export const arrRemoveRepeat = arr =&gt; &#123;</span><br><span class="line">  return Array.from(new Set(arr))</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="Jh3lj"></a></p>
+<h2 id="11-arrOrderAscend"><a href="#11-arrOrderAscend" class="headerlink" title="11.arrOrderAscend"></a>11.arrOrderAscend</h2><p>数组排序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 数组排序</span><br><span class="line"> * @param &#123;Array&#125; arr  数组</span><br><span class="line"> * @param &#123;Boolean&#125; ascendFlag   升序,默认为 true</span><br><span class="line"> */</span><br><span class="line">export const arrOrderAscend = (arr, ascendFlag=true) =&gt; &#123;</span><br><span class="line">  return arr.sort((a, b) =&gt; &#123;</span><br><span class="line">    return ascendFlag ? a - b : b - a</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="4huDU"></a></p>
+<h2 id="12-arrJudge"><a href="#12-arrJudge" class="headerlink" title="12.arrJudge"></a>12.arrJudge</h2><p>判断是否是数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 判断是否是数组</span><br><span class="line"> * @param &#123;Array&#125;&#125; arr 数组</span><br><span class="line"> */</span><br><span class="line">export const arrJudge = arr =&gt; Array.isArray(arr)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="5cXTH"></a></p>
+<h1 id="check"><a href="#check" class="headerlink" title="check"></a>check</h1><p><a name="QvSVl"></a></p>
+<h2 id="13-checkNum"><a href="#13-checkNum" class="headerlink" title="13.checkNum"></a>13.checkNum</h2><p>判断是否是数字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> *  判断是否是数字</span><br><span class="line"> * @param &#123;Number&#125; data</span><br><span class="line"> */</span><br><span class="line">export const checkNum = data =&gt; /^\d&#123;1,&#125;$/g.test(data)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="cIyx9"></a></p>
+<h2 id="14-checkLetter"><a href="#14-checkLetter" class="headerlink" title="14.checkLetter"></a>14.checkLetter</h2><p>判断是否是字母</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> *  判断是否是字母</span><br><span class="line"> * @param &#123;Number&#125; data</span><br><span class="line"> */</span><br><span class="line">export const checkLetter = data =&gt; /^[a-zA-Z]+$/g.test(data)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="ReKHc"></a></p>
+<h2 id="15-checkLowercaseLetter"><a href="#15-checkLowercaseLetter" class="headerlink" title="15.checkLowercaseLetter"></a>15.checkLowercaseLetter</h2><p>判断是否全部是小写字母</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> *  判断是否全部是小写字母</span><br><span class="line"> * @param &#123;Number&#125; data</span><br><span class="line"> */</span><br><span class="line">export const checkLowercaseLetter = data =&gt; /^[a-z]+$/g.test(data)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="AZzhG"></a></p>
+<h2 id="16-checkCapitalLetter"><a href="#16-checkCapitalLetter" class="headerlink" title="16.checkCapitalLetter"></a>16.checkCapitalLetter</h2><p>判断是否是大写字母</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> *  判断是否是大写字母</span><br><span class="line"> * @param &#123;Number&#125; data</span><br><span class="line"> */</span><br><span class="line">export const checkCapitalLetter = data =&gt; /^[A-Z]+$/g.test(data)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="TxmNU"></a></p>
+<h2 id="17-checkNumOrLetter"><a href="#17-checkNumOrLetter" class="headerlink" title="17.checkNumOrLetter"></a>17.checkNumOrLetter</h2><p>判断是否是字母或数字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 判断是否是字母或数字</span><br><span class="line"> * @param &#123;Number || String&#125; data  字符或数字</span><br><span class="line"> */</span><br><span class="line">export const checkNumOrLetter = data =&gt; /^[0-9a-zA-Z]*$/g.test(data)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="jUOjG"></a></p>
+<h2 id="18-checkChinese"><a href="#18-checkChinese" class="headerlink" title="18.checkChinese"></a>18.checkChinese</h2><p>判断是否是中文</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 判断是否是中文</span><br><span class="line"> * @param &#123;String&#125; data  中文</span><br><span class="line"> */</span><br><span class="line">export const checkChinese = data =&gt; /^[\u4E00-\u9FA5]+$/g.test(data)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="4E6zO"></a></p>
+<h2 id="19-checkChineseNumberLettter"><a href="#19-checkChineseNumberLettter" class="headerlink" title="19.checkChineseNumberLettter"></a>19.checkChineseNumberLettter</h2><p>判断是否是中文，数字或字母</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export const checkChineseNumberLettter = data =&gt; /^[a-zA-Z0-9\u4e00-\u9fa5]+$/g.test(data)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="bE1v8"></a></p>
+<h2 id="20-checkEmail"><a href="#20-checkEmail" class="headerlink" title="20.checkEmail"></a>20.checkEmail</h2><p>判断是否是邮箱地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 判断是否是邮箱地址</span><br><span class="line"> * @param &#123;String&#125; data</span><br><span class="line"> */</span><br><span class="line">export const checkEmail = data =&gt; &#123;</span><br><span class="line">  const reg = /^[a-zA-Z0-9.!#$%&amp;&apos;*+\/=?^_`&#123;|&#125;~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]&#123;0,61&#125;[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]&#123;0,61&#125;[a-zA-Z0-9])?)*$/g</span><br><span class="line">  if (reg.test(data)) return true</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="qIhb5"></a></p>
+<h2 id="21-checkTelphone"><a href="#21-checkTelphone" class="headerlink" title="21.checkTelphone"></a>21.checkTelphone</h2><p>判断是否是手机号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 判断是否是手机号，只要是13,14,15,16,17,18,19开头即可</span><br><span class="line"> * @param &#123;String&#125; data</span><br><span class="line"> */</span><br><span class="line">export const checkTelphone = data =&gt; &#123;</span><br><span class="line">  const reg = /^((\+|00)86)?1[3-9]\d&#123;9&#125;$/g</span><br><span class="line">  if (reg.test(data)) return true</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="t1MP5"></a></p>
+<h2 id="22-checkUrl"><a href="#22-checkUrl" class="headerlink" title="22.checkUrl"></a>22.checkUrl</h2><p>判断是否是正确的网址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 判断是否是正确的网址</span><br><span class="line"> * @param &#123;String&#125; url 网址</span><br><span class="line"> */</span><br><span class="line">export const checkUrl = url =&gt; &#123;</span><br><span class="line">  const a = document.createElement(&apos;a&apos;)</span><br><span class="line">  a.href = url</span><br><span class="line">  return [</span><br><span class="line">    /^(http|https):$/.test(a.protocol),</span><br><span class="line">    a.host,</span><br><span class="line">    a.pathname !== url,</span><br><span class="line">    a.pathname !== `/$&#123;url&#125;`</span><br><span class="line">  ].find(x =&gt; !x) === undefined</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="9U8wC"></a></p>
+<h1 id="client"><a href="#client" class="headerlink" title="client"></a>client</h1><p><a name="POicc"></a></p>
+<h2 id="23-checkBrowser"><a href="#23-checkBrowser" class="headerlink" title="23.checkBrowser"></a>23.checkBrowser</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 判断是浏览器内核</span><br><span class="line"> */</span><br><span class="line">export const checkBrowser = () =&gt; &#123;</span><br><span class="line">  const u = navigator.userAgent;</span><br><span class="line">  const obj = &#123;</span><br><span class="line">    trident: u.indexOf(&quot;Trident&quot;) &gt; -1, //IE内核</span><br><span class="line">    presto: u.indexOf(&quot;Presto&quot;) &gt; -1, //opera内核</span><br><span class="line">    webKit: u.indexOf(&quot;AppleWebKit&quot;) &gt; -1, //苹果、谷歌内核</span><br><span class="line">    gecko: u.indexOf(&quot;Gecko&quot;) &gt; -1 &amp;&amp; u.indexOf(&quot;KHTML&quot;) == -1, //火狐内核</span><br><span class="line">  &#125;</span><br><span class="line">  return Object.keys(obj)[Object.values(obj).indexOf(true)]</span><br><span class="line">&#125;;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="yyzYJ"></a></p>
+<h2 id="24-checkIosAndroidIpad"><a href="#24-checkIosAndroidIpad" class="headerlink" title="24.checkIosAndroidIpad"></a>24.checkIosAndroidIpad</h2><p>判断是终端类型,值有ios,android,iPad</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 判断是终端类型,值有ios,android,iPad</span><br><span class="line"> */</span><br><span class="line">export const checkIosAndroidIpad = () =&gt; &#123;</span><br><span class="line">  const u = navigator.userAgent;</span><br><span class="line">  const obj = &#123;</span><br><span class="line">    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端</span><br><span class="line">    android: u.indexOf(&quot;Android&quot;) &gt; -1 || u.indexOf(&quot;Linux&quot;) &gt; -1, //android终端或者uc浏览器</span><br><span class="line">    iPad: u.indexOf(&quot;iPad&quot;) &gt; -1, //是否iPad</span><br><span class="line">  &#125;</span><br><span class="line">  return Object.keys(obj)[Object.values(obj).indexOf(true)]</span><br><span class="line">&#125;;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="iXEB6"></a></p>
+<h2 id="25-checkWeixinQqUc"><a href="#25-checkWeixinQqUc" class="headerlink" title="25.checkWeixinQqUc"></a>25.checkWeixinQqUc</h2><p>判断是否是微信,qq 或 uc</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 判断是否是微信,qq 或 uc</span><br><span class="line"> */</span><br><span class="line">export const checkWeixinQqUc = () =&gt; &#123;</span><br><span class="line"> </span><br><span class="line">  const u = navigator.userAgent;</span><br><span class="line">  const obj = &#123;</span><br><span class="line">    weixin: u.indexOf(&quot;MicroMessenger&quot;) &gt; -1, //是否微信</span><br><span class="line">    qq: u.match(/QQ/i) == &quot;qq&quot;&amp;&amp;!u.indexOf(&apos;MQQBrowser&apos;) &gt; -1, //是否QQ</span><br><span class="line">    uc: u.indexOf(&apos;UCBrowser&apos;) &gt; -1</span><br><span class="line">  &#125;</span><br><span class="line">  return Object.keys(obj)[Object.values(obj).indexOf(true)]</span><br><span class="line">&#125;;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="bkkN8"></a></p>
+<h2 id="26-checkIsIphoneX"><a href="#26-checkIsIphoneX" class="headerlink" title="26.checkIsIphoneX"></a>26.checkIsIphoneX</h2><p>检查是否是 IphoneX</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 检查是否是 IphoneX</span><br><span class="line"> */</span><br><span class="line">export const checkIsIphoneX = () =&gt; &#123;</span><br><span class="line">  const u = navigator.userAgent;</span><br><span class="line">  const isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);</span><br><span class="line">  if (isIOS &amp;&amp; screen.height &gt;= 812) &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="gwcDr"></a></p>
+<h1 id="file"><a href="#file" class="headerlink" title="file"></a>file</h1><p><a name="fEC2e"></a></p>
+<h2 id="27-fileFormatSize"><a href="#27-fileFormatSize" class="headerlink" title="27.fileFormatSize"></a>27.fileFormatSize</h2><p>格式化文件单位</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 格式化文件单位</span><br><span class="line"> * @param &#123;String || Number&#125; size  文件大小(kb)</span><br><span class="line"> */</span><br><span class="line">export const fileFormatSize = size =&gt; &#123;</span><br><span class="line">  var i</span><br><span class="line">  var unit = [&apos;B&apos;, &apos;KB&apos;, &apos;MB&apos;, &apos;GB&apos;, &apos;TB&apos;, &apos;PB&apos;]</span><br><span class="line">  for (i = 0; i &lt; unit.length &amp;&amp; size &gt;= 1024; i++) &#123;</span><br><span class="line">    size /= 1024</span><br><span class="line">  &#125;</span><br><span class="line">  return (Math.round(size * 100) / 100 || 0) + unit[i]</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="QMVZU"></a></p>
+<h1 id="obj"><a href="#obj" class="headerlink" title="obj"></a>obj</h1><p><a name="QOJ7Z"></a></p>
+<h2 id="28-objIsEqual"><a href="#28-objIsEqual" class="headerlink" title="28.objIsEqual"></a>28.objIsEqual</h2><p>判断两个对象是否相等,目前只支持对象值为简单数据类型的判断</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 判断两个对象是否相等,目前只支持对象值为简单数据类型的判断</span><br><span class="line"> * @param &#123;Object&#125; oneObj  对象</span><br><span class="line"> * @param &#123;Object&#125; twoObj 对象</span><br><span class="line"> */</span><br><span class="line">export const objIsEqual = (oneObj, twoObj) =&gt; &#123;</span><br><span class="line">  const aProps = Object.getOwnPropertyNames(oneObj);</span><br><span class="line">  const bProps = Object.getOwnPropertyNames(twoObj);</span><br><span class="line">        if (aProps.length != bProps.length) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        for (let i = 0; i &lt; aProps.length; i++) &#123;</span><br><span class="line">            let propName = aProps[i];</span><br><span class="line">            let propA = oneObj[propName];</span><br><span class="line">            let propB = twoObj[propName];</span><br><span class="line">            if ( propA !== propB) &#123;</span><br><span class="line">                    return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="3CVQ0"></a></p>
+<h2 id="29-objDeepClone"><a href="#29-objDeepClone" class="headerlink" title="29.objDeepClone"></a>29.objDeepClone</h2><p>对象深度克隆;<br>1.JSON.stringify深度克隆对象;<br>2.无法对函数 、RegExp等特殊对象的克隆;<br>3.会抛弃对象的constructor,所有的构造函数会指向Object;<br>4.对象有循环引用,会报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 对象深度克隆,</span><br><span class="line"> * JSON.stringify深度克隆对象</span><br><span class="line"> * 无法对函数 、RegExp等特殊对象的克隆,</span><br><span class="line"> * 会抛弃对象的constructor,所有的构造函数会指向Object</span><br><span class="line"> * 对象有循环引用,会报错</span><br><span class="line"> * @param &#123;Object&#125;  obj 克隆的对象</span><br><span class="line"> */</span><br><span class="line">export const objDeepClone = obj =&gt; &#123;</span><br><span class="line">  return clone(obj)</span><br><span class="line">&#125;</span><br><span class="line">const isType = (obj, type) =&gt; &#123;</span><br><span class="line">  if (typeof obj !== &apos;object&apos;) return false;</span><br><span class="line">  // 判断数据类型的经典方法：</span><br><span class="line">  const typeString = Object.prototype.toString.call(obj);</span><br><span class="line">  let flag;</span><br><span class="line">  switch (type) &#123;</span><br><span class="line">    case &apos;Array&apos;:</span><br><span class="line">      flag = typeString === &apos;[object Array]&apos;;</span><br><span class="line">      break;</span><br><span class="line">    case &apos;Date&apos;:</span><br><span class="line">      flag = typeString === &apos;[object Date]&apos;;</span><br><span class="line">      break;</span><br><span class="line">    case &apos;RegExp&apos;:</span><br><span class="line">      flag = typeString === &apos;[object RegExp]&apos;;</span><br><span class="line">      break;</span><br><span class="line">    default:</span><br><span class="line">      flag = false;</span><br><span class="line">  &#125;</span><br><span class="line">  return flag;</span><br><span class="line">&#125;;</span><br><span class="line">/**</span><br><span class="line">* deep clone</span><br><span class="line">* @param  &#123;[type]&#125; parent object 需要进行克隆的对象</span><br><span class="line">* @return &#123;[type]&#125;        深克隆后的对象</span><br><span class="line">*/</span><br><span class="line">const clone = parent =&gt; &#123;</span><br><span class="line">  // 维护两个储存循环引用的数组</span><br><span class="line">  const parents = []</span><br><span class="line">  const children = []</span><br><span class="line">  const _clone = parent =&gt; &#123;</span><br><span class="line">    if (parent === null) return null</span><br><span class="line">    if (typeof parent !== &apos;object&apos;) return parent</span><br><span class="line">    let child, proto</span><br><span class="line">    if (isType(parent, &apos;Array&apos;)) &#123;</span><br><span class="line">      // 对数组做特殊处理</span><br><span class="line">      child = []</span><br><span class="line">    &#125; else if (isType(parent, &apos;RegExp&apos;)) &#123;</span><br><span class="line">      // 对正则对象做特殊处理</span><br><span class="line">      child = new RegExp(parent.source, getRegExp(parent))</span><br><span class="line">      if (parent.lastIndex) child.lastIndex = parent.lastIndex</span><br><span class="line">    &#125; else if (isType(parent, &apos;Date&apos;)) &#123;</span><br><span class="line">      // 对Date对象做特殊处理</span><br><span class="line">      child = new Date(parent.getTime())</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      // 处理对象原型</span><br><span class="line">      proto = Object.getPrototypeOf(parent)</span><br><span class="line">      // 利用Object.create切断原型链</span><br><span class="line">      child = Object.create(proto)</span><br><span class="line">    &#125;</span><br><span class="line">    // 处理循环引用</span><br><span class="line">    const index = parents.indexOf(parent)</span><br><span class="line">    if (index !== -1) &#123;</span><br><span class="line">      // 如果父数组存在本对象,说明之前已经被引用过,直接返回此对象</span><br><span class="line">      return children[index]</span><br><span class="line">    &#125;</span><br><span class="line">    parents.push(parent)</span><br><span class="line">    children.push(child)</span><br><span class="line">    for (const i in parent) &#123;</span><br><span class="line">      // 递归</span><br><span class="line">      child[i] = _clone(parent[i])</span><br><span class="line">    &#125;</span><br><span class="line">    return child</span><br><span class="line">  &#125;</span><br><span class="line">  return _clone(parent)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="uhoGg"></a></p>
+<h1 id="storage"><a href="#storage" class="headerlink" title="storage"></a>storage</h1><p><a name="J0Trg"></a></p>
+<h2 id="30-localStorageSet"><a href="#30-localStorageSet" class="headerlink" title="30.localStorageSet"></a>30.localStorageSet</h2><p>localStorage 存贮<br>目前对象值如果是函数 、RegExp等特殊对象存贮会被忽略</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * localStorage 存贮</span><br><span class="line"> * 目前对象值如果是函数 、RegExp等特殊对象存贮会被忽略</span><br><span class="line"> * @param &#123;String&#125; key  属性</span><br><span class="line"> * @param &#123;Object&#125; value 值</span><br><span class="line"> */</span><br><span class="line">export const localStorageSet = (key, value) =&gt; &#123;</span><br><span class="line">  if (typeof (value) === &apos;object&apos;) value = JSON.stringify(value)</span><br><span class="line">  localStorage.setItem(key, value)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="xEZz2"></a></p>
+<h2 id="31-localStorageGet"><a href="#31-localStorageGet" class="headerlink" title="31.localStorageGet"></a>31.localStorageGet</h2><p>localStorage 获取</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * localStorage 获取</span><br><span class="line"> * @param &#123;String&#125; key  属性</span><br><span class="line"> */</span><br><span class="line">export const localStorageGet = (key) =&gt; &#123;</span><br><span class="line">  return JSON.parse(localStorage.getItem(key))</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="l5Y6r"></a></p>
+<h2 id="32-localStorageRemove"><a href="#32-localStorageRemove" class="headerlink" title="32.localStorageRemove"></a>32.localStorageRemove</h2><p>localStorage 移除</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * localStorage 移除</span><br><span class="line"> * @param &#123;String&#125; key  属性</span><br><span class="line"> */</span><br><span class="line">export const localStorageRemove = (key) =&gt; &#123;</span><br><span class="line">  localStorage.removeItem(key)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="8zv9j"></a></p>
+<h2 id="33-localStorageSetExpire"><a href="#33-localStorageSetExpire" class="headerlink" title="33.localStorageSetExpire"></a>33.localStorageSetExpire</h2><p>localStorage 存贮某一段时间失效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * localStorage 存贮某一段时间失效</span><br><span class="line"> * @param &#123;String&#125; key  属性</span><br><span class="line"> * @param &#123;*&#125; value 存贮值</span><br><span class="line"> * @param &#123;String&#125; expire 过期时间,毫秒数</span><br><span class="line"> */</span><br><span class="line">export const localStorageSetExpire = (key, value, expire) =&gt; &#123;</span><br><span class="line">  if (typeof (value) === &apos;object&apos;) value = JSON.stringify(value)</span><br><span class="line">  localStorage.setItem(key, value)</span><br><span class="line">  setTimeout(() =&gt; &#123;</span><br><span class="line">    localStorage.removeItem(key)</span><br><span class="line">  &#125;, expire)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="i1Ase"></a></p>
+<h2 id="34-sessionStorageSet"><a href="#34-sessionStorageSet" class="headerlink" title="34.sessionStorageSet"></a>34.sessionStorageSet</h2><p>sessionStorage 存贮</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * sessionStorage 存贮</span><br><span class="line"> * @param &#123;String&#125; key  属性</span><br><span class="line"> * @param &#123;*&#125; value 值</span><br><span class="line"> */</span><br><span class="line">export const sessionStorageSet = (key, value) =&gt; &#123;</span><br><span class="line">  if (typeof (value) === &apos;object&apos;) value = JSON.stringify(value)</span><br><span class="line">  sessionStorage.setItem(key, value)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="XkIVc"></a></p>
+<h2 id="35-sessionStorageGet"><a href="#35-sessionStorageGet" class="headerlink" title="35.sessionStorageGet"></a>35.sessionStorageGet</h2><p>sessionStorage 获取</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * sessionStorage 获取</span><br><span class="line"> * @param &#123;String&#125; key  属性</span><br><span class="line"> */</span><br><span class="line">export const sessionStorageGet = (key) =&gt; &#123;</span><br><span class="line">  return JSON.parse(sessionStorage.getItem(key))</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="XQ3Jt"></a></p>
+<h2 id="36-sessionStorageRemove"><a href="#36-sessionStorageRemove" class="headerlink" title="36.sessionStorageRemove"></a>36.sessionStorageRemove</h2><p>sessionStorage 删除</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * sessionStorage 删除</span><br><span class="line"> * @param &#123;String&#125; key  属性</span><br><span class="line"> */</span><br><span class="line">export const sessionStorageRemove = (key, value) =&gt; &#123;</span><br><span class="line">  sessionStorage.removeItem(key, value)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="wYNco"></a></p>
+<h2 id="37-sessionStorageSetExpire"><a href="#37-sessionStorageSetExpire" class="headerlink" title="37.sessionStorageSetExpire"></a>37.sessionStorageSetExpire</h2><p>sessionStorage 存贮某一段时间失效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * sessionStorage 存贮某一段时间失效</span><br><span class="line"> * @param &#123;String&#125; key  属性</span><br><span class="line"> * @param &#123;*&#125; value 存贮值</span><br><span class="line"> * @param &#123;String&#125; expire 过期时间,毫秒数</span><br><span class="line"> */</span><br><span class="line">export const sessionStorageSetExpire = (key, value, expire) =&gt; &#123;</span><br><span class="line">  if (typeof (value) === &apos;object&apos;) value = JSON.stringify(value)</span><br><span class="line">  sessionStorage.setItem(key, value)</span><br><span class="line">  setTimeout(() =&gt; &#123;</span><br><span class="line">    sessionStorage.removeItem(key)</span><br><span class="line">  &#125;, expire)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="KiGAP"></a></p>
+<h2 id="38-cookieSet"><a href="#38-cookieSet" class="headerlink" title="38.cookieSet"></a>38.cookieSet</h2><p>cookie 存贮</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * cookie 存贮</span><br><span class="line"> * @param &#123;String&#125; key  属性</span><br><span class="line"> * @param &#123;*&#125; value  值</span><br><span class="line"> * @param String expire  过期时间,单位天</span><br><span class="line"> */</span><br><span class="line">export const cookieSet = (key, value, expire) =&gt; &#123;</span><br><span class="line">  const d = new Date()</span><br><span class="line">  d.setDate(d.getDate() + expire)</span><br><span class="line">  document.cookie = `$&#123;key&#125;=$&#123;value&#125;;expires=$&#123;d.toGMTString()&#125;`</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="DMplW"></a></p>
+<h2 id="39-cookieGet"><a href="#39-cookieGet" class="headerlink" title="39.cookieGet"></a>39.cookieGet</h2><p>cookie 获取</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * cookie 获取</span><br><span class="line"> * @param &#123;String&#125; key  属性</span><br><span class="line"> */</span><br><span class="line">export const cookieGet = (key) =&gt; &#123;</span><br><span class="line">  const cookieStr = unescape(document.cookie)</span><br><span class="line">  const arr = cookieStr.split(&apos;; &apos;)</span><br><span class="line">  let cookieValue = &apos;&apos;</span><br><span class="line">  for (var i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">    const temp = arr[i].split(&apos;=&apos;)</span><br><span class="line">    if (temp[0] === key) &#123;</span><br><span class="line">      cookieValue = temp[1]</span><br><span class="line">      break</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return cookieValue</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="TO5Rm"></a></p>
+<h2 id="40-cookieRemove"><a href="#40-cookieRemove" class="headerlink" title="40.cookieRemove"></a>40.cookieRemove</h2><p>cookie 删除</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * cookie 删除</span><br><span class="line"> * @param &#123;String&#125; key  属性</span><br><span class="line"> */</span><br><span class="line">export const cookieRemove = (key) =&gt; &#123;</span><br><span class="line">  document.cookie = `$&#123;encodeURIComponent(key)&#125;=;expires=$&#123;new Date()&#125;`</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="vVK5H"></a></p>
+<h1 id="str"><a href="#str" class="headerlink" title="str"></a>str</h1><p><a name="VKAZx"></a></p>
+<h2 id="41-strTrimLeftOrRight"><a href="#41-strTrimLeftOrRight" class="headerlink" title="41.strTrimLeftOrRight"></a>41.strTrimLeftOrRight</h2><p>去掉字符左右空格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 去掉字符左右空格</span><br><span class="line"> * @param &#123;String&#125; str 字符</span><br><span class="line"> */</span><br><span class="line">export const strTrimLeftOrRight = str =&gt; &#123;</span><br><span class="line">  return str.replace(/(^\s*)|(\s*$)/g, &quot;&quot;)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="1Cn0m"></a></p>
+<h2 id="42-strInclude"><a href="#42-strInclude" class="headerlink" title="42.strInclude"></a>42.strInclude</h2><p>判断字符是否包含某值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 判断字符是否包含某值</span><br><span class="line"> * @param &#123;String&#125; str 字符</span><br><span class="line"> * @param &#123;String&#125; value 字符</span><br><span class="line"> */</span><br><span class="line">export const strInclude = (str, value) =&gt; &#123;</span><br><span class="line">  return str.includes(value)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="jj9nt"></a></p>
+<h2 id="43-strBeginWith"><a href="#43-strBeginWith" class="headerlink" title="43.strBeginWith"></a>43.strBeginWith</h2><p>判断字符是否以某个字符开头</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 判断字符是否以某个字符开头</span><br><span class="line"> * @param &#123;String&#125; str 字符</span><br><span class="line"> * @param &#123;String&#125; value 字符</span><br><span class="line"> */</span><br><span class="line">export const strBeginWith = (str, value) =&gt; &#123;</span><br><span class="line">  return str.indexOf(value) === 0</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="POtO1"></a></p>
+<h2 id="44-strReplace"><a href="#44-strReplace" class="headerlink" title="44.strReplace"></a>44.strReplace</h2><p>全局替换某个字符为另一个字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 全局替换某个字符为另一个字符</span><br><span class="line"> * @param &#123;String&#125; str 字符</span><br><span class="line"> * @param &#123;String&#125; valueOne 包含的字符</span><br><span class="line"> * @param &#123;String&#125; valueTwo 要替换的字符,选填</span><br><span class="line"> */</span><br><span class="line">export const strReplace = (str, valueOne, valueTwo) =&gt; &#123;</span><br><span class="line">  return str.replace(new RegExp(valueOne,&apos;g&apos;), valueTwo)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="JHdo2"></a></p>
+<h2 id="45-strToCapital"><a href="#45-strToCapital" class="headerlink" title="45.strToCapital"></a>45.strToCapital</h2><p>将字母全部转化成大写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 将字母全部转化成大写</span><br><span class="line"> * @param &#123;String&#125; str 字符</span><br><span class="line"> */</span><br><span class="line">export const strToCapital = (str) =&gt; &#123;</span><br><span class="line">  return str.toUpperCase()</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="XKEiY"></a></p>
+<h2 id="46-strToLowercase"><a href="#46-strToLowercase" class="headerlink" title="46.strToLowercase"></a>46.strToLowercase</h2><p>将字母全部转化成小写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 将字母全部转化成小写</span><br><span class="line"> * @param &#123;String&#125; str 字符</span><br><span class="line"> */</span><br><span class="line">export const strToLowercase = (str) =&gt; &#123;</span><br><span class="line">  return str.toLowerCase()</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="UJfBR"></a></p>
+<h2 id="47-strToCapitalLetter"><a href="#47-strToCapitalLetter" class="headerlink" title="47.strToCapitalLetter"></a>47.strToCapitalLetter</h2><p>将字母全部转化成以大写开头</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 将字母全部转化成以大写开头</span><br><span class="line"> * @param &#123;String&#125; str 字符</span><br><span class="line"> */</span><br><span class="line">export const strToCapitalLetter = (str) =&gt; &#123;</span><br><span class="line">  const strOne = str.toLowerCase()</span><br><span class="line">  return strOne.charAt(0).toUpperCase() + strOne.slice(1)</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="7alne"></a></p>
+<h1 id="thrDeb"><a href="#thrDeb" class="headerlink" title="thrDeb"></a>thrDeb</h1><p><a name="28xlS"></a></p>
+<h2 id="48-throttle"><a href="#48-throttle" class="headerlink" title="48.throttle"></a>48.throttle</h2><p>节流</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 节流</span><br><span class="line"> * @param &#123;*&#125; func 执行函数</span><br><span class="line"> * @param &#123;*&#125; delay 节流时间,毫秒</span><br><span class="line"> */</span><br><span class="line">export const throttle = function(func, delay) &#123;</span><br><span class="line">  let timer = null</span><br><span class="line">  return function() &#123;</span><br><span class="line">    if (!timer) &#123;</span><br><span class="line">      timer = setTimeout(() =&gt; &#123;</span><br><span class="line">        func.apply(this, arguments)</span><br><span class="line">        // 或者直接 func()</span><br><span class="line">        timer = null</span><br><span class="line">      &#125;, delay)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="WtTuP"></a></p>
+<h2 id="49-debounce"><a href="#49-debounce" class="headerlink" title="49.debounce"></a>49.debounce</h2><p>防抖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 防抖</span><br><span class="line"> * @param &#123;*&#125; fn 执行函数</span><br><span class="line"> * @param &#123;*&#125; wait 防抖时间,毫秒</span><br><span class="line"> */</span><br><span class="line">export const debounce = function(fn, wait) &#123;</span><br><span class="line">  let timeout = null</span><br><span class="line">  return function() &#123;</span><br><span class="line">    if (timeout !== null) clearTimeout(timeout)// 如果多次触发将上次记录延迟清除掉</span><br><span class="line">    timeout = setTimeout(() =&gt; &#123;</span><br><span class="line">      fn.apply(this, arguments)</span><br><span class="line">      // 或者直接 fn()</span><br><span class="line">      timeout = null</span><br><span class="line">    &#125;, wait)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="JBbJj"></a></p>
+<h1 id="time"><a href="#time" class="headerlink" title="time"></a>time</h1><p><a name="z0S3C"></a></p>
+<h2 id="50-getYear"><a href="#50-getYear" class="headerlink" title="50.getYear"></a>50.getYear</h2><p>获取年份</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 获取年份</span><br><span class="line"> */</span><br><span class="line">export const getYear = () =&gt; &#123;</span><br><span class="line">  return new Date().getFullYear()</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="9MTc8"></a></p>
+<h2 id="51-getMonth"><a href="#51-getMonth" class="headerlink" title="51.getMonth"></a>51.getMonth</h2><p>获取月份</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 获取当前月份</span><br><span class="line"> * @param &#123;Boolean&#125; fillFlag 布尔值,是否补 0,默认为 true</span><br><span class="line"> */</span><br><span class="line">export const getMonth = (fillFlag=true) =&gt; &#123;</span><br><span class="line">  const mon = new Date().getMonth() + 1</span><br><span class="line">  const monRe = mon</span><br><span class="line">  if (fillFlag) mon &lt; 10 ? `0$&#123;mon&#125;` : mon</span><br><span class="line">  return monRe</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="sPD9R"></a></p>
+<h2 id="52-getDay"><a href="#52-getDay" class="headerlink" title="52.getDay"></a>52.getDay</h2><p>获取日</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 获取日</span><br><span class="line"> * @param &#123;Boolean&#125; fillFlag 布尔值,是否补 0</span><br><span class="line"> */</span><br><span class="line">export const getDay = (fillFlag=true) =&gt; &#123;</span><br><span class="line">  const day = new Date().getDate()</span><br><span class="line">  const dayRe = day</span><br><span class="line">  if (fillFlag) day &lt; 10 ? `0$&#123;day&#125;` : day</span><br><span class="line">  return dayRe</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="CjeON"></a></p>
+<h2 id="53-getWhatDay"><a href="#53-getWhatDay" class="headerlink" title="53.getWhatDay"></a>53.getWhatDay</h2><p>星期几</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 获取星期几</span><br><span class="line"> */</span><br><span class="line">export const getWhatDay = () =&gt; &#123;</span><br><span class="line">  return new Date().getDay() ? new Date().getDay() : 7</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="6mFFb"></a></p>
+<h2 id="54-getMonthNum"><a href="#54-getMonthNum" class="headerlink" title="54.getMonthNum"></a>54.getMonthNum</h2><p>获取当前月天数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 获取当前月天数</span><br><span class="line"> * @param &#123;String&#125; year 年份</span><br><span class="line"> * @param &#123;String&#125; month 月份</span><br><span class="line"> */</span><br><span class="line">export const getMonthNum = (year, month) =&gt; &#123;</span><br><span class="line">  var d = new Date(year, month, 0)</span><br><span class="line">  return d.getDate()</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="4J8xG"></a></p>
+<h2 id="55-getYyMmDdHhMmSs"><a href="#55-getYyMmDdHhMmSs" class="headerlink" title="55.getYyMmDdHhMmSs"></a>55.getYyMmDdHhMmSs</h2><p>获取当前时间 yyyy-mm-dd,hh:mm:ss</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 获取当前时间 yyyy-mm-dd,hh:mm:ss</span><br><span class="line"> */</span><br><span class="line">export const getYyMmDdHhMmSs = () =&gt; &#123;</span><br><span class="line">  const date = new Date()</span><br><span class="line">  const year = date.getFullYear()</span><br><span class="line">  const month = date.getMonth() + 1</span><br><span class="line">  const day = date.getDate()</span><br><span class="line">  const hours = date.getHours()</span><br><span class="line">  const minu = date.getMinutes()</span><br><span class="line">  const second = date.getSeconds()</span><br><span class="line">  const arr = [month, day, hours, minu, second]</span><br><span class="line">  arr.forEach(item =&gt; &#123;</span><br><span class="line">    item &lt; 10 ? &apos;0&apos; + item : item</span><br><span class="line">  &#125;)</span><br><span class="line">  return (</span><br><span class="line">    year +</span><br><span class="line">    &apos;-&apos; +</span><br><span class="line">    arr[0] +</span><br><span class="line">    &apos;-&apos; +</span><br><span class="line">    arr[1] +</span><br><span class="line">    &apos; &apos; +</span><br><span class="line">    arr[2] +</span><br><span class="line">    &apos;:&apos; +</span><br><span class="line">    arr[3] +</span><br><span class="line">    &apos;:&apos; +</span><br><span class="line">    arr[4]</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="dZi4C"></a></p>
+<h2 id="56-timesToYyMmDd"><a href="#56-timesToYyMmDd" class="headerlink" title="56.timesToYyMmDd"></a>56.timesToYyMmDd</h2><p>时间戳转化为年月日</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 时间戳转化为年月日</span><br><span class="line"> * @param times 时间戳</span><br><span class="line"> * @param ymd 格式类型(yyyy-mm-dd,yyyy/mm/dd)</span><br><span class="line"> * @param hms 可选,格式类型(hh,hh:mm,hh:mm:ss)</span><br><span class="line"> * @returns &#123;年月日&#125;</span><br><span class="line"> */</span><br><span class="line">export const timesToYyMmDd = (times, ymd,  hms) =&gt; &#123;</span><br><span class="line">  const oDate = new Date(times)</span><br><span class="line">  const oYear = oDate.getFullYear()</span><br><span class="line">  const oMonth = oDate.getMonth() + 1</span><br><span class="line">  const oDay = oDate.getDate()</span><br><span class="line">  const oHour = oDate.getHours()</span><br><span class="line">  const oMin = oDate.getMinutes()</span><br><span class="line">  const oSec = oDate.getSeconds()</span><br><span class="line">  let oTime // 最后拼接时间</span><br><span class="line">  // 年月日格式</span><br><span class="line">  switch (ymd) &#123;</span><br><span class="line">    case &apos;yyyy-mm-dd&apos;:</span><br><span class="line">      oTime = oYear + &apos;-&apos; + getzf(oMonth) + &apos;-&apos; + getzf(oDay)</span><br><span class="line">      break</span><br><span class="line">    case &apos;yyyy/mm/dd&apos;:</span><br><span class="line">      oTime = oYear + &apos;/&apos; + getzf(oMonth) + &apos;/&apos; + getzf(oDay)</span><br><span class="line">      break</span><br><span class="line">  &#125;</span><br><span class="line">  // 时分秒格式</span><br><span class="line">  switch (hms) &#123;</span><br><span class="line">    case &apos;hh&apos;:</span><br><span class="line">      oTime = &apos; &apos;+oTime + getzf(oHour)</span><br><span class="line">      break</span><br><span class="line">    case &apos;hh:mm&apos;:</span><br><span class="line">      oTime = oTime + getzf(oHour) + &apos;:&apos; + getzf(oMin)</span><br><span class="line">      break</span><br><span class="line">    case &apos;hh:mm:ss&apos;:</span><br><span class="line">      oTime = oTime + getzf(oHour) + &apos;:&apos; + getzf(oMin) + &apos;:&apos; + getzf(oSec)</span><br><span class="line">      break</span><br><span class="line">  &#125;</span><br><span class="line">  return oTime</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="AD1UG"></a></p>
+<h2 id="57-YyMmDdToTimes"><a href="#57-YyMmDdToTimes" class="headerlink" title="57.YyMmDdToTimes"></a>57.YyMmDdToTimes</h2><p>将年月日转化成时间戳</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 将年月日转化成时间戳</span><br><span class="line"> * @param &#123;String&#125; time yyyy/mm/dd 或yyyy-mm-dd 或yyyy-mm-dd hh:mm 或yyyy-mm-dd hh:mm:ss</span><br><span class="line"> */</span><br><span class="line">export const YyMmDdToTimes = (time) =&gt; &#123;</span><br><span class="line">  return new Date(time.replace(/-/g, &apos;/&apos;)).getTime()</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="UVtIf"></a></p>
+<h2 id="58-compareTimeOneLessTwo"><a href="#58-compareTimeOneLessTwo" class="headerlink" title="58.compareTimeOneLessTwo"></a>58.compareTimeOneLessTwo</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> *  比较时间 1 小于时间 2</span><br><span class="line"> * @param &#123;String&#125; timeOne  时间 1</span><br><span class="line"> * @param &#123;String&#125; timeTwo  时间 2</span><br><span class="line"> */</span><br><span class="line">export const compareTimeOneLessTwo = (timeOne, timeTwo) =&gt; &#123;</span><br><span class="line">  // 判断 timeOne 和 timeTwo 是否</span><br><span class="line">  return new Date(timeOne.replace(/-/g, &apos;/&apos;)).getTime()&lt;new Date(timeTwo.replace(/-/g, &apos;/&apos;)).getTime()</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="VKIlL"></a></p>
+<h1 id="url"><a href="#url" class="headerlink" title="url"></a>url</h1><p><a name="kNSov"></a></p>
+<h2 id="59-getQueryString"><a href="#59-getQueryString" class="headerlink" title="59.getQueryString"></a>59.getQueryString</h2><p>获取 url 后面通过?传参的参数<del>~</del></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> *  获取 url 后面通过?传参的参数</span><br><span class="line"> * @param &#123;String&#125; name</span><br><span class="line"> */</span><br><span class="line">export function getQueryString(name) &#123;</span><br><span class="line">  const reg = new RegExp(&apos;(^|&amp;)&apos; + name + &apos;=([^&amp;]*)(&amp;|$)&apos;, &apos;i&apos;)</span><br><span class="line">  const url = window.location.href</span><br><span class="line">  const search = url.substring(url.lastIndexOf(&apos;?&apos;) + 1)</span><br><span class="line">  const r = search.match(reg)</span><br><span class="line">  if (r != null) return unescape(r[2])</span><br><span class="line">  return null</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><a name="fmTwb"></a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>码字不易,持续更新中,欢迎 start!</p>
+<p>作者：火狼1<br>链接：<a href="https://juejin.im/post/5de5be53f265da05c33fcbb4" target="_blank" rel="noopener">https://juejin.im/post/5de5be53f265da05c33fcbb4</a><br>来源：掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/01/yuque/推荐 3 个超赞的图表工具，让你0基础做出大神级可视化图表/" rel="next" title="推荐 3 个超赞的图表工具，让你0基础做出大神级可视化图表">
+                <i class="fa fa-chevron-left"></i> 推荐 3 个超赞的图表工具，让你0基础做出大神级可视化图表
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/09/yuque/你需掌握的CSS知识都在这/" rel="prev" title="你需掌握的CSS知识都在这">
+                你需掌握的CSS知识都在这 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">185</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#arr"><span class="nav-number">3.</span> <span class="nav-text">arr</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-arrAndSet"><span class="nav-number">3.1.</span> <span class="nav-text">1.arrAndSet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-arrIntersection"><span class="nav-number">3.2.</span> <span class="nav-text">2.arrIntersection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-arrDifference"><span class="nav-number">3.3.</span> <span class="nav-text">3.arrDifference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-arrTwoToArrObj"><span class="nav-number">3.4.</span> <span class="nav-text">4.arrTwoToArrObj</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-arrObjSum"><span class="nav-number">3.5.</span> <span class="nav-text">5.arrObjSum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-arrConcat"><span class="nav-number">3.6.</span> <span class="nav-text">6.arrConcat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-arrSum"><span class="nav-number">3.7.</span> <span class="nav-text">7.arrSum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-arrIncludeValue"><span class="nav-number">3.8.</span> <span class="nav-text">8.arrIncludeValue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-arrMax"><span class="nav-number">3.9.</span> <span class="nav-text">9.arrMax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-arrRemoveRepeat"><span class="nav-number">3.10.</span> <span class="nav-text">10.arrRemoveRepeat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-arrOrderAscend"><span class="nav-number">3.11.</span> <span class="nav-text">11.arrOrderAscend</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-arrJudge"><span class="nav-number">3.12.</span> <span class="nav-text">12.arrJudge</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#check"><span class="nav-number">4.</span> <span class="nav-text">check</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#13-checkNum"><span class="nav-number">4.1.</span> <span class="nav-text">13.checkNum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-checkLetter"><span class="nav-number">4.2.</span> <span class="nav-text">14.checkLetter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-checkLowercaseLetter"><span class="nav-number">4.3.</span> <span class="nav-text">15.checkLowercaseLetter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-checkCapitalLetter"><span class="nav-number">4.4.</span> <span class="nav-text">16.checkCapitalLetter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-checkNumOrLetter"><span class="nav-number">4.5.</span> <span class="nav-text">17.checkNumOrLetter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-checkChinese"><span class="nav-number">4.6.</span> <span class="nav-text">18.checkChinese</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-checkChineseNumberLettter"><span class="nav-number">4.7.</span> <span class="nav-text">19.checkChineseNumberLettter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-checkEmail"><span class="nav-number">4.8.</span> <span class="nav-text">20.checkEmail</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-checkTelphone"><span class="nav-number">4.9.</span> <span class="nav-text">21.checkTelphone</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-checkUrl"><span class="nav-number">4.10.</span> <span class="nav-text">22.checkUrl</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#client"><span class="nav-number">5.</span> <span class="nav-text">client</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#23-checkBrowser"><span class="nav-number">5.1.</span> <span class="nav-text">23.checkBrowser</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24-checkIosAndroidIpad"><span class="nav-number">5.2.</span> <span class="nav-text">24.checkIosAndroidIpad</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-checkWeixinQqUc"><span class="nav-number">5.3.</span> <span class="nav-text">25.checkWeixinQqUc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#26-checkIsIphoneX"><span class="nav-number">5.4.</span> <span class="nav-text">26.checkIsIphoneX</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#file"><span class="nav-number">6.</span> <span class="nav-text">file</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#27-fileFormatSize"><span class="nav-number">6.1.</span> <span class="nav-text">27.fileFormatSize</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#obj"><span class="nav-number">7.</span> <span class="nav-text">obj</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#28-objIsEqual"><span class="nav-number">7.1.</span> <span class="nav-text">28.objIsEqual</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#29-objDeepClone"><span class="nav-number">7.2.</span> <span class="nav-text">29.objDeepClone</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#storage"><span class="nav-number">8.</span> <span class="nav-text">storage</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#30-localStorageSet"><span class="nav-number">8.1.</span> <span class="nav-text">30.localStorageSet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#31-localStorageGet"><span class="nav-number">8.2.</span> <span class="nav-text">31.localStorageGet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#32-localStorageRemove"><span class="nav-number">8.3.</span> <span class="nav-text">32.localStorageRemove</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#33-localStorageSetExpire"><span class="nav-number">8.4.</span> <span class="nav-text">33.localStorageSetExpire</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#34-sessionStorageSet"><span class="nav-number">8.5.</span> <span class="nav-text">34.sessionStorageSet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#35-sessionStorageGet"><span class="nav-number">8.6.</span> <span class="nav-text">35.sessionStorageGet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#36-sessionStorageRemove"><span class="nav-number">8.7.</span> <span class="nav-text">36.sessionStorageRemove</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#37-sessionStorageSetExpire"><span class="nav-number">8.8.</span> <span class="nav-text">37.sessionStorageSetExpire</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#38-cookieSet"><span class="nav-number">8.9.</span> <span class="nav-text">38.cookieSet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#39-cookieGet"><span class="nav-number">8.10.</span> <span class="nav-text">39.cookieGet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#40-cookieRemove"><span class="nav-number">8.11.</span> <span class="nav-text">40.cookieRemove</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#str"><span class="nav-number">9.</span> <span class="nav-text">str</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#41-strTrimLeftOrRight"><span class="nav-number">9.1.</span> <span class="nav-text">41.strTrimLeftOrRight</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#42-strInclude"><span class="nav-number">9.2.</span> <span class="nav-text">42.strInclude</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#43-strBeginWith"><span class="nav-number">9.3.</span> <span class="nav-text">43.strBeginWith</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#44-strReplace"><span class="nav-number">9.4.</span> <span class="nav-text">44.strReplace</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#45-strToCapital"><span class="nav-number">9.5.</span> <span class="nav-text">45.strToCapital</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#46-strToLowercase"><span class="nav-number">9.6.</span> <span class="nav-text">46.strToLowercase</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#47-strToCapitalLetter"><span class="nav-number">9.7.</span> <span class="nav-text">47.strToCapitalLetter</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#thrDeb"><span class="nav-number">10.</span> <span class="nav-text">thrDeb</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#48-throttle"><span class="nav-number">10.1.</span> <span class="nav-text">48.throttle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#49-debounce"><span class="nav-number">10.2.</span> <span class="nav-text">49.debounce</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#time"><span class="nav-number">11.</span> <span class="nav-text">time</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#50-getYear"><span class="nav-number">11.1.</span> <span class="nav-text">50.getYear</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#51-getMonth"><span class="nav-number">11.2.</span> <span class="nav-text">51.getMonth</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#52-getDay"><span class="nav-number">11.3.</span> <span class="nav-text">52.getDay</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#53-getWhatDay"><span class="nav-number">11.4.</span> <span class="nav-text">53.getWhatDay</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#54-getMonthNum"><span class="nav-number">11.5.</span> <span class="nav-text">54.getMonthNum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#55-getYyMmDdHhMmSs"><span class="nav-number">11.6.</span> <span class="nav-text">55.getYyMmDdHhMmSs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#56-timesToYyMmDd"><span class="nav-number">11.7.</span> <span class="nav-text">56.timesToYyMmDd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#57-YyMmDdToTimes"><span class="nav-number">11.8.</span> <span class="nav-text">57.YyMmDdToTimes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#58-compareTimeOneLessTwo"><span class="nav-number">11.9.</span> <span class="nav-text">58.compareTimeOneLessTwo</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#url"><span class="nav-number">12.</span> <span class="nav-text">url</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#59-getQueryString"><span class="nav-number">12.1.</span> <span class="nav-text">59.getQueryString</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">13.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">321.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>

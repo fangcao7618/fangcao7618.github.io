@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="文不如表，表不如图。我们在工作中经常进行会借助一些表格或者可视化的图表来展示信息。清晰美观的图表不但有利于数据内容的呈现，还能使人印象深刻。 比如，像一些大神的数据可视化表格是这样的：  还有这样的：  不但数据呈现清晰，而且特别美观，逼格非常高。 但你的数据可视化图表是这样的：  事实上，想要做出高大上的数据可视化效果并不难，今天给各位推荐3个数据可视化工具，即使你是小白，也能够在10分钟内制作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="推荐 3 个超赞的图表工具，让你0基础做出大神级可视化图表">
+<meta property="og:url" content="http://yoursite.com/2019/12/01/yuque/推荐 3 个超赞的图表工具，让你0基础做出大神级可视化图表/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="文不如表，表不如图。我们在工作中经常进行会借助一些表格或者可视化的图表来展示信息。清晰美观的图表不但有利于数据内容的呈现，还能使人印象深刻。 比如，像一些大神的数据可视化表格是这样的：  还有这样的：  不但数据呈现清晰，而且特别美观，逼格非常高。 但你的数据可视化图表是这样的：  事实上，想要做出高大上的数据可视化效果并不难，今天给各位推荐3个数据可视化工具，即使你是小白，也能够在10分钟内制作">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508768-1d78ca47-b05c-457c-9aa2-f491309d277b.jpeg#align=left&display=inline&height=406&originHeight=406&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508775-26944b68-0124-4c53-9ceb-918e154e67ab.jpeg#align=left&display=inline&height=852&originHeight=852&originWidth=458&size=0&status=done&style=none&width=458">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508788-3cdb8fdc-4739-4415-8980-78cab67b4db4.jpeg#align=left&display=inline&height=609&originHeight=406&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508778-05c24d96-460b-4b47-a3d6-b1107ce03635.jpeg#align=left&display=inline&height=605&originHeight=403&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508807-8dbcecaf-cbf3-4241-b2bf-a3e74306a392.jpeg#align=left&display=inline&height=606&originHeight=404&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508809-056d115f-752a-4ac2-a459-3390a6189bfd.jpeg#align=left&display=inline&height=1081&originHeight=1081&originWidth=584&size=0&status=done&style=none&width=584">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508807-48651f11-937e-462d-aa0b-0ca34a41fe9c.jpeg#align=left&display=inline&height=608&originHeight=405&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508776-e8b7a730-71a4-40a0-9a14-7c709e2d1de8.jpeg#align=left&display=inline&height=608&originHeight=405&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508763-731b2899-7715-4d68-855d-dc5cc2810554.jpeg#align=left&display=inline&height=605&originHeight=403&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508767-c522683e-f9db-4c1f-947c-e9af150fdf24.jpeg#align=left&display=inline&height=606&originHeight=404&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508770-c4fe48d5-327e-4dbc-8868-4153f3ef24cd.jpeg#align=left&display=inline&height=415&originHeight=415&originWidth=640&size=0&status=done&style=none&width=640">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508809-615c11cf-16ae-4f2f-97dc-7e7ae069a074.jpeg#align=left&display=inline&height=606&originHeight=404&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508785-d9e5cb9e-4a69-43e9-855c-858113732b77.jpeg#align=left&display=inline&height=603&originHeight=402&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508813-fa8910df-0220-4099-9742-f962ee854274.jpeg#align=left&display=inline&height=605&originHeight=403&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508800-1059032d-5d6e-4c5b-8188-5ae09d66f445.jpeg#align=left&display=inline&height=605&originHeight=403&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508796-5cea9bf9-7197-4dd1-bc94-fc0e86ba75c8.jpeg#align=left&display=inline&height=606&originHeight=404&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508810-3fecce85-abf7-41e2-ad52-85fcfea823c9.jpeg#align=left&display=inline&height=353&originHeight=353&originWidth=640&size=0&status=done&style=none&width=640">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508812-c568f5de-083a-4b26-8f02-4e897c2f6581.jpeg#align=left&display=inline&height=608&originHeight=405&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508801-8a484329-3f99-443e-8ec5-944de11197e0.jpeg#align=left&display=inline&height=606&originHeight=404&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508827-5dee703f-1802-4512-b86c-0d1ecd33901d.jpeg#align=left&display=inline&height=602&originHeight=401&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508839-1e2a7c7c-a0fc-479e-aae0-a6151168c6b6.jpeg#align=left&display=inline&height=606&originHeight=404&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508843-1853fa1f-caf5-4b13-a4cd-1dff412ba3b5.jpeg#align=left&display=inline&height=624&originHeight=416&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508805-6af5543d-fb81-49c1-95e5-348e307a9f4f.jpeg#align=left&display=inline&height=297&originHeight=297&originWidth=640&size=0&status=done&style=none&width=640">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508871-05902d73-2671-4ea3-8653-b221152091f3.jpeg#align=left&display=inline&height=606&originHeight=404&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508836-a79fff06-4d69-4d3d-9ecd-bf1772bf92b1.jpeg#align=left&display=inline&height=602&originHeight=401&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508862-b27849ed-927a-453d-b8e2-3a27bd82dfa9.jpeg#align=left&display=inline&height=608&originHeight=405&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508850-c64e4a68-a0f7-47f9-8242-06aca23fb9e9.jpeg#align=left&display=inline&height=603&originHeight=402&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508871-b79b43a4-988b-4d7e-9b35-6bc964ced928.jpeg#align=left&display=inline&height=606&originHeight=404&originWidth=720&size=0&status=done&style=none&width=1080">
+<meta property="og:updated_time" content="2019-12-10T06:58:23.025Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="推荐 3 个超赞的图表工具，让你0基础做出大神级可视化图表">
+<meta name="twitter:description" content="文不如表，表不如图。我们在工作中经常进行会借助一些表格或者可视化的图表来展示信息。清晰美观的图表不但有利于数据内容的呈现，还能使人印象深刻。 比如，像一些大神的数据可视化表格是这样的：  还有这样的：  不但数据呈现清晰，而且特别美观，逼格非常高。 但你的数据可视化图表是这样的：  事实上，想要做出高大上的数据可视化效果并不难，今天给各位推荐3个数据可视化工具，即使你是小白，也能够在10分钟内制作">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508768-1d78ca47-b05c-457c-9aa2-f491309d277b.jpeg#align=left&display=inline&height=406&originHeight=406&originWidth=720&size=0&status=done&style=none&width=1080">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/01/yuque/推荐 3 个超赞的图表工具，让你0基础做出大神级可视化图表/">
+
+
+
+
+
+  <title>推荐 3 个超赞的图表工具，让你0基础做出大神级可视化图表 | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/01/yuque/推荐 3 个超赞的图表工具，让你0基础做出大神级可视化图表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">推荐 3 个超赞的图表工具，让你0基础做出大神级可视化图表</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-01T12:44:48+08:00">
+                2019-12-01
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-10T14:58:23+08:00">
+                2019-12-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>文不如表，表不如图。我们在工作中经常进行会借助一些表格或者可视化的图表来展示信息。<br>清晰美观的图表不但有利于数据内容的呈现，还能使人印象深刻。</p>
+<p>比如，像一些大神的数据可视化表格是这样的：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508768-1d78ca47-b05c-457c-9aa2-f491309d277b.jpeg#align=left&display=inline&height=406&originHeight=406&originWidth=720&size=0&status=done&style=none&width=1080" alt></p>
+<p>还有这样的：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508775-26944b68-0124-4c53-9ceb-918e154e67ab.jpeg#align=left&display=inline&height=852&originHeight=852&originWidth=458&size=0&status=done&style=none&width=458" alt></p>
+<p>不但数据呈现清晰，而且特别美观，逼格非常高。</p>
+<p>但你的数据可视化图表是这样的：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508788-3cdb8fdc-4739-4415-8980-78cab67b4db4.jpeg#align=left&display=inline&height=609&originHeight=406&originWidth=720&size=0&status=done&style=none&width=1080" alt></p>
+<p>事实上，想要做出高大上的数据可视化效果并不难，今天给各位推荐3个数据可视化工具，即使你是小白，也能够在10分钟内制作出高逼格的数据可视化图表。</p>
+<p><a name="nvwrY"></a></p>
+<h2 id="1-文图"><a href="#1-文图" class="headerlink" title="1.文图"></a><strong>1.文图</strong></h2><p>网站：&gt; <a href="https://link.zhihu.com/?target=https%3A//www.wentu.io/" target="_blank" rel="noopener">https://www.wentu.io/</a></p>
+<p>文图是一个「模板式」的在线可视化工具。你可以用它快速制做出专业级可视化数据报告。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508778-05c24d96-460b-4b47-a3d6-b1107ce03635.jpeg#align=left&display=inline&height=605&originHeight=403&originWidth=720&size=0&status=done&style=none&width=1080" alt><br>它的用法太简单了。你只需要 <strong>选择模板 → 导入数据/编辑内容 → 导出/分享</strong> 就可以轻松搞定。</p>
+<p>操作方面的内容我就不多赘述了，它最吸引我的地方是在于：</p>
+<p><a name="h53sn"></a></p>
+<h2 id="01-模板类型主题化"><a href="#01-模板类型主题化" class="headerlink" title="01.模板类型主题化"></a><strong>01.模板类型主题化</strong></h2><p>它的模板数量不多，但每一个报告模板都有自己的主题。整体风格统一，简洁美观。<br><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508807-8dbcecaf-cbf3-4241-b2bf-a3e74306a392.jpeg#align=left&display=inline&height=606&originHeight=404&originWidth=720&size=0&status=done&style=none&width=1080" alt><br>选中模板，所有的内容都会根据模板自动统一颜色：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508809-056d115f-752a-4ac2-a459-3390a6189bfd.jpeg#align=left&display=inline&height=1081&originHeight=1081&originWidth=584&size=0&status=done&style=none&width=584" alt></p>
+<p>整体逼格很高，非常适合用来做工作型的数据分析和汇报。</p>
+<p><a name="p6rWu"></a></p>
+<h2 id="02-图表类型多样化"><a href="#02-图表类型多样化" class="headerlink" title="02.图表类型多样化"></a><strong>02.图表类型多样化</strong></h2><p>作为数据可视化报告，它支持自由增添的图表类型非常多。除了常见的折线图、柱形图，还有显示效果非常赞的「文字云」类型：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508807-48651f11-937e-462d-aa0b-0ca34a41fe9c.jpeg#align=left&display=inline&height=608&originHeight=405&originWidth=720&size=0&status=done&style=none&width=1080" alt><br>专业级别的「散点/气泡图」：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508776-e8b7a730-71a4-40a0-9a14-7c709e2d1de8.jpeg#align=left&display=inline&height=608&originHeight=405&originWidth=720&size=0&status=done&style=none&width=1080" alt><br>甚至还有 省 / 全国 / 世界的地图：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508763-731b2899-7715-4d68-855d-dc5cc2810554.jpeg#align=left&display=inline&height=605&originHeight=403&originWidth=720&size=0&status=done&style=none&width=1080" alt><br>双击图表就可以直接编辑，填充数据后就可以成精美的图表：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508767-c522683e-f9db-4c1f-947c-e9af150fdf24.jpeg#align=left&display=inline&height=606&originHeight=404&originWidth=720&size=0&status=done&style=none&width=1080" alt><br>除此之外。你可以自由的增添文字、形状甚至视频。完善整个数据报告</p>
+<p>所有的图表制作完成后都是动态效果的，可视化效果非常赞。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508770-c4fe48d5-327e-4dbc-8868-4153f3ef24cd.jpeg#align=left&display=inline&height=415&originHeight=415&originWidth=640&size=0&status=done&style=none&width=640" alt></p>
+<p><a name="VR4fh"></a></p>
+<h2 id="03-便捷分享-演示"><a href="#03-便捷分享-演示" class="headerlink" title="03.便捷分享/演示"></a><strong>03.便捷分享/演示</strong></h2><p>制作完数据报告后，你可以根据具体需求，选择不同的方式分享或者展示它。</p>
+<p>比如你可以直接点击「<strong>下载</strong>」保存为 PDF 或者 PNG 格式：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508809-615c11cf-16ae-4f2f-97dc-7e7ae069a074.jpeg#align=left&display=inline&height=606&originHeight=404&originWidth=720&size=0&status=done&style=none&width=1080" alt></p>
+<p>把它当做素材直接插入PPT也会非常赞！</p>
+<p>或者是点击「<strong>分享</strong>」生成链接或者二维码：<br><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508785-d9e5cb9e-4a69-43e9-855c-858113732b77.jpeg#align=left&display=inline&height=603&originHeight=402&originWidth=720&size=0&status=done&style=none&width=1080" alt></p>
+<p>这样在手机上查看效果会更好：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508813-fa8910df-0220-4099-9742-f962ee854274.jpeg#align=left&display=inline&height=605&originHeight=403&originWidth=720&size=0&status=done&style=none&width=1080" alt><br>如果你需要公开演示的你报告，我推荐你制作的时候可以选择「<strong>演示文档</strong>」类型的模板：<br><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508800-1059032d-5d6e-4c5b-8188-5ae09d66f445.jpeg#align=left&display=inline&height=605&originHeight=403&originWidth=720&size=0&status=done&style=none&width=1080" alt><br>这样点击「<strong>播放</strong>」，你的报告就可以跟PPT一样直接演示：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508796-5cea9bf9-7197-4dd1-bc94-fc0e86ba75c8.jpeg#align=left&display=inline&height=606&originHeight=404&originWidth=720&size=0&status=done&style=none&width=1080" alt><br>还保留了动态效果，演示效果简直爆炸：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508810-3fecce85-abf7-41e2-ad52-85fcfea823c9.jpeg#align=left&display=inline&height=353&originHeight=353&originWidth=640&size=0&status=done&style=none&width=640" alt><br>总而言之，有了文图，小白也可以快速制作专业级的数据报告。</p>
+<p><a name="Ve1uG"></a></p>
+<h2 id="2-图表秀"><a href="#2-图表秀" class="headerlink" title="2.图表秀"></a><strong>2.图表秀</strong></h2><p>网站：&gt; <a href="https://link.zhihu.com/?target=https%3A//www.tubiaoxiu.com/" target="_blank" rel="noopener">https://www.tubiaoxiu.com/</a></p>
+<p>图表秀是在线图表制作网站，它<strong>可以帮你快速制作各种传统图表和高级可视化图表。</strong>整体的操作和文图差不多，都可以通过修改模板来完成可视化图表。<br><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508812-c568f5de-083a-4b26-8f02-4e897c2f6581.jpeg#align=left&display=inline&height=608&originHeight=405&originWidth=720&size=0&status=done&style=none&width=1080" alt><br>但图表秀最大的优势在于，<strong>模板更实用，可视化效果更酷炫：</strong><br><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508801-8a484329-3f99-443e-8ec5-944de11197e0.jpeg#align=left&display=inline&height=606&originHeight=404&originWidth=720&size=0&status=done&style=none&width=1080" alt><br>根据不同的行业，图表秀基于实际需求内置了许多类型不同的模板。比如 公<strong>众号分析数据模板、财务总结模板、竞品分析数据模板……</strong></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508827-5dee703f-1802-4512-b86c-0d1ecd33901d.jpeg#align=left&display=inline&height=602&originHeight=401&originWidth=720&size=0&status=done&style=none&width=1080" alt><br>除了可以直接套用，你<strong>还可以参考模板内容来确定和优化你的数据内容。</strong></p>
+<p>什么意思呢？比如说，老板想让我出一份微信运营数据分析，我应该收集哪些内容呢？</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508839-1e2a7c7c-a0fc-479e-aae0-a6151168c6b6.jpeg#align=left&display=inline&height=606&originHeight=404&originWidth=720&size=0&status=done&style=none&width=1080" alt><br>选择公众号运营分析的模板，你就会明白可以从<strong>用户行为分析、用户画像、公众号总体指标分析……</strong>角度入手。</p>
+<p>即使不套用模板，它也可以帮你更好的进行数据分析，是不是非常实用呢？</p>
+<p>除了模板实用之外，图表秀的可视化效果也非常酷炫。</p>
+<p>它采用了「<strong>资源框</strong>」来分割页面。可以让一个页面中同时展示多个图表或者文字元素</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508843-1853fa1f-caf5-4b13-a4cd-1dff412ba3b5.jpeg#align=left&display=inline&height=624&originHeight=416&originWidth=720&size=0&status=done&style=none&width=1080" alt><br>你可以自由的添加「资源框」，新建 图表 / 文字 / 图片信息。你也可以通过「<strong>布局」</strong>快速确定不同内容的分布。</p>
+<p>当然，它的图表样式非常多，全部都是动态效果。可视化的效果非常赞：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508805-6af5543d-fb81-49c1-95e5-348e307a9f4f.jpeg#align=left&display=inline&height=297&originHeight=297&originWidth=640&size=0&status=done&style=none&width=640" alt><br>最赞的一点是，图表数据的导入和分享非常便捷。你可以直接上传 EXCEL 或者 CSV 格式的数据文件，图表就可以自动生成：<br><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508871-05902d73-2671-4ea3-8653-b221152091f3.jpeg#align=left&display=inline&height=606&originHeight=404&originWidth=720&size=0&status=done&style=none&width=1080" alt></p>
+<p>这样，任意的EXCEL数据表格都可以快速导入进行美化，实现可视化。</p>
+<p>总的来说，图表秀操作简单，效果强大。可以帮你快速制作一份酷炫的数据可视化图表。</p>
+<p><a name="gIxLb"></a></p>
+<h2 id="3-创客贴"><a href="#3-创客贴" class="headerlink" title="3.创客贴"></a><strong>3.创客贴</strong></h2><p>网站：&gt; <a href="https://link.zhihu.com/?target=https%3A//www.chuangkit.com/" target="_blank" rel="noopener">https://www.chuangkit.com/</a></p>
+<p>创客贴其实是一个在线平面设计网站。你可以利用它来制作各种精致的图片：<br><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508836-a79fff06-4d69-4d3d-9ecd-bf1772bf92b1.jpeg#align=left&display=inline&height=602&originHeight=401&originWidth=720&size=0&status=done&style=none&width=1080" alt><br>当然，它也是「模板式」操作，只要选择喜欢的模板就可以直接编辑了：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508862-b27849ed-927a-453d-b8e2-3a27bd82dfa9.jpeg#align=left&display=inline&height=608&originHeight=405&originWidth=720&size=0&status=done&style=none&width=1080" alt><br>但是，如果你在模板库中搜索「<strong>数据</strong>」，你就会发现：</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508850-c64e4a68-a0f7-47f9-8242-06aca23fb9e9.jpeg#align=left&display=inline&height=603&originHeight=402&originWidth=720&size=0&status=done&style=none&width=1080" alt><br>它<strong>包含了非常多超赞的数据可视化长图</strong>，显示效果简直堪比「经济学人」中的图表。</p>
+<p>选中模板就可以开始更改，非常方便。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/jpeg/263301/1575175508871-b79b43a4-988b-4d7e-9b35-6bc964ced928.jpeg#align=left&display=inline&height=606&originHeight=404&originWidth=720&size=0&status=done&style=none&width=1080" alt></p>
+<p><strong>严格上来说创客贴不属于数据可视化工具，它不具备数据处理的能力</strong>，无法精确的导入数据。但它胜在效果强大，不需要任何设计基础，也不需要 PS AI 这样的专业图片软件，就能够做出非常惊艳的可视化效果。</p>
+<p>非常适合于数据汇报总结，会让人眼前一亮。</p>
+<p><a name="evGFD"></a></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a><strong>最后</strong></h2><p>今天给各位推荐了 3 个数据可视化工具。它们都是「模板式」操作、「在线式」工具，操作简单，功能强大。如果你想要快速美化图表，完成可视化效果，又觉得学习代码技术太困难。那这些工具非常适合你。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/30/yuque/3D可视化/" rel="next" title="3D可视化">
+                <i class="fa fa-chevron-left"></i> 3D可视化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/09/yuque/常用的 59 个类（项目需要的基础函数）/" rel="prev" title="常用的 59 个类（项目需要的基础函数）">
+                常用的 59 个类（项目需要的基础函数） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">185</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-文图"><span class="nav-number">1.</span> <span class="nav-text">1.文图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#01-模板类型主题化"><span class="nav-number">2.</span> <span class="nav-text">01.模板类型主题化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#02-图表类型多样化"><span class="nav-number">3.</span> <span class="nav-text">02.图表类型多样化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#03-便捷分享-演示"><span class="nav-number">4.</span> <span class="nav-text">03.便捷分享/演示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-图表秀"><span class="nav-number">5.</span> <span class="nav-text">2.图表秀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-创客贴"><span class="nav-number">6.</span> <span class="nav-text">3.创客贴</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">7.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">321.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>

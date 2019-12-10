@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="https://github.com/angel-star/vscode_OpenCV_template_for_Mac/tree/master关于OpenCV的安装我这里就不再赘述了 记得用brew并指定相关版本 安装在安装成功后记得注意看它的提示文字  文章目录 项目目录 c_cpp_properties.json launch.json settings.json task.json Mak">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MAC下 VScode 运行 调试OpenCV 配置（完美解决）">
+<meta property="og:url" content="http://yoursite.com/2019/07/17/yuque/MAC下 VScode 运行 调试OpenCV 配置（完美解决）/index.html">
+<meta property="og:site_name" content="FangCao">
+<meta property="og:description" content="https://github.com/angel-star/vscode_OpenCV_template_for_Mac/tree/master关于OpenCV的安装我这里就不再赘述了 记得用brew并指定相关版本 安装在安装成功后记得注意看它的提示文字  文章目录 项目目录 c_cpp_properties.json launch.json settings.json task.json Mak">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563349461958-cc11a9bd-6b00-4aaa-a69b-3ec839bb63e8.png#align=left&display=inline&height=63&name=image.png&originHeight=126&originWidth=1002&size=124174&status=done&width=501">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563349525815-1ec766c7-956c-4173-b207-958bb8ace7f0.png#align=left&display=inline&height=52&name=image.png&originHeight=104&originWidth=854&size=105147&status=done&width=427">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563349635208-24c733b7-7fbf-4f1a-ba7f-f50c7587aced.png#align=left&display=inline&height=284&originHeight=284&originWidth=420&size=0&status=done&width=420">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563349921526-6fb185bc-9d08-486e-8a7d-17083f1ac64d.png#align=left&display=inline&height=190&name=image.png&originHeight=380&originWidth=972&size=409187&status=done&width=486">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563350039094-9451d5d9-148a-4df5-8fc7-8f9f5947ffbe.png#align=left&display=inline&height=313&name=image.png&originHeight=626&originWidth=880&size=227222&status=done&width=440">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563350063464-c4d59f0d-f15d-4901-a4d4-8092224b6fed.png#align=left&display=inline&height=755&name=image.png&originHeight=1510&originWidth=2558&size=418522&status=done&width=1279">
+<meta property="og:updated_time" content="2019-12-10T06:58:22.983Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MAC下 VScode 运行 调试OpenCV 配置（完美解决）">
+<meta name="twitter:description" content="https://github.com/angel-star/vscode_OpenCV_template_for_Mac/tree/master关于OpenCV的安装我这里就不再赘述了 记得用brew并指定相关版本 安装在安装成功后记得注意看它的提示文字  文章目录 项目目录 c_cpp_properties.json launch.json settings.json task.json Mak">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2019/png/263301/1563349461958-cc11a9bd-6b00-4aaa-a69b-3ec839bb63e8.png#align=left&display=inline&height=63&name=image.png&originHeight=126&originWidth=1002&size=124174&status=done&width=501">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/17/yuque/MAC下 VScode 运行 调试OpenCV 配置（完美解决）/">
+
+
+
+
+
+  <title>MAC下 VScode 运行 调试OpenCV 配置（完美解决） | FangCao</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f6bca865fcf2ff03fc0a96417de90b09";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+<!-- 点击爆炸效果 -->
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">FangCao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!-- echarts -->
+    <script type="text/javascript" src="/js/src/echarts.common.min.js"></script>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/17/yuque/MAC下 VScode 运行 调试OpenCV 配置（完美解决）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="FangCao">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/1916867.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="FangCao">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MAC下 VScode 运行 调试OpenCV 配置（完美解决）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-17T15:41:15+08:00">
+                2019-07-17
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-10T14:58:22+08:00">
+                2019-12-10
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://github.com/angel-star/vscode_OpenCV_template_for_Mac/tree/master" target="_blank" rel="noopener">https://github.com/angel-star/vscode_OpenCV_template_for_Mac/tree/master</a><br>关于OpenCV的安装我这里就不再赘述了 记得用brew并指定相关版本<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563349461958-cc11a9bd-6b00-4aaa-a69b-3ec839bb63e8.png#align=left&display=inline&height=63&name=image.png&originHeight=126&originWidth=1002&size=124174&status=done&width=501" alt="image.png"></p>
+<p>安装<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563349525815-1ec766c7-956c-4173-b207-958bb8ace7f0.png#align=left&display=inline&height=52&name=image.png&originHeight=104&originWidth=854&size=105147&status=done&width=427" alt="image.png"><br><br>在安装成功后记得注意看它的提示文字</p>
+<p><a name="vu39o"></a></p>
+<h3 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h3><ul>
+<li><a href="https://blog.csdn.net/qq_22073849/article/details/88893201#_46" target="_blank" rel="noopener">项目目录</a></li>
+<li><a href="https://blog.csdn.net/qq_22073849/article/details/88893201#c_cpp_propertiesjson_53" target="_blank" rel="noopener">c_cpp_properties.json</a></li>
+<li><a href="https://blog.csdn.net/qq_22073849/article/details/88893201#launchjson_89" target="_blank" rel="noopener">launch.json</a></li>
+<li><a href="https://blog.csdn.net/qq_22073849/article/details/88893201#settingsjson_116" target="_blank" rel="noopener">settings.json</a></li>
+<li><a href="https://blog.csdn.net/qq_22073849/article/details/88893201#taskjson_142" target="_blank" rel="noopener">task.json</a></li>
+<li><a href="https://blog.csdn.net/qq_22073849/article/details/88893201#Makefile_270" target="_blank" rel="noopener">Makefile</a></li>
+<li><a href="https://blog.csdn.net/qq_22073849/article/details/88893201#maincpp_295" target="_blank" rel="noopener">main.cpp</a></li>
+<li><a href="https://blog.csdn.net/qq_22073849/article/details/88893201#_319" target="_blank" rel="noopener">运行</a></li>
+<li><a href="https://blog.csdn.net/qq_22073849/article/details/88893201#_328" target="_blank" rel="noopener">调试</a></li>
+<li><a href="https://blog.csdn.net/qq_22073849/article/details/88893201#_333" target="_blank" rel="noopener">参考文章</a></li>
+</ul>
+<p>在刚刚接触这个IDE的时候，用到了code-runner这款插件，然而经过多次尝试发现它只能运行单个文件，进入到设置(defaultSettings.json)当中不难发现：它的原理也就是帮我们在shell中输入命令而达到编译运行程序的目的。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">	// Set the executor of each language.</span><br><span class="line">	"code-runner.executorMap": &#123;</span><br><span class="line">		"javascript": "node",</span><br><span class="line">		"java": "cd $dir &amp;&amp; javac $fileName &amp;&amp; java $fileNameWithoutExt",</span><br><span class="line">		"c": "cd $dir &amp;&amp; gcc $fileName -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt",</span><br><span class="line">		"cpp": "cd $dir &amp;&amp; g++ $fileName -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt",</span><br><span class="line">		"objective-c": "cd $dir &amp;&amp; gcc -framework Cocoa $fileName -o $fileNameWithoutExt &amp;&amp; $dir$fileNameWithoutExt",</span><br><span class="line">		"php": "php",</span><br><span class="line">		"python": "python -u",</span><br><span class="line">		"perl": "perl",</span><br><span class="line">		...</span><br><span class="line">		&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>但是和上篇文章MAC visual Studio Code 运行 调试c/c++ 配置（完美解决）<br>不同，我们的程序不光要能执行以及调试单纯的算法程序，还要适用于需要引入头文件和链接库的中型甚至大型项目，那么这时候就该请出我们的神器make了，先不急 我们一点点看<br><a name="rCBnF"></a></p>
+<h3 id="项目目录"><a href="#项目目录" class="headerlink" title="项目目录"></a>项目目录</h3><p>下面是项目的简单目录<br><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563349635208-24c733b7-7fbf-4f1a-ba7f-f50c7587aced.png#align=left&display=inline&height=284&originHeight=284&originWidth=420&size=0&status=done&width=420" alt></p>
+<p>c_cpp_properties.json<br>在include的过程当中如果有问题，IDE会提示你并自动生成这个文件，如果你是初学者没关系，直接在’.vscode 文件夹中创建这个文件就可以，如果是自动生成的稍作修改就可以，如果最后不行就按照我的改，我已经踩了无数的坑了，期间看过很多文章与教程，然而这是最终的版本。（当然了opencv的安装位置和编译器位置可能会不同，请各位看官自行调整，灵活一些）</p>
+<blockquote>
+<p>小tips:<br>在vscode的json配置文件中如果有不清楚的标签一定要把鼠标放在上面看一看说明，下同。</p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"configurations"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"Mac"</span>,</span><br><span class="line">            <span class="attr">"includePath"</span>: [</span><br><span class="line">                <span class="string">"$&#123;workspaceFolder&#125;/**"</span>,</span><br><span class="line">                <span class="string">"/usr/local/opt/opencv@3/include"</span>,</span><br><span class="line">                <span class="string">"/usr/local/Cellar/opencv@3/3.4.5/include"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"defines"</span>: [],</span><br><span class="line">            <span class="attr">"macFrameworkPath"</span>: [],</span><br><span class="line">            <span class="attr">"compilerPath"</span>: <span class="string">"/usr/bin/g++"</span>,</span><br><span class="line">            <span class="attr">"cStandard"</span>: <span class="string">"c11"</span>,</span><br><span class="line">            <span class="attr">"cppStandard"</span>: <span class="string">"c++11"</span>,</span><br><span class="line">            <span class="attr">"intelliSenseMode"</span>: <span class="string">"clang-x64"</span>,</span><br><span class="line">            <span class="attr">"browse"</span>: &#123;</span><br><span class="line">                <span class="attr">"path"</span>: [</span><br><span class="line">                    <span class="string">"/usr/local/Cellar/opencv@3/3.4.5/include"</span></span><br><span class="line">                ],</span><br><span class="line">                <span class="attr">"limitSymbolsToIncludedHeaders"</span>: <span class="literal">true</span>,</span><br><span class="line">                <span class="attr">"databaseFilename"</span>: <span class="string">""</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"version"</span>: <span class="number">4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参数说明：<br>“includePath”：后期需要添加的额外头文件路径<br>“compilerPath”: 编译器所在的文件路径<br><a name="LE4L8"></a></p>
+<h2 id="launch-json"><a href="#launch-json" class="headerlink" title="launch.json"></a><a href></a><a href></a>launch.json</h2><p>这个文件是在debug模式中需要用到并会自动生成的,稍作修改 ,注意：标签“program” 中文件后缀和自身系统有关。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // 使用 IntelliSense 了解相关属性。 </span><br><span class="line">    // 悬停以查看现有属性的描述。</span><br><span class="line">    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">    "version": "0.2.0",</span><br><span class="line">    "configurations": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"(lldb) Launch"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>,</span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,</span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.out"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [],</span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"$&#123;workspaceFolder&#125;"</span>,</span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"lldb"</span>,</span><br><span class="line">            <span class="attr">"preLaunchTask"</span>: <span class="string">"Build"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>“preLaunchTask”: “build hello world”,是默认launch.json中没有的，表示执行文件前需要的编译任务。具体的任务内容我们在task.json中定义。<br><a name="1A3HD"></a></p>
+<h2 id="settings-json"><a href="#settings-json" class="headerlink" title="settings.json"></a>settings.json</h2><p>此settings是工作区设置， 另外还有一个用户设置，它们之间的区别和联系等相关知识请各位读者自行了解。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//settings.json</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"python.pythonPath"</span>: <span class="string">"/Users/zjx/anaconda3/bin/python3"</span>,</span><br><span class="line">    <span class="attr">"code-runner.executorMap"</span>: &#123;</span><br><span class="line">        <span class="attr">"c"</span>: <span class="string">"cd $dir &amp;&amp; make  &amp;&amp; ./$fileNameWithoutExt &amp;&amp; make clean"</span>,</span><br><span class="line">        <span class="attr">"cpp"</span>: <span class="string">"cd $dir &amp;&amp; make  &amp;&amp; ./$fileNameWithoutExt &amp;&amp; make clean"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"editor.renderWhitespace"</span>: <span class="string">"all"</span>,</span><br><span class="line">    <span class="attr">"editor.renderLineHighlight"</span>: <span class="string">"all"</span>,</span><br><span class="line">    <span class="attr">"editor.formatOnSave"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"code-runner.runInTerminal"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"code-runner.ignoreSelection"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">"code-runner.enableAppInsights"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"C_Cpp.updateChannel"</span>: <span class="string">"Insiders"</span>,</span><br><span class="line">    <span class="attr">"[makefile]"</span>: &#123;</span><br><span class="line">        <span class="attr">"editor.insertSpaces"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"C_Cpp.default.includePath"</span>: [</span><br><span class="line">        <span class="string">"/usr/local/Cellar/opencv@3/3.4.5/include"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="yr3vz"></a></p>
+<h1 id="task-json"><a href="#task-json" class="headerlink" title="task.json"></a>task.json</h1><p>首先快捷键shift+command+p 打开Tasks: Configure Tasks，选择 Create tasks.json file from templates，此时会蹦出一个下拉列表，在下拉列表中选择Others，然后稍作修改如下</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // See https://go.microsoft.com/fwlink/?LinkId=733558</span><br><span class="line">    // for the documentation about the tasks.json format</span><br><span class="line">    "version": "2.0.0",</span><br><span class="line">    "tasks": [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"label"</span>: <span class="string">"Build"</span>,</span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"shell"</span>,</span><br><span class="line">            <span class="attr">"command"</span>: <span class="string">"g++"</span>,</span><br><span class="line">            <span class="attr">"args"</span>: [</span><br><span class="line">                <span class="string">"$&#123;file&#125;"</span>,</span><br><span class="line">                <span class="string">"-o"</span>,</span><br><span class="line">                <span class="string">"$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.out"</span>,</span><br><span class="line">                <span class="string">"-I"</span>,</span><br><span class="line">                <span class="string">"/usr/local/Cellar/opencv@3/3.4.5/include/opencv"</span>,</span><br><span class="line">                <span class="string">"-I"</span>,</span><br><span class="line">                <span class="string">"/usr/local/Cellar/opencv@3/3.4.5/include"</span>,</span><br><span class="line">                <span class="string">"-L"</span>,</span><br><span class="line">                <span class="string">"/usr/local/Cellar/opencv@3/3.4.5/lib"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_stitching"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_superres"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_videostab"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_aruco"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_bgsegm"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_bioinspired"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_ccalib"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_dnn_objdetect"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_dpm"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_face"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_fuzzy"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_hfs"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_img_hash"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_line_descriptor"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_optflow"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_reg"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_rgbd"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_saliency"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_stereo"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_structured_light"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_phase_unwrapping"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_surface_matching"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_tracking"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_datasets"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_dnn"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_plot"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_xfeatures2d"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_shape"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_video"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_ml"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_ximgproc"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_xobjdetect"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_objdetect"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_calib3d"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_features2d"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_highgui"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_videoio"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_imgcodecs"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_flann"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_xphoto"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_photo"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_imgproc"</span>,</span><br><span class="line">                <span class="string">"-l"</span>,</span><br><span class="line">                <span class="string">"opencv_core"</span>,</span><br><span class="line">                <span class="string">"-g"</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">"group"</span>: &#123;</span><br><span class="line">                <span class="attr">"kind"</span>: <span class="string">"build"</span>,</span><br><span class="line">                <span class="attr">"isDefault"</span>: <span class="literal">true</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">"problemMatcher"</span>: [</span><br><span class="line">                <span class="string">"$gcc"</span></span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面那一长串究竟是怎么来的呢 在终端中输入以下命令试试</p>
+<blockquote>
+<p>pkg-config opencv –libs —cflags</p>
+</blockquote>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563349921526-6fb185bc-9d08-486e-8a7d-17083f1ac64d.png#align=left&display=inline&height=190&name=image.png&originHeight=380&originWidth=972&size=409187&status=done&width=486" alt="image.png"></p>
+<p>按照json格式改好了就可以写进去了，别问为啥，学。</p>
+<p><a name="AWo8K"></a></p>
+<h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">TARGET = ./main</span><br><span class="line"></span><br><span class="line">SRCS := $(wildcard ./src/*.cpp ./*.cpp)</span><br><span class="line"></span><br><span class="line">OBJS := $(patsubst %cpp,%o,$(SRCS))</span><br><span class="line"></span><br><span class="line">CFLG = -g -Wall -I/usr/local/Cellar/opencv@3/3.4.5/include -Iinc -I./ -std=c++11</span><br><span class="line"></span><br><span class="line">LDFG = -Wl, $(shell pkg-config opencv --cflags --libs)</span><br><span class="line"></span><br><span class="line">CXX = g++</span><br><span class="line"></span><br><span class="line">$(TARGET) : $(OBJS)</span><br><span class="line">	$(CXX) -o $(TARGET) $(OBJS) $(LDFG)</span><br><span class="line"></span><br><span class="line">%.o:%.cpp</span><br><span class="line">	$(CXX) $(CFLG) -c $&lt; -o $@ </span><br><span class="line"></span><br><span class="line">.PHONY : clean</span><br><span class="line">clean:</span><br><span class="line">	-rm ./*.o</span><br></pre></td></tr></table></figure>
+
+<p><a name="IpLEA"></a></p>
+<h1 id="main-cpp"><a href="#main-cpp" class="headerlink" title="main.cpp"></a>main.cpp</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/opencv.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/highgui.hpp&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Mat img = cv::imread(argv[<span class="number">1</span>], <span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">if</span> (img.empty())</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	cv::namedWindow(<span class="string">"Example1"</span>, cv::WINDOW_AUTOSIZE);</span><br><span class="line">	cv::imshow(<span class="string">"Example1"</span>, img);</span><br><span class="line">	cv::waitKey(<span class="number">0</span>);</span><br><span class="line">	cv::destroyWindow(<span class="string">"Example1"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="comment">// Mat img = imread("/Users/zjx/Desktop/123.png");c</span></span><br><span class="line">	<span class="comment">// cv::imshow("image", img);</span></span><br><span class="line">	<span class="comment">// cv::waitKey();</span></span><br><span class="line">	<span class="comment">// return 0;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a name="5VWIP"></a></p>
+<h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><p>control + option + N 利用code-runner插件进行快速运行：</p>
+<blockquote>
+<p>Tips :对于本程序的话 ，记得传参，可以修改makefile也可以修改settings也可以编译后在终端中运行并传参，看个人喜好</p>
+</blockquote>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563350039094-9451d5d9-148a-4df5-8fc7-8f9f5947ffbe.png#align=left&display=inline&height=313&name=image.png&originHeight=626&originWidth=880&size=227222&status=done&width=440" alt="image.png"><br><a name="sAHBe"></a></p>
+<h1 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h1><p>shift + command + B 进行编译 然后 F5 启用调试 或者直接在左边调试窗口按下绿色三角按钮，相当于 编译+启动调试 ，如下图 完美解决。</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2019/png/263301/1563350063464-c4d59f0d-f15d-4901-a4d4-8092224b6fed.png#align=left&display=inline&height=755&name=image.png&originHeight=1510&originWidth=2558&size=418522&status=done&width=1279" alt="image.png"></p>
+<p>转自：<a href="https://blog.csdn.net/qq_22073849/article/details/88893201" target="_blank" rel="noopener">https://blog.csdn.net/qq_22073849/article/details/88893201</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/16/yuque/JS 中提升幸福度的小技巧/" rel="next" title="JS 中提升幸福度的小技巧">
+                <i class="fa fa-chevron-left"></i> JS 中提升幸福度的小技巧
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/17/yuque/js闭包/" rel="prev" title="js闭包">
+                js闭包 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDgxOC8yMTMzOQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/1916867.png" alt="FangCao">
+            
+              <p class="site-author-name" itemprop="name">FangCao</p>
+              <p class="site-description motion-element" itemprop="description">天空不留下鸟的痕迹，但我已飞过；流星是美丽的不为永恒，只为瞬间</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">185</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/fang-cao-2-96" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-zhihu"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wangfangcao7618@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/wangfangcao7618" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#文章目录"><span class="nav-number">1.</span> <span class="nav-text">文章目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目目录"><span class="nav-number">2.</span> <span class="nav-text">项目目录</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#launch-json"><span class="nav-number"></span> <span class="nav-text">launch.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#settings-json"><span class="nav-number"></span> <span class="nav-text">settings.json</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#task-json"><span class="nav-number"></span> <span class="nav-text">task.json</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Makefile"><span class="nav-number"></span> <span class="nav-text">Makefile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#main-cpp"><span class="nav-number"></span> <span class="nav-text">main.cpp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运行"><span class="nav-number"></span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调试"><span class="nav-number"></span> <span class="nav-text">调试</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2012 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">FangCao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">321.9k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--添加复制-->
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"width":150,"height":300,"position":"right"},"mobile":{"show":true,"scale":0.5},"react":{"opacity":0.9},"dialog":{"enable":true,"hitokoto":true},"log":false});</script></body>
+<!-- 页面点击小红心 <script type="text/javascript" src="/js/src/click.js"></script> -->
+</html>
